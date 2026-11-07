@@ -1,0 +1,29 @@
+name: CI
+
+on:
+    push:
+        branches: [main]
+    pull_request:
+
+permissions:
+    contents: read
+
+jobs:
+    check:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+            - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+              with:
+                  node-version: 24
+                  cache: npm
+            # no install scripts: a compromised dependency can't run code at install time
+            - run: npm ci --ignore-scripts
+            - run: npm run lint
+            - run: npm run format:check
+            - run: npm run lint:design
+            - run: npm run typecheck
+            # builds the shadcn registry and the docs site
+            - run: npm run build
