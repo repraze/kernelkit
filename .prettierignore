@@ -1,0 +1,8 @@
+node_modules
+**/dist
+package-lock.json
+packages/site/src/routeTree.gen.ts
+.claude/worktrees
+packages/kernelkit/registry
+packages/kernelkit/registry.json
+packages/site/public/r

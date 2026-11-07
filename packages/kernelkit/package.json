@@ -1,0 +1,54 @@
+{
+    "name": "kernelkit",
+    "version": "0.1.0",
+    "description": "A modern, techy React component library - Base UI, Tailwind v4, cva, Termicolor tokens",
+    "type": "module",
+    "license": "MIT",
+    "sideEffects": [
+        "*.css"
+    ],
+    "exports": {
+        "./components/*": "./src/components/*.tsx",
+        "./hooks/*": "./src/hooks/*.ts",
+        "./lib/highlighter": "./src/lib/highlighter.tsx",
+        "./lib/*": "./src/lib/*.ts",
+        "./provider": "./src/provider/index.ts",
+        "./theme": "./src/provider/theme.ts",
+        "./styles.css": "./src/styles/kernelkit.css"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit -p ."
+    },
+    "peerDependencies": {
+        "react": ">=19",
+        "react-dom": ">=19"
+    },
+    "dependencies": {
+        "@base-ui/react": "^1.9.0",
+        "@shadcn/react": "^0.3.1",
+        "@tanstack/react-virtual": "^3.14.26",
+        "@termicolor/palette": "file:../../../termicolor/packages/palette",
+        "class-variance-authority": "^0.7.1",
+        "clsx": "^2.1.1",
+        "cmdk": "^1.1.1",
+        "cn": "^0.2.6",
+        "date-fns": "^4.4.0",
+        "embla-carousel-react": "^8.6.0",
+        "input-otp": "^1.5.0",
+        "lucide-react": "^1.69.0",
+        "react-day-picker": "^10.0.2",
+        "react-resizable-panels": "^4.19.1",
+        "recharts": "^3.8.0",
+        "shiki": "^4.6.0",
+        "tailwind-merge": "^3.7.0",
+        "tw-animate-css": "^1.4.0"
+    },
+    "devDependencies": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "shadcn": "^4.23.0",
+        "tailwindcss": "^4.3.4"
+    }
+}

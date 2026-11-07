@@ -1,0 +1,39 @@
+{
+    "name": "@kernelkit/root",
+    "private": true,
+    "version": "0.1.0",
+    "description": "Kernelkit - a modern, techy React component library on Base UI, Tailwind v4 and Termicolor",
+    "type": "module",
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "npm run registry && npm run dev -w @kernelkit/site",
+        "build": "npm run registry && npm run build -w @kernelkit/site",
+        "typecheck": "npm run typecheck --workspaces --if-present",
+        "lint": "eslint .",
+        "lint:fix": "eslint . --fix",
+        "format": "prettier --write .",
+        "format:check": "prettier --check .",
+        "lint:design": "node scripts/lint-design.mjs",
+        "check:docs": "node scripts/check-docs.mjs",
+        "shot": "node scripts/shot.mjs",
+        "registry": "node scripts/build-registry.mjs && cd packages/kernelkit && shadcn build registry.json -o ../site/public/r",
+        "check:states": "node scripts/check-states.mjs"
+    },
+    "author": "Thomas Dubosc (https://repraze.com)",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^26.6.6",
+        "eslint": "^10.14.0",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-simple-import-sort": "^14.0.0",
+        "eslint-plugin-unused-imports": "^4.4.1",
+        "jiti": "^2.7.0",
+        "playwright": "^1.65.0",
+        "prettier": "^3.9.10",
+        "tsx": "^4.23.15",
+        "typescript": "^6.0.3",
+        "typescript-eslint": "^8.72.1"
+    }
+}

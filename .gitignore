@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.tsbuildinfo
+.DS_Store
+*:Zone.Identifier
+.claude/worktrees/
+packages/kernelkit/registry/
+packages/kernelkit/registry.json
+packages/site/public/r/

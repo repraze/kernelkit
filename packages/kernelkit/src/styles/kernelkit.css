@@ -1,0 +1,300 @@
+/*
+ * Kernelkit styles. Import after Tailwind in your app stylesheet:
+ *
+ *     @import "tailwindcss";
+ *     @import "kernelkit/styles.css";
+ *
+ * Layers: Termicolor palette (--tc-*) → shadcn tokens (--primary, …) → kernelkit knobs (--kk-*).
+ * Theme with classes on <html> (or any subtree): .light/.dark, .hc, .accent-<name>, .radius-<size>.
+ */
+@import "tw-animate-css";
+@import "@termicolor/palette/palette.css";
+@import "@termicolor/palette/shadcn.css";
+@import "./shadcn.css";
+
+/* Kernelkit's own class names live in its sources: let Tailwind see them from node_modules. */
+@source "../components";
+@source "../provider";
+@source "../lib";
+@source "../hooks";
+
+/* Nearest scope wins, so a .light preview nested in a .dark page isn't styled as dark. */
+@custom-variant dark (&:is(.dark, .dark *):not(.dark .light, .dark .light *));
+@custom-variant hc (&:is(.hc, .hc *));
+
+/* ─── Accent: pink unless an .accent-<name> ancestor says otherwise ─────────────────────────────── */
+/* Same specificity as the palette's mode scopes and loaded later, so it replaces their purple
+   default; palette.css's .accent-<name> rules are more specific, so they still win. */
+:root,
+.light,
+.dark {
+    --tc-accent: var(--tc-accent-pink-accent);
+    --tc-on-accent: var(--tc-accent-pink-on-accent);
+    --tc-accent-tint: var(--tc-accent-pink-accent-tint);
+    --tc-accent-bright: var(--tc-accent-pink-accent-bright);
+    --tc-accent-fill: var(--tc-accent-pink-accent-fill);
+    --tc-on-accent-fill: var(--tc-accent-pink-on-accent-fill);
+    --tc-cursor: var(--tc-accent-pink-cursor);
+    --tc-selection: var(--tc-accent-pink-selection);
+    --tc-selection-inactive: var(--tc-accent-pink-selection-inactive);
+    --tc-focus-ring: var(--tc-accent-pink-focus-ring);
+    --tc-tab-indicator: var(--tc-accent-pink-tab-indicator);
+}
+
+/* Light mode: Termicolor's bgRaised is ~2% off the sunken page background, so secondary surfaces
+   (neutral buttons, badges, user bubbles) vanished. Nudge them toward the foreground. */
+:root:not(.dark),
+.light {
+    --secondary: color-mix(in oklch, var(--tc-bg-raised), var(--tc-fg) 5%);
+}
+
+/* Field backgrounds as tokens, not `dark:bg-input/30` classes: a variant-prefixed background outranks
+   `hover:` and `data-*:` states, which killed hover on dark outline surfaces. One plain `bg-field` class
+   and the mode decides. */
+:root,
+.light {
+    --field: transparent;
+    --field-hover: var(--hover);
+    --field-disabled: color-mix(in oklch, var(--input) 50%, transparent);
+}
+.dark {
+    --field: color-mix(in oklch, var(--input) 30%, transparent);
+    --field-hover: color-mix(in oklch, var(--input) 50%, transparent);
+    --field-disabled: color-mix(in oklch, var(--input) 80%, transparent);
+}
+/* hc: --input is a bright line color, a wash of it turns into a solid grey block */
+.hc,
+.hc .light,
+.hc .dark {
+    --field: transparent;
+    --field-hover: var(--hover);
+    --field-disabled: transparent;
+}
+
+/* ─── Status roles (never follow the accent) ────────────────────────────────────────────────────── */
+:root,
+.light,
+.dark {
+    --destructive-foreground: var(--tc-red-on);
+    --danger: var(--tc-danger);
+    --danger-foreground: var(--tc-red-on);
+    --danger-tint: var(--tc-red-tint);
+    --warning: var(--tc-warning);
+    --warning-foreground: var(--tc-yellow-on);
+    --warning-tint: var(--tc-yellow-tint);
+    --success: var(--tc-success);
+    --success-foreground: var(--tc-green-on);
+    --success-tint: var(--tc-green-tint);
+    --info: var(--tc-info);
+    --info-foreground: var(--tc-blue-on);
+    --info-tint: var(--tc-blue-tint);
+    --selection: var(--tc-selection);
+    --shadow-color: var(--tc-shadow);
+}
+
+/* ─── Code: Shiki css-variables theme (lib/highlighter.tsx) → Termicolor syntax roles ───────────── */
+:root,
+.light,
+.dark {
+    --kk-code-foreground: var(--tc-fg);
+    --kk-code-background: transparent;
+    --kk-code-token-comment: var(--tc-syntax-comment);
+    --kk-code-token-constant: var(--tc-syntax-constant);
+    --kk-code-token-string: var(--tc-syntax-string);
+    --kk-code-token-string-expression: var(--tc-syntax-string);
+    --kk-code-token-keyword: var(--tc-syntax-keyword);
+    --kk-code-token-parameter: var(--tc-syntax-parameter);
+    --kk-code-token-function: var(--tc-syntax-function);
+    --kk-code-token-punctuation: var(--tc-syntax-punctuation);
+    --kk-code-token-link: var(--tc-syntax-link);
+    --kk-code-token-inserted: var(--tc-added);
+    --kk-code-token-deleted: var(--tc-removed);
+    --kk-code-token-changed: var(--tc-modified);
+    --kk-code-ansi-black: var(--tc-ansi-black);
+    --kk-code-ansi-bright-black: var(--tc-ansi-bright-black);
+    --kk-code-ansi-red: var(--tc-ansi-red);
+    --kk-code-ansi-bright-red: var(--tc-ansi-bright-red);
+    --kk-code-ansi-green: var(--tc-ansi-green);
+    --kk-code-ansi-bright-green: var(--tc-ansi-bright-green);
+    --kk-code-ansi-yellow: var(--tc-ansi-yellow);
+    --kk-code-ansi-bright-yellow: var(--tc-ansi-bright-yellow);
+    --kk-code-ansi-blue: var(--tc-ansi-blue);
+    --kk-code-ansi-bright-blue: var(--tc-ansi-bright-blue);
+    --kk-code-ansi-magenta: var(--tc-ansi-magenta);
+    --kk-code-ansi-bright-magenta: var(--tc-ansi-bright-magenta);
+    --kk-code-ansi-cyan: var(--tc-ansi-cyan);
+    --kk-code-ansi-bright-cyan: var(--tc-ansi-bright-cyan);
+    --kk-code-ansi-white: var(--tc-ansi-white);
+    --kk-code-ansi-bright-white: var(--tc-ansi-bright-white);
+}
+
+/* ─── Knobs ─────────────────────────────────────────────────────────────────────────────────────── */
+:root {
+    /* Corner radius of a md control; every rounded-* step derives from it. 0 = sharp. */
+    --kk-radius: 0.5rem;
+    /* shadcn name, for app code and third-party snippets that read var(--radius) */
+    --radius: var(--kk-radius);
+    --kk-font-sans: ui-sans-serif, system-ui, sans-serif;
+    --kk-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    /* Titles: card, dialog, sheet, empty, alert. Mono by default (the Termicolor look). */
+    --kk-font-heading: var(--kk-font-mono);
+}
+
+.radius-none {
+    --kk-radius: 0px;
+}
+.radius-sm {
+    --kk-radius: 0.25rem;
+}
+.radius-md {
+    --kk-radius: 0.5rem;
+}
+.radius-lg {
+    --kk-radius: 0.75rem;
+}
+.radius-xl {
+    --kk-radius: 1rem;
+}
+
+@theme inline {
+    --font-sans: var(--kk-font-sans);
+    --font-mono: var(--kk-font-mono);
+    --font-heading: var(--kk-font-heading);
+
+    --radius-xs: calc(var(--kk-radius) * 0.25);
+    --radius-sm: calc(var(--kk-radius) * 0.5);
+    --radius-md: calc(var(--kk-radius) * 0.75);
+    --radius-lg: var(--kk-radius);
+    --radius-xl: calc(var(--kk-radius) * 1.5);
+    --radius-2xl: calc(var(--kk-radius) * 2);
+    --radius-3xl: calc(var(--kk-radius) * 3);
+    --radius-4xl: calc(var(--kk-radius) * 4);
+    /* Pills (switch, badge, avatar, radio): fully round, but square when the radius knob is 0. */
+    --radius-pill: calc(var(--kk-radius) * 999);
+
+    /* Indeterminate bar: a 40% segment sweeping across its track (progress, loading strips). */
+    --animate-indeterminate: kk-indeterminate 1.2s ease-in-out infinite;
+    @keyframes kk-indeterminate {
+        from {
+            translate: -100% 0;
+        }
+        to {
+            translate: 250% 0;
+        }
+    }
+    /* Boxes under 20px (checkbox, kbd keys, tiny chips): capped so they never turn into circles at xl. */
+    --radius-box: min(calc(var(--kk-radius) * 0.5), 0.25rem);
+
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-card: var(--card);
+    --color-card-foreground: var(--card-foreground);
+    --color-popover: var(--popover);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-primary: var(--primary);
+    --color-primary-foreground: var(--primary-foreground);
+    /* accent-colored text and icons: the text tier (light mode darkens it for contrast on white).
+       --primary itself is the vivid fill tier, for solid surfaces. */
+    --color-primary-text: var(--primary-text);
+    --color-secondary: var(--secondary);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-muted: var(--muted);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-accent: var(--accent);
+    --color-accent-foreground: var(--accent-foreground);
+    /* hover wash: visible in high contrast, unlike a surface shade (Termicolor DESIGN.md §6) */
+    --color-hover: var(--hover);
+    --color-destructive: var(--destructive);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-border: var(--border);
+    --color-input: var(--input);
+    --color-field: var(--field);
+    --color-field-hover: var(--field-hover);
+    --color-field-disabled: var(--field-disabled);
+    --color-ring: var(--ring);
+    --color-selection: var(--selection);
+
+    --color-danger: var(--danger);
+    --color-danger-foreground: var(--danger-foreground);
+    --color-danger-tint: var(--danger-tint);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-tint: var(--warning-tint);
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-success-tint: var(--success-tint);
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+    --color-info-tint: var(--info-tint);
+
+    --color-chart-1: var(--chart-1);
+    --color-chart-2: var(--chart-2);
+    --color-chart-3: var(--chart-3);
+    --color-chart-4: var(--chart-4);
+    --color-chart-5: var(--chart-5);
+
+    --color-sidebar: var(--sidebar);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-ring: var(--sidebar-ring);
+
+    /* Termicolor accents as utilities: text-tc-pink, bg-tc-blue-tint, bg-tc-green-fill, … */
+    --color-tc-red: var(--tc-red);
+    --color-tc-red-on: var(--tc-red-on);
+    --color-tc-red-fill: var(--tc-red-fill);
+    --color-tc-red-on-fill: var(--tc-red-on-fill);
+    --color-tc-red-tint: var(--tc-red-tint);
+    --color-tc-orange: var(--tc-orange);
+    --color-tc-orange-on: var(--tc-orange-on);
+    --color-tc-orange-fill: var(--tc-orange-fill);
+    --color-tc-orange-on-fill: var(--tc-orange-on-fill);
+    --color-tc-orange-tint: var(--tc-orange-tint);
+    --color-tc-yellow: var(--tc-yellow);
+    --color-tc-yellow-on: var(--tc-yellow-on);
+    --color-tc-yellow-fill: var(--tc-yellow-fill);
+    --color-tc-yellow-on-fill: var(--tc-yellow-on-fill);
+    --color-tc-yellow-tint: var(--tc-yellow-tint);
+    --color-tc-green: var(--tc-green);
+    --color-tc-green-on: var(--tc-green-on);
+    --color-tc-green-fill: var(--tc-green-fill);
+    --color-tc-green-on-fill: var(--tc-green-on-fill);
+    --color-tc-green-tint: var(--tc-green-tint);
+    --color-tc-cyan: var(--tc-cyan);
+    --color-tc-cyan-on: var(--tc-cyan-on);
+    --color-tc-cyan-fill: var(--tc-cyan-fill);
+    --color-tc-cyan-on-fill: var(--tc-cyan-on-fill);
+    --color-tc-cyan-tint: var(--tc-cyan-tint);
+    --color-tc-blue: var(--tc-blue);
+    --color-tc-blue-on: var(--tc-blue-on);
+    --color-tc-blue-fill: var(--tc-blue-fill);
+    --color-tc-blue-on-fill: var(--tc-blue-on-fill);
+    --color-tc-blue-tint: var(--tc-blue-tint);
+    --color-tc-purple: var(--tc-purple);
+    --color-tc-purple-on: var(--tc-purple-on);
+    --color-tc-purple-fill: var(--tc-purple-fill);
+    --color-tc-purple-on-fill: var(--tc-purple-on-fill);
+    --color-tc-purple-tint: var(--tc-purple-tint);
+    --color-tc-pink: var(--tc-pink);
+    --color-tc-pink-on: var(--tc-pink-on);
+    --color-tc-pink-fill: var(--tc-pink-fill);
+    --color-tc-pink-on-fill: var(--tc-pink-on-fill);
+    --color-tc-pink-tint: var(--tc-pink-tint);
+    --color-tc-fg-soft: var(--tc-fg-soft);
+    --color-tc-fg-muted: var(--tc-fg-muted);
+}
+
+@layer base {
+    * {
+        @apply border-border outline-ring/50;
+    }
+    body {
+        @apply bg-background text-foreground font-sans antialiased;
+    }
+    ::selection {
+        background: var(--selection);
+    }
+}

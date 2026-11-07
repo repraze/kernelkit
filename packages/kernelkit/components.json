@@ -1,0 +1,20 @@
+{
+    "$schema": "https://ui.shadcn.com/schema.json",
+    "style": "base-nova",
+    "rsc": false,
+    "tsx": true,
+    "tailwind": {
+        "config": "",
+        "css": "src/styles/kernelkit.css",
+        "baseColor": "neutral",
+        "cssVariables": true
+    },
+    "iconLibrary": "lucide",
+    "aliases": {
+        "components": "kernelkit/components",
+        "utils": "kernelkit/lib/utils",
+        "ui": "kernelkit/components",
+        "lib": "kernelkit/lib",
+        "hooks": "kernelkit/hooks"
+    }
+}
