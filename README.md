@@ -49,7 +49,17 @@ node scripts/shot.mjs /review/<slug> out.png --full   # 6-theme screenshot matri
 Design rules and the review checklist: [GUIDELINES.md](GUIDELINES.md). Inventory:
 [COMPONENTS.md](COMPONENTS.md). Plan: [PLAN.md](PLAN.md).
 
-`@termicolor/palette` is linked from a sibling checkout (`../termicolor`) until it is published to npm.
+### Iterating on the palette
+
+Kernelkit depends on [`@repraze/termicolor`](https://www.npmjs.com/package/@repraze/termicolor) from npm.
+To work against a local termicolor checkout, link it (don't commit the lockfile while linked):
+
+```bash
+(cd ../termicolor/packages/palette && npm link)
+npm link @repraze/termicolor        # node_modules/@repraze/termicolor -> ../termicolor/packages/palette
+# after `npm run build:ports` in termicolor, kernelkit's dev server picks the changes up
+npm install                         # back to the published version
+```
 
 ## License
 

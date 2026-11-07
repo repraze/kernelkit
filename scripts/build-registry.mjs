@@ -6,7 +6,7 @@
 // The lib is written against its own package paths (`kernelkit/components/x`); registry copies are
 // rewritten to the shadcn aliases a consumer's components.json resolves (`@/components/ui/x`, `@/lib/x`,
 // `@/hooks/x`). The token CSS is bundled into one file (palette + shadcn mapping + kernelkit layer), since
-// @termicolor/palette isn't on npm yet.
+// consumers then need no extra package.
 import {mkdirSync, readdirSync, readFileSync, rmSync, statSync, writeFileSync} from "node:fs";
 import {basename, dirname, join, relative} from "node:path";
 
@@ -14,7 +14,7 @@ const ROOT = new URL("..", import.meta.url).pathname;
 const LIB = join(ROOT, "packages/kernelkit");
 const SRC = join(LIB, "src");
 const OUT = join(LIB, "registry/kernelkit");
-const PALETTE = join(ROOT, "node_modules/@termicolor/palette/dist");
+const PALETTE = join(ROOT, "node_modules/@repraze/termicolor/dist");
 const HOMEPAGE = "https://repraze.github.io/kernelkit";
 const NS = "@kernelkit";
 
@@ -58,7 +58,7 @@ function scan(src) {
             items.add("theme-provider");
         } else if (!spec.startsWith(".") && !spec.startsWith("kernelkit")) {
             const name = spec.startsWith("@") ? spec.split("/").slice(0, 2).join("/") : spec.split("/")[0];
-            if (!["react", "react-dom", "@termicolor/palette"].includes(name)) {
+            if (!["react", "react-dom", "@repraze/termicolor"].includes(name)) {
                 deps.add(versions[name] ? `${name}@${versions[name]}` : name);
             }
         }

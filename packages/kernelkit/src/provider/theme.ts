@@ -2,7 +2,7 @@
 
 export const MODES = ["system", "light", "dark"] as const;
 export const CONTRASTS = ["normal", "high"] as const;
-/** Termicolor accents (same names and order as @termicolor/palette's ACCENTS). */
+/** Termicolor accents (same names and order as @repraze/termicolor's ACCENTS). */
 export const ACCENTS = ["red", "orange", "yellow", "green", "cyan", "blue", "purple", "pink"] as const;
 export const RADII = ["none", "sm", "md", "lg", "xl"] as const;
 

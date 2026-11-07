@@ -8,8 +8,8 @@
  * Theme with classes on <html> (or any subtree): .light/.dark, .hc, .accent-<name>, .radius-<size>.
  */
 @import "tw-animate-css";
-@import "@termicolor/palette/palette.css";
-@import "@termicolor/palette/shadcn.css";
+@import "@repraze/termicolor/palette.css";
+@import "@repraze/termicolor/shadcn.css";
 @import "./shadcn.css";
 
 /* Kernelkit's own class names live in its sources: let Tailwind see them from node_modules. */

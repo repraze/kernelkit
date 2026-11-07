@@ -59,7 +59,7 @@ kernelkit/
 └── tsconfig.base.json, eslint, prettier (same config as Termicolor)
 ```
 
-Dependency on the palette: `@termicolor/palette` via `file:../termicolor/packages/palette` until it's
+Dependency on the palette: `@repraze/termicolor` via `file:../termicolor/packages/palette` until it's
 published to npm. No cycle: palette → kernelkit → (kernelkit site, termicolor site, repraze apps).
 
 Package exports (source-first like Termicolor; a build step is added before publishing):
@@ -83,8 +83,8 @@ kernelkit/lib/utils           kernelkit/styles.css
 ## 4. Token layer
 
 ```
-@termicolor/palette/palette.css   --tc-*        (modes, accents, roles; .dark/.light/.hc/.accent-*)
-@termicolor/palette/shadcn.css    --primary …   (shadcn names mapped to tc roles)
+@repraze/termicolor/palette.css   --tc-*        (modes, accents, roles; .dark/.light/.hc/.accent-*)
+@repraze/termicolor/shadcn.css    --primary …   (shadcn names mapped to tc roles)
 kernelkit/styles.css              --kk-radius*, --kk-font-*, status tokens, @theme inline utilities
 ```
 
