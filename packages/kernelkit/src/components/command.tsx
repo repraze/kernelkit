@@ -41,20 +41,26 @@ function CommandDialog({
     children,
     className,
     showCloseButton = false,
+    initialFocus,
+    finalFocus,
     ...props
-}: Omit<React.ComponentProps<typeof Dialog>, "children"> & {
-    title?: string;
-    description?: string;
-    className?: string;
-    showCloseButton?: boolean;
-    children: React.ReactNode;
-}) {
+}: Omit<React.ComponentProps<typeof Dialog>, "children"> &
+    Pick<React.ComponentProps<typeof DialogContent>, "initialFocus" | "finalFocus"> & {
+        title?: string;
+        description?: string;
+        className?: string;
+        showCloseButton?: boolean;
+        children: React.ReactNode;
+    }) {
     return (
         <Dialog {...props}>
             <DialogContent
                 data-slot="command-dialog"
                 className={cn("top-1/4 translate-y-0 gap-0 overflow-hidden p-0 sm:max-w-lg", className)}
                 showCloseButton={showCloseButton}
+                // where focus goes on open/close (e.g. the search input)
+                initialFocus={initialFocus}
+                finalFocus={finalFocus}
             >
                 <DialogHeader className="sr-only">
                     <DialogTitle>{title}</DialogTitle>

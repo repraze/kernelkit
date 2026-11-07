@@ -29,7 +29,9 @@ hover border input ring danger warning success info` (+ `-foreground`, `-tint`),
   control (checked checkbox/radio/switch) matches its fill.
 - Hover wash is `bg-hover` (Termicolor `bgHover`, visible in high contrast), not `bg-muted`.
 - **Field backgrounds are tokens**: controls with a field surface use `bg-field`, `hover:bg-field-hover`,
-  `disabled:bg-field-disabled` (mode-aware: transparent in light and hc, an input wash in dark). Never
+  `disabled:bg-field-disabled`. Fields sit on Termicolor's `bgRaised` ("things that take input",
+  palette DESIGN.md §4); hover steps 7% toward the foreground (18% in hc). Outline buttons are not fields:
+  `bg-transparent hover:bg-hover`. Never
   `dark:bg-…` / `hc:bg-…` classes on a stateful part: variant-prefixed backgrounds outrank `hover:` and
   `data-*:`, so the state silently disappears in that mode.
 - Alpha on a role is fine for fills (`bg-primary/10`, `bg-(--c)/10`), never for text.
@@ -245,6 +247,9 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-06 Docs nav is the kit's Sidebar; SidebarContent scrolls with ScrollArea + `fade`.
 - 2026-11-06 shadcn registry: `npm run registry` builds `@kernelkit/*` items (imports rewritten to
   consumer aliases, tokens bundled as `@kernelkit/styles`). Verified with the real shadcn CLI in a fresh app.
+- 2026-11-07 Fields on `bgRaised` (Termicolor DESIGN.md §4), found by the termicolor site's e2e when it
+  moved onto the kit; outline buttons transparent + `bg-hover`. CommandDialog forwards
+  `initialFocus`/`finalFocus`.
 - 2026-11-07 Thin accent indicators (tab line, selected-row bar, current/selected borders, drag-over,
   today dot, carousel dot, slider thumb ring) moved to `primary-text` (3:1 non-text contrast in light).
 - 2026-11-06 `selectedRow` recipe shared by Table, DataTable, CodeBlock.

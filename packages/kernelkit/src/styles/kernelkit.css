@@ -50,25 +50,20 @@
 
 /* Field backgrounds as tokens, not `dark:bg-input/30` classes: a variant-prefixed background outranks
    `hover:` and `data-*:` states, which killed hover on dark outline surfaces. One plain `bg-field` class
-   and the mode decides. */
+   and the mode decides. Fields sit on Termicolor's bgRaised ("things that take input", DESIGN.md §4);
+   hover steps toward the foreground so it reads on any surface. */
 :root,
-.light {
-    --field: transparent;
-    --field-hover: var(--hover);
-    --field-disabled: color-mix(in oklch, var(--input) 50%, transparent);
-}
+.light,
 .dark {
-    --field: color-mix(in oklch, var(--input) 30%, transparent);
-    --field-hover: color-mix(in oklch, var(--input) 50%, transparent);
-    --field-disabled: color-mix(in oklch, var(--input) 80%, transparent);
+    --field: var(--tc-bg-raised);
+    --field-hover: color-mix(in oklch, var(--tc-bg-raised), var(--tc-fg) 7%);
+    --field-disabled: var(--tc-bg-raised);
 }
-/* hc: --input is a bright line color, a wash of it turns into a solid grey block */
+/* hc: bgRaised is ~flat there, so hover needs a stronger step to stay visible */
 .hc,
 .hc .light,
 .hc .dark {
-    --field: transparent;
-    --field-hover: var(--hover);
-    --field-disabled: transparent;
+    --field-hover: color-mix(in oklch, var(--tc-bg-raised), var(--tc-fg) 18%);
 }
 
 /* ─── Status roles (never follow the accent) ────────────────────────────────────────────────────── */
