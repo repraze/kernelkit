@@ -14,7 +14,7 @@ const fileUploadVariants = cva([
     "transition-[color,background-color,border-color,box-shadow] duration-100 motion-reduce:transition-none",
     focusRing,
     "hover:bg-hover",
-    "data-drag-over:border-primary data-drag-over:bg-primary/5",
+    "data-drag-over:border-primary-text data-drag-over:bg-primary/5",
     "aria-invalid:border-danger aria-invalid:ring-3 aria-invalid:ring-danger/20 dark:aria-invalid:ring-danger/40",
     "data-disabled:pointer-events-none data-disabled:cursor-not-allowed data-disabled:opacity-50",
     "data-loading:pointer-events-none data-loading:cursor-progress",
@@ -145,7 +145,7 @@ function FileUpload({
             <div data-slot="file-upload-header" className="flex max-w-sm flex-col items-center gap-1">
                 <div
                     data-slot="file-upload-icon"
-                    className="mb-2 flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors group-data-drag-over/upload:border-primary group-data-drag-over/upload:text-primary-text"
+                    className="mb-2 flex size-10 shrink-0 items-center justify-center rounded-lg border border-border bg-background text-muted-foreground transition-colors group-data-drag-over/upload:border-primary-text group-data-drag-over/upload:text-primary-text"
                 >
                     {isLoading ? <Spinner /> : <UploadIcon className="pointer-events-none size-4 shrink-0" />}
                 </div>

@@ -273,7 +273,7 @@ function CarouselDots({className, ...props}: React.ComponentProps<"div">) {
                     className={cn(
                         focusRing,
                         "size-2 rounded-pill bg-border transition-[width,height,background-color,box-shadow] duration-150 hover:bg-primary/50 motion-reduce:transition-none",
-                        "data-active:bg-primary",
+                        "data-active:bg-primary-text",
                         orientation === "horizontal" ? "data-active:w-5" : "data-active:h-5",
                     )}
                 />

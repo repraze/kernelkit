@@ -40,7 +40,7 @@ export function DataTableRow<T>({
                 // hover is gated by the `hoverable` flag on DataTable and skips header rows
                 !head && "group-data-hoverable/data-table:hover:bg-hover",
                 // selected = accent tint + a 2px primary indicator (never shade alone)
-                "data-[state=selected]:bg-accent! data-[state=selected]:text-accent-foreground data-[state=selected]:shadow-[inset_2px_0_0_var(--primary)]",
+                "data-[state=selected]:bg-accent! data-[state=selected]:text-accent-foreground data-[state=selected]:shadow-[inset_2px_0_0_var(--primary-text)]",
                 className,
             )}
             {...props}

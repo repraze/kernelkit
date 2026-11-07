@@ -183,7 +183,7 @@ const codeBlockLineVariants = cva(
                 added: "bg-success/10 after:text-success after:content-['+']",
                 removed: "bg-danger/10 after:text-danger after:content-['−']",
                 // highlighted = tint + a 2px accent indicator, never shade alone (§6)
-                highlighted: "bg-primary/10 shadow-[inset_2px_0_0_var(--primary)]",
+                highlighted: "bg-primary/10 shadow-[inset_2px_0_0_var(--primary-text)]",
             },
         },
         defaultVariants: {

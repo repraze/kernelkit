@@ -21,8 +21,12 @@ hover border input ring danger warning success info` (+ `-foreground`, `-tint`),
 - **Primary has two tiers**: `bg-primary` / `text-primary-foreground` is the vivid fill (Termicolor
   `accentFill`, dark text on it in light mode); accent-colored **text, icons and links use
   `text-primary-text`** (Termicolor `accent`, darkened in light mode for contrast on white). Never
-  `text-primary` for text: in light mode the fill tier fails contrast as text. Borders/indicators may use
-  either (`border-primary` is decorative).
+  `text-primary` for text: in light mode the fill tier fails contrast as text.
+  **Thin indicators use the text tier too**: 1-2px lines, stand-alone borders, small dots, inset bars
+  (`after:bg-primary-text`, `border-primary-text`, `shadow-[inset_2px_0_0_var(--primary-text)]`): WCAG
+  1.4.11 wants 3:1 for state-carrying UI, the light fill is ~2.3:1 on white. The fill tier is for solid
+  surfaces (with or without text) and bars of 6px or more; a border that is just the edge of a filled
+  control (checked checkbox/radio/switch) matches its fill.
 - Hover wash is `bg-hover` (Termicolor `bgHover`, visible in high contrast), not `bg-muted`.
 - **Field backgrounds are tokens**: controls with a field surface use `bg-field`, `hover:bg-field-hover`,
   `disabled:bg-field-disabled` (mode-aware: transparent in light and hc, an input wash in dark). Never
@@ -241,6 +245,8 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-06 Docs nav is the kit's Sidebar; SidebarContent scrolls with ScrollArea + `fade`.
 - 2026-11-06 shadcn registry: `npm run registry` builds `@kernelkit/*` items (imports rewritten to
   consumer aliases, tokens bundled as `@kernelkit/styles`). Verified with the real shadcn CLI in a fresh app.
+- 2026-11-07 Thin accent indicators (tab line, selected-row bar, current/selected borders, drag-over,
+  today dot, carousel dot, slider thumb ring) moved to `primary-text` (3:1 non-text contrast in light).
 - 2026-11-06 `selectedRow` recipe shared by Table, DataTable, CodeBlock.
 - 2026-11-06 `animate-indeterminate` keyframe for indeterminate bars; `placeholderFill` recipe.
 - 2026-11-06 Typography `Title` has no built-in margins (repraze had `mb-6 last:mb-0`): spacing belongs

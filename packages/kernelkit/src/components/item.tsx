@@ -33,7 +33,7 @@ const itemVariants = cva(
         "group/item flex w-full flex-wrap items-center rounded-lg border text-sm transition-[color,background-color,border-color,box-shadow] duration-100",
         focusRing,
         // interactive items (rendered as a link or button) get the hover wash; selected = border + tint
-        "[a]:hover:bg-hover [button]:hover:bg-hover [button]:text-left aria-[current=page]:border-primary aria-[current=page]:bg-accent aria-selected:border-primary aria-selected:bg-accent",
+        "[a]:hover:bg-hover [button]:hover:bg-hover [button]:text-left aria-[current=page]:border-primary-text aria-[current=page]:bg-accent aria-selected:border-primary-text aria-selected:bg-accent",
     ],
     {
         variants: {

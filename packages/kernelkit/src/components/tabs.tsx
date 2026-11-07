@@ -77,7 +77,7 @@ const tabsTriggerClass = cn(
     "data-active:text-foreground",
     "group-data-[variant=default]/tabs-list:data-active:border-input group-data-[variant=default]/tabs-list:data-active:bg-background group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=default]/tabs-list:data-active:shadow-(color:--shadow-color) dark:group-data-[variant=default]/tabs-list:data-active:bg-input/30",
     // line: 2px primary indicator over the list's baseline
-    "after:pointer-events-none after:absolute after:rounded-pill after:bg-primary after:opacity-0 after:transition-opacity group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
+    "after:pointer-events-none after:absolute after:rounded-pill after:bg-primary-text after:opacity-0 after:transition-opacity group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
     "data-horizontal:after:inset-x-1 data-horizontal:after:-bottom-1 data-horizontal:after:h-0.5",
     "data-vertical:after:inset-y-1 data-vertical:after:-right-1 data-vertical:after:w-0.5",
 );

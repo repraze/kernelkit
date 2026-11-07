@@ -38,7 +38,7 @@ function ResizableHandle({
                 "transition-[background-color,box-shadow] duration-100 motion-reduce:transition-none",
                 // hit area
                 "after:absolute after:inset-y-0 after:left-1/2 after:w-2 after:-translate-x-1/2 after:transition-colors",
-                "hover:after:bg-hover data-[separator=hover]:after:bg-hover data-[separator=active]:bg-primary data-[separator=active]:after:bg-primary/15",
+                "hover:after:bg-hover data-[separator=hover]:after:bg-hover data-[separator=active]:bg-primary-text data-[separator=active]:after:bg-primary/15",
                 "focus-visible:bg-ring focus-visible:ring-3 focus-visible:ring-ring/50",
                 "data-[separator=disabled]:opacity-50",
                 // horizontal line (vertical group)
@@ -50,7 +50,7 @@ function ResizableHandle({
             {withHandle && (
                 <div
                     data-slot="resizable-grip"
-                    className="z-10 flex h-6 w-3 shrink-0 items-center justify-center rounded-sm border border-border bg-background text-muted-foreground transition-colors group-hover/handle:text-foreground group-data-[separator=active]/handle:border-primary group-data-[separator=active]/handle:text-primary-text"
+                    className="z-10 flex h-6 w-3 shrink-0 items-center justify-center rounded-sm border border-border bg-background text-muted-foreground transition-colors group-hover/handle:text-foreground group-data-[separator=active]/handle:border-primary-text group-data-[separator=active]/handle:text-primary-text"
                 >
                     <GripVerticalIcon className="size-2.5" />
                 </div>

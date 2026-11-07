@@ -102,7 +102,7 @@ function FieldLabel({className, ...props}: React.ComponentProps<typeof Label>) {
                 "has-[>[data-slot=field]]:not-has-[:disabled,[data-disabled]]:hover:bg-hover has-[>[data-slot=field]]:has-[:disabled,[data-disabled]]:opacity-50",
                 "has-[>[data-slot=field]]:has-[:focus-visible]:border-ring has-[>[data-slot=field]]:has-[:focus-visible]:ring-3 has-[>[data-slot=field]]:has-[:focus-visible]:ring-ring/50",
                 // checked: primary border + faint primary fill (§6: never shade alone)
-                "has-[>[data-slot=field]]:has-data-checked:border-primary has-[>[data-slot=field]]:has-data-checked:bg-primary/5 dark:has-[>[data-slot=field]]:has-data-checked:bg-primary/10",
+                "has-[>[data-slot=field]]:has-data-checked:border-primary-text has-[>[data-slot=field]]:has-data-checked:bg-primary/5 dark:has-[>[data-slot=field]]:has-data-checked:bg-primary/10",
                 className,
             )}
             {...props}

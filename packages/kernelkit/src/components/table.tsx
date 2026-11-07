@@ -70,7 +70,7 @@ function TableRow({className, ...props}: React.ComponentProps<"tr">) {
                 "group-data-striped/table:in-data-[slot=table-body]:even:bg-muted/50",
                 "group-data-hoverable/table:not-in-data-[slot=table-header]:hover:bg-hover",
                 // selected = accent tint + a 2px primary indicator on the first cell (never shade alone)
-                "data-[state=selected]:bg-accent! data-[state=selected]:text-accent-foreground data-[state=selected]:*:first:shadow-[inset_2px_0_0_var(--primary)]",
+                "data-[state=selected]:bg-accent! data-[state=selected]:text-accent-foreground data-[state=selected]:*:first:shadow-[inset_2px_0_0_var(--primary-text)]",
                 className,
             )}
             {...props}

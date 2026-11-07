@@ -183,7 +183,7 @@ function CalendarDayButton({
                 "relative isolate z-10 flex aspect-square size-auto w-full min-w-(--cell-size) flex-col gap-1 rounded-(--cell-radius) border-0 leading-none font-normal tabular-nums active:translate-y-0",
                 "group-data-[focused=true]/day:relative group-data-[focused=true]/day:z-10 group-data-[focused=true]/day:ring-3 group-data-[focused=true]/day:ring-ring/50",
                 // today: a dot, readable on every surface and in hc
-                "data-today:font-medium data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-pill data-today:after:bg-primary",
+                "data-today:font-medium data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-pill data-today:after:bg-primary-text",
                 "data-outside:text-muted-foreground data-outside:hover:text-foreground",
                 "data-disabled:line-through",
                 "data-[range-middle=true]:rounded-none data-[range-middle=true]:bg-transparent data-[range-middle=true]:text-foreground data-[range-middle=true]:hover:bg-primary/15",

@@ -44,4 +44,4 @@ export const heading = "font-heading font-medium tracking-tight";
 export const placeholderFill = "bg-foreground/10 hc:bg-border";
 
 /** Selected row (table, data table, code line, list): accent tint + 2px inset primary indicator (§6). */
-export const selectedRow = "bg-accent text-accent-foreground shadow-[inset_2px_0_0_var(--primary)]";
+export const selectedRow = "bg-accent text-accent-foreground shadow-[inset_2px_0_0_var(--primary-text)]";

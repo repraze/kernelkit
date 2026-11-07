@@ -24,7 +24,7 @@ const toggleVariants = cva(
         variants: {
             variant: {
                 default: "bg-transparent",
-                outline: "border-input bg-transparent data-pressed:border-primary",
+                outline: "border-input bg-transparent data-pressed:border-primary-text",
             },
             size: {
                 xs: "h-6 min-w-6 gap-1 rounded-md px-1 text-xs not-has-[svg]:px-2 has-data-[icon=inline-end]:pl-2 has-data-[icon=inline-start]:pr-2 [&_svg:not([class*='size-'])]:size-3",
