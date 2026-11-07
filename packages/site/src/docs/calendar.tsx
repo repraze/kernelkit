@@ -1,4 +1,4 @@
-import {Calendar} from "kernelkit/components/calendar";
+import {Calendar} from "@repraze/kernelkit/components/calendar";
 import * as React from "react";
 import type {DateRange} from "react-day-picker";
 

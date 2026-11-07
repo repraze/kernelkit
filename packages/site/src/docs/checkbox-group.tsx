@@ -1,6 +1,6 @@
-import {Checkbox} from "kernelkit/components/checkbox";
-import {CheckboxGroup} from "kernelkit/components/checkbox-group";
-import {Label} from "kernelkit/components/label";
+import {Checkbox} from "@repraze/kernelkit/components/checkbox";
+import {CheckboxGroup} from "@repraze/kernelkit/components/checkbox-group";
+import {Label} from "@repraze/kernelkit/components/label";
 import * as React from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

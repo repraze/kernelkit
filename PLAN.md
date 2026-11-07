@@ -4,7 +4,10 @@ A professional, modern, techy React component library: every shadcn component, r
 between plain shadcn and the Termicolor look. Built on Base UI + Tailwind v4 + `cva`, themed through
 CSS variables on top of the Termicolor palette.
 
-Status (2026-11-06, late): steps 1-6 done. 78 components in the lib, 80 docs pages, all through the
+Status (2026-11-07): published as `@repraze/kernelkit` (build to dist/, optional peer deps, staged
+publish workflow, Pages deploy of docs + registry, docs pages code-split). Termicolor palette is
+`@repraze/termicolor` on npm.
+Earlier (2026-11-06, late): steps 1-6 done. 78 components in the lib, 80 docs pages, all through the
 6-theme review matrix, design lint, state check (hover/focus) and console check. Also published as a
 shadcn registry (`npm run registry`, `@kernelkit/<name>`). Next: step 7 (termicolor site refactor).
 Earlier note: steps 1-3 done, step 6 started. Repo scaffolded; 63 shadcn base-nova components

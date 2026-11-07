@@ -14,7 +14,7 @@ import {
     QuestionnaireSkip,
     QuestionnaireSubmit,
     QuestionnaireTitle,
-} from "kernelkit/components/questionnaire";
+} from "@repraze/kernelkit/components/questionnaire";
 
 import {defineDoc} from "@/lib/doc-kit";
 

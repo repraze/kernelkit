@@ -1,4 +1,4 @@
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Drawer,
     DrawerBody,
@@ -9,7 +9,7 @@ import {
     DrawerHeader,
     DrawerTitle,
     DrawerTrigger,
-} from "kernelkit/components/drawer";
+} from "@repraze/kernelkit/components/drawer";
 import {MinusIcon, PlusIcon} from "lucide-react";
 import * as React from "react";
 

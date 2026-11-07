@@ -2,9 +2,9 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
+import {type Color, colorVariants} from "@repraze/kernelkit/lib/color";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {type Color, colorVariants} from "kernelkit/lib/color";
 import type * as React from "react";
 
 /** The wrapper: dot + optional label, inline. Sets the color vars for the dot. */

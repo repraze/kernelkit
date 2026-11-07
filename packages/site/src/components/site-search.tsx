@@ -1,5 +1,4 @@
-import {useNavigate} from "@tanstack/react-router";
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Command,
     CommandDialog,
@@ -8,8 +7,9 @@ import {
     CommandInput,
     CommandItem,
     CommandList,
-} from "kernelkit/components/command";
-import {Kbd} from "kernelkit/components/kbd";
+} from "@repraze/kernelkit/components/command";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {useNavigate} from "@tanstack/react-router";
 import {SearchIcon} from "lucide-react";
 import {useEffect, useState} from "react";
 

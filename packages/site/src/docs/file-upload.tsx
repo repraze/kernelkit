@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {FileUpload} from "kernelkit/components/file-upload";
+import {Button} from "@repraze/kernelkit/components/button";
+import {FileUpload} from "@repraze/kernelkit/components/file-upload";
 import {FileIcon, XIcon} from "lucide-react";
 import * as React from "react";
 

@@ -2,9 +2,9 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
+import {Button} from "@repraze/kernelkit/components/button";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
 import * as React from "react";
 
 const attachmentVariants = cva(

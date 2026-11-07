@@ -1,7 +1,7 @@
 "use client";
 
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 import {ArrowDownAZIcon, ArrowDownUpIcon, ArrowUpZAIcon, MoveDownIcon, MoveUpIcon} from "lucide-react";
 import type {ComponentType, ReactNode} from "react";
 import {useCallback, useState} from "react";

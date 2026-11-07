@@ -1,7 +1,7 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Field, FieldGroup, FieldLabel} from "kernelkit/components/field";
-import {Input} from "kernelkit/components/input";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Field, FieldGroup, FieldLabel} from "@repraze/kernelkit/components/field";
+import {Input} from "@repraze/kernelkit/components/input";
 import {
     Sheet,
     SheetBody,
@@ -12,7 +12,7 @@ import {
     SheetHeader,
     SheetTitle,
     SheetTrigger,
-} from "kernelkit/components/sheet";
+} from "@repraze/kernelkit/components/sheet";
 import {PanelRightIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

@@ -1,4 +1,4 @@
-import {Toggle} from "kernelkit/components/toggle";
+import {Toggle} from "@repraze/kernelkit/components/toggle";
 import {BoldIcon, BookmarkIcon, EyeIcon, ItalicIcon, PinIcon, WrapTextIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

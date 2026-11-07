@@ -1,8 +1,8 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Switch} from "kernelkit/components/switch";
-import {type Accent, ACCENTS, RADII, ThemeScope} from "kernelkit/provider";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Switch} from "@repraze/kernelkit/components/switch";
+import {type Accent, ACCENTS, RADII, ThemeScope} from "@repraze/kernelkit/provider";
 
 import {Code, defineDoc} from "@/lib/doc-kit";
 

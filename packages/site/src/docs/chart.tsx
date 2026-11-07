@@ -5,7 +5,7 @@ import {
     ChartLegendContent,
     ChartTooltip,
     ChartTooltipContent,
-} from "kernelkit/components/chart";
+} from "@repraze/kernelkit/components/chart";
 import {Area, AreaChart, Bar, BarChart, CartesianGrid, Line, LineChart, XAxis, YAxis} from "recharts";
 
 import {defineDoc} from "@/lib/doc-kit";

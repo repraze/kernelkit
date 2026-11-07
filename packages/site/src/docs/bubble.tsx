@@ -1,5 +1,5 @@
-import {Bubble, BubbleContent, BubbleGroup, BubbleReactions} from "kernelkit/components/bubble";
-import {Message, MessageContent} from "kernelkit/components/message";
+import {Bubble, BubbleContent, BubbleGroup, BubbleReactions} from "@repraze/kernelkit/components/bubble";
+import {Message, MessageContent} from "@repraze/kernelkit/components/message";
 import {CheckIcon, ThumbsUpIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

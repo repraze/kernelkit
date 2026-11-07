@@ -1,7 +1,7 @@
-import {Avatar, AvatarFallback} from "kernelkit/components/avatar";
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {HoverCard, HoverCardContent, HoverCardTrigger} from "kernelkit/components/hover-card";
+import {Avatar, AvatarFallback} from "@repraze/kernelkit/components/avatar";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {HoverCard, HoverCardContent, HoverCardTrigger} from "@repraze/kernelkit/components/hover-card";
 import {GitCommitHorizontalIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

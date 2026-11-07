@@ -1,46 +1,128 @@
 {
-    "name": "kernelkit",
-    "version": "0.1.0",
-    "description": "A modern, techy React component library - Base UI, Tailwind v4, cva, Termicolor tokens",
-    "type": "module",
+    "name": "@repraze/kernelkit",
+    "version": "0.1.0-alpha.0",
+    "description": "Modern, techy React components: every shadcn component on Base UI, Tailwind v4 and cva, themed by Termicolor.",
+    "keywords": [
+        "react",
+        "components",
+        "ui",
+        "shadcn",
+        "base-ui",
+        "tailwindcss",
+        "design-system",
+        "termicolor"
+    ],
+    "homepage": "https://repraze.github.io/kernelkit/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/repraze/kernelkit.git",
+        "directory": "packages/kernelkit"
+    },
+    "bugs": "https://github.com/repraze/kernelkit/issues",
+    "author": "Thomas Dubosc (https://repraze.com)",
     "license": "MIT",
+    "type": "module",
     "sideEffects": [
         "*.css"
     ],
     "exports": {
-        "./components/*": "./src/components/*.tsx",
-        "./hooks/*": "./src/hooks/*.ts",
-        "./lib/highlighter": "./src/lib/highlighter.tsx",
-        "./lib/*": "./src/lib/*.ts",
-        "./provider": "./src/provider/index.ts",
-        "./theme": "./src/provider/theme.ts",
-        "./styles.css": "./src/styles/kernelkit.css"
+        "./components/*": {
+            "@repraze/source": "./src/components/*.tsx",
+            "types": "./dist/components/*.d.ts",
+            "default": "./dist/components/*.js"
+        },
+        "./hooks/*": {
+            "@repraze/source": "./src/hooks/*.ts",
+            "types": "./dist/hooks/*.d.ts",
+            "default": "./dist/hooks/*.js"
+        },
+        "./lib/highlighter": {
+            "@repraze/source": "./src/lib/highlighter.tsx",
+            "types": "./dist/lib/highlighter.d.ts",
+            "default": "./dist/lib/highlighter.js"
+        },
+        "./lib/*": {
+            "@repraze/source": "./src/lib/*.ts",
+            "types": "./dist/lib/*.d.ts",
+            "default": "./dist/lib/*.js"
+        },
+        "./provider": {
+            "@repraze/source": "./src/provider/index.ts",
+            "types": "./dist/provider/index.d.ts",
+            "default": "./dist/provider/index.js"
+        },
+        "./theme": {
+            "@repraze/source": "./src/provider/theme.ts",
+            "types": "./dist/provider/theme.d.ts",
+            "default": "./dist/provider/theme.js"
+        },
+        "./styles.css": "./src/styles/kernelkit.css",
+        "./package.json": "./package.json"
     },
+    "files": [
+        "dist",
+        "src",
+        "README.md"
+    ],
     "scripts": {
+        "build": "rm -rf dist && tsc -p tsconfig.build.json",
         "typecheck": "tsc --noEmit -p ."
+    },
+    "publishConfig": {
+        "access": "public"
     },
     "peerDependencies": {
         "react": ">=19",
-        "react-dom": ">=19"
+        "react-dom": ">=19",
+        "recharts": "^3.8.0",
+        "shiki": "^4.6.0",
+        "embla-carousel-react": "^8.6.0",
+        "cmdk": "^1.1.1",
+        "react-day-picker": "^10.0.2",
+        "date-fns": "^4.4.0",
+        "input-otp": "^1.5.0",
+        "react-resizable-panels": "^4.19.1",
+        "@tanstack/react-virtual": "^3.14.26",
+        "@shadcn/react": "^0.3.1"
+    },
+    "peerDependenciesMeta": {
+        "recharts": {
+            "optional": true
+        },
+        "shiki": {
+            "optional": true
+        },
+        "embla-carousel-react": {
+            "optional": true
+        },
+        "cmdk": {
+            "optional": true
+        },
+        "react-day-picker": {
+            "optional": true
+        },
+        "date-fns": {
+            "optional": true
+        },
+        "input-otp": {
+            "optional": true
+        },
+        "react-resizable-panels": {
+            "optional": true
+        },
+        "@tanstack/react-virtual": {
+            "optional": true
+        },
+        "@shadcn/react": {
+            "optional": true
+        }
     },
     "dependencies": {
         "@base-ui/react": "^1.9.0",
         "@repraze/termicolor": "^0.1.0-alpha.0",
-        "@shadcn/react": "^0.3.1",
-        "@tanstack/react-virtual": "^3.14.26",
         "class-variance-authority": "^0.7.1",
-        "clsx": "^2.1.1",
-        "cmdk": "^1.1.1",
         "cn": "^0.2.6",
-        "date-fns": "^4.4.0",
-        "embla-carousel-react": "^8.6.0",
-        "input-otp": "^1.5.0",
         "lucide-react": "^1.69.0",
-        "react-day-picker": "^10.0.2",
-        "react-resizable-panels": "^4.19.1",
-        "recharts": "^3.8.0",
-        "shiki": "^4.6.0",
-        "tailwind-merge": "^3.7.0",
         "tw-animate-css": "^1.4.0"
     },
     "devDependencies": {
@@ -49,6 +131,16 @@
         "react": "^19.3.1",
         "react-dom": "^19.3.1",
         "shadcn": "^4.23.0",
-        "tailwindcss": "^4.3.4"
+        "tailwindcss": "^4.3.4",
+        "recharts": "^3.8.0",
+        "shiki": "^4.6.0",
+        "embla-carousel-react": "^8.6.0",
+        "cmdk": "^1.1.1",
+        "react-day-picker": "^10.0.2",
+        "date-fns": "^4.4.0",
+        "input-otp": "^1.5.0",
+        "react-resizable-panels": "^4.19.1",
+        "@tanstack/react-virtual": "^3.14.26",
+        "@shadcn/react": "^0.3.1"
     }
 }

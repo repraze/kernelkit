@@ -1,4 +1,4 @@
-import {Skeleton} from "kernelkit/components/skeleton";
+import {Skeleton} from "@repraze/kernelkit/components/skeleton";
 
 import {defineDoc} from "@/lib/doc-kit";
 

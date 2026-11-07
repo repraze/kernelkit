@@ -1,8 +1,8 @@
 "use client";
 
+import {heading} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {heading} from "kernelkit/lib/recipes";
 
 const emptyVariants = cva(
     "flex w-full min-w-0 flex-1 flex-col items-center justify-center gap-4 rounded-xl p-6 text-center text-balance",

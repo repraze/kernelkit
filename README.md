@@ -10,19 +10,19 @@ Use it as a package, or install components as source with the shadcn CLI.
 
 | Package              | What                                                   |
 | -------------------- | ------------------------------------------------------ |
-| `packages/kernelkit` | the library (`kernelkit`)                              |
+| `packages/kernelkit` | the library (`@repraze/kernelkit`)                     |
 | `packages/site`      | docs site (Vite + TanStack Router), dev on port `5175` |
 
 ## Use
 
 ```css
 @import "tailwindcss";
-@import "kernelkit/styles.css";
+@import "@repraze/kernelkit/styles.css";
 ```
 
 ```tsx
-import {Button} from "kernelkit/components/button";
-import {ThemeProvider} from "kernelkit/provider";
+import {Button} from "@repraze/kernelkit/components/button";
+import {ThemeProvider} from "@repraze/kernelkit/provider";
 ```
 
 As a shadcn registry (code lands in your app, imports rewritten to your aliases):

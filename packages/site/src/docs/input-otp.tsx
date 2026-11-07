@@ -1,6 +1,6 @@
+import {Field, FieldDescription, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
+import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "@repraze/kernelkit/components/input-otp";
 import {REGEXP_ONLY_DIGITS} from "input-otp";
-import {Field, FieldDescription, FieldError, FieldLabel} from "kernelkit/components/field";
-import {InputOTP, InputOTPGroup, InputOTPSeparator, InputOTPSlot} from "kernelkit/components/input-otp";
 import * as React from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

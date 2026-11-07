@@ -1,5 +1,5 @@
-import {Field, FieldDescription, FieldError, FieldLabel} from "kernelkit/components/field";
-import {PasswordInput} from "kernelkit/components/password-input";
+import {Field, FieldDescription, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
+import {PasswordInput} from "@repraze/kernelkit/components/password-input";
 
 import {defineDoc} from "@/lib/doc-kit";
 

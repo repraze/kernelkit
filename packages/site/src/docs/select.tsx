@@ -1,4 +1,4 @@
-import {Field, FieldError, FieldLabel} from "kernelkit/components/field";
+import {Field, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
 import {
     Select,
     SelectContent,
@@ -8,7 +8,7 @@ import {
     SelectSeparator,
     SelectTrigger,
     SelectValue,
-} from "kernelkit/components/select";
+} from "@repraze/kernelkit/components/select";
 import {CpuIcon, ServerIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

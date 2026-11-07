@@ -1,5 +1,12 @@
-import {Button} from "kernelkit/components/button";
-import {Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle} from "kernelkit/components/empty";
+import {Button} from "@repraze/kernelkit/components/button";
+import {
+    Empty,
+    EmptyContent,
+    EmptyDescription,
+    EmptyHeader,
+    EmptyMedia,
+    EmptyTitle,
+} from "@repraze/kernelkit/components/empty";
 import {PlusIcon, ServerOffIcon, UploadCloudIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

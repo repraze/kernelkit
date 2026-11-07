@@ -1,11 +1,11 @@
 "use client";
 
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Textarea} from "@repraze/kernelkit/components/textarea";
+import {fieldSurface} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Textarea} from "kernelkit/components/textarea";
-import {fieldSurface} from "kernelkit/lib/recipes";
 import * as React from "react";
 
 const inputGroupVariants = cva(

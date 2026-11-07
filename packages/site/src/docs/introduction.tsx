@@ -1,6 +1,6 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "kernelkit/components/card";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Card, CardContent, CardDescription, CardHeader, CardTitle} from "@repraze/kernelkit/components/card";
 
 import {Code, defineDoc} from "@/lib/doc-kit";
 
@@ -35,11 +35,15 @@ function Notes() {
         <div className="flex flex-col gap-6">
             <section className="flex flex-col gap-3">
                 <h2 className="font-mono text-xl font-semibold">Install the package</h2>
-                <Code language="bash" code="npm install kernelkit @base-ui/react" />
+                <Code language="bash" code="npm install @repraze/kernelkit @base-ui/react" />
                 <p className="text-sm text-muted-foreground">
                     Import the styles once, after Tailwind, in your app stylesheet:
                 </p>
-                <Code language="css" title="app.css" code={'@import "tailwindcss";\n@import "kernelkit/styles.css";'} />
+                <Code
+                    language="css"
+                    title="app.css"
+                    code={'@import "tailwindcss";\n@import "@repraze/kernelkit/styles.css";'}
+                />
             </section>
             <section className="flex flex-col gap-3">
                 <h2 className="font-mono text-xl font-semibold">Or own the code: shadcn CLI</h2>
@@ -78,8 +82,8 @@ npx shadcn@latest add @kernelkit/button @kernelkit/select @kernelkit/data-table`
                     theme applies before first paint.
                 </p>
                 <Code
-                    code={`import {ThemeProvider, ThemeScript} from "kernelkit/provider";
-import {Button} from "kernelkit/components/button";
+                    code={`import {ThemeProvider, ThemeScript} from "@repraze/kernelkit/provider";
+import {Button} from "@repraze/kernelkit/components/button";
 
 export function App() {
     return (

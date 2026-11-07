@@ -1,9 +1,9 @@
 "use client";
 
+import {type Button, buttonVariants} from "@repraze/kernelkit/components/button";
+import {fieldSurface, focusRing, heading, invalidRing} from "@repraze/kernelkit/lib/recipes";
 import {Questionnaire as QuestionnairePrimitive} from "@shadcn/react/questionnaire";
 import {cn} from "cn";
-import {type Button, buttonVariants} from "kernelkit/components/button";
-import {fieldSurface, focusRing, heading, invalidRing} from "kernelkit/lib/recipes";
 import {CheckIcon} from "lucide-react";
 import * as React from "react";
 

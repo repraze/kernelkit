@@ -1,5 +1,5 @@
-import {Field, FieldError, FieldLabel} from "kernelkit/components/field";
-import {NativeSelect, NativeSelectOptGroup, NativeSelectOption} from "kernelkit/components/native-select";
+import {Field, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
+import {NativeSelect, NativeSelectOptGroup, NativeSelectOption} from "@repraze/kernelkit/components/native-select";
 
 import {defineDoc} from "@/lib/doc-kit";
 

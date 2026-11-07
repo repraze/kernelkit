@@ -5,9 +5,9 @@ import {
     InputGroupInput,
     InputGroupText,
     InputGroupTextarea,
-} from "kernelkit/components/input-group";
-import {Kbd} from "kernelkit/components/kbd";
-import {Spinner} from "kernelkit/components/spinner";
+} from "@repraze/kernelkit/components/input-group";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {ArrowUpIcon, GlobeIcon, SearchIcon, XIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

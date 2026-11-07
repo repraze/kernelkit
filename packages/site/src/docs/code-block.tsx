@@ -7,8 +7,8 @@ import {
     CodeBlockHeader,
     CodeBlockLine,
     CodeBlockTitle,
-} from "kernelkit/components/code-block";
-import {useHighlightedCode} from "kernelkit/hooks/use-highlighted-code";
+} from "@repraze/kernelkit/components/code-block";
+import {useHighlightedCode} from "@repraze/kernelkit/hooks/use-highlighted-code";
 import {FileCodeIcon, TerminalIcon, TriangleAlertIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";
@@ -155,7 +155,7 @@ export function Diff() {
     );
 }
 
-const INSTALL = "npm install kernelkit @base-ui/react";
+const INSTALL = "npm install @repraze/kernelkit @base-ui/react";
 
 export function Floating() {
     return (

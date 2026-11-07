@@ -1,4 +1,3 @@
-import {Link, Outlet, useRouterState} from "@tanstack/react-router";
 import {
     Sidebar,
     SidebarContent,
@@ -11,7 +10,8 @@ import {
     SidebarProvider,
     SidebarTrigger,
     useSidebar,
-} from "kernelkit/components/sidebar";
+} from "@repraze/kernelkit/components/sidebar";
+import {Link, Outlet, useRouterState} from "@tanstack/react-router";
 import {useEffect} from "react";
 
 import {DOCS_BY_CATEGORY} from "@/lib/docs-index";

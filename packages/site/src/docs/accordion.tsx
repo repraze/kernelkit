@@ -1,4 +1,4 @@
-import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "kernelkit/components/accordion";
+import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@repraze/kernelkit/components/accordion";
 
 import {defineDoc} from "@/lib/doc-kit";
 

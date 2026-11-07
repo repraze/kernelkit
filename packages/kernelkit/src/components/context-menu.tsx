@@ -1,7 +1,6 @@
 "use client";
 
 import {ContextMenu as ContextMenuPrimitive} from "@base-ui/react/context-menu";
-import {cn} from "cn";
 import {
     menuContentClass,
     menuIndicatorClass,
@@ -9,9 +8,10 @@ import {
     menuItemVariants,
     menuShortcutClass,
     resolveItemVariant,
-} from "kernelkit/components/dropdown-menu";
-import {listLabel, listSeparator} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
+} from "@repraze/kernelkit/components/dropdown-menu";
+import {listLabel, listSeparator} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
+import {cn} from "cn";
 import {CheckIcon, ChevronRightIcon} from "lucide-react";
 import * as React from "react";
 

@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {COLORS, FILL_VARIANTS} from "kernelkit/lib/color";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {COLORS, FILL_VARIANTS} from "@repraze/kernelkit/lib/color";
 import {CircleAlertIcon, CircleCheckIcon, GitBranchIcon, LoaderCircleIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

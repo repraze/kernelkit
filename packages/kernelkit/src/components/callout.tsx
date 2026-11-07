@@ -1,10 +1,10 @@
 "use client";
 
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@repraze/kernelkit/components/collapsible";
+import {type Color, colorVariants} from "@repraze/kernelkit/lib/color";
+import {heading} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "kernelkit/components/collapsible";
-import {type Color, colorVariants} from "kernelkit/lib/color";
-import {heading} from "kernelkit/lib/recipes";
 import {ChevronDownIcon} from "lucide-react";
 import type * as React from "react";
 

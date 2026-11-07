@@ -1,7 +1,7 @@
 "use client";
 
+import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "@repraze/kernelkit/components/collapsible";
 import {cn} from "cn";
-import {Collapsible, CollapsibleContent, CollapsibleTrigger} from "kernelkit/components/collapsible";
 import {ChevronRightIcon} from "lucide-react";
 import * as React from "react";
 

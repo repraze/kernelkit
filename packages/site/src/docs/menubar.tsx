@@ -14,7 +14,7 @@ import {
     MenubarSubContent,
     MenubarSubTrigger,
     MenubarTrigger,
-} from "kernelkit/components/menubar";
+} from "@repraze/kernelkit/components/menubar";
 import {PlayIcon, RotateCcwIcon, SquareIcon, Trash2Icon} from "lucide-react";
 import * as React from "react";
 

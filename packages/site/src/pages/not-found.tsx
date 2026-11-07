@@ -1,6 +1,6 @@
+import {Button} from "@repraze/kernelkit/components/button";
+import {Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle} from "@repraze/kernelkit/components/empty";
 import {Link} from "@tanstack/react-router";
-import {Button} from "kernelkit/components/button";
-import {Empty, EmptyContent, EmptyDescription, EmptyHeader, EmptyTitle} from "kernelkit/components/empty";
 
 export function NotFound() {
     return (

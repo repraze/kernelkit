@@ -1,5 +1,5 @@
-import {Label} from "kernelkit/components/label";
-import {Slider} from "kernelkit/components/slider";
+import {Label} from "@repraze/kernelkit/components/label";
+import {Slider} from "@repraze/kernelkit/components/slider";
 import * as React from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

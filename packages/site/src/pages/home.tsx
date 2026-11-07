@@ -1,19 +1,26 @@
+import {Alert, AlertDescription, AlertTitle} from "@repraze/kernelkit/components/alert";
+import {Avatar, AvatarFallback} from "@repraze/kernelkit/components/avatar";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@repraze/kernelkit/components/card";
+import {Checkbox} from "@repraze/kernelkit/components/checkbox";
+import {Field, FieldDescription, FieldGroup, FieldLabel} from "@repraze/kernelkit/components/field";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {Label} from "@repraze/kernelkit/components/label";
+import {Progress} from "@repraze/kernelkit/components/progress";
+import {Slider} from "@repraze/kernelkit/components/slider";
+import {Switch} from "@repraze/kernelkit/components/switch";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@repraze/kernelkit/components/table";
+import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {Link} from "@tanstack/react-router";
-import {Alert, AlertDescription, AlertTitle} from "kernelkit/components/alert";
-import {Avatar, AvatarFallback} from "kernelkit/components/avatar";
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle} from "kernelkit/components/card";
-import {Checkbox} from "kernelkit/components/checkbox";
-import {Field, FieldDescription, FieldGroup, FieldLabel} from "kernelkit/components/field";
-import {Input} from "kernelkit/components/input";
-import {Kbd} from "kernelkit/components/kbd";
-import {Label} from "kernelkit/components/label";
-import {Progress} from "kernelkit/components/progress";
-import {Slider} from "kernelkit/components/slider";
-import {Switch} from "kernelkit/components/switch";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "kernelkit/components/table";
-import {Tabs, TabsList, TabsTrigger} from "kernelkit/components/tabs";
 import {ArrowRightIcon, CpuIcon, TerminalIcon} from "lucide-react";
 
 import {Code} from "@/lib/doc-kit";
@@ -58,7 +65,7 @@ export function HomePage() {
                         Browse components
                     </Button>
                 </div>
-                <Code language="bash" code="npm install kernelkit" className="w-full max-w-md" />
+                <Code language="bash" code="npm install @repraze/kernelkit" className="w-full max-w-md" />
             </section>
 
             <section className="mx-auto grid w-full max-w-screen-xl gap-4 px-4 pb-24 md:grid-cols-2 md:px-6 lg:grid-cols-3">

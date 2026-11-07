@@ -5,11 +5,11 @@ import {
     CodeBlockCopyButton,
     CodeBlockHeader,
     CodeBlockTitle,
-} from "kernelkit/components/code-block";
-import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "kernelkit/components/table";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "kernelkit/components/tabs";
-import {useHighlightedCode} from "kernelkit/hooks/use-highlighted-code";
-import {cn} from "kernelkit/lib/utils";
+} from "@repraze/kernelkit/components/code-block";
+import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@repraze/kernelkit/components/table";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
+import {useHighlightedCode} from "@repraze/kernelkit/hooks/use-highlighted-code";
+import {cn} from "@repraze/kernelkit/lib/utils";
 import type * as React from "react";
 
 export const CATEGORIES = [

@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {Progress, ProgressLabel, ProgressValue} from "kernelkit/components/progress";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Progress, ProgressLabel, ProgressValue} from "@repraze/kernelkit/components/progress";
 import {useEffect, useState} from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

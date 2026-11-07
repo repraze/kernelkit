@@ -1,4 +1,4 @@
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Dialog,
     DialogBody,
@@ -9,9 +9,9 @@ import {
     DialogHeader,
     DialogTitle,
     DialogTrigger,
-} from "kernelkit/components/dialog";
-import {Field, FieldGroup, FieldLabel} from "kernelkit/components/field";
-import {Input} from "kernelkit/components/input";
+} from "@repraze/kernelkit/components/dialog";
+import {Field, FieldGroup, FieldLabel} from "@repraze/kernelkit/components/field";
+import {Input} from "@repraze/kernelkit/components/input";
 import {PencilIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

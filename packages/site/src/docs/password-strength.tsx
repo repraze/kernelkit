@@ -1,6 +1,6 @@
-import {Input} from "kernelkit/components/input";
-import {Label} from "kernelkit/components/label";
-import {estimateStrength, PasswordStrength} from "kernelkit/components/password-strength";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Label} from "@repraze/kernelkit/components/label";
+import {estimateStrength, PasswordStrength} from "@repraze/kernelkit/components/password-strength";
 import {useState} from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

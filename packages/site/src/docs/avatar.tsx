@@ -5,7 +5,7 @@ import {
     AvatarGroup,
     AvatarGroupCount,
     AvatarImage,
-} from "kernelkit/components/avatar";
+} from "@repraze/kernelkit/components/avatar";
 import {BotIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

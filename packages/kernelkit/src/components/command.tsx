@@ -1,9 +1,15 @@
 "use client";
 
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+} from "@repraze/kernelkit/components/dialog";
+import {fieldSurface, listSeparator} from "@repraze/kernelkit/lib/recipes";
 import {Command as CommandPrimitive} from "cmdk";
 import {cn} from "cn";
-import {Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle} from "kernelkit/components/dialog";
-import {fieldSurface, listSeparator} from "kernelkit/lib/recipes";
 import {CheckIcon, SearchIcon} from "lucide-react";
 import * as React from "react";
 

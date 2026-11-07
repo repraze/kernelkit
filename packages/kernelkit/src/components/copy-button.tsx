@@ -1,7 +1,7 @@
 "use client";
 
+import {Button, type ButtonProps} from "@repraze/kernelkit/components/button";
 import {cn} from "cn";
-import {Button, type ButtonProps} from "kernelkit/components/button";
 import {CheckIcon, CopyIcon} from "lucide-react";
 import * as React from "react";
 

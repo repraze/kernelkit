@@ -1,6 +1,6 @@
-import {Button} from "kernelkit/components/button";
-import {Kbd} from "kernelkit/components/kbd";
-import {Tooltip, TooltipContent, TooltipTrigger} from "kernelkit/components/tooltip";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@repraze/kernelkit/components/tooltip";
 import {CopyIcon, RefreshCwIcon, SquareTerminalIcon, Trash2Icon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

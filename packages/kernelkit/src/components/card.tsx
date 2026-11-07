@@ -1,8 +1,8 @@
 "use client";
 
+import {heading} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {heading} from "kernelkit/lib/recipes";
 import * as React from "react";
 
 /** `--card-spacing` drives every part's padding and the gap between sections (§4: p-4, sm p-3). */

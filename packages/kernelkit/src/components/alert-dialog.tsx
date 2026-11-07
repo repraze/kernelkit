@@ -1,11 +1,11 @@
 "use client";
 
 import {AlertDialog as AlertDialogPrimitive} from "@base-ui/react/alert-dialog";
+import {Button} from "@repraze/kernelkit/components/button";
+import {type Color, colorVariants} from "@repraze/kernelkit/lib/color";
+import {backdrop, heading} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
-import {type Color, colorVariants} from "kernelkit/lib/color";
-import {backdrop, heading} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import * as React from "react";
 
 function AlertDialog({...props}: AlertDialogPrimitive.Root.Props) {

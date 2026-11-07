@@ -2,7 +2,7 @@
  * Kernelkit styles. Import after Tailwind in your app stylesheet:
  *
  *     @import "tailwindcss";
- *     @import "kernelkit/styles.css";
+ *     @import "@repraze/kernelkit/styles.css";
  *
  * Layers: Termicolor palette (--tc-*) → shadcn tokens (--primary, …) → kernelkit knobs (--kk-*).
  * Theme with classes on <html> (or any subtree): .light/.dark, .hc, .accent-<name>, .radius-<size>.

@@ -1,4 +1,4 @@
-import {AspectRatio} from "kernelkit/components/aspect-ratio";
+import {AspectRatio} from "@repraze/kernelkit/components/aspect-ratio";
 
 import {defineDoc} from "@/lib/doc-kit";
 

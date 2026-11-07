@@ -1,10 +1,10 @@
 "use client";
 
 import {Toast as ToastPrimitive} from "@base-ui/react/toast";
+import {Button} from "@repraze/kernelkit/components/button";
+import {focusRing, heading} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
-import {focusRing, heading} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import {CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon, XIcon} from "lucide-react";
 import * as React from "react";
 

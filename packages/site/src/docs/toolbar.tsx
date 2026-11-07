@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {Toggle} from "kernelkit/components/toggle";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Toggle} from "@repraze/kernelkit/components/toggle";
 import {
     Toolbar,
     ToolbarButton,
@@ -7,7 +7,7 @@ import {
     ToolbarInput,
     ToolbarLink,
     ToolbarSeparator,
-} from "kernelkit/components/toolbar";
+} from "@repraze/kernelkit/components/toolbar";
 import {
     CopyIcon,
     DownloadIcon,

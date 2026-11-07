@@ -1,10 +1,10 @@
 "use client";
 
 import {Menu as MenuPrimitive} from "@base-ui/react/menu";
+import {listItem, listLabel, listSeparator, popupMotion, popupSurface} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {listItem, listLabel, listSeparator, popupMotion, popupSurface} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import {CheckIcon, ChevronRightIcon} from "lucide-react";
 import * as React from "react";
 

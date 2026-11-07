@@ -1,8 +1,6 @@
 "use client";
 
 import {Button as ButtonPrimitive} from "@base-ui/react/button";
-import {cva} from "class-variance-authority";
-import {cn} from "cn";
 import {
     type Color,
     colorVariants,
@@ -10,8 +8,10 @@ import {
     type FillVariantAlias,
     resolveFill,
     TINTED_COLORS,
-} from "kernelkit/lib/color";
-import {focusRing, invalidRing} from "kernelkit/lib/recipes";
+} from "@repraze/kernelkit/lib/color";
+import {focusRing, invalidRing} from "@repraze/kernelkit/lib/recipes";
+import {cva} from "class-variance-authority";
+import {cn} from "cn";
 
 const buttonCva = cva(
     [

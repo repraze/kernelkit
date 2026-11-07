@@ -1,4 +1,4 @@
-import {ResizableHandle, ResizablePanel, ResizablePanelGroup} from "kernelkit/components/resizable";
+import {ResizableHandle, ResizablePanel, ResizablePanelGroup} from "@repraze/kernelkit/components/resizable";
 
 import {defineDoc} from "@/lib/doc-kit";
 

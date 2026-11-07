@@ -1,9 +1,9 @@
 "use client";
 
 import {Switch as SwitchPrimitive} from "@base-ui/react/switch";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 
 /**
  * Track classes. The track is border-box with a 1px border, so the thumb sits 1px inside it and travels

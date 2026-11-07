@@ -1,9 +1,13 @@
 "use client";
 
 import {Combobox as ComboboxPrimitive} from "@base-ui/react";
-import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
-import {InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput} from "kernelkit/components/input-group";
+import {Button} from "@repraze/kernelkit/components/button";
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupButton,
+    InputGroupInput,
+} from "@repraze/kernelkit/components/input-group";
 import {
     fieldSurface,
     invalidRing,
@@ -12,8 +16,9 @@ import {
     listSeparator,
     popupMotion,
     popupSurface,
-} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
+} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
+import {cn} from "cn";
 import {CheckIcon, ChevronDownIcon, XIcon} from "lucide-react";
 import * as React from "react";
 

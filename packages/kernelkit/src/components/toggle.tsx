@@ -1,9 +1,9 @@
 "use client";
 
 import {Toggle as TogglePrimitive} from "@base-ui/react/toggle";
+import {focusRing, invalidRing} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing, invalidRing} from "kernelkit/lib/recipes";
 
 /**
  * Padding is chosen so an icon-only toggle is square at its height (§4); text-only toggles (no svg)

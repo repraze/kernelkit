@@ -5,7 +5,7 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-} from "kernelkit/components/navigation-menu";
+} from "@repraze/kernelkit/components/navigation-menu";
 import {ActivityIcon, BoxIcon, DatabaseIcon, GitBranchIcon, NetworkIcon, ShieldIcon} from "lucide-react";
 import type * as React from "react";
 

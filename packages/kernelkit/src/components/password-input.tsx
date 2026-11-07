@@ -1,6 +1,11 @@
 "use client";
 
-import {InputGroup, InputGroupAddon, InputGroupButton, InputGroupInput} from "kernelkit/components/input-group";
+import {
+    InputGroup,
+    InputGroupAddon,
+    InputGroupButton,
+    InputGroupInput,
+} from "@repraze/kernelkit/components/input-group";
 import {EyeIcon, EyeOffIcon} from "lucide-react";
 import * as React from "react";
 

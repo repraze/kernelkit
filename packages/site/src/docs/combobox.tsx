@@ -14,8 +14,8 @@ import {
     ComboboxSeparator,
     ComboboxValue,
     useComboboxAnchor,
-} from "kernelkit/components/combobox";
-import {Field, FieldError, FieldLabel} from "kernelkit/components/field";
+} from "@repraze/kernelkit/components/combobox";
+import {Field, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
 
 import {defineDoc} from "@/lib/doc-kit";
 

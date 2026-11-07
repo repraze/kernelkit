@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Card,
     CardAction,
@@ -8,8 +8,8 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "kernelkit/components/card";
-import {Input} from "kernelkit/components/input";
+} from "@repraze/kernelkit/components/card";
+import {Input} from "@repraze/kernelkit/components/input";
 import {MoreHorizontalIcon, ServerIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

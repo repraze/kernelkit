@@ -1,5 +1,5 @@
-import {CopyButton} from "kernelkit/components/copy-button";
-import {InputGroup, InputGroupAddon, InputGroupInput} from "kernelkit/components/input-group";
+import {CopyButton} from "@repraze/kernelkit/components/copy-button";
+import {InputGroup, InputGroupAddon, InputGroupInput} from "@repraze/kernelkit/components/input-group";
 
 import {defineDoc} from "@/lib/doc-kit";
 

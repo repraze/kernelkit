@@ -6,13 +6,13 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "kernelkit/components/breadcrumb";
+} from "@repraze/kernelkit/components/breadcrumb";
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
-} from "kernelkit/components/dropdown-menu";
+} from "@repraze/kernelkit/components/dropdown-menu";
 import {FolderIcon, HomeIcon, SlashIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

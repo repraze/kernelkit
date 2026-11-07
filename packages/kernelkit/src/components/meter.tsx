@@ -1,14 +1,14 @@
 "use client";
 
 import {Meter as MeterPrimitive} from "@base-ui/react/meter";
-import {cn} from "cn";
 import {
     progressIndicatorClass,
     type ProgressSize,
     progressTrackClass,
     progressVariants,
-} from "kernelkit/components/progress";
-import type {Color} from "kernelkit/lib/color";
+} from "@repraze/kernelkit/components/progress";
+import type {Color} from "@repraze/kernelkit/lib/color";
+import {cn} from "cn";
 
 interface MeterProps extends Omit<MeterPrimitive.Root.Props, "color"> {
     /** Indicator color. Defaults to primary; pass a status color for thresholds. */

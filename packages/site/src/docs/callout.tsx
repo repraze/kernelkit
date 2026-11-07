@@ -1,6 +1,6 @@
-import {Callout} from "kernelkit/components/callout";
-import {InlineCode} from "kernelkit/components/typography";
-import {HUES} from "kernelkit/lib/color";
+import {Callout} from "@repraze/kernelkit/components/callout";
+import {InlineCode} from "@repraze/kernelkit/components/typography";
+import {HUES} from "@repraze/kernelkit/lib/color";
 import {CircleAlertIcon, InfoIcon, LightbulbIcon, NotebookPenIcon, TriangleAlertIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

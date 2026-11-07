@@ -1,7 +1,6 @@
 "use client";
 
 import {Menubar as MenubarPrimitive} from "@base-ui/react/menubar";
-import {cn} from "cn";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -18,8 +17,9 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from "kernelkit/components/dropdown-menu";
-import {focusRing} from "kernelkit/lib/recipes";
+} from "@repraze/kernelkit/components/dropdown-menu";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
+import {cn} from "cn";
 import * as React from "react";
 
 /** Bordered bar at the control height (GUIDELINES §4); triggers sit inside its 3px padding. */

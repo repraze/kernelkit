@@ -1,7 +1,7 @@
 "use client";
 
+import {fieldSurface, focusRing, invalidRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {fieldSurface, focusRing, invalidRing} from "kernelkit/lib/recipes";
 import * as React from "react";
 
 function Textarea({className, ...props}: React.ComponentProps<"textarea">) {

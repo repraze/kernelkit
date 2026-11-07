@@ -1,9 +1,9 @@
 "use client";
 
 import {Input as InputPrimitive} from "@base-ui/react/input";
+import {fieldSurface, focusRing, invalidRing} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {fieldSurface, focusRing, invalidRing} from "kernelkit/lib/recipes";
 import * as React from "react";
 
 const inputVariants = cva(

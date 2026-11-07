@@ -1,4 +1,4 @@
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Command,
     CommandDialog,
@@ -9,8 +9,8 @@ import {
     CommandList,
     CommandSeparator,
     CommandShortcut,
-} from "kernelkit/components/command";
-import {Kbd} from "kernelkit/components/kbd";
+} from "@repraze/kernelkit/components/command";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
 import {
     BoxIcon,
     FileTextIcon,

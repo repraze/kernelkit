@@ -1,4 +1,4 @@
-import {loadHighlighter} from "kernelkit/lib/highlighter";
+import {loadHighlighter} from "@repraze/kernelkit/lib/highlighter";
 import * as React from "react";
 
 export function useHighlightedCode(value: string, language: string) {

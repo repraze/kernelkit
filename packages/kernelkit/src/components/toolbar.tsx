@@ -1,9 +1,9 @@
 "use client";
 
 import {Toolbar as ToolbarPrimitive} from "@base-ui/react/toolbar";
+import {buttonVariants} from "@repraze/kernelkit/components/button";
+import {fieldSurface, focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {buttonVariants} from "kernelkit/components/button";
-import {fieldSurface, focusRing} from "kernelkit/lib/recipes";
 
 /**
  * A bordered bar of controls with roving arrow-key focus (Base UI Toolbar). Items are ghost `icon-sm`

@@ -1,19 +1,15 @@
-import {Link, useParams} from "@tanstack/react-router";
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Link, useLoaderData} from "@tanstack/react-router";
 import {ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon} from "lucide-react";
 
 import {Demo, PropsTable, slugify} from "@/lib/doc-kit";
 import {DOCS, DOCS_BY_SLUG} from "@/lib/docs-index";
-import {NotFound} from "@/pages/not-found";
 
 export function DocPage() {
-    const {slug} = useParams({from: "/docs/$slug"});
-    const doc = DOCS_BY_SLUG.get(slug);
-    if (!doc) {
-        return <NotFound />;
-    }
-    const index = DOCS.indexOf(doc);
+    const doc = useLoaderData({from: "/docs/$slug"});
+    const meta = DOCS_BY_SLUG.get(doc.slug);
+    const index = meta ? DOCS.indexOf(meta) : -1;
     const prev = DOCS[index - 1];
     const next = DOCS[index + 1];
     const Notes = doc.notes;

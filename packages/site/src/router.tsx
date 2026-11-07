@@ -1,6 +1,7 @@
-import {createRootRoute, createRoute, Outlet, redirect} from "@tanstack/react-router";
+import {createRootRoute, createRoute, notFound, Outlet, redirect} from "@tanstack/react-router";
 
 import {SiteHeader} from "@/components/site-header";
+import {loadDoc} from "@/lib/docs-index";
 import {DocPage} from "@/pages/doc-page";
 import {DocsLayout} from "@/pages/docs-layout";
 import {HomePage} from "@/pages/home";
@@ -29,10 +30,24 @@ const docsIndexRoute = createRoute({
     },
 });
 
-const docRoute = createRoute({getParentRoute: () => docsRoute, path: "$slug", component: DocPage});
+/** Loads the page's own chunk (demos + source) on navigation; intent preload warms it on hover. */
+async function docLoader({params}: {params: {slug: string}}) {
+    const doc = await loadDoc(params.slug);
+    if (!doc) {
+        throw notFound();
+    }
+    return doc;
+}
+
+const docRoute = createRoute({getParentRoute: () => docsRoute, path: "$slug", loader: docLoader, component: DocPage});
 
 /** Visual review matrix (GUIDELINES.md §8), outside the site chrome. */
-const reviewRoute = createRoute({getParentRoute: () => rootRoute, path: "/review/$slug", component: ReviewPage});
+const reviewRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: "/review/$slug",
+    loader: docLoader,
+    component: ReviewPage,
+});
 
 export const routeTree = rootRoute.addChildren([
     homeRoute,

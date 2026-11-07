@@ -1,5 +1,5 @@
-import {Field, FieldDescription, FieldError, FieldLabel} from "kernelkit/components/field";
-import {Textarea} from "kernelkit/components/textarea";
+import {Field, FieldDescription, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
+import {Textarea} from "@repraze/kernelkit/components/textarea";
 
 import {defineDoc} from "@/lib/doc-kit";
 

@@ -1,7 +1,7 @@
-import {Bubble, BubbleContent} from "kernelkit/components/bubble";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Message, MessageContent, MessageFooter} from "kernelkit/components/message";
+import {Bubble, BubbleContent} from "@repraze/kernelkit/components/bubble";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Message, MessageContent, MessageFooter} from "@repraze/kernelkit/components/message";
 import {
     MessageScroller,
     MessageScrollerButton,
@@ -9,7 +9,7 @@ import {
     MessageScrollerItem,
     MessageScrollerProvider,
     MessageScrollerViewport,
-} from "kernelkit/components/message-scroller";
+} from "@repraze/kernelkit/components/message-scroller";
 import {ArrowUpIcon} from "lucide-react";
 import * as React from "react";
 

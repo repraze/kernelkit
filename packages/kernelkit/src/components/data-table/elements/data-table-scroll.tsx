@@ -1,8 +1,8 @@
 "use client";
 
 import {ScrollArea as ScrollAreaPrimitive} from "@base-ui/react/scroll-area";
+import {ScrollBar} from "@repraze/kernelkit/components/scroll-area";
 import {cn} from "cn";
-import {ScrollBar} from "kernelkit/components/scroll-area";
 import type {CSSProperties, ReactNode, Ref} from "react";
 
 export type DataTableScrollProps = {

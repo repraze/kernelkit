@@ -1,7 +1,7 @@
 "use client";
 
+import {popupSurface} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {popupSurface} from "kernelkit/lib/recipes";
 import * as React from "react";
 import type {TooltipValueType} from "recharts";
 import * as RechartsPrimitive from "recharts";

@@ -1,4 +1,4 @@
-import {ToggleGroup, ToggleGroupItem} from "kernelkit/components/toggle-group";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {
     AlignCenterIcon,
     AlignLeftIcon,

@@ -1,7 +1,6 @@
 "use client";
 
 import {Select as SelectPrimitive} from "@base-ui/react/select";
-import {cn} from "cn";
 import {
     fieldSurface,
     focusRing,
@@ -11,8 +10,9 @@ import {
     listSeparator,
     popupMotion,
     popupSurface,
-} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
+} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
+import {cn} from "cn";
 import {CheckIcon, ChevronDownIcon, ChevronUpIcon} from "lucide-react";
 import * as React from "react";
 

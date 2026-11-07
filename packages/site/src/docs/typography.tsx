@@ -9,7 +9,7 @@ import {
     TextLink,
     Title,
     TitleAnchor,
-} from "kernelkit/components/typography";
+} from "@repraze/kernelkit/components/typography";
 
 import {defineDoc} from "@/lib/doc-kit";
 

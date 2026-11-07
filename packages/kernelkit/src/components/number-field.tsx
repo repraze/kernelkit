@@ -1,9 +1,9 @@
 "use client";
 
 import {NumberField as NumberFieldPrimitive} from "@base-ui/react/number-field";
+import {fieldSurface} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {fieldSurface} from "kernelkit/lib/recipes";
 import {MinusIcon, MoveHorizontalIcon, PlusIcon} from "lucide-react";
 
 function NumberField({className, ...props}: NumberFieldPrimitive.Root.Props) {

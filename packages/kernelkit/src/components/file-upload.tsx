@@ -1,10 +1,10 @@
 "use client";
 
+import {buttonVariants} from "@repraze/kernelkit/components/button";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
+import {focusRing, heading} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {buttonVariants} from "kernelkit/components/button";
-import {Spinner} from "kernelkit/components/spinner";
-import {focusRing, heading} from "kernelkit/lib/recipes";
 import {UploadIcon} from "lucide-react";
 import * as React from "react";
 

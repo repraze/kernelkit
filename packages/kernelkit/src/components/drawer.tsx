@@ -1,9 +1,9 @@
 "use client";
 
 import {Drawer as DrawerPrimitive} from "@base-ui/react/drawer";
+import {heading} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {heading} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import * as React from "react";
 
 type DrawerContextProps = {

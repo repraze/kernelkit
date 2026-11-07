@@ -1,7 +1,7 @@
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Label} from "kernelkit/components/label";
-import {Switch} from "kernelkit/components/switch";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Label} from "@repraze/kernelkit/components/label";
+import {Switch} from "@repraze/kernelkit/components/switch";
 
 import {defineDoc} from "@/lib/doc-kit";
 

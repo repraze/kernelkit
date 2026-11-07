@@ -1,5 +1,5 @@
-import {Meter, MeterLabel, MeterValue} from "kernelkit/components/meter";
-import type {Color} from "kernelkit/lib/color";
+import {Meter, MeterLabel, MeterValue} from "@repraze/kernelkit/components/meter";
+import type {Color} from "@repraze/kernelkit/lib/color";
 
 import {defineDoc} from "@/lib/doc-kit";
 

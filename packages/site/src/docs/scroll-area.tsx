@@ -1,6 +1,6 @@
-import {Button} from "kernelkit/components/button";
-import {ScrollArea} from "kernelkit/components/scroll-area";
-import {Separator} from "kernelkit/components/separator";
+import {Button} from "@repraze/kernelkit/components/button";
+import {ScrollArea} from "@repraze/kernelkit/components/scroll-area";
+import {Separator} from "@repraze/kernelkit/components/separator";
 import {useEffect, useRef, useState} from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

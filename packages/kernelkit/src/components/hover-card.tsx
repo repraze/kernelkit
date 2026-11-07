@@ -1,9 +1,9 @@
 "use client";
 
 import {PreviewCard as PreviewCardPrimitive} from "@base-ui/react/preview-card";
+import {popupMotion, popupSurface} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {popupMotion, popupSurface} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 
 function HoverCard({...props}: PreviewCardPrimitive.Root.Props) {
     return <PreviewCardPrimitive.Root data-slot="hover-card" {...props} />;

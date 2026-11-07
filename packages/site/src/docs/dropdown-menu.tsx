@@ -1,4 +1,4 @@
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     DropdownMenu,
     DropdownMenuCheckboxItem,
@@ -14,7 +14,7 @@ import {
     DropdownMenuSubContent,
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
-} from "kernelkit/components/dropdown-menu";
+} from "@repraze/kernelkit/components/dropdown-menu";
 import {
     ChevronDownIcon,
     CopyIcon,

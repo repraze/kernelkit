@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {Checkbox} from "kernelkit/components/checkbox";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Checkbox} from "@repraze/kernelkit/components/checkbox";
 import {
     Field,
     FieldContent,
@@ -11,21 +11,21 @@ import {
     FieldSeparator,
     FieldSet,
     FieldTitle,
-} from "kernelkit/components/field";
-import {Input} from "kernelkit/components/input";
-import {InputGroup, InputGroupAddon, InputGroupInput} from "kernelkit/components/input-group";
+} from "@repraze/kernelkit/components/field";
+import {Input} from "@repraze/kernelkit/components/input";
+import {InputGroup, InputGroupAddon, InputGroupInput} from "@repraze/kernelkit/components/input-group";
 import {
     NumberField,
     NumberFieldDecrement,
     NumberFieldGroup,
     NumberFieldIncrement,
     NumberFieldInput,
-} from "kernelkit/components/number-field";
-import {RadioGroup, RadioGroupItem} from "kernelkit/components/radio-group";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "kernelkit/components/select";
-import {Switch} from "kernelkit/components/switch";
-import {Textarea} from "kernelkit/components/textarea";
-import {ToggleGroup, ToggleGroupItem} from "kernelkit/components/toggle-group";
+} from "@repraze/kernelkit/components/number-field";
+import {RadioGroup, RadioGroupItem} from "@repraze/kernelkit/components/radio-group";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@repraze/kernelkit/components/select";
+import {Switch} from "@repraze/kernelkit/components/switch";
+import {Textarea} from "@repraze/kernelkit/components/textarea";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {SearchIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

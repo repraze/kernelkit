@@ -1,8 +1,8 @@
 "use client";
 
+import {Button} from "@repraze/kernelkit/components/button";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
 import {CheckIcon, CopyIcon} from "lucide-react";
 import * as React from "react";
 

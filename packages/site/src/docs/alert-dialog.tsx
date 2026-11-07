@@ -9,8 +9,8 @@ import {
     AlertDialogMedia,
     AlertDialogTitle,
     AlertDialogTrigger,
-} from "kernelkit/components/alert-dialog";
-import {Button} from "kernelkit/components/button";
+} from "@repraze/kernelkit/components/alert-dialog";
+import {Button} from "@repraze/kernelkit/components/button";
 import {PowerIcon, RotateCcwIcon, Trash2Icon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

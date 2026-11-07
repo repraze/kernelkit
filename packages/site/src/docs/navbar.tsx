@@ -1,14 +1,14 @@
-import {Avatar, AvatarFallback} from "kernelkit/components/avatar";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Kbd} from "kernelkit/components/kbd";
-import {Navbar, NavbarContent, NavbarMenu, NavbarSection} from "kernelkit/components/navbar";
+import {Avatar, AvatarFallback} from "@repraze/kernelkit/components/avatar";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {Navbar, NavbarContent, NavbarMenu, NavbarSection} from "@repraze/kernelkit/components/navbar";
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
-} from "kernelkit/components/navigation-menu";
+} from "@repraze/kernelkit/components/navigation-menu";
 import {BellIcon, BoxesIcon, MenuIcon, SearchIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

@@ -1,10 +1,10 @@
 "use client";
 
 import {NavigationMenu as NavigationMenuPrimitive} from "@base-ui/react/navigation-menu";
+import {focusRing, popupSurface} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing, popupSurface} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import {ChevronDownIcon} from "lucide-react";
 
 function NavigationMenu({

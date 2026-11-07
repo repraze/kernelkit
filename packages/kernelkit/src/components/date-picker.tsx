@@ -1,10 +1,10 @@
 "use client";
 
+import {Button} from "@repraze/kernelkit/components/button";
+import {Calendar} from "@repraze/kernelkit/components/calendar";
+import {Popover, PopoverContent, PopoverTrigger} from "@repraze/kernelkit/components/popover";
 import {cn} from "cn";
 import {format as formatDate} from "date-fns";
-import {Button} from "kernelkit/components/button";
-import {Calendar} from "kernelkit/components/calendar";
-import {Popover, PopoverContent, PopoverTrigger} from "kernelkit/components/popover";
 import {CalendarIcon} from "lucide-react";
 import * as React from "react";
 import type {DateRange} from "react-day-picker";

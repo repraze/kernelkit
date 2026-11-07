@@ -1,6 +1,6 @@
-import {Alert, AlertAction, AlertDescription, AlertTitle} from "kernelkit/components/alert";
-import {Button} from "kernelkit/components/button";
-import {HUES} from "kernelkit/lib/color";
+import {Alert, AlertAction, AlertDescription, AlertTitle} from "@repraze/kernelkit/components/alert";
+import {Button} from "@repraze/kernelkit/components/button";
+import {HUES} from "@repraze/kernelkit/lib/color";
 import {CircleAlertIcon, CircleCheckIcon, InfoIcon, TerminalIcon, TriangleAlertIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

@@ -1,5 +1,5 @@
-import {StatusDot} from "kernelkit/components/status-dot";
-import {COLORS} from "kernelkit/lib/color";
+import {StatusDot} from "@repraze/kernelkit/components/status-dot";
+import {COLORS} from "@repraze/kernelkit/lib/color";
 
 import {defineDoc} from "@/lib/doc-kit";
 

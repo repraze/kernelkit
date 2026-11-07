@@ -4,10 +4,10 @@ import {
     AttachmentDescription,
     AttachmentMedia,
     AttachmentTitle,
-} from "kernelkit/components/attachment";
-import {Avatar, AvatarFallback} from "kernelkit/components/avatar";
-import {Bubble, BubbleContent} from "kernelkit/components/bubble";
-import {Button} from "kernelkit/components/button";
+} from "@repraze/kernelkit/components/attachment";
+import {Avatar, AvatarFallback} from "@repraze/kernelkit/components/avatar";
+import {Bubble, BubbleContent} from "@repraze/kernelkit/components/bubble";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     CodeBlock,
     CodeBlockActions,
@@ -15,7 +15,7 @@ import {
     CodeBlockCopyButton,
     CodeBlockHeader,
     CodeBlockTitle,
-} from "kernelkit/components/code-block";
+} from "@repraze/kernelkit/components/code-block";
 import {
     Message,
     MessageAvatar,
@@ -23,8 +23,8 @@ import {
     MessageFooter,
     MessageGroup,
     MessageHeader,
-} from "kernelkit/components/message";
-import {Spinner} from "kernelkit/components/spinner";
+} from "@repraze/kernelkit/components/message";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {
     Trace,
     TraceCollapsible,
@@ -34,7 +34,7 @@ import {
     TraceIcon,
     TraceLine,
     TraceTitle,
-} from "kernelkit/components/trace";
+} from "@repraze/kernelkit/components/trace";
 import {
     CheckCheckIcon,
     CheckIcon,

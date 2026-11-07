@@ -1,10 +1,10 @@
-import {Button} from "kernelkit/components/button";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Collapsible,
     CollapsibleChevron,
     CollapsibleContent,
     CollapsibleTrigger,
-} from "kernelkit/components/collapsible";
+} from "@repraze/kernelkit/components/collapsible";
 import {FolderIcon} from "lucide-react";
 import * as React from "react";
 

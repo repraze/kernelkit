@@ -1,9 +1,9 @@
 "use client";
 
 import {Progress as ProgressPrimitive} from "@base-ui/react/progress";
+import {type Color, colorVariants} from "@repraze/kernelkit/lib/color";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {type Color, colorVariants} from "kernelkit/lib/color";
 
 /** Root of a progress or meter: label + value on one row, track below. Sets the color vars. */
 const progressVariants = cva("group/progress flex w-full flex-wrap items-center gap-x-3 gap-y-1.5", {

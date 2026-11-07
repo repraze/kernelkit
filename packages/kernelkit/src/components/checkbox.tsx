@@ -1,9 +1,9 @@
 "use client";
 
 import {Checkbox as CheckboxPrimitive} from "@base-ui/react/checkbox";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 import {CheckIcon, MinusIcon} from "lucide-react";
 
 /** Box classes, exported so a custom element can look like a checkbox. */

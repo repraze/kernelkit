@@ -2,8 +2,8 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 import {ChevronRightIcon, MoreHorizontalIcon} from "lucide-react";
 import * as React from "react";
 

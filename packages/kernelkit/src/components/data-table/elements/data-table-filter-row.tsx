@@ -1,8 +1,8 @@
 "use client";
 
+import {Input} from "@repraze/kernelkit/components/input";
+import {NativeSelect, NativeSelectOption} from "@repraze/kernelkit/components/native-select";
 import {cn} from "cn";
-import {Input} from "kernelkit/components/input";
-import {NativeSelect, NativeSelectOption} from "kernelkit/components/native-select";
 import type {ChangeEventHandler, ComponentProps, ComponentType} from "react";
 import {useCallback} from "react";
 

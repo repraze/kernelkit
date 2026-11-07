@@ -17,6 +17,8 @@ const OUT = join(LIB, "registry/kernelkit");
 const PALETTE = join(ROOT, "node_modules/@repraze/termicolor/dist");
 const HOMEPAGE = "https://repraze.github.io/kernelkit";
 const NS = "@kernelkit";
+/** The package's own name: its sources import each other through it. */
+const SELF = "@repraze/kernelkit";
 
 const pkg = JSON.parse(readFileSync(join(LIB, "package.json"), "utf8"));
 const versions = {...pkg.dependencies, ...pkg.peerDependencies};
@@ -30,10 +32,10 @@ const walk = (dir) =>
 /** Rewrite lib-internal imports to consumer aliases. */
 function rewrite(src) {
     return src
-        .replace(/(["'])kernelkit\/components\//g, "$1@/components/ui/")
-        .replace(/(["'])kernelkit\/lib\//g, "$1@/lib/")
-        .replace(/(["'])kernelkit\/hooks\//g, "$1@/hooks/")
-        .replace(/(["'])kernelkit\/provider\1/g, "$1@/components/theme-provider$1")
+        .replace(/(["'])@repraze\/kernelkit\/components\//g, "$1@/components/ui/")
+        .replace(/(["'])@repraze\/kernelkit\/lib\//g, "$1@/lib/")
+        .replace(/(["'])@repraze\/kernelkit\/hooks\//g, "$1@/hooks/")
+        .replace(/(["'])@repraze\/kernelkit\/provider\1/g, "$1@/components/theme-provider$1")
         .replace(/(["'])\.\/theme\1/g, "$1@/lib/theme$1");
 }
 
@@ -45,18 +47,18 @@ function scan(src) {
         if (!spec) {
             continue;
         }
-        if (spec.startsWith("kernelkit/components/")) {
-            items.add(spec.slice("kernelkit/components/".length).split("/")[0]);
-        } else if (spec.startsWith("kernelkit/lib/")) {
-            const name = spec.slice("kernelkit/lib/".length);
+        if (spec.startsWith(`${SELF}/components/`)) {
+            items.add(spec.slice(`${SELF}/components/`.length).split("/")[0]);
+        } else if (spec.startsWith(`${SELF}/lib/`)) {
+            const name = spec.slice(`${SELF}/lib/`.length);
             if (name !== "utils") {
                 items.add(name);
             }
-        } else if (spec.startsWith("kernelkit/hooks/")) {
-            items.add(spec.slice("kernelkit/hooks/".length));
-        } else if (spec === "kernelkit/provider") {
+        } else if (spec.startsWith(`${SELF}/hooks/`)) {
+            items.add(spec.slice(`${SELF}/hooks/`.length));
+        } else if (spec === `${SELF}/provider`) {
             items.add("theme-provider");
-        } else if (!spec.startsWith(".") && !spec.startsWith("kernelkit")) {
+        } else if (!spec.startsWith(".") && !spec.startsWith(SELF)) {
             const name = spec.startsWith("@") ? spec.split("/").slice(0, 2).join("/") : spec.split("/")[0];
             if (!["react", "react-dom", "@repraze/termicolor"].includes(name)) {
                 deps.add(versions[name] ? `${name}@${versions[name]}` : name);

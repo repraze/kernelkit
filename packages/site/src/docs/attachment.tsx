@@ -8,8 +8,8 @@ import {
     AttachmentMedia,
     AttachmentTitle,
     AttachmentTrigger,
-} from "kernelkit/components/attachment";
-import {Spinner} from "kernelkit/components/spinner";
+} from "@repraze/kernelkit/components/attachment";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {
     AlertTriangleIcon,
     FileCodeIcon,

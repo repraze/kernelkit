@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     Item,
     ItemActions,
@@ -11,7 +11,7 @@ import {
     ItemMedia,
     ItemSeparator,
     ItemTitle,
-} from "kernelkit/components/item";
+} from "@repraze/kernelkit/components/item";
 import {ChevronRightIcon, DatabaseIcon, GitBranchIcon, KeyRoundIcon, ServerIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

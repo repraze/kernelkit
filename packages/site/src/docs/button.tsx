@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {COLORS, FILL_VARIANTS} from "kernelkit/lib/color";
+import {Button} from "@repraze/kernelkit/components/button";
+import {COLORS, FILL_VARIANTS} from "@repraze/kernelkit/lib/color";
 import {ArrowRightIcon, LoaderCircleIcon, PlusIcon, TerminalIcon, Trash2Icon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

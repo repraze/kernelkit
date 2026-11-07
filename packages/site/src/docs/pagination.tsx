@@ -6,7 +6,7 @@ import {
     PaginationLink,
     PaginationNext,
     PaginationPrevious,
-} from "kernelkit/components/pagination";
+} from "@repraze/kernelkit/components/pagination";
 import * as React from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

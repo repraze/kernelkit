@@ -9,7 +9,7 @@
     ],
     "scripts": {
         "dev": "npm run registry && npm run dev -w @kernelkit/site",
-        "build": "npm run registry && npm run build -w @kernelkit/site",
+        "build": "npm run build -w @repraze/kernelkit && npm run registry && npm run build -w @kernelkit/site",
         "typecheck": "npm run typecheck --workspaces --if-present",
         "lint": "eslint .",
         "lint:fix": "eslint . --fix",

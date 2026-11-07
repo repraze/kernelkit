@@ -1,8 +1,8 @@
 "use client";
 
+import {fieldSurface, focusRing, invalidRing} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {fieldSurface, focusRing, invalidRing} from "kernelkit/lib/recipes";
 import {ChevronDownIcon} from "lucide-react";
 import * as React from "react";
 

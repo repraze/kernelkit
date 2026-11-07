@@ -1,7 +1,7 @@
+import {Button} from "@repraze/kernelkit/components/button";
+import {Navbar, NavbarContent, NavbarMenu, NavbarSection} from "@repraze/kernelkit/components/navbar";
+import {Separator} from "@repraze/kernelkit/components/separator";
 import {Link} from "@tanstack/react-router";
-import {Button} from "kernelkit/components/button";
-import {Navbar, NavbarContent, NavbarMenu, NavbarSection} from "kernelkit/components/navbar";
-import {Separator} from "kernelkit/components/separator";
 
 import {Logo} from "@/components/logo";
 import {SiteSearch} from "@/components/site-search";

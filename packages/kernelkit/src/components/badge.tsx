@@ -2,8 +2,6 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
-import {cva} from "class-variance-authority";
-import {cn} from "cn";
 import {
     type Color,
     colorVariants,
@@ -11,8 +9,10 @@ import {
     type FillVariantAlias,
     resolveFill,
     TINTED_COLORS,
-} from "kernelkit/lib/color";
-import {focusRing} from "kernelkit/lib/recipes";
+} from "@repraze/kernelkit/lib/color";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
+import {cva} from "class-variance-authority";
+import {cn} from "cn";
 
 const badgeCva = cva(
     [

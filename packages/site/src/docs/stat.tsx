@@ -1,4 +1,4 @@
-import {Card, CardContent} from "kernelkit/components/card";
+import {Card, CardContent} from "@repraze/kernelkit/components/card";
 import {
     Stat,
     StatDelta,
@@ -7,7 +7,7 @@ import {
     StatSparkline,
     StatUnit,
     StatValue,
-} from "kernelkit/components/stat";
+} from "@repraze/kernelkit/components/stat";
 import {ActivityIcon, CpuIcon, GaugeIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

@@ -1,4 +1,4 @@
-import {Separator} from "kernelkit/components/separator";
+import {Separator} from "@repraze/kernelkit/components/separator";
 
 import {defineDoc} from "@/lib/doc-kit";
 

@@ -1,7 +1,7 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "kernelkit/components/tabs";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {ActivityIcon, CpuIcon, FileTextIcon, ServerIcon, SettingsIcon, TerminalIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

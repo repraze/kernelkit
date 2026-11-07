@@ -1,11 +1,17 @@
-import {Button} from "kernelkit/components/button";
-import {Label} from "kernelkit/components/label";
-import {Popover, PopoverContent, PopoverHeader, PopoverTitle, PopoverTrigger} from "kernelkit/components/popover";
-import {Switch} from "kernelkit/components/switch";
-import {ToggleGroup, ToggleGroupItem} from "kernelkit/components/toggle-group";
-import {Tooltip, TooltipContent, TooltipTrigger} from "kernelkit/components/tooltip";
-import {cn} from "kernelkit/lib/utils";
-import {type Accent, ACCENTS, type Mode, RADII, type Radius, useTheme} from "kernelkit/provider";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Label} from "@repraze/kernelkit/components/label";
+import {
+    Popover,
+    PopoverContent,
+    PopoverHeader,
+    PopoverTitle,
+    PopoverTrigger,
+} from "@repraze/kernelkit/components/popover";
+import {Switch} from "@repraze/kernelkit/components/switch";
+import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@repraze/kernelkit/components/tooltip";
+import {cn} from "@repraze/kernelkit/lib/utils";
+import {type Accent, ACCENTS, type Mode, RADII, type Radius, useTheme} from "@repraze/kernelkit/provider";
 import {CheckIcon, MonitorIcon, MoonIcon, PaletteIcon, SunIcon} from "lucide-react";
 
 const MODE_ICONS = {system: MonitorIcon, light: SunIcon, dark: MoonIcon} as const;

@@ -1,7 +1,7 @@
-import {Button} from "kernelkit/components/button";
-import {ButtonGroup, ButtonGroupSeparator, ButtonGroupText} from "kernelkit/components/button-group";
-import {Input} from "kernelkit/components/input";
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "kernelkit/components/select";
+import {Button} from "@repraze/kernelkit/components/button";
+import {ButtonGroup, ButtonGroupSeparator, ButtonGroupText} from "@repraze/kernelkit/components/button-group";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from "@repraze/kernelkit/components/select";
 import {
     ArrowDownIcon,
     ArrowUpIcon,

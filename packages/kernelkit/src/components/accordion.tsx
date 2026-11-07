@@ -1,9 +1,9 @@
 "use client";
 
 import {Accordion as AccordionPrimitive} from "@base-ui/react/accordion";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 import {ChevronDownIcon} from "lucide-react";
 
 /** `default`: rows split by lines. `outline`: the same rows inside a bordered `rounded-xl` panel. */

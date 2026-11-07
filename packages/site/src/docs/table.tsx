@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {Checkbox} from "kernelkit/components/checkbox";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Checkbox} from "@repraze/kernelkit/components/checkbox";
 import {
     Table,
     TableBody,
@@ -9,7 +9,7 @@ import {
     TableHead,
     TableHeader,
     TableRow,
-} from "kernelkit/components/table";
+} from "@repraze/kernelkit/components/table";
 import * as React from "react";
 
 import {defineDoc} from "@/lib/doc-kit";

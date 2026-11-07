@@ -1,6 +1,6 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
-import {Spinner} from "kernelkit/components/spinner";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 
 import {defineDoc} from "@/lib/doc-kit";
 

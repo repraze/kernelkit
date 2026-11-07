@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {Kbd, KbdGroup} from "kernelkit/components/kbd";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Kbd, KbdGroup} from "@repraze/kernelkit/components/kbd";
 import {CommandIcon, CornerDownLeftIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

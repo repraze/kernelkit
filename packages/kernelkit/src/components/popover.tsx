@@ -1,9 +1,9 @@
 "use client";
 
 import {Popover as PopoverPrimitive} from "@base-ui/react/popover";
+import {heading, popupMotion, popupSurface} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {heading, popupMotion, popupSurface} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 import * as React from "react";
 
 function Popover({...props}: PopoverPrimitive.Root.Props) {

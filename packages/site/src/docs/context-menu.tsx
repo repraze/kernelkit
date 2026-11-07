@@ -10,7 +10,7 @@ import {
     ContextMenuSubContent,
     ContextMenuSubTrigger,
     ContextMenuTrigger,
-} from "kernelkit/components/context-menu";
+} from "@repraze/kernelkit/components/context-menu";
 import {CopyIcon, FileTextIcon, RefreshCwIcon, Trash2Icon} from "lucide-react";
 import * as React from "react";
 

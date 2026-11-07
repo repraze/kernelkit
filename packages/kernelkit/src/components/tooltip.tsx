@@ -1,9 +1,9 @@
 "use client";
 
 import {Tooltip as TooltipPrimitive} from "@base-ui/react/tooltip";
+import {popupMotion} from "@repraze/kernelkit/lib/recipes";
+import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {popupMotion} from "kernelkit/lib/recipes";
-import {usePortalContainer} from "kernelkit/provider";
 
 function TooltipProvider({delay = 0, ...props}: TooltipPrimitive.Provider.Props) {
     return <TooltipPrimitive.Provider data-slot="tooltip-provider" delay={delay} {...props} />;

@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {Card, CardDescription, CardHeader, CardTitle} from "kernelkit/components/card";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Card, CardDescription, CardHeader, CardTitle} from "@repraze/kernelkit/components/card";
 import {
     Carousel,
     CarouselContent,
@@ -7,7 +7,7 @@ import {
     CarouselItem,
     CarouselNext,
     CarouselPrevious,
-} from "kernelkit/components/carousel";
+} from "@repraze/kernelkit/components/carousel";
 
 import {defineDoc} from "@/lib/doc-kit";
 

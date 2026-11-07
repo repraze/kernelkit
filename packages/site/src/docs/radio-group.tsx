@@ -1,5 +1,5 @@
-import {Label} from "kernelkit/components/label";
-import {RadioGroup, RadioGroupItem} from "kernelkit/components/radio-group";
+import {Label} from "@repraze/kernelkit/components/label";
+import {RadioGroup, RadioGroupItem} from "@repraze/kernelkit/components/radio-group";
 
 import {defineDoc} from "@/lib/doc-kit";
 

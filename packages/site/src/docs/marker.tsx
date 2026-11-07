@@ -1,4 +1,4 @@
-import {Marker, MarkerContent, MarkerIcon} from "kernelkit/components/marker";
+import {Marker, MarkerContent, MarkerIcon} from "@repraze/kernelkit/components/marker";
 import {GitCommitHorizontalIcon, ShieldAlertIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

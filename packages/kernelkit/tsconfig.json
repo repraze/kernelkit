@@ -3,7 +3,8 @@
     "compilerOptions": {
         "lib": ["ES2023", "DOM", "DOM.Iterable"],
         "jsx": "react-jsx",
-        "paths": {"kernelkit/*": ["./src/*"]}
+        "customConditions": ["@repraze/source"],
+        "paths": {"@repraze/kernelkit/*": ["./src/*"]}
     },
     "include": ["src"]
 }

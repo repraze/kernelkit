@@ -2,9 +2,9 @@
 
 import {Radio as RadioPrimitive} from "@base-ui/react/radio";
 import {RadioGroup as RadioGroupPrimitive} from "@base-ui/react/radio-group";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
-import {focusRing} from "kernelkit/lib/recipes";
 
 /** Radio classes, exported so a custom element can look like a radio. */
 const radioGroupItemVariants = cva([

@@ -1,5 +1,5 @@
-import {Button} from "kernelkit/components/button";
-import {Toaster, useToastManager} from "kernelkit/components/toast";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Toaster, useToastManager} from "@repraze/kernelkit/components/toast";
 
 import {defineDoc} from "@/lib/doc-kit";
 

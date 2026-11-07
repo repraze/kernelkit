@@ -1,5 +1,5 @@
-import {Badge} from "kernelkit/components/badge";
-import {Button} from "kernelkit/components/button";
+import {Badge} from "@repraze/kernelkit/components/badge";
+import {Button} from "@repraze/kernelkit/components/button";
 import {
     createDataTableBooleanFilter,
     createDataTableNumberFilter,
@@ -23,8 +23,8 @@ import {
     DataTableTitleRow,
     DataTableVirtualizedBody,
     viewToCsv,
-} from "kernelkit/components/data-table";
-import {StatusDot} from "kernelkit/components/status-dot";
+} from "@repraze/kernelkit/components/data-table";
+import {StatusDot} from "@repraze/kernelkit/components/status-dot";
 import {CheckIcon, CopyIcon} from "lucide-react";
 import * as React from "react";
 

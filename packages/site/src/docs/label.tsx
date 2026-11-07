@@ -1,6 +1,6 @@
-import {Checkbox} from "kernelkit/components/checkbox";
-import {Input} from "kernelkit/components/input";
-import {Label} from "kernelkit/components/label";
+import {Checkbox} from "@repraze/kernelkit/components/checkbox";
+import {Input} from "@repraze/kernelkit/components/input";
+import {Label} from "@repraze/kernelkit/components/label";
 
 import {defineDoc} from "@/lib/doc-kit";
 

@@ -1,6 +1,6 @@
-import {Button} from "kernelkit/components/button";
-import {DirectionProvider} from "kernelkit/components/direction";
-import {Progress, ProgressLabel, ProgressValue} from "kernelkit/components/progress";
+import {Button} from "@repraze/kernelkit/components/button";
+import {DirectionProvider} from "@repraze/kernelkit/components/direction";
+import {Progress, ProgressLabel, ProgressValue} from "@repraze/kernelkit/components/progress";
 import {ArrowRightIcon} from "lucide-react";
 
 import {Code, defineDoc} from "@/lib/doc-kit";
@@ -43,7 +43,7 @@ function Notes() {
     return (
         <Code
             title="read it"
-            code={`import {useDirection} from "kernelkit/components/direction";
+            code={`import {useDirection} from "@repraze/kernelkit/components/direction";
 
 const dir = useDirection(); // "ltr" | "rtl"`}
         />

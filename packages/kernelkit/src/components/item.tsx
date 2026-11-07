@@ -2,10 +2,10 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
+import {Separator} from "@repraze/kernelkit/components/separator";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {Separator} from "kernelkit/components/separator";
-import {focusRing} from "kernelkit/lib/recipes";
 import * as React from "react";
 
 function ItemGroup({className, ...props}: React.ComponentProps<"div">) {

@@ -1,4 +1,4 @@
-import {cn} from "kernelkit/lib/utils";
+import {cn} from "@repraze/kernelkit/lib/utils";
 
 /** Kernelkit mark: a "K" bracket and a cursor block, in the accent. */
 export function Logo({className}: {className?: string}) {

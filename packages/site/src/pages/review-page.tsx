@@ -1,9 +1,6 @@
-import {useParams} from "@tanstack/react-router";
-import {cn} from "kernelkit/lib/utils";
-import {ThemeScope, type ThemeScopeProps} from "kernelkit/provider";
-
-import {DOCS_BY_SLUG} from "@/lib/docs-index";
-import {NotFound} from "@/pages/not-found";
+import {cn} from "@repraze/kernelkit/lib/utils";
+import {ThemeScope, type ThemeScopeProps} from "@repraze/kernelkit/provider";
+import {useLoaderData} from "@tanstack/react-router";
 
 /** The GUIDELINES.md §8 matrix: every demo of a page in each theme, side by side, for visual review. */
 const MATRIX: {label: string; scope: Omit<ThemeScopeProps, "children">}[] = [
@@ -16,11 +13,7 @@ const MATRIX: {label: string; scope: Omit<ThemeScopeProps, "children">}[] = [
 ];
 
 export function ReviewPage() {
-    const {slug} = useParams({from: "/review/$slug"});
-    const doc = DOCS_BY_SLUG.get(slug);
-    if (!doc) {
-        return <NotFound />;
-    }
+    const doc = useLoaderData({from: "/review/$slug"});
     return (
         <div className="flex flex-col gap-6 p-6" data-slot="review">
             <h1 className="font-mono text-lg font-semibold">{doc.title} · review</h1>

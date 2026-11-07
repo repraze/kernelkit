@@ -1,4 +1,4 @@
-import {Avatar, AvatarFallback} from "kernelkit/components/avatar";
+import {Avatar, AvatarFallback} from "@repraze/kernelkit/components/avatar";
 import {
     Breadcrumb,
     BreadcrumbItem,
@@ -6,8 +6,8 @@ import {
     BreadcrumbList,
     BreadcrumbPage,
     BreadcrumbSeparator,
-} from "kernelkit/components/breadcrumb";
-import {Separator} from "kernelkit/components/separator";
+} from "@repraze/kernelkit/components/breadcrumb";
+import {Separator} from "@repraze/kernelkit/components/separator";
 import {
     Sidebar,
     SidebarContent,
@@ -30,7 +30,7 @@ import {
     SidebarProvider,
     SidebarRail,
     SidebarTrigger,
-} from "kernelkit/components/sidebar";
+} from "@repraze/kernelkit/components/sidebar";
 import {
     ActivityIcon,
     BoxesIcon,

@@ -2,17 +2,17 @@
 
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
+import {Button} from "@repraze/kernelkit/components/button";
+import {Input} from "@repraze/kernelkit/components/input";
+import {ScrollArea} from "@repraze/kernelkit/components/scroll-area";
+import {Separator} from "@repraze/kernelkit/components/separator";
+import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle} from "@repraze/kernelkit/components/sheet";
+import {Skeleton} from "@repraze/kernelkit/components/skeleton";
+import {Tooltip, TooltipContent, TooltipTrigger} from "@repraze/kernelkit/components/tooltip";
+import {useIsMobile} from "@repraze/kernelkit/hooks/use-mobile";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
-import {Button} from "kernelkit/components/button";
-import {Input} from "kernelkit/components/input";
-import {ScrollArea} from "kernelkit/components/scroll-area";
-import {Separator} from "kernelkit/components/separator";
-import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle} from "kernelkit/components/sheet";
-import {Skeleton} from "kernelkit/components/skeleton";
-import {Tooltip, TooltipContent, TooltipTrigger} from "kernelkit/components/tooltip";
-import {useIsMobile} from "kernelkit/hooks/use-mobile";
-import {focusRing} from "kernelkit/lib/recipes";
 import {PanelLeftIcon} from "lucide-react";
 import * as React from "react";
 

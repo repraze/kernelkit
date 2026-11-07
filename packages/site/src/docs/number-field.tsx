@@ -1,5 +1,5 @@
-import {Field, FieldDescription, FieldError, FieldLabel} from "kernelkit/components/field";
-import {Label} from "kernelkit/components/label";
+import {Field, FieldDescription, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
+import {Label} from "@repraze/kernelkit/components/label";
 import {
     NumberField,
     NumberFieldDecrement,
@@ -7,7 +7,7 @@ import {
     NumberFieldIncrement,
     NumberFieldInput,
     NumberFieldScrubArea,
-} from "kernelkit/components/number-field";
+} from "@repraze/kernelkit/components/number-field";
 
 import {defineDoc} from "@/lib/doc-kit";
 

@@ -1,5 +1,5 @@
-import {DatePicker, DateRangePicker} from "kernelkit/components/date-picker";
-import {Label} from "kernelkit/components/label";
+import {DatePicker, DateRangePicker} from "@repraze/kernelkit/components/date-picker";
+import {Label} from "@repraze/kernelkit/components/label";
 import * as React from "react";
 import type {DateRange} from "react-day-picker";
 

@@ -1,4 +1,4 @@
-import {Spinner} from "kernelkit/components/spinner";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {
     Trace,
     TraceCollapsible,
@@ -8,7 +8,7 @@ import {
     TraceIcon,
     TraceLine,
     TraceTitle,
-} from "kernelkit/components/trace";
+} from "@repraze/kernelkit/components/trace";
 import {CheckIcon, CircleDashedIcon, FileTextIcon, GlobeIcon, SearchIcon, TerminalIcon, XIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";

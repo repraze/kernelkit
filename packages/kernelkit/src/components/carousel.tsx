@@ -1,9 +1,9 @@
 "use client";
 
+import {Button} from "@repraze/kernelkit/components/button";
+import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
 import useEmblaCarousel, {type UseEmblaCarouselType} from "embla-carousel-react";
-import {Button} from "kernelkit/components/button";
-import {focusRing} from "kernelkit/lib/recipes";
 import {ChevronLeftIcon, ChevronRightIcon} from "lucide-react";
 import * as React from "react";
 

@@ -11,10 +11,10 @@
     },
     "iconLibrary": "lucide",
     "aliases": {
-        "components": "kernelkit/components",
-        "utils": "kernelkit/lib/utils",
-        "ui": "kernelkit/components",
-        "lib": "kernelkit/lib",
-        "hooks": "kernelkit/hooks"
+        "components": "@repraze/kernelkit/components",
+        "utils": "@repraze/kernelkit/lib/utils",
+        "ui": "@repraze/kernelkit/components",
+        "lib": "@repraze/kernelkit/lib",
+        "hooks": "@repraze/kernelkit/hooks"
     }
 }
