@@ -1,7 +1,15 @@
 import {Badge} from "@repraze/kernelkit/components/badge";
-import {Button} from "@repraze/kernelkit/components/button";
+import {
+    PageHeader,
+    PageHeaderDescription,
+    PageHeaderEyebrow,
+    PageHeaderTitle,
+} from "@repraze/kernelkit/components/page-header";
+import {Pager, PagerLink} from "@repraze/kernelkit/components/pager";
+import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
+import {Toc, TocItem, TocList, TocTitle, useTocActive} from "@repraze/kernelkit/components/toc";
 import {Link, useLoaderData} from "@tanstack/react-router";
-import {ArrowLeftIcon, ArrowRightIcon, ExternalLinkIcon} from "lucide-react";
+import {ExternalLinkIcon} from "lucide-react";
 
 import {Demo, PropsTable, slugify} from "@/lib/doc-kit";
 import {DOCS, DOCS_BY_SLUG} from "@/lib/docs-index";
@@ -14,11 +22,17 @@ export function DocPage() {
     const next = DOCS[index + 1];
     const Notes = doc.notes;
 
+    const sections = [
+        ...doc.demos.map((demo) => ({id: slugify(demo.title), title: demo.title})),
+        ...(doc.props?.length ? [{id: "api", title: "API"}] : []),
+    ];
+    const active = useTocActive(sections.map((s) => s.id));
+
     return (
-        <div className="mx-auto flex max-w-4xl gap-10">
-            <article className="flex min-w-0 flex-1 flex-col gap-10">
-                <header className="flex flex-col gap-3">
-                    <div className="flex items-center gap-2">
+        <>
+            <SiteMain>
+                <PageHeader>
+                    <PageHeaderEyebrow>
                         <Badge variant="outline" className="font-mono">
                             {doc.category}
                         </Badge>
@@ -37,10 +51,10 @@ export function DocPage() {
                                 Base UI <ExternalLinkIcon />
                             </Badge>
                         ) : null}
-                    </div>
-                    <h1 className="font-mono text-3xl font-semibold tracking-tight">{doc.title}</h1>
-                    <p className="text-lg text-muted-foreground">{doc.description}</p>
-                </header>
+                    </PageHeaderEyebrow>
+                    <PageHeaderTitle>{doc.title}</PageHeaderTitle>
+                    <PageHeaderDescription>{doc.description}</PageHeaderDescription>
+                </PageHeader>
 
                 {doc.demos.map((demo, i) => (
                     <Demo key={demo.title} demo={demo} code={doc.demoSources[i] ?? ""} />
@@ -53,54 +67,41 @@ export function DocPage() {
                 ) : null}
 
                 {doc.props?.length ? (
-                    <div className="flex flex-col gap-6">
-                        <h2 className="font-mono text-xl font-semibold">API</h2>
+                    <section id="api" className="flex scroll-mt-24 flex-col gap-6">
+                        <h2 className="font-heading text-xl font-semibold">API</h2>
                         {doc.props.map((p) => (
                             <PropsTable key={p.component} {...p} />
                         ))}
-                    </div>
+                    </section>
                 ) : null}
 
-                <nav className="flex justify-between border-t pt-6">
+                <Pager>
                     {prev ? (
-                        <Button
-                            variant="outline"
-                            nativeButton={false}
-                            render={<Link to="/docs/$slug" params={{slug: prev.slug}} />}
-                        >
-                            <ArrowLeftIcon data-icon="inline-start" /> {prev.title}
-                        </Button>
-                    ) : (
-                        <span />
-                    )}
-                    {next ? (
-                        <Button
-                            variant="outline"
-                            nativeButton={false}
-                            render={<Link to="/docs/$slug" params={{slug: next.slug}} />}
-                        >
-                            {next.title} <ArrowRightIcon data-icon="inline-end" />
-                        </Button>
+                        <PagerLink direction="previous" render={<Link to="/docs/$slug" params={{slug: prev.slug}} />}>
+                            {prev.title}
+                        </PagerLink>
                     ) : null}
-                </nav>
-            </article>
-            {doc.demos.length > 1 ? (
-                <aside className="sticky top-24 hidden h-fit w-44 shrink-0 xl:block">
-                    <h4 className="mb-2 font-mono text-xs text-muted-foreground uppercase">On this page</h4>
-                    <ul className="flex flex-col gap-1.5 text-sm">
-                        {doc.demos.map((demo) => (
-                            <li key={demo.title}>
-                                <a
-                                    href={`#${slugify(demo.title)}`}
-                                    className="text-muted-foreground hover:text-foreground"
-                                >
-                                    {demo.title}
-                                </a>
-                            </li>
-                        ))}
-                    </ul>
-                </aside>
+                    {next ? (
+                        <PagerLink direction="next" render={<Link to="/docs/$slug" params={{slug: next.slug}} />}>
+                            {next.title}
+                        </PagerLink>
+                    ) : null}
+                </Pager>
+            </SiteMain>
+            {sections.length > 1 ? (
+                <SiteAside>
+                    <Toc>
+                        <TocTitle>On this page</TocTitle>
+                        <TocList>
+                            {sections.map((s) => (
+                                <TocItem key={s.id} href={`#${s.id}`} active={s.id === active}>
+                                    {s.title}
+                                </TocItem>
+                            ))}
+                        </TocList>
+                    </Toc>
+                </SiteAside>
             ) : null}
-        </div>
+        </>
     );
 }

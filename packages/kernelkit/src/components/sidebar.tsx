@@ -516,7 +516,8 @@ function SidebarMenuButton({
         isActive?: boolean;
         tooltip?: string | React.ComponentProps<typeof TooltipContent>;
     } & VariantProps<typeof sidebarMenuButtonVariants>) {
-    const {isMobile, state} = useSidebar();
+    // Works without a SidebarProvider too (an in-page nav styled like the sidebar): expanded, desktop.
+    const {isMobile, state} = React.useContext(SidebarContext) ?? {isMobile: false, state: "expanded"};
     const comp = useRender({
         defaultTagName: "button",
         props: mergeProps<"button">(

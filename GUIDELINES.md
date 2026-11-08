@@ -176,6 +176,21 @@ text-accent-foreground` + `font-medium` + primary-colored icon. Use an indicator
   (shadcn `scroll-fade-*` utilities, scroll-driven, no JS). `SidebarContent` does this by default.
 - Vertical `Separator` stretches to its row (`data-vertical:self-stretch`). For a short centered rule override with the same variant: `data-vertical:h-5 data-vertical:self-center` (a bare `self-center` loses to the variant).
 
+## 7b. Site shell (one design language across the suite)
+
+Termicolor, kernelkit, glaze and repraze.com share the same chrome; a site picks its **accent and
+radius** and may add its own components, never its own header or docs layout.
+
+- Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
+  `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono, current = 2px accent
+  underline) · `SiteHeaderActions` (`SearchTrigger`, theme controls, repository icon button).
+  Extras above the row go in `SiteHeaderBanner`; add their height to `--kk-header-height`.
+- Pages with navigation: `SiteLayout` › `SiteSidebar` (Sidebar menu parts, sticky, own scroll with fades,
+  keeps the current item in view) · `SiteMain` (`PageHeader`, content, `Pager`) · `SiteAside` (`Toc`).
+  Pages without: `SiteContainer`.
+- Search: `SearchTrigger` + `useSearchHotkeys` (Ctrl/⌘ K, `/`), results in a `CommandDialog`.
+- Section anchors get `scroll-mt-24` so jumps clear the sticky header.
+
 ## 8. Test matrix (headless screenshots, `scripts/shot.mjs`)
 
 Every component docs page, checked in:
@@ -247,6 +262,9 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-06 Docs nav is the kit's Sidebar; SidebarContent scrolls with ScrollArea + `fade`.
 - 2026-11-06 shadcn registry: `npm run registry` builds `@kernelkit/*` items (imports rewritten to
   consumer aliases, tokens bundled as `@kernelkit/styles`). Verified with the real shadcn CLI in a fresh app.
+- 2026-11-08 Site shell components (site-header, site-layout, page-header, toc, pager, search-trigger):
+  one header / docs layout for every site of the suite. SidebarMenuButton works without a provider.
+  Base UI ScrollArea sets `position` inline: sticky goes on a wrapper.
 - 2026-11-07 Fields on `bgRaised` (Termicolor DESIGN.md §4), found by the termicolor site's e2e when it
   moved onto the kit; outline buttons transparent + `bg-hover`. CommandDialog forwards
   `initialFocus`/`finalFocus`.

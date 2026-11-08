@@ -1,56 +1,89 @@
 import {Button} from "@repraze/kernelkit/components/button";
-import {Navbar, NavbarContent, NavbarMenu, NavbarSection} from "@repraze/kernelkit/components/navbar";
 import {Separator} from "@repraze/kernelkit/components/separator";
-import {Link} from "@tanstack/react-router";
+import {
+    SiteHeader as SiteHeaderRoot,
+    SiteHeaderActions,
+    SiteHeaderBrand,
+    SiteHeaderContent,
+    SiteHeaderMenu,
+    SiteNav,
+    SiteNavLink,
+} from "@repraze/kernelkit/components/site-header";
+import {Link, useRouterState} from "@tanstack/react-router";
+import {useEffect, useState} from "react";
 
+import {DocsNav} from "@/components/docs-nav";
+import {GithubIcon} from "@/components/github-icon";
 import {Logo} from "@/components/logo";
 import {SiteSearch} from "@/components/site-search";
 import {ModeToggle, ThemeCustomizer} from "@/components/theme-customizer";
+import {DOCS_BY_SLUG} from "@/lib/docs-index";
 import {GITHUB_URL} from "@/lib/site";
 
-const NAV = [
-    {slug: "introduction", label: "Docs"},
-    {slug: "button", label: "Components"},
-    {slug: "theming", label: "Theming"},
-] as const;
+type Section = "docs" | "components" | "theming";
 
-/** Site header, built on the kit's own Navbar. */
+const NAV: {section: Section; slug: string; label: string}[] = [
+    {section: "docs", slug: "introduction", label: "Docs"},
+    {section: "components", slug: "button", label: "Components"},
+    {section: "theming", slug: "theming", label: "Theming"},
+];
+
+/** Which header entry a docs page belongs to: Theming, other Foundations pages, or a component. */
+function sectionOf(pathname: string): Section | undefined {
+    const slug = /\/docs\/([^/]+)/.exec(pathname)?.[1];
+    const doc = slug ? DOCS_BY_SLUG.get(slug) : undefined;
+    if (!doc) {
+        return undefined;
+    }
+    if (doc.slug === "theming") {
+        return "theming";
+    }
+    return doc.category === "Foundations" ? "docs" : "components";
+}
+
+/** The suite's site header (kernelkit SiteHeader): brand, sections, search, theme, repository. */
 export function SiteHeader() {
+    const pathname = useRouterState({select: (s) => s.location.pathname});
+    const section = sectionOf(pathname);
+    const [menuOpen, setMenuOpen] = useState(false);
+    useEffect(() => setMenuOpen(false), [pathname]);
+
+    const navLinks = NAV.map((item) => (
+        <SiteNavLink
+            key={item.section}
+            aria-current={item.section === section ? "page" : undefined}
+            render={<Link to="/docs/$slug" params={{slug: item.slug}} />}
+        >
+            {item.label}
+        </SiteNavLink>
+    ));
+
     return (
-        <Navbar className="z-40">
-            <NavbarContent className="mx-auto max-w-screen-2xl gap-6 md:px-6">
-                <Link to="/" aria-label="Kernelkit home" className="shrink-0">
+        <SiteHeaderRoot>
+            <SiteHeaderContent>
+                <SiteHeaderMenu title={<Logo />} open={menuOpen} onOpenChange={setMenuOpen}>
+                    <nav aria-label="Main" className="flex flex-col gap-3 px-2 pt-2">
+                        {navLinks}
+                    </nav>
+                    <DocsNav />
+                </SiteHeaderMenu>
+                <SiteHeaderBrand aria-label="Kernelkit home" render={<Link to="/" />}>
                     <Logo />
-                </Link>
-                <NavbarMenu className="hidden gap-1 md:flex">
-                    {NAV.map((item) => (
-                        <Button
-                            key={item.label}
-                            variant="ghost"
-                            size="sm"
-                            className="font-mono text-muted-foreground"
-                            render={<Link to="/docs/$slug" params={{slug: item.slug}} />}
-                        >
-                            {item.label}
-                        </Button>
-                    ))}
-                </NavbarMenu>
-                <NavbarSection className="ml-auto gap-1">
+                </SiteHeaderBrand>
+                <SiteNav>{navLinks}</SiteNav>
+                <SiteHeaderActions>
                     <SiteSearch />
-                    <Button
-                        variant="ghost"
-                        size="sm"
-                        className="hidden font-mono sm:inline-flex"
-                        render={<a href={GITHUB_URL} />}
-                    >
-                        GitHub
-                    </Button>
-                    {/* centered, not stretched: Separator stretches via data-vertical:, so override with the same variant */}
-                    <Separator orientation="vertical" className="mx-1 data-vertical:h-5 data-vertical:self-center" />
+                    <Separator
+                        orientation="vertical"
+                        className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
+                    />
                     <ThemeCustomizer />
                     <ModeToggle />
-                </NavbarSection>
-            </NavbarContent>
-        </Navbar>
+                    <Button variant="ghost" size="icon" render={<a href={GITHUB_URL} aria-label="GitHub" />}>
+                        <GithubIcon className="size-4" />
+                    </Button>
+                </SiteHeaderActions>
+            </SiteHeaderContent>
+        </SiteHeaderRoot>
     );
 }

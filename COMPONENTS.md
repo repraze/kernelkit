@@ -123,6 +123,17 @@ wrapper), `new` (kernelkit original).
 | Resizable    | nova   | ✅  | ✅     | ✅   |
 | Aspect ratio | nova   | ✅  | ✅     | ✅   |
 
+## Site shell (suite chrome)
+
+| Component                                     | Origin | src | design | docs |
+| --------------------------------------------- | ------ | --- | ------ | ---- |
+| Site header (+ nav, menu, actions, banner)    | new    | ✅  | ✅     | ✅   |
+| Site layout (container, sidebar, main, aside) | new    | ✅  | ✅     | ✅   |
+| Page header                                   | new    | ✅  | ✅     | ✅   |
+| Table of contents (+ `useTocActive`)          | new    | ✅  | ✅     | ✅   |
+| Pager                                         | new    | ✅  | ✅     | ✅   |
+| Search trigger (+ `useSearchHotkeys`)         | new    | ✅  | ✅     | ✅   |
+
 ## Chat (nova AI set)
 
 | Component        | Origin | src | design | docs |

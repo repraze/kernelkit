@@ -117,7 +117,7 @@ const layoutClass: Record<NonNullable<DemoDef["layout"]>, string> = {
 export function Demo({demo, code}: {demo: DemoDef; code: string}) {
     const Component = demo.component;
     return (
-        <section className="flex flex-col gap-3" id={slugify(demo.title)}>
+        <section className="flex scroll-mt-24 flex-col gap-3" id={slugify(demo.title)}>
             <div className="flex flex-col gap-1">
                 <h3 className="font-mono text-sm font-medium">{demo.title}</h3>
                 {demo.description ? <p className="text-sm text-muted-foreground">{demo.description}</p> : null}

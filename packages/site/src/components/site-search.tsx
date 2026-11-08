@@ -1,4 +1,3 @@
-import {Button} from "@repraze/kernelkit/components/button";
 import {
     Command,
     CommandDialog,
@@ -8,10 +7,9 @@ import {
     CommandItem,
     CommandList,
 } from "@repraze/kernelkit/components/command";
-import {Kbd} from "@repraze/kernelkit/components/kbd";
+import {SearchTrigger, useSearchHotkeys} from "@repraze/kernelkit/components/search-trigger";
 import {useNavigate} from "@tanstack/react-router";
-import {SearchIcon} from "lucide-react";
-import {useEffect, useState} from "react";
+import {useCallback, useState} from "react";
 
 import {DOCS_BY_CATEGORY} from "@/lib/docs-index";
 
@@ -25,50 +23,15 @@ function substringFilter(value: string, search: string, keywords?: string[]) {
     return haystack.includes(needle) ? 0.5 : 0;
 }
 
-/** Docs search, built on the kit's own Command palette. */
-/** Typing in a field: "/" must type a slash there, not open search. */
-function isEditable(target: EventTarget | null) {
-    const el = target as HTMLElement | null;
-    return !!el && (el.isContentEditable || /^(input|textarea|select)$/i.test(el.tagName));
-}
-
-/** Same bindings as the Termicolor site: Ctrl/⌘ K anywhere, "/" outside text fields. */
+/** Docs search: the suite's SearchTrigger + hotkeys, results in the kit's Command palette. */
 export function SiteSearch() {
     const [open, setOpen] = useState(false);
-    // "Ctrl" until we know it's Apple (SSR-safe, and right for the majority of keyboards)
-    const [mod, setMod] = useState("Ctrl");
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if (/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent)) {
-            setMod("⌘");
-        }
-        const onKey = (e: KeyboardEvent) => {
-            if (e.key.toLowerCase() === "k" && (e.metaKey || e.ctrlKey)) {
-                e.preventDefault();
-                setOpen((o) => !o);
-            } else if (e.key === "/" && !e.metaKey && !e.ctrlKey && !e.altKey && !isEditable(e.target)) {
-                e.preventDefault();
-                setOpen(true);
-            }
-        };
-        window.addEventListener("keydown", onKey);
-        return () => window.removeEventListener("keydown", onKey);
-    }, []);
+    useSearchHotkeys(useCallback((toggle: boolean) => setOpen((o) => (toggle ? !o : true)), []));
 
     return (
         <>
-            <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setOpen(true)}
-                className="w-40 justify-start text-muted-foreground md:w-56"
-                aria-label="Search docs"
-            >
-                <SearchIcon data-icon="inline-start" />
-                <span className="flex-1 text-start">Search…</span>
-                <Kbd>{mod} K</Kbd>
-            </Button>
+            <SearchTrigger onClick={() => setOpen(true)} aria-label="Search docs" />
             <CommandDialog open={open} onOpenChange={setOpen} title="Search docs">
                 <Command filter={substringFilter}>
                     <CommandInput placeholder="Search components…" />

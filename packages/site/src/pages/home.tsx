@@ -37,7 +37,7 @@ export function HomePage() {
     const componentCount = DOCS.filter((d) => d.category !== "Foundations").length;
     return (
         <main className="flex flex-1 flex-col">
-            <section className="mx-auto flex w-full max-w-screen-xl flex-col items-start gap-6 px-4 pt-20 pb-14 md:px-6">
+            <section className="mx-auto flex w-full max-w-(--kk-site-width) flex-col items-start gap-6 px-4 pt-20 pb-14 md:px-6">
                 <Badge variant="outline" className="font-mono">
                     <span className="size-1.5 rounded-full bg-success" /> v0.1.0 · {componentCount} components
                 </Badge>
@@ -68,7 +68,7 @@ export function HomePage() {
                 <Code language="bash" code="npm install @repraze/kernelkit" className="w-full max-w-md" />
             </section>
 
-            <section className="mx-auto grid w-full max-w-screen-xl gap-4 px-4 pb-24 md:grid-cols-2 md:px-6 lg:grid-cols-3">
+            <section className="mx-auto grid w-full max-w-(--kk-site-width) gap-4 px-4 pb-24 md:grid-cols-2 md:px-6 lg:grid-cols-3">
                 <Card>
                     <CardHeader>
                         <CardTitle>Connect a node</CardTitle>

@@ -133,6 +133,10 @@
     --kk-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     /* Titles: card, dialog, sheet, empty, alert. Mono by default (the Termicolor look). */
     --kk-font-heading: var(--kk-font-mono);
+    /* Site shell (site-header, site-layout): content width, and the sticky header's height that
+       sidebars and anchors offset by. A site with a banner above the header row adds it here. */
+    --kk-site-width: 80rem;
+    --kk-header-height: 3.5rem;
 }
 
 .radius-none {
