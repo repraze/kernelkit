@@ -1,5 +1,6 @@
 import {createRootRoute, createRoute, notFound, Outlet, redirect} from "@tanstack/react-router";
 
+import {SiteFooter} from "@/components/site-footer";
 import {SiteHeader} from "@/components/site-header";
 import {loadDoc} from "@/lib/docs-index";
 import {DocPage} from "@/pages/doc-page";
@@ -12,7 +13,10 @@ const rootRoute = createRootRoute({
     component: () => (
         <div className="flex min-h-svh flex-col">
             <SiteHeader />
-            <Outlet />
+            <div className="flex flex-1 flex-col">
+                <Outlet />
+            </div>
+            <SiteFooter />
         </div>
     ),
     notFoundComponent: NotFound,

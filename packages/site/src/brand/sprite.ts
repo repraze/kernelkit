@@ -68,9 +68,34 @@ export const SPRITE: readonly string[] = [
     "................................",
 ];
 
-/** Emits a compact SVG: one rect per horizontal run of the same key, crisp edges, viewBox-scaled. */
-export function spriteSvg({scale = 1}: {scale?: number} = {}): string {
+/** Transparent cells that touch the silhouette (4-neighborhood), in sprite coordinates (may be -1 or 32). */
+export function outlineCells(sprite: readonly string[] = SPRITE): [number, number][] {
+    const filled = (x: number, y: number) => (sprite[y]?.[x] ?? ".") !== ".";
+    const cells: [number, number][] = [];
+    for (let y = -1; y <= SPRITE_SIZE; y++) {
+        for (let x = -1; x <= SPRITE_SIZE; x++) {
+            if (!filled(x, y) && (filled(x - 1, y) || filled(x + 1, y) || filled(x, y - 1) || filled(x, y + 1))) {
+                cells.push([x, y]);
+            }
+        }
+    }
+    return cells;
+}
+
+/**
+ * Emits a compact SVG: one rect per horizontal run of the same key, crisp edges, viewBox-scaled. With
+ * `outline` (default) a 1px white ring circles the silhouette in a reserved 1px margin, so the dark
+ * outline still reads on dark pages.
+ */
+export function spriteSvg({scale = 1, outline = true}: {scale?: number; outline?: boolean} = {}): string {
+    const pad = outline ? 1 : 0;
+    const size = SPRITE_SIZE + pad * 2;
     const parts: string[] = [];
+    if (outline) {
+        for (const [x, y] of outlineCells()) {
+            parts.push(`<rect x="${x + pad}" y="${y + pad}" width="1" height="1" fill="${n[0]}"/>`);
+        }
+    }
     SPRITE.forEach((row, y) => {
         let x = 0;
         while (x < row.length) {
@@ -80,16 +105,15 @@ export function spriteSvg({scale = 1}: {scale?: number} = {}): string {
                 end++;
             }
             if (key !== ".") {
-                parts.push(
-                    `<rect x="${x}" y="${y}" width="${end - x}" height="1" fill="${SPRITE_COLORS[key as SpriteKey]}"/>`,
-                );
+                const fill = SPRITE_COLORS[key as SpriteKey];
+                parts.push(`<rect x="${x + pad}" y="${y + pad}" width="${end - x}" height="1" fill="${fill}"/>`);
             }
             x = end;
         }
     });
-    const px = SPRITE_SIZE * scale;
+    const px = size * scale;
     return (
-        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${SPRITE_SIZE} ${SPRITE_SIZE}" width="${px}" height="${px}" ` +
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${size} ${size}" width="${px}" height="${px}" ` +
         `shape-rendering="crispEdges">${parts.join("")}</svg>`
     );
 }

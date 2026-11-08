@@ -195,7 +195,16 @@ decorations above the header row.
 - Sidebar: Sidebar menu parts, sticky, own scroll with fades, keeps the current item in view. Rows never
   wrap (`whitespace-nowrap`); wrap the label in a `<span>` to get an ellipsis. An expanded collapsible
   group is not "open" (no persistent wash): only real popups use `data-popup-open`.
-- Search: `SearchTrigger` + `useSearchHotkeys` (Ctrl/⌘ K, `/`), results in a `CommandDialog`.
+- Search: `SearchTrigger` + `useSearchHotkeys` (Ctrl/⌘ K, `/`) open a `SearchDialog`: results are
+  `SearchItem`s (kind icon, title over a one-line description, optional badge, ↵ on the selected row) in
+  `CommandGroup`s, suggestions before the first keystroke, and a `SearchFooter` with the key hints.
+- Footer: `SiteFooter` (credits left, `SiteFooterLinks` right), on every page.
+- Landing page: `Hero` (full-bleed muted band with a fading dot grid; `background` takes an animation
+  later) › `HeroMedia` (the brand mark) · `HeroEyebrow` · `HeroTitle` (key word in the accent) ·
+  `HeroDescription` · `HeroActions` (one solid `lg` primary, at most one outline) · `HeroFooter`. Then
+  `Section`s in a `SiteContainer` divided by borders; each `SectionHeader` has a mono accent eyebrow, an
+  h2, one sentence and a `SectionAction` (outline Button with a trailing arrow): every section ends
+  somewhere to go next.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
 
 ## 7c. Navigation states (header, sidebar, phone menu, tree, table of contents)
@@ -301,3 +310,6 @@ Tools (dev server must be running on :5175, it hot-reloads):
   removed (termicolor's spectrum bar went with it). Sidebar border runs header to footer.
 - 2026-11-08 Brand marks: kernelkit gets a pixel-art CRT console matching termicolor's head; wordmarks are
   mono lowercase with the second word in the accent.
+- 2026-11-08 Brand sprites get a 1px white ring (in a reserved 1px margin, viewBox 34) so the dark
+  outline reads on dark pages. SearchDialog/SearchItem/SearchFooter, SiteFooter, Hero and Section join
+  the shell; both sites' homepages use them.

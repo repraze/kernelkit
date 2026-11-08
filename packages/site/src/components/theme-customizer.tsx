@@ -52,48 +52,10 @@ export function ThemeCustomizer() {
                     </ToggleGroup>
                 </Field>
                 <Field label="Accent">
-                    <div className="grid grid-cols-8 gap-1.5">
-                        {ACCENTS.map((accent) => (
-                            <Tooltip key={accent}>
-                                <TooltipTrigger
-                                    render={
-                                        <button
-                                            type="button"
-                                            aria-label={accent}
-                                            aria-pressed={theme.accent === accent}
-                                            onClick={() => theme.setAccent(accent)}
-                                            style={swatch(accent)}
-                                            className={cn(
-                                                "flex aspect-square items-center justify-center rounded-md outline-none",
-                                                "ring-offset-2 ring-offset-popover focus-visible:ring-2 focus-visible:ring-ring",
-                                                theme.accent === accent && "ring-2 ring-foreground",
-                                            )}
-                                        />
-                                    }
-                                >
-                                    {theme.accent === accent ? (
-                                        <CheckIcon className="size-3.5" strokeWidth={3} />
-                                    ) : null}
-                                </TooltipTrigger>
-                                <TooltipContent className="capitalize">{accent}</TooltipContent>
-                            </Tooltip>
-                        ))}
-                    </div>
+                    <AccentPicker />
                 </Field>
                 <Field label="Radius">
-                    <ToggleGroup
-                        variant="outline"
-                        size="sm"
-                        value={[theme.radius]}
-                        onValueChange={(v) => v[0] && theme.setRadius(v[0] as Radius)}
-                        className="w-full"
-                    >
-                        {RADII.map((radius) => (
-                            <ToggleGroupItem key={radius} value={radius} className="flex-1 font-mono">
-                                {radius}
-                            </ToggleGroupItem>
-                        ))}
-                    </ToggleGroup>
+                    <RadiusPicker />
                 </Field>
                 <div className="flex items-center justify-between">
                     <Label htmlFor="kk-contrast">High contrast</Label>
@@ -129,5 +91,57 @@ export function ModeToggle() {
         >
             <Icon />
         </Button>
+    );
+}
+
+/** The eight Termicolor accents as swatches; sets the site's accent. */
+export function AccentPicker({className}: {className?: string}) {
+    const theme = useTheme();
+    return (
+        <div className={cn("grid grid-cols-8 gap-1.5", className)}>
+            {ACCENTS.map((accent) => (
+                <Tooltip key={accent}>
+                    <TooltipTrigger
+                        render={
+                            <button
+                                type="button"
+                                aria-label={accent}
+                                aria-pressed={theme.accent === accent}
+                                onClick={() => theme.setAccent(accent)}
+                                style={swatch(accent)}
+                                className={cn(
+                                    "flex aspect-square items-center justify-center rounded-md outline-none",
+                                    "ring-offset-2 ring-offset-transparent focus-visible:ring-2 focus-visible:ring-ring",
+                                    theme.accent === accent && "ring-2 ring-foreground",
+                                )}
+                            />
+                        }
+                    >
+                        {theme.accent === accent ? <CheckIcon className="size-3.5" strokeWidth={3} /> : null}
+                    </TooltipTrigger>
+                    <TooltipContent className="capitalize">{accent}</TooltipContent>
+                </Tooltip>
+            ))}
+        </div>
+    );
+}
+
+/** The radius scale; sets the site's radius. */
+export function RadiusPicker({className}: {className?: string}) {
+    const theme = useTheme();
+    return (
+        <ToggleGroup
+            variant="outline"
+            size="sm"
+            value={[theme.radius]}
+            onValueChange={(v) => v[0] && theme.setRadius(v[0] as Radius)}
+            className={cn("w-full", className)}
+        >
+            {RADII.map((radius) => (
+                <ToggleGroupItem key={radius} value={radius} className="flex-1 font-mono">
+                    {radius}
+                </ToggleGroupItem>
+            ))}
+        </ToggleGroup>
     );
 }

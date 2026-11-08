@@ -1,5 +1,14 @@
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {Button} from "@repraze/kernelkit/components/button";
+import {Command, CommandGroup, CommandInput, CommandList} from "@repraze/kernelkit/components/command";
+import {
+    Hero,
+    HeroActions,
+    HeroDescription,
+    HeroEyebrow,
+    HeroMedia,
+    HeroTitle,
+} from "@repraze/kernelkit/components/hero";
 import {
     PageHeader,
     PageHeaderActions,
@@ -8,7 +17,16 @@ import {
     PageHeaderTitle,
 } from "@repraze/kernelkit/components/page-header";
 import {Pager, PagerLink} from "@repraze/kernelkit/components/pager";
+import {SearchFooter, SearchItem} from "@repraze/kernelkit/components/search-dialog";
 import {SearchTrigger} from "@repraze/kernelkit/components/search-trigger";
+import {
+    Section,
+    SectionAction,
+    SectionDescription,
+    SectionEyebrow,
+    SectionHeader,
+    SectionTitle,
+} from "@repraze/kernelkit/components/section";
 import {
     SidebarGroup,
     SidebarGroupLabel,
@@ -16,6 +34,7 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@repraze/kernelkit/components/sidebar";
+import {SiteFooter, SiteFooterLink, SiteFooterLinks} from "@repraze/kernelkit/components/site-footer";
 import {
     SiteHeader,
     SiteHeaderActions,
@@ -25,7 +44,7 @@ import {
     SiteNavLink,
 } from "@repraze/kernelkit/components/site-header";
 import {Toc, TocItem, TocList, TocTitle} from "@repraze/kernelkit/components/toc";
-import {MoonIcon, TerminalIcon} from "lucide-react";
+import {ArrowRightIcon, FileTextIcon, MoonIcon, ServerIcon, TerminalIcon} from "lucide-react";
 
 import {Code, defineDoc} from "@/lib/doc-kit";
 
@@ -33,12 +52,16 @@ export const doc = defineDoc({
     title: "Site shell",
     category: "Layout",
     description:
-        "The suite's shared chrome: header, docs layout, page header, table of contents and pager. Every site looks the same; accent and radius are its own.",
+        "The suite's shared chrome: header, search, docs layout, page header, table of contents, pager, landing hero and sections, and footer. Every site looks the same; accent, radius and brand mark are its own.",
     demos: [
         {title: "Header", component: Header, layout: "full"},
         {title: "Sidebar navigation", component: SidebarNav, layout: "start"},
         {title: "Page header", component: Header2, layout: "start"},
         {title: "On this page and pager", component: TocAndPager, layout: "start"},
+        {title: "Hero", component: HeroDemo, layout: "full"},
+        {title: "Section", component: SectionDemo, layout: "start"},
+        {title: "Search", component: SearchDemo, layout: "start"},
+        {title: "Footer", component: FooterDemo, layout: "full"},
     ],
     notes: Notes,
     props: [
@@ -189,6 +212,87 @@ export function TocAndPager() {
     );
 }
 
+export function HeroDemo() {
+    return (
+        <Hero contentClassName="py-12 md:py-14">
+            <HeroMedia>
+                <TerminalIcon className="size-12 text-primary-text" />
+            </HeroMedia>
+            <HeroEyebrow>
+                <Badge variant="outline" className="font-mono">
+                    v2.4 · 12 regions
+                </Badge>
+            </HeroEyebrow>
+            <HeroTitle className="text-3xl sm:text-4xl md:text-5xl">
+                Ship to the <span className="text-primary-text">edge</span>.
+            </HeroTitle>
+            <HeroDescription>Deploy a service to every region with one command.</HeroDescription>
+            <HeroActions>
+                <Button size="lg">
+                    Get started <ArrowRightIcon data-icon="inline-end" />
+                </Button>
+                <Button size="lg" variant="outline">
+                    Pricing
+                </Button>
+            </HeroActions>
+        </Hero>
+    );
+}
+
+export function SectionDemo() {
+    return (
+        <Section className="w-full py-0 md:py-0">
+            <SectionHeader>
+                <SectionEyebrow>Regions</SectionEyebrow>
+                <SectionTitle>Close to every user</SectionTitle>
+                <SectionDescription>Twelve regions, one deploy.</SectionDescription>
+                <SectionAction>
+                    <Button variant="outline">
+                        All regions <ArrowRightIcon data-icon="inline-end" />
+                    </Button>
+                </SectionAction>
+            </SectionHeader>
+            <div className="h-24 rounded-lg border border-dashed" />
+        </Section>
+    );
+}
+
+export function SearchDemo() {
+    return (
+        <Command className="w-full max-w-lg rounded-xl border">
+            <CommandInput placeholder="Search nodes and docs…" />
+            <CommandList>
+                <CommandGroup heading="Nodes">
+                    <SearchItem icon={<ServerIcon />} title="edge-fra-03" description="Frankfurt, 12 services" />
+                    <SearchItem
+                        icon={<ServerIcon />}
+                        title="edge-ams-01"
+                        description="Amsterdam, 9 services"
+                        meta={<Badge variant="secondary">draining</Badge>}
+                    />
+                </CommandGroup>
+                <CommandGroup heading="Docs">
+                    <SearchItem icon={<FileTextIcon />} title="Deploys" description="Roll out a release by region." />
+                </CommandGroup>
+            </CommandList>
+            <SearchFooter />
+        </Command>
+    );
+}
+
+export function FooterDemo() {
+    return (
+        <SiteFooter className="border-t-0">
+            <span>MIT · ops-console</span>
+            <SiteFooterLinks>
+                <SiteFooterLink href="#footer">Docs</SiteFooterLink>
+                <SiteFooterLink href="#footer">Status</SiteFooterLink>
+                <SiteFooterLink href="#footer">GitHub</SiteFooterLink>
+            </SiteFooterLinks>
+        </SiteFooter>
+    );
+}
+
 function Notes() {
     return (
         <section className="flex flex-col gap-3">
@@ -208,7 +312,7 @@ function Notes() {
             <SiteNavLink render={<Link to="/docs" />}>Docs</SiteNavLink>
         </SiteNav>
         <SiteHeaderActions>
-            <SearchTrigger onClick={openSearch} />
+            <SearchTrigger onClick={openSearch} />  {/* opens a SearchDialog */}
         </SiteHeaderActions>
     </SiteHeaderContent>
 </SiteHeader>
@@ -220,7 +324,22 @@ function Notes() {
         <Pager>…</Pager>
     </SiteMain>
     <SiteAside><Toc>…</Toc></SiteAside>
-</SiteLayout>`}
+</SiteLayout>
+<SiteFooter>…</SiteFooter>
+
+// a landing page
+<Hero>
+    <HeroMedia><LogoMark /></HeroMedia>
+    <HeroTitle>…</HeroTitle>
+    <HeroDescription>…</HeroDescription>
+    <HeroActions>{/* one primary, one outline */}</HeroActions>
+</Hero>
+<SiteContainer className="divide-y">
+    <Section>
+        <SectionHeader>…<SectionAction>{/* where next */}</SectionAction></SectionHeader>
+        …
+    </Section>
+</SiteContainer>`}
             />
         </section>
     );
