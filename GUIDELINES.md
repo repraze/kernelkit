@@ -190,6 +190,8 @@ radius** and may add its own components, never its own header or docs layout.
   Pages without: `SiteContainer`.
 - Search: `SearchTrigger` + `useSearchHotkeys` (Ctrl/⌘ K, `/`), results in a `CommandDialog`.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
+- Sidebar rows never wrap (`whitespace-nowrap`); wrap the label in a `<span>` to get an ellipsis. An
+  expanded collapsible group is not "open" (no persistent wash): only real popups use `data-popup-open`.
 
 ## 8. Test matrix (headless screenshots, `scripts/shot.mjs`)
 

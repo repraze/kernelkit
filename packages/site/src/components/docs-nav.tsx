@@ -24,7 +24,7 @@ export function DocsNav({onNavigate}: {onNavigate?: () => void}) {
                                     isActive={pathname.endsWith(`/docs/${doc.slug}`)}
                                     render={<Link to="/docs/$slug" params={{slug: doc.slug}} onClick={onNavigate} />}
                                 >
-                                    {doc.title}
+                                    <span>{doc.title}</span>
                                 </SidebarMenuButton>
                             </SidebarMenuItem>
                         ))}

@@ -475,11 +475,11 @@ function SidebarMenuItem({className, ...props}: React.ComponentProps<"li">) {
  */
 const sidebarMenuButtonVariants = cva(
     [
-        "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md p-2 text-left text-sm text-sidebar-foreground outline-hidden",
+        "peer/menu-button group/menu-button flex w-full items-center gap-2 overflow-hidden rounded-md whitespace-nowrap p-2 text-left text-sm text-sidebar-foreground outline-hidden",
         "transition-[width,height,padding,color,background-color,box-shadow] duration-100 motion-reduce:transition-none",
         "group-has-data-[sidebar=menu-action]/menu-item:pr-8 group-data-[collapsible=icon]:size-8! group-data-[collapsible=icon]:p-2!",
         focusRing,
-        "hover:bg-hover data-popup-open:bg-hover aria-expanded:bg-hover",
+        "hover:bg-hover data-popup-open:bg-hover",
         "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
         "data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground data-active:[&_svg:not([class*='text-'])]:text-sidebar-primary",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg:not([class*='text-'])]:text-muted-foreground [&>span:last-child]:truncate",
@@ -671,7 +671,7 @@ function SidebarMenuSubButton({
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 text-muted-foreground outline-hidden transition-[color,background-color,box-shadow] duration-100 group-data-[collapsible=icon]:hidden hover:bg-hover hover:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground motion-reduce:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground data-active:[&>svg]:text-sidebar-primary",
+                    "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 whitespace-nowrap text-muted-foreground outline-hidden transition-[color,background-color,box-shadow] duration-100 group-data-[collapsible=icon]:hidden hover:bg-hover hover:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground motion-reduce:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground data-active:[&>svg]:text-sidebar-primary",
                     className,
                 ),
             },
