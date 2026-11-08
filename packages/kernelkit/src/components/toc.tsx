@@ -66,10 +66,10 @@ function TocItem({className, render, active = false, depth = 0, ...props}: TocIt
             {
                 "aria-current": active ? "location" : undefined,
                 className: cn(
-                    "-ml-px block border-l border-transparent py-1 pr-2 text-muted-foreground transition-colors hover:text-foreground",
+                    "relative block py-1 pr-2 text-muted-foreground transition-colors hover:text-foreground after:pointer-events-none after:absolute after:inset-y-0 after:-left-[1.5px] after:w-0.5 after:bg-primary-text after:opacity-0",
                     focusRing,
                     {0: "pl-3", 1: "pl-6", 2: "pl-9"}[depth],
-                    "aria-[current=location]:border-primary-text aria-[current=location]:font-medium aria-[current=location]:text-foreground",
+                    "aria-[current=location]:after:opacity-100 aria-[current=location]:font-medium aria-[current=location]:text-foreground",
                     className,
                 ),
             },

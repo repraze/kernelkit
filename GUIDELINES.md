@@ -178,20 +178,40 @@ text-accent-foreground` + `font-medium` + primary-colored icon. Use an indicator
 
 ## 7b. Site shell (one design language across the suite)
 
-Termicolor, kernelkit, glaze and repraze.com share the same chrome; a site picks its **accent and
-radius** and may add its own components, never its own header or docs layout.
+Termicolor, kernelkit, glaze and repraze.com share the same chrome; a site picks its **accent, radius
+and brand mark** and may add its own components, never its own header or docs layout. No banners or
+decorations above the header row.
 
 - Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
-  `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono, current = 2px accent
-  underline) · `SiteHeaderActions` (`SearchTrigger`, theme controls, repository icon button).
-  Extras above the row go in `SiteHeaderBanner`; add their height to `--kk-header-height`.
-- Pages with navigation: `SiteLayout` › `SiteSidebar` (Sidebar menu parts, sticky, own scroll with fades,
-  keeps the current item in view) · `SiteMain` (`PageHeader`, content, `Pager`) · `SiteAside` (`Toc`).
-  Pages without: `SiteContainer`.
+  `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono) · `SiteHeaderActions`
+  (`SearchTrigger`, a vertical `Separator`, theme controls, repository icon button).
+- Brand: a 32×32 pixel-art mark in Termicolor's sprite style (dark-mode palette colors only, light
+  from the top left, dithered falloff, accent rim light on the right), sized `size-7`, then the name in
+  mono semibold lowercase with its second word in the accent text tier: termi**color**, kernel**kit**.
+  Generate the favicon from the same sprite.
+- Pages with navigation: `SiteLayout` › `SiteSidebar` · `SiteMain` (`PageHeader`, content, `Pager`) ·
+  `SiteAside` (`Toc`). Pages without: `SiteContainer`. The layout has no vertical padding; each column
+  carries `py-8 lg:py-10`, so the sidebar's right border runs from the header to the footer.
+- Sidebar: Sidebar menu parts, sticky, own scroll with fades, keeps the current item in view. Rows never
+  wrap (`whitespace-nowrap`); wrap the label in a `<span>` to get an ellipsis. An expanded collapsible
+  group is not "open" (no persistent wash): only real popups use `data-popup-open`.
 - Search: `SearchTrigger` + `useSearchHotkeys` (Ctrl/⌘ K, `/`), results in a `CommandDialog`.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
-- Sidebar rows never wrap (`whitespace-nowrap`); wrap the label in a `<span>` to get an ellipsis. An
-  expanded collapsible group is not "open" (no persistent wash): only real popups use `data-popup-open`.
+
+## 7c. Navigation states (header, sidebar, phone menu, tree, table of contents)
+
+One rule, the same as `line` Tabs:
+
+| State   | Text                                                      | Surface                      | Indicator                                               |
+| ------- | --------------------------------------------------------- | ---------------------------- | ------------------------------------------------------- |
+| rest    | `muted-foreground` (top-level sidebar rows: `foreground`) | none                         | none                                                    |
+| hover   | `foreground`                                              | `bg-hover` wash (not Toc)    | none                                                    |
+| current | `foreground`, medium in lists                             | list rows: `bg-primary-tint` | 2px `bg-primary-text`, on the edge facing the structure |
+
+Where the indicator sits: header links, on the header's bottom border; sidebar and phone-menu rows, the
+row's left edge (inset `top-1.5 bottom-1.5`, pill); sub-rows and Toc items, on the tree line. Icons in a
+current row take `text-primary-text`. Never mark current with color alone or with an underline under the
+text.
 
 ## 8. Test matrix (headless screenshots, `scripts/shot.mjs`)
 
@@ -276,3 +296,8 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-06 `animate-indeterminate` keyframe for indeterminate bars; `placeholderFill` recipe.
 - 2026-11-06 Typography `Title` has no built-in margins (repraze had `mb-6 last:mb-0`): spacing belongs
   to the layout. Note for the repraze migration.
+- 2026-11-08 Navigation states unified (§7c): hover wash + 2px accent indicator everywhere; sidebar current
+  rows tint with the accent (`--color-primary-tint`) instead of the grey `sidebar-accent`. `SiteHeaderBanner`
+  removed (termicolor's spectrum bar went with it). Sidebar border runs header to footer.
+- 2026-11-08 Brand marks: kernelkit gets a pixel-art CRT console matching termicolor's head; wordmarks are
+  mono lowercase with the second word in the accent.

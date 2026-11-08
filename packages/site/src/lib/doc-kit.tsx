@@ -110,7 +110,7 @@ export function Code({
 const layoutClass: Record<NonNullable<DemoDef["layout"]>, string> = {
     center: "flex min-h-56 items-center justify-center p-8",
     start: "flex min-h-56 items-start justify-start p-8",
-    full: "",
+    full: "overflow-hidden",
     tall: "flex min-h-[28rem] items-center justify-center p-8",
 };
 

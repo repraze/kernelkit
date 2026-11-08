@@ -41,16 +41,6 @@ function SiteHeader({className, render, ...props}: useRender.ComponentProps<"hea
     });
 }
 
-/** Full-width strip above the header row (a brand bar, an announcement). Add its height to `--kk-header-height`. */
-function SiteHeaderBanner({className, render, ...props}: useRender.ComponentProps<"div">) {
-    return useRender({
-        defaultTagName: "div",
-        props: mergeProps<"div">({className: cn("w-full", className)}, props),
-        render,
-        state: {slot: "site-header-banner"},
-    });
-}
-
 /** The header row: centered at the site width, the same gutters as SiteContainer. */
 function SiteHeaderContent({className, render, ...props}: useRender.ComponentProps<"div">) {
     return useRender({
@@ -94,7 +84,7 @@ function SiteNav({className, render, ...props}: useRender.ComponentProps<"nav">)
     return useRender({
         defaultTagName: "nav",
         props: mergeProps<"nav">(
-            {"aria-label": "Main", className: cn("hidden items-center gap-5 md:flex", className)},
+            {"aria-label": "Main", className: cn("hidden items-center gap-1 md:flex", className)},
             props,
         ),
         render,
@@ -103,8 +93,11 @@ function SiteNav({className, render, ...props}: useRender.ComponentProps<"nav">)
 }
 
 /**
- * A nav link. Current when `aria-current="page"`, `data-status="active"` (TanStack Router) or `data-active`:
- * foreground text with a 2px accent underline (an indicator line: the accent text tier, GUIDELINES §6).
+ * A nav link, styled like the suite's other navigation (GUIDELINES §7c): muted at rest, a hover wash,
+ * and when current (`aria-current="page"`, `data-status="active"` from TanStack Router, or `data-active`)
+ * foreground text plus a 2px accent indicator. In SiteNav the indicator sits on the header's bottom
+ * border (like line Tabs); elsewhere (the phone menu) the link is a sidebar row with a tint and the
+ * indicator on its left edge.
  */
 function SiteNavLink({className, render, ...props}: useRender.ComponentProps<"a">) {
     return useRender({
@@ -112,9 +105,14 @@ function SiteNavLink({className, render, ...props}: useRender.ComponentProps<"a"
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "rounded-sm font-mono text-sm text-muted-foreground decoration-primary-text decoration-2 underline-offset-8 transition-colors hover:text-foreground",
+                    "relative flex h-8 items-center rounded-md px-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground motion-reduce:transition-none",
                     focusRing,
-                    "aria-[current=page]:text-foreground aria-[current=page]:underline data-[status=active]:text-foreground data-[status=active]:underline data-active:text-foreground data-active:underline",
+                    // indicator: vertical by default, on the header border inside SiteNav
+                    "after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0",
+                    "in-data-[slot=site-nav]:after:top-auto in-data-[slot=site-nav]:after:right-2.5 in-data-[slot=site-nav]:after:-bottom-[calc(0.75rem+1px)] in-data-[slot=site-nav]:after:left-2.5 in-data-[slot=site-nav]:after:h-0.5 in-data-[slot=site-nav]:after:w-auto",
+                    "aria-[current=page]:text-foreground aria-[current=page]:after:opacity-100 data-[status=active]:text-foreground data-[status=active]:after:opacity-100 data-active:text-foreground data-active:after:opacity-100",
+                    // outside the header row: the sidebar's current-row tint
+                    "not-in-data-[slot=site-nav]:aria-[current=page]:bg-primary-tint not-in-data-[slot=site-nav]:data-[status=active]:bg-primary-tint not-in-data-[slot=site-nav]:data-active:bg-primary-tint",
                     className,
                 ),
             },
@@ -168,13 +166,4 @@ function SiteHeaderMenu({title = "Menu", children, className, ...props}: SiteHea
     );
 }
 
-export {
-    SiteHeader,
-    SiteHeaderActions,
-    SiteHeaderBanner,
-    SiteHeaderBrand,
-    SiteHeaderContent,
-    SiteHeaderMenu,
-    SiteNav,
-    SiteNavLink,
-};
+export {SiteHeader, SiteHeaderActions, SiteHeaderBrand, SiteHeaderContent, SiteHeaderMenu, SiteNav, SiteNavLink};

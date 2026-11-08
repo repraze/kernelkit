@@ -41,7 +41,7 @@ function SiteLayout({className, render, ...props}: useRender.ComponentProps<"div
         props: mergeProps<"div">(
             {
                 className: cn(
-                    "mx-auto flex w-full max-w-(--kk-site-width) flex-1 gap-8 px-4 py-8 md:px-6 lg:gap-10 lg:py-10",
+                    "mx-auto flex w-full max-w-(--kk-site-width) flex-1 gap-8 px-4 md:px-6 lg:gap-10",
                     className,
                 ),
             },
@@ -52,8 +52,10 @@ function SiteLayout({className, render, ...props}: useRender.ComponentProps<"div
     });
 }
 
-/** Offset of sticky columns: below the header, with breathing room. */
-const stickyColumn = "sticky top-[calc(var(--kk-header-height)+1.5rem)] h-[calc(100svh-var(--kk-header-height)-3rem)]";
+/** Sticky columns fill the viewport below the header; their content has the page's vertical padding. */
+const stickyColumn = "sticky top-(--kk-header-height) h-[calc(100svh-var(--kk-header-height))]";
+/** Vertical rhythm of every column (the layout itself has none, so the sidebar border runs edge to edge). */
+const columnPadding = "py-8 lg:py-10";
 
 interface SiteSidebarProps extends React.ComponentProps<"aside"> {
     /** Classes for the scrolling viewport (padding, etc.). */
@@ -94,20 +96,24 @@ function useKeepCurrentInView(viewport: React.RefObject<HTMLDivElement | null>) 
 
 /**
  * Left navigation column (from `md`): sticky, scrolls on its own, fades at its edges, and keeps the
- * current item in view.
+ * current item in view. Its right border runs the layout's full height, header to footer.
  */
 function SiteSidebar({className, viewportClassName, children, ...props}: SiteSidebarProps) {
     const viewport = React.useRef<HTMLDivElement>(null);
     useKeepCurrentInView(viewport);
     return (
-        <aside data-slot="site-sidebar" className={cn("hidden w-56 shrink-0 md:block", className)} {...props}>
+        <aside
+            data-slot="site-sidebar"
+            className={cn("hidden w-60 shrink-0 border-r border-border md:block", className)}
+            {...props}
+        >
             {/* sticky on a wrapper: Base UI's ScrollArea root sets position inline */}
             <div className={stickyColumn}>
                 <ScrollArea
                     fade
                     className="h-full"
                     viewportRef={viewport}
-                    viewportClassName={cn("pb-4", viewportClassName)}
+                    viewportClassName={cn(columnPadding, "pr-3", viewportClassName)}
                 >
                     {children}
                 </ScrollArea>
@@ -120,7 +126,10 @@ function SiteSidebar({className, viewportClassName, children, ...props}: SiteSid
 function SiteMain({className, render, ...props}: useRender.ComponentProps<"main">) {
     return useRender({
         defaultTagName: "main",
-        props: mergeProps<"main">({className: cn("flex min-w-0 flex-1 flex-col gap-10", className)}, props),
+        props: mergeProps<"main">(
+            {className: cn("flex min-w-0 flex-1 flex-col gap-10", columnPadding, className)},
+            props,
+        ),
         render,
         state: {slot: "site-main"},
     });
@@ -130,7 +139,7 @@ function SiteMain({className, render, ...props}: useRender.ComponentProps<"main"
 function SiteAside({className, children, ...props}: React.ComponentProps<"aside">) {
     return (
         <aside data-slot="site-aside" className={cn("hidden w-48 shrink-0 xl:block", className)} {...props}>
-            <div className={cn(stickyColumn, "overflow-y-auto")}>{children}</div>
+            <div className={cn(stickyColumn, columnPadding, "overflow-y-auto")}>{children}</div>
         </aside>
     );
 }

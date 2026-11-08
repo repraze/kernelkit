@@ -195,6 +195,8 @@
     /* accent-colored text and icons: the text tier (light mode darkens it for contrast on white).
        --primary itself is the vivid fill tier, for solid surfaces. */
     --color-primary-text: var(--primary-text);
+    /* current row in a nav list (sidebar, phone menu): the accent's tint */
+    --color-primary-tint: var(--tc-accent-tint);
     --color-secondary: var(--secondary);
     --color-secondary-foreground: var(--secondary-foreground);
     --color-muted: var(--muted);

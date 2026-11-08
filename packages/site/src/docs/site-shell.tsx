@@ -49,7 +49,7 @@ export const doc = defineDoc({
                     name: "aria-current / data-status / data-active",
                     type: '"page" / "active" / boolean',
                     description:
-                        "Current page: foreground text + 2px accent underline. TanStack Router sets data-status.",
+                        "Current page: foreground text and a 2px accent indicator on the header border (in the phone menu: a tinted row with the indicator on its left). TanStack Router sets data-status.",
                 },
                 {name: "render", type: "ReactElement", description: "Your router link."},
             ],
@@ -89,26 +89,29 @@ export const doc = defineDoc({
 
 export function Header() {
     return (
-        <SiteHeader className="static">
-            <SiteHeaderContent>
-                <SiteHeaderBrand href="#header">
-                    <TerminalIcon className="size-5 text-primary-text" /> ops-console
-                </SiteHeaderBrand>
-                <SiteNav>
-                    <SiteNavLink href="#header" aria-current="page">
-                        Nodes
-                    </SiteNavLink>
-                    <SiteNavLink href="#header">Deploys</SiteNavLink>
-                    <SiteNavLink href="#header">Logs</SiteNavLink>
-                </SiteNav>
-                <SiteHeaderActions>
-                    <SearchTrigger />
-                    <Button variant="ghost" size="icon" aria-label="Theme">
-                        <MoonIcon />
-                    </Button>
-                </SiteHeaderActions>
-            </SiteHeaderContent>
-        </SiteHeader>
+        <div className="flex flex-col">
+            <SiteHeader className="static">
+                <SiteHeaderContent>
+                    <SiteHeaderBrand href="#header">
+                        <TerminalIcon className="size-5 text-primary-text" /> ops-console
+                    </SiteHeaderBrand>
+                    <SiteNav>
+                        <SiteNavLink href="#header" aria-current="page">
+                            Nodes
+                        </SiteNavLink>
+                        <SiteNavLink href="#header">Deploys</SiteNavLink>
+                        <SiteNavLink href="#header">Logs</SiteNavLink>
+                    </SiteNav>
+                    <SiteHeaderActions>
+                        <SearchTrigger />
+                        <Button variant="ghost" size="icon" aria-label="Theme">
+                            <MoonIcon />
+                        </Button>
+                    </SiteHeaderActions>
+                </SiteHeaderContent>
+            </SiteHeader>
+            <div className="h-16 bg-background" />
+        </div>
     );
 }
 
@@ -192,8 +195,9 @@ function Notes() {
             <h2 className="font-heading text-xl font-semibold">Layout</h2>
             <p className="text-sm text-muted-foreground">
                 This docs site is built with these parts. Termicolor, kernelkit and repraze.com share them; a site sets
-                its accent and radius and may add a banner above the header row (add its height to{" "}
-                <code className="font-mono text-foreground">--kk-header-height</code>).
+                only its accent, radius and brand mark. Navigation follows one rule everywhere: muted at rest, a hover
+                wash, and the current item in the foreground with a 2px accent indicator on the edge that faces its
+                structure (the header border, the sidebar row's left edge, the tree line).
             </p>
             <Code
                 code={`<SiteHeader>

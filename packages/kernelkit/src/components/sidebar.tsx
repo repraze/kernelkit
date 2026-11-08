@@ -481,7 +481,9 @@ const sidebarMenuButtonVariants = cva(
         focusRing,
         "hover:bg-hover data-popup-open:bg-hover",
         "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
-        "data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground data-active:[&_svg:not([class*='text-'])]:text-sidebar-primary",
+        // current row (GUIDELINES §7c): accent tint, foreground text, 2px accent indicator on the left edge
+        "relative after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0 data-active:after:opacity-100",
+        "data-active:bg-primary-tint data-active:font-medium data-active:text-foreground data-active:[&_svg:not([class*='text-'])]:text-primary-text",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg:not([class*='text-'])]:text-muted-foreground [&>span:last-child]:truncate",
     ],
     {
@@ -649,7 +651,12 @@ function SidebarMenuSubItem({className, ...props}: React.ComponentProps<"li">) {
         <li
             data-slot="sidebar-menu-sub-item"
             data-sidebar="menu-sub-item"
-            className={cn("group/menu-sub-item relative", className)}
+            className={cn(
+                "group/menu-sub-item relative",
+                // current sub-row: the 2px accent indicator sits on the tree line (like Toc)
+                "after:pointer-events-none after:absolute after:inset-y-0 after:-left-[calc(0.625rem+1.5px)] after:w-0.5 after:bg-primary-text after:opacity-0 has-[>[data-active]]:after:opacity-100",
+                className,
+            )}
             {...props}
         />
     );
@@ -671,7 +678,7 @@ function SidebarMenuSubButton({
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 whitespace-nowrap text-muted-foreground outline-hidden transition-[color,background-color,box-shadow] duration-100 group-data-[collapsible=icon]:hidden hover:bg-hover hover:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-sidebar-accent data-active:font-medium data-active:text-sidebar-accent-foreground motion-reduce:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground data-active:[&>svg]:text-sidebar-primary",
+                    "flex h-7 min-w-0 -translate-x-px items-center gap-2 overflow-hidden rounded-md px-2 whitespace-nowrap text-muted-foreground outline-hidden transition-[color,background-color,box-shadow] duration-100 group-data-[collapsible=icon]:hidden hover:bg-hover hover:text-sidebar-foreground focus-visible:ring-3 focus-visible:ring-ring/50 disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50 data-[size=md]:text-sm data-[size=sm]:text-xs data-active:bg-primary-tint data-active:font-medium data-active:text-foreground motion-reduce:transition-none [&>span:last-child]:truncate [&>svg]:size-4 [&>svg]:shrink-0 [&>svg]:text-muted-foreground data-active:[&>svg]:text-primary-text",
                     className,
                 ),
             },

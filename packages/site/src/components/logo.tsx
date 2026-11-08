@@ -1,17 +1,28 @@
 import {cn} from "@repraze/kernelkit/lib/utils";
 
-/** Kernelkit mark: a "K" bracket and a cursor block, in the accent. */
-export function Logo({className}: {className?: string}) {
+import {spriteSvg} from "@/brand/sprite";
+
+/** Fill the wrapper box instead of the sprite's intrinsic pixel size. */
+const SVG = spriteSvg().replace(/width="\d+" height="\d+"/, 'width="100%" height="100%"');
+
+/** The kernelkit console, inlined. Size it with className; the SVG fills the box. */
+export function LogoMark({className}: {className?: string}) {
     return (
         <span
-            className={cn("inline-flex items-center gap-2 font-mono text-sm font-semibold tracking-tight", className)}
-        >
-            <svg viewBox="0 0 32 32" className="size-6" aria-hidden>
-                <rect width="32" height="32" rx="calc(var(--kk-radius) * 0.9)" className="fill-foreground" />
-                <path d="M10 8v16M10 16l8-8M10 16l8 8" className="stroke-background" strokeWidth="3" fill="none" />
-                <rect x="20" y="20" width="4" height="4" className="fill-primary" />
-            </svg>
-            <span>
+            aria-hidden
+            className={cn("inline-block size-7 shrink-0 leading-0", className)}
+            // Static markup generated from our own sprite grid, never from user input.
+            dangerouslySetInnerHTML={{__html: SVG}}
+        />
+    );
+}
+
+/** Mark + wordmark: "kernel" in the foreground, "kit" in the accent (the suite's brand pattern). */
+export function Logo({className}: {className?: string}) {
+    return (
+        <span className={cn("inline-flex items-center gap-2", className)}>
+            <LogoMark />
+            <span className="font-mono text-sm font-semibold tracking-tight">
                 kernel<span className="text-primary-text">kit</span>
             </span>
         </span>

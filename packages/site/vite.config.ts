@@ -9,6 +9,7 @@ import {defaultClientConditions, defineConfig, type Plugin} from "vite";
 // Relative on purpose: the config is loaded by Node, which resolves the package to its built dist/.
 import {themeScript} from "../kernelkit/src/provider/theme.ts";
 import {docsMeta} from "./plugins/docs-meta.ts";
+import {spriteSvg} from "./src/brand/sprite.ts";
 
 /** Inline the pre-paint theme script so the stored mode/accent/radius apply before first paint. */
 function themeScriptPlugin(): Plugin {
@@ -19,6 +20,27 @@ function themeScriptPlugin(): Plugin {
                 "<!-- kernelkit:theme-script -->",
                 `<script>${themeScript({storageKey: "kernelkit-docs-theme"})}</script>`,
             ),
+    };
+}
+
+/** favicon.svg from the brand sprite, so the icon never drifts from the logo. */
+function faviconPlugin(): Plugin {
+    const svg = spriteSvg();
+    return {
+        name: "kernelkit-favicon",
+        configureServer(server) {
+            server.middlewares.use((req, res, next) => {
+                if (req.url?.endsWith("/favicon.svg")) {
+                    res.setHeader("Content-Type", "image/svg+xml");
+                    res.end(svg);
+                    return;
+                }
+                next();
+            });
+        },
+        generateBundle() {
+            this.emitFile({type: "asset", fileName: "favicon.svg", source: svg});
+        },
     };
 }
 
@@ -45,6 +67,7 @@ export default defineConfig({
         react(),
         tailwindcss(),
         themeScriptPlugin(),
+        faviconPlugin(),
         spaFallback(),
     ],
     resolve: {

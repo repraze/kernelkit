@@ -62,7 +62,7 @@ export function SiteHeader() {
         <SiteHeaderRoot>
             <SiteHeaderContent>
                 <SiteHeaderMenu title={<Logo />} open={menuOpen} onOpenChange={setMenuOpen}>
-                    <nav aria-label="Main" className="flex flex-col gap-3 px-2 pt-2">
+                    <nav aria-label="Main" className="flex flex-col gap-1 px-2 pt-2">
                         {navLinks}
                     </nav>
                     <DocsNav />
