@@ -9,7 +9,7 @@ import {defaultClientConditions, defineConfig, type Plugin} from "vite";
 // Relative on purpose: the config is loaded by Node, which resolves the package to its built dist/.
 import {themeScript} from "../kernelkit/src/provider/theme.ts";
 import {docsMeta} from "./plugins/docs-meta.ts";
-import {spriteSvg} from "./src/brand/sprite.ts";
+import {markSvg} from "./src/brand/mark.ts";
 
 /** Inline the pre-paint theme script so the stored mode/accent/radius apply before first paint. */
 function themeScriptPlugin(): Plugin {
@@ -23,9 +23,9 @@ function themeScriptPlugin(): Plugin {
     };
 }
 
-/** favicon.svg from the brand sprite, so the icon never drifts from the logo. */
+/** favicon.svg from the brand mark, so the icon never drifts from the logo. */
 function faviconPlugin(): Plugin {
-    const svg = spriteSvg();
+    const svg = markSvg();
     return {
         name: "kernelkit-favicon",
         configureServer(server) {

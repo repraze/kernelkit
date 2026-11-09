@@ -66,7 +66,7 @@ export function HomePage() {
         <main className="flex flex-1 flex-col">
             <Hero>
                 <HeroMedia>
-                    <LogoMark className="size-16 md:size-20" />
+                    <LogoMark className="size-16 md:size-24" />
                 </HeroMedia>
                 <HeroEyebrow>
                     <Badge variant="outline" className="font-mono">

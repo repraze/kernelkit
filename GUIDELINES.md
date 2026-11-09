@@ -190,12 +190,16 @@ decorations above the header row.
 - Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
   `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono) · `SiteHeaderActions`
   (`SearchTrigger`, a vertical `Separator`, theme controls, repository icon button).
-- Brand: a 32×32 pixel-art mark in TermiColor's sprite style (dark-mode palette colors only, light
-  from the top left, dithered falloff, accent rim light on the right), sized `size-7`, then the name in
-  mono semibold, camel-cased, with its second word in the accent text tier: Termi**Color**,
-  Kernel**Kit**. Prose, the nav brand and the tab title all spell it that way (package names stay
-  lowercase: `@repraze/kernelkit`). Tab titles are `Page · Brand`, the bare brand on the home page
-  (`usePageTitle`). Generate the favicon from the same sprite.
+- Brand mark: a vector mark on a 32-unit grid (`brand/mark.ts`), one silhouette with a 2-unit outline in
+  the site's accent around a neutral body, at most three details inside (TermiColor: a skull with red
+  eyes and a 2-4-2 grin; KernelKit: a grey monitor showing the current-row highlight). Every edge,
+  radius and gap is an even number of units, so it lands on whole pixels at 16px and 32px; render it
+  only at multiples of 32 (16px favicon, `size-8` in the header, `size-16`/`size-24` in a hero). Colors
+  come from the palette's dark mode. The favicon is generated from the same shapes.
+- Wordmark: after the mark, the name in mono semibold, camel-cased, with its second word in the accent
+  text tier: Termi**Color**, Kernel**Kit**. Prose, the nav brand and the tab title all spell it that
+  way (package names stay lowercase: `@repraze/kernelkit`). Tab titles are `Page · Brand`, the bare
+  brand on the home page (`usePageTitle`).
 - Pages with navigation: `SiteLayout` › `SiteSidebar` · `SiteMain` (`PageHeader`, content, `Pager`) ·
   `SiteAside` (`Toc`). Pages without: `SiteContainer`. The layout has no vertical padding; each column
   carries `py-8 lg:py-10`, so the sidebar's right border runs from the header to the footer.
@@ -323,3 +327,7 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-09 Brand names are camel-cased (TermiColor, KernelKit) in the wordmark, prose and tab titles.
   `LinkCard` (+ `LinkCardMedia`, `LinkCardArrow`) replaces hand-rolled card links: accent border,
   title and top wash on hover, after the termicolor wallpaper cards and the repraze.com home cards.
+- 2026-11-09 Pixel-art sprites replaced by vector marks on an even-unit 32 grid with an accent outline
+  (they blurred at every size but 1:1). Header marks go from 28px to 32px: 28 is not a multiple of the
+  grid and blurred any mark. Lucide's rules informed the spec (2-unit weight, radius, gaps, padding);
+  its 24 grid did not, since 16/24 is not whole.

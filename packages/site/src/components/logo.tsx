@@ -1,17 +1,16 @@
 import {cn} from "@repraze/kernelkit/lib/utils";
 
-import {spriteSvg} from "@/brand/sprite";
+import {markSvg} from "@/brand/mark";
 
-/** Fill the wrapper box instead of the sprite's intrinsic pixel size. */
-const SVG = spriteSvg().replace(/width="\d+" height="\d+"/, 'width="100%" height="100%"');
+const SVG = markSvg();
 
-/** The kernelkit console, inlined. Size it with className; the SVG fills the box. */
+/** The KernelKit monitor, inlined. Size it in multiples of 32px (default `size-8`) so it stays pixel-sharp. */
 export function LogoMark({className}: {className?: string}) {
     return (
         <span
             aria-hidden
-            className={cn("inline-block size-7 shrink-0 leading-0", className)}
-            // Static markup generated from our own sprite grid, never from user input.
+            className={cn("inline-block size-8 shrink-0 leading-0", className)}
+            // Static markup generated from our own mark shapes, never from user input.
             dangerouslySetInnerHTML={{__html: SVG}}
         />
     );
