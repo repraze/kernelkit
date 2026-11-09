@@ -66,7 +66,7 @@ export const doc = defineDoc({
                     name: "returns",
                     type: "ReactNode[]",
                     description:
-                        "One node per line. Colors are --kk-code-* variables mapped to Termicolor syntax roles, so they follow the theme without re-highlighting.",
+                        "One node per line. Colors are --kk-code-* variables mapped to TermiColor syntax roles, so they follow the theme without re-highlighting.",
                 },
             ],
         },

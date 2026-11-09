@@ -1,4 +1,4 @@
-# Kernelkit component inventory
+# KernelKit component inventory
 
 **Status 2026-11-06: v0.1 inventory complete** - 77 components, every one with a docs page, checked
 in the 6-theme review matrix, design lint clean. Form: nova ships no base-ui form wrapper; Field +

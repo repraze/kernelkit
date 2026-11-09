@@ -8,7 +8,7 @@ export const doc = defineDoc({
     title: "Introduction",
     category: "Foundations",
     description:
-        "Kernelkit is a React component library on Base UI, Tailwind v4 and the Termicolor palette. Every shadcn component, restyled, themed by CSS variables.",
+        "KernelKit is a React component library on Base UI, Tailwind v4 and the TermiColor palette. Every shadcn component, restyled, themed by CSS variables.",
     order: 0,
     demos: [{title: "At a glance", component: Glance}],
     notes: Notes,
@@ -48,7 +48,7 @@ function Notes() {
             <section className="flex flex-col gap-3">
                 <h2 className="font-mono text-xl font-semibold">Or own the code: shadcn CLI</h2>
                 <p className="text-sm text-muted-foreground">
-                    Kernelkit is also a shadcn registry. Components install as source into your app, imports rewritten
+                    KernelKit is also a shadcn registry. Components install as source into your app, imports rewritten
                     to your aliases, dependencies (recipes, color axis, tokens, other components) pulled in
                     automatically. Edit them freely. Add the registry to{" "}
                     <code className="font-mono text-foreground">components.json</code>:

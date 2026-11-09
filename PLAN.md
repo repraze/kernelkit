@@ -1,11 +1,11 @@
-# Kernelkit plan
+# KernelKit plan
 
 A professional, modern, techy React component library: every shadcn component, restyled to sit
-between plain shadcn and the Termicolor look. Built on Base UI + Tailwind v4 + `cva`, themed through
-CSS variables on top of the Termicolor palette.
+between plain shadcn and the TermiColor look. Built on Base UI + Tailwind v4 + `cva`, themed through
+CSS variables on top of the TermiColor palette.
 
 Status (2026-11-07): published as `@repraze/kernelkit` (build to dist/, optional peer deps, staged
-publish workflow, Pages deploy of docs + registry, docs pages code-split). Termicolor palette is
+publish workflow, Pages deploy of docs + registry, docs pages code-split). TermiColor palette is
 `@repraze/termicolor` on npm.
 Earlier (2026-11-06, late): steps 1-6 done. 78 components in the lib, 80 docs pages, all through the
 6-theme review matrix, design lint, state check (hover/focus) and console check. Also published as a
@@ -22,9 +22,9 @@ ThemeScript; docs site running on :5175 with Introduction, Theming, Button and a
   CLI so we start from the latest fixes, then restyled. Plus the extras repraze-lib-ui has on top
   (data-table, navbar, toolbar, file-upload, typography, …), redesigned rather than copied.
 - **Themeable by CSS variables only.** No rebuild to change look:
-    - **mode**: `light` / `dark` (+ `hc` high contrast) — from Termicolor.
-    - **accent**: any of the 8 Termicolor accents via `.accent-<name>`; **default pink**.
-    - **radius**: one `--kk-radius` knob (0 → sharp Termicolor look, ~0.5rem → soft modern look).
+    - **mode**: `light` / `dark` (+ `hc` high contrast) — from TermiColor.
+    - **accent**: any of the 8 TermiColor accents via `.accent-<name>`; **default pink**.
+    - **radius**: one `--kk-radius` knob (0 → sharp TermiColor look, ~0.5rem → soft modern look).
       Every component derives its corners from it (`--kk-radius-sm/md/lg/xl`, `full` stays full).
     - later, maybe **density** (`--kk-density`) scaling control heights / paddings.
 - **Theme provider inside.** `KernelkitProvider` + `useTheme()`: mode (system/light/dark), contrast,
@@ -36,15 +36,15 @@ ThemeScript; docs site running on :5175 with Introduction, Theming, Button and a
     - `render` prop / `useRender` for single-element components;
     - `className` merged last via `cn()`;
     - tokens as Tailwind utilities (`bg-primary`, `text-tc-pink`, `rounded-md` → radius var).
-- **Professional look.** Neutral surfaces from Termicolor, one loud accent, crisp borders, mono
+- **Professional look.** Neutral surfaces from TermiColor, one loud accent, crisp borders, mono
   for labels/titles/code, sans for reading. State shown with fills / indicator lines / borders,
-  never by surface shade alone (Termicolor DESIGN.md §6 — keeps high contrast working).
+  never by surface shade alone (TermiColor DESIGN.md §6 — keeps high contrast working).
 
 Non-goals: the nullsec hacker kit (FX, intel widgets, pixel icons) stays a separate experiment.
 
 ## 2. Repo layout
 
-Own repo, npm workspaces monorepo like Termicolor (the suite: termicolor, kernelkit, glaze, badges,
+Own repo, npm workspaces monorepo like TermiColor (the suite: termicolor, kernelkit, glaze, badges,
 each its own mono with a docs site package).
 
 ```
@@ -59,13 +59,13 @@ kernelkit/
 │   │   ├── src/styles/kernelkit.css tokens (palette → shadcn → kk vars), base layer, @theme
 │   │   └── components.json         shadcn CLI target
 │   └── site/             # docs site (Vite + React + TanStack Router), port 5175
-└── tsconfig.base.json, eslint, prettier (same config as Termicolor)
+└── tsconfig.base.json, eslint, prettier (same config as TermiColor)
 ```
 
 Dependency on the palette: `@repraze/termicolor` via `file:../termicolor/packages/palette` until it's
 published to npm. No cycle: palette → kernelkit → (kernelkit site, termicolor site, repraze apps).
 
-Package exports (source-first like Termicolor; a build step is added before publishing):
+Package exports (source-first like TermiColor; a build step is added before publishing):
 
 ```
 kernelkit/components/<name>   kernelkit/provider   kernelkit/hooks/<name>
@@ -76,8 +76,8 @@ kernelkit/lib/utils           kernelkit/styles.css
 
 | Site            | Port | Command                      |
 | --------------- | ---- | ---------------------------- |
-| Termicolor site | 5170 | `npm run dev` in termicolor/ |
-| Kernelkit docs  | 5175 | `npm run dev` in kernelkit/  |
+| TermiColor site | 5170 | `npm run dev` in termicolor/ |
+| KernelKit docs  | 5175 | `npm run dev` in kernelkit/  |
 | nullsec         | 5199 | `npm run dev` in nullsec/    |
 | repraze website | 3000 | Next.js default              |
 
@@ -107,12 +107,12 @@ kernelkit/styles.css              --kk-radius*, --kk-font-*, status tokens, @the
 4. **Diff vs repraze-lib-ui** — list what repraze changed/added; decide per component
    (adopt / redesign / drop). Port extras (data-table, navbar, toolbar, file-upload, typography,
    set-utils, …) restyled.
-5. **Design pass** — the middle ground: go component by component, Termicolor-inspired details
+5. **Design pass** — the middle ground: go component by component, TermiColor-inspired details
    (mono labels, indicator lines, crisp focus ring, hc-safe states), check light/dark/hc, every accent,
    radius 0 and soft.
 6. **Docs site** — landing, theming page (live accent/radius/mode controls), one page per component
    (demos + code + props), search. Port 5175.
-7. **Termicolor site refactor** — replace `src/components/ui/*` with kernelkit, keep red accent and
+7. **TermiColor site refactor** — replace `src/components/ui/*` with kernelkit, keep red accent and
    radius 0 as site config.
 8. **repraze-apps refactor** — replace `@repraze/lib-ui` with kernelkit; repraze-specific components
    become a thin local layer on top (wrap, don't fork).

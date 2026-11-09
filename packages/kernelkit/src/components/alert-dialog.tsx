@@ -79,7 +79,7 @@ function AlertDialogFooter({className, ...props}: React.ComponentProps<"div">) {
     );
 }
 
-/** Icon tile. `color` tints it (Termicolor rule: tint surface, colored icon and border). */
+/** Icon tile. `color` tints it (TermiColor rule: tint surface, colored icon and border). */
 function AlertDialogMedia({
     className,
     color,

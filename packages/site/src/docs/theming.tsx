@@ -142,7 +142,7 @@ function Notes() {
     --kk-font-mono: "JetBrains Mono Variable", monospace;
 }
 
-/* Termicolor roles drive shadcn tokens: --primary → --tc-accent, --border → --tc-border … */
+/* TermiColor roles drive shadcn tokens: --primary → --tc-accent, --border → --tc-border … */
 .brand {
     --primary: var(--tc-cyan);
 }`}

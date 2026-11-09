@@ -1,10 +1,10 @@
-# Kernelkit design guidelines
+# KernelKit design guidelines
 
 The contract every component is checked against. **Living document**: when a review finds a case these
 rules don't cover, decide, write the rule here (and in the decision log at the bottom), then fix the
 code. A component is done only when it passes the checklist in §9 in every theme listed in §8.
 
-Look: between plain shadcn (base-nova) and Termicolor. Neutral grey surfaces, one loud accent, crisp
+Look: between plain shadcn (base-nova) and TermiColor. Neutral grey surfaces, one loud accent, crisp
 lines, mono for titles/labels/code, sans for reading. Professional first; techy in the details.
 
 ---
@@ -13,23 +13,23 @@ lines, mono for titles/labels/code, sans for reading. Professional first; techy 
 
 - Colors come from role tokens: `background foreground card popover primary secondary muted accent
 hover border input ring danger warning success info` (+ `-foreground`, `-tint`), `chart-1..5`,
-  `sidebar-*`, and Termicolor utilities `tc-<hue>`, `tc-<hue>-tint|fill|on|on-fill`. No hex, no
+  `sidebar-*`, and TermiColor utilities `tc-<hue>`, `tc-<hue>-tint|fill|on|on-fill`. No hex, no
   `oklch(...)`, no `white`/`black`, no Tailwind palette colors (`neutral-500`, `pink-400`…).
 - **Never use `foreground/NN` alpha for lines.** nova uses `ring-foreground/10` for card and popup
   outlines; in high contrast that stays faint. Lines are `border-border` (regions, cards, popups,
   separators) or `border-input` (interactive control outlines).
-- **Primary has two tiers**: `bg-primary` / `text-primary-foreground` is the vivid fill (Termicolor
+- **Primary has two tiers**: `bg-primary` / `text-primary-foreground` is the vivid fill (TermiColor
   `accentFill`, dark text on it in light mode); accent-colored **text, icons and links use
-  `text-primary-text`** (Termicolor `accent`, darkened in light mode for contrast on white). Never
+  `text-primary-text`** (TermiColor `accent`, darkened in light mode for contrast on white). Never
   `text-primary` for text: in light mode the fill tier fails contrast as text.
   **Thin indicators use the text tier too**: 1-2px lines, stand-alone borders, small dots, inset bars
   (`after:bg-primary-text`, `border-primary-text`, `shadow-[inset_2px_0_0_var(--primary-text)]`): WCAG
   1.4.11 wants 3:1 for state-carrying UI, the light fill is ~2.3:1 on white. The fill tier is for solid
   surfaces (with or without text) and bars of 6px or more; a border that is just the edge of a filled
   control (checked checkbox/radio/switch) matches its fill.
-- Hover wash is `bg-hover` (Termicolor `bgHover`, visible in high contrast), not `bg-muted`.
+- Hover wash is `bg-hover` (TermiColor `bgHover`, visible in high contrast), not `bg-muted`.
 - **Field backgrounds are tokens**: controls with a field surface use `bg-field`, `hover:bg-field-hover`,
-  `disabled:bg-field-disabled`. Fields sit on Termicolor's `bgRaised` ("things that take input",
+  `disabled:bg-field-disabled`. Fields sit on TermiColor's `bgRaised` ("things that take input",
   palette DESIGN.md §4); hover steps 7% toward the foreground (18% in hc). Outline buttons are not fields:
   `bg-transparent hover:bg-hover`. Never
   `dark:bg-…` / `hc:bg-…` classes on a stateful part: variant-prefixed backgrounds outrank `hover:` and
@@ -46,7 +46,7 @@ variants only read them:
 | `--c`         | the color, text tier: readable on any surface | `var(--primary)`              |
 | `--c-fg`      | text on a solid `--c` fill                    | `var(--primary-foreground)`   |
 | `--c-tint`    | opaque wash behind **foreground** text        | `var(--accent)` (accent tint) |
-| `--c-fill`    | vivid solid surface (Termicolor fill tier)    | `var(--primary)`              |
+| `--c-fill`    | vivid solid surface (TermiColor fill tier)    | `var(--primary)`              |
 | `--c-fill-fg` | text on `--c-fill`                            | `var(--primary-foreground)`   |
 
 Solid variants use `--c-fill`/`--c-fill-fg` (vivid in light mode too: light text tiers are darkened for
@@ -70,7 +70,7 @@ Variants (same names everywhere):
 - shadcn aliases stay for drop-in use: `variant="default"` = solid, `"secondary"` = solid neutral
   (`bg-secondary`), `"destructive"` = soft danger.
 - Status colors never follow the accent. Pair danger/warning with an icon or label, not color alone.
-- Termicolor rule: on a `tint` surface the text is `foreground`; color comes from an icon, border or
+- TermiColor rule: on a `tint` surface the text is `foreground`; color comes from an icon, border or
   indicator (`[&_svg]:text-(--c)`). Accent text goes on `background`/`card`/`popover` or translucent fills.
 
 ## 3. Shape
@@ -150,6 +150,11 @@ text-accent-foreground` + `font-medium` + primary-colored icon. Use an indicator
 - **Selected / on / checked / current**: a fill (`bg-primary`), an indicator line (2px `bg-primary`
   bar), or a border, **never surface shade alone** (tabs, toggle, sidebar item, pagination current,
   nav link). Highlighted popup item: `bg-accent text-accent-foreground` (accent tint).
+- **Clickable card** (the whole card is one link): `LinkCard`. Hover and keyboard focus turn the
+  border and the `CardTitle` to `primary-text`, fade in an accent-tint wash from the top, nudge the
+  `LinkCardArrow` (up-right and diagonal when `external`) and zoom a `LinkCardMedia` by 3%. Never a
+  plain `Card` inside an `<a>` with only `bg-hover`: on a card that is too faint to read as a link.
+  Cards holding their own buttons (downloads) stay `Card` and use the same border + title accent.
 - **Disabled**: `opacity-50` + `pointer-events-none`/`cursor-not-allowed`; inputs also `bg-input/50`.
 - **Invalid** (`aria-invalid`): `border-danger ring-3 ring-danger/20`.
 - **Open** (`data-popup-open`, `aria-expanded`): triggers keep their hover look while open.
@@ -178,17 +183,19 @@ text-accent-foreground` + `font-medium` + primary-colored icon. Use an indicator
 
 ## 7b. Site shell (one design language across the suite)
 
-Termicolor, kernelkit, glaze and repraze.com share the same chrome; a site picks its **accent, radius
+TermiColor, KernelKit, glaze and repraze.com share the same chrome; a site picks its **accent, radius
 and brand mark** and may add its own components, never its own header or docs layout. No banners or
 decorations above the header row.
 
 - Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
   `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono) · `SiteHeaderActions`
   (`SearchTrigger`, a vertical `Separator`, theme controls, repository icon button).
-- Brand: a 32×32 pixel-art mark in Termicolor's sprite style (dark-mode palette colors only, light
+- Brand: a 32×32 pixel-art mark in TermiColor's sprite style (dark-mode palette colors only, light
   from the top left, dithered falloff, accent rim light on the right), sized `size-7`, then the name in
-  mono semibold lowercase with its second word in the accent text tier: termi**color**, kernel**kit**.
-  Generate the favicon from the same sprite.
+  mono semibold, camel-cased, with its second word in the accent text tier: Termi**Color**,
+  Kernel**Kit**. Prose, the nav brand and the tab title all spell it that way (package names stay
+  lowercase: `@repraze/kernelkit`). Tab titles are `Page · Brand`, the bare brand on the home page
+  (`usePageTitle`). Generate the favicon from the same sprite.
 - Pages with navigation: `SiteLayout` › `SiteSidebar` · `SiteMain` (`PageHeader`, content, `Pager`) ·
   `SiteAside` (`Toc`). Pages without: `SiteContainer`. The layout has no vertical padding; each column
   carries `py-8 lg:py-10`, so the sidebar's right border runs from the header to the footer.
@@ -204,7 +211,7 @@ decorations above the header row.
   `HeroDescription` · `HeroActions` (one solid `lg` primary, at most one outline) · `HeroFooter`. Then
   `Section`s in a `SiteContainer` divided by borders; each `SectionHeader` has a mono accent eyebrow, an
   h2, one sentence and a `SectionAction` (outline Button with a trailing arrow): every section ends
-  somewhere to go next.
+  somewhere to go next. Grids of destinations inside a section are `LinkCard`s.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
 
 ## 7c. Navigation states (header, sidebar, phone menu, tree, table of contents)
@@ -264,13 +271,13 @@ Tools (dev server must be running on :5175, it hot-reloads):
 ## Decision log
 
 - 2026-11-06 Base = shadcn **base-nova** (rounded tokens, compact h-8); lyra hardcodes `rounded-none`.
-- 2026-11-06 Default accent pink; status tokens from Termicolor roles; `destructive` kept as alias of danger.
+- 2026-11-06 Default accent pink; status tokens from TermiColor roles; `destructive` kept as alias of danger.
 - 2026-11-06 Adopted from repraze-lib-ui: color × variant axes, `danger` naming, nativeButton auto,
   table flags, sidebar `keyboardShortcut`, ScrollArea viewport props, `font-heading`, avatar `xs`,
   checkbox indeterminate, `"use client"`.
 - 2026-11-06 Lines use `border`/`input` tokens, not `foreground/10` (hc readability).
 - 2026-11-06 Pills use `rounded-pill` so `radius-none` gives a fully square UI.
-- 2026-11-06 Solid fills use the Termicolor fill tier (`--c-fill`): light-mode warning/yellow solid was
+- 2026-11-06 Solid fills use the TermiColor fill tier (`--c-fill`): light-mode warning/yellow solid was
   brown with the text tier. `primary` stays on the accent role (deliberately more contrasty than the
   plain pink fill).
 - 2026-11-06 Neutral soft is a faint `--c/6` wash so it sits below neutral solid (secondary).
@@ -281,12 +288,12 @@ Tools (dev server must be running on :5175, it hot-reloads):
   in hc, the wash became a solid grey fill). Labels wrapping a disabled control dim (`has-data-disabled`).
 - 2026-11-06 Input gets `size` sm/default/lg (native attribute renamed `htmlSize`). Toolbar container
   `p-px` so it is 32px like other default controls.
-- 2026-11-06 Light `--secondary` mixed 5% toward foreground: Termicolor bgRaised was ~2% off the page.
+- 2026-11-06 Light `--secondary` mixed 5% toward foreground: TermiColor bgRaised was ~2% off the page.
 - 2026-11-06 Field background tokens (`--field`, `--field-hover`, `--field-disabled`) replace
   `dark:bg-input/30`: the dark variant's specificity killed hover on outline buttons and selects in dark.
 - 2026-11-06 Pressed toggles use the accent tint (`bg-accent`, an "on" state among peers); `bg-primary` is
   for a single checked control (checkbox, radio, switch) and the primary action.
-- 2026-11-06 Light-mode accent was dark everywhere: `--primary` was the accent text tier. Termicolor now
+- 2026-11-06 Light-mode accent was dark everywhere: `--primary` was the accent text tier. TermiColor now
   has `accentFill`/`onAccentFill` roles; `--primary` = fill, new `--primary-text` = text tier.
 - 2026-11-06 `dark:<state>:bg-*` banned by lint (it outranks `hover:`): checkbox/radio lost hover when
   checked in dark. Use tokens or pair with `dark:hover:`.
@@ -296,7 +303,7 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-08 Site shell components (site-header, site-layout, page-header, toc, pager, search-trigger):
   one header / docs layout for every site of the suite. SidebarMenuButton works without a provider.
   Base UI ScrollArea sets `position` inline: sticky goes on a wrapper.
-- 2026-11-07 Fields on `bgRaised` (Termicolor DESIGN.md §4), found by the termicolor site's e2e when it
+- 2026-11-07 Fields on `bgRaised` (TermiColor DESIGN.md §4), found by the termicolor site's e2e when it
   moved onto the kit; outline buttons transparent + `bg-hover`. CommandDialog forwards
   `initialFocus`/`finalFocus`.
 - 2026-11-07 Thin accent indicators (tab line, selected-row bar, current/selected borders, drag-over,
@@ -308,8 +315,11 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-08 Navigation states unified (§7c): hover wash + 2px accent indicator everywhere; sidebar current
   rows tint with the accent (`--color-primary-tint`) instead of the grey `sidebar-accent`. `SiteHeaderBanner`
   removed (termicolor's spectrum bar went with it). Sidebar border runs header to footer.
-- 2026-11-08 Brand marks: kernelkit gets a pixel-art CRT console matching termicolor's head; wordmarks are
+- 2026-11-08 Brand marks: KernelKit gets a pixel-art CRT console matching TermiColor's head; wordmarks are
   mono lowercase with the second word in the accent.
 - 2026-11-08 Brand sprites get a 1px white ring (in a reserved 1px margin, viewBox 34) so the dark
   outline reads on dark pages. SearchDialog/SearchItem/SearchFooter, SiteFooter, Hero and Section join
   the shell; both sites' homepages use them.
+- 2026-11-09 Brand names are camel-cased (TermiColor, KernelKit) in the wordmark, prose and tab titles.
+  `LinkCard` (+ `LinkCardMedia`, `LinkCardArrow`) replaces hand-rolled card links: accent border,
+  title and top wash on hover, after the termicolor wallpaper cards and the repraze.com home cards.

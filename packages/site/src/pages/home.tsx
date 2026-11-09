@@ -4,11 +4,14 @@ import {Badge} from "@repraze/kernelkit/components/badge";
 import {Button} from "@repraze/kernelkit/components/button";
 import {
     Card,
+    CardAction,
     CardContent,
     CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
+    LinkCard,
+    LinkCardArrow,
 } from "@repraze/kernelkit/components/card";
 import {Checkbox} from "@repraze/kernelkit/components/checkbox";
 import {Field, FieldDescription, FieldGroup, FieldLabel} from "@repraze/kernelkit/components/field";
@@ -40,14 +43,14 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@re
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {useTheme} from "@repraze/kernelkit/provider";
 import {Link} from "@tanstack/react-router";
-import {ArrowRightIcon, BoxIcon, CpuIcon, ExternalLinkIcon, PackageIcon, PaletteIcon, TerminalIcon} from "lucide-react";
+import {ArrowRightIcon, BoxIcon, CpuIcon, PackageIcon, PaletteIcon, TerminalIcon} from "lucide-react";
 
 import {GithubIcon} from "@/components/github-icon";
 import {LogoMark} from "@/components/logo";
 import {AccentPicker, RadiusPicker} from "@/components/theme-customizer";
 import {Code} from "@/lib/doc-kit";
 import {DOCS} from "@/lib/docs-index";
-import {GITHUB_URL} from "@/lib/site";
+import {GITHUB_URL, usePageTitle} from "@/lib/site";
 
 const PROCESSES = [
     {pid: 1, name: "init", cpu: 0.1, status: "running"},
@@ -57,6 +60,7 @@ const PROCESSES = [
 ] as const;
 
 export function HomePage() {
+    usePageTitle();
     const componentCount = DOCS.filter((d) => d.category !== "Foundations").length;
     return (
         <main className="flex flex-1 flex-col">
@@ -73,7 +77,7 @@ export function HomePage() {
                     Components with a <span className="text-primary-text">kernel</span> of contrast.
                 </HeroTitle>
                 <HeroDescription>
-                    Every shadcn component on Base UI and Tailwind v4, themed by Termicolor. One accent, one radius,
+                    Every shadcn component on Base UI and Tailwind v4, themed by TermiColor. One accent, one radius,
                     light, dark and high contrast. Install the package or copy the source.
                 </HeroDescription>
                 <HeroActions>
@@ -196,7 +200,7 @@ export function HomePage() {
                         <SectionEyebrow>The suite</SectionEyebrow>
                         <SectionTitle>One design language</SectionTitle>
                         <SectionDescription>
-                            Termicolor, kernelkit and repraze.com share the header, sidebar, spacing and states. Each
+                            TermiColor, KernelKit and repraze.com share the header, sidebar, spacing and states. Each
                             keeps its own accent and radius.
                         </SectionDescription>
                         <SectionAction>
@@ -207,21 +211,17 @@ export function HomePage() {
                     </SectionHeader>
                     <div className="grid gap-4 md:grid-cols-3">
                         {SUITE.map((site) => (
-                            <a
-                                key={site.name}
-                                href={site.href}
-                                className="group/suite rounded-xl outline-none focus-visible:ring-3 focus-visible:ring-ring/50"
-                            >
-                                <Card className="h-full transition-colors group-hover/suite:bg-hover">
-                                    <CardHeader>
-                                        <CardTitle className="flex items-center gap-2 font-mono">
-                                            <site.icon className="size-4 text-primary-text" /> {site.name}
-                                            <ExternalLinkIcon className="ml-auto size-3.5 text-muted-foreground" />
-                                        </CardTitle>
-                                        <CardDescription>{site.description}</CardDescription>
-                                    </CardHeader>
-                                </Card>
-                            </a>
+                            <LinkCard key={site.name} href={site.href} className="h-full">
+                                <CardHeader>
+                                    <CardTitle className="flex items-center gap-2">
+                                        <site.icon className="size-4 text-primary-text" /> {site.name}
+                                    </CardTitle>
+                                    <CardDescription>{site.description}</CardDescription>
+                                    <CardAction>
+                                        <LinkCardArrow external />
+                                    </CardAction>
+                                </CardHeader>
+                            </LinkCard>
                         ))}
                     </div>
                 </Section>
@@ -232,13 +232,13 @@ export function HomePage() {
 
 const SUITE = [
     {
-        name: "termicolor",
+        name: "TermiColor",
         icon: PaletteIcon,
         href: "https://repraze.github.io/termicolor/",
         description: "The palette: themes for your editor, terminal and prompt, and the colors behind this kit.",
     },
     {
-        name: "kernelkit",
+        name: "KernelKit",
         icon: TerminalIcon,
         href: GITHUB_URL,
         description: "The components: shadcn on Base UI, the site shell every suite site is built from.",

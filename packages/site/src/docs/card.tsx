@@ -8,6 +8,9 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
+    LinkCard,
+    LinkCardArrow,
+    LinkCardMedia,
 } from "@repraze/kernelkit/components/card";
 import {Input} from "@repraze/kernelkit/components/input";
 import {MoreHorizontalIcon, ServerIcon} from "lucide-react";
@@ -28,6 +31,12 @@ export const doc = defineDoc({
         },
         {title: "Form", component: FormCard},
         {title: "Divided header", component: DividedHeader, description: "Add `border-b` to the header."},
+        {
+            title: "Link card",
+            component: LinkCards,
+            description:
+                "`LinkCard` makes the whole card one link. Hover or keyboard focus turns the border and title to the accent, washes the top in the accent tint, nudges a `LinkCardArrow` and zooms a `LinkCardMedia`. Pass a router link through `render`.",
+        },
     ],
     props: [
         {
@@ -38,6 +47,24 @@ export const doc = defineDoc({
                     type: '"default" | "sm"',
                     default: '"default"',
                     description: "Sets `--card-spacing` (16px / 12px), used by every part for padding and gaps.",
+                },
+            ],
+        },
+        {
+            component: "LinkCard",
+            rows: [
+                {name: "render", type: "ReactElement", description: 'The link element, e.g. `<Link to="/ports" />`.'},
+                {name: "size", type: '"default" | "sm"', default: '"default"', description: "Same as Card."},
+            ],
+        },
+        {
+            component: "LinkCardArrow",
+            rows: [
+                {
+                    name: "external",
+                    type: "boolean",
+                    default: "false",
+                    description: "An up-right arrow that moves diagonally, for links that leave the site.",
                 },
             ],
         },
@@ -170,5 +197,41 @@ export function DividedHeader() {
                 </div>
             </CardContent>
         </Card>
+    );
+}
+
+export function LinkCards() {
+    return (
+        <div className="grid w-full max-w-2xl gap-4 sm:grid-cols-2">
+            <LinkCard href="#link-card">
+                <LinkCardMedia>
+                    <div className="aspect-video bg-linear-135 from-tc-pink via-tc-purple to-tc-blue" />
+                </LinkCardMedia>
+                <CardHeader>
+                    <CardTitle>Gradient wallpapers</CardTitle>
+                    <CardDescription>1080p to 4K, light and dark.</CardDescription>
+                    <CardAction>
+                        <LinkCardArrow />
+                    </CardAction>
+                </CardHeader>
+            </LinkCard>
+            <LinkCard href="#link-card">
+                <CardHeader>
+                    <CardTitle className="flex items-center gap-2">
+                        <ServerIcon className="size-4 text-primary-text" /> edge-fra-01
+                    </CardTitle>
+                    <CardDescription>Ingress node, Frankfurt region. Open the node dashboard.</CardDescription>
+                    <CardAction>
+                        <LinkCardArrow external />
+                    </CardAction>
+                </CardHeader>
+                <CardContent className="flex flex-wrap gap-1.5">
+                    <Badge variant="soft" color="success">
+                        healthy
+                    </Badge>
+                    <Badge variant="outline">v2.18.3</Badge>
+                </CardContent>
+            </LinkCard>
+        </div>
     );
 }

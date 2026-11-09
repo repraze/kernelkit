@@ -1,7 +1,7 @@
 # @repraze/kernelkit
 
 Modern, techy React components: every shadcn component on Base UI, Tailwind v4 and `cva`, themed by the
-[Termicolor](https://www.npmjs.com/package/@repraze/termicolor) palette. One accent (pink by default), one
+[TermiColor](https://www.npmjs.com/package/@repraze/termicolor) palette. One accent (pink by default), one
 radius knob, light / dark / high contrast, all CSS variables.
 
 Docs: https://repraze.github.io/kernelkit/

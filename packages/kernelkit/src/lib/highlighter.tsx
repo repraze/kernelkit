@@ -3,7 +3,7 @@ import {createHighlighterCore, type GrammarState, type HighlighterCore} from "sh
 import {createCssVariablesTheme} from "shiki/core";
 import {createJavaScriptRegexEngine} from "shiki/engine/javascript";
 
-// Token colors are CSS variables (--kk-code-*), mapped to Termicolor syntax roles in kernelkit.css,
+// Token colors are CSS variables (--kk-code-*), mapped to TermiColor syntax roles in kernelkit.css,
 // so highlighted code follows mode, contrast and scopes without re-highlighting.
 const kernelkitTheme = createCssVariablesTheme({name: "kernelkit", variablePrefix: "--kk-code-", fontStyle: true});
 

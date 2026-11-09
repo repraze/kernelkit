@@ -4,7 +4,7 @@
  * - `--c`      the color, text tier: readable as text/icon/border on any surface
  * - `--c-fg`   text on a solid `--c` fill
  * - `--c-tint` opaque wash behind foreground text
- * - `--c-fill` / `--c-fill-fg` vivid solid surface and its text (Termicolor "fills are the brand":
+ * - `--c-fill` / `--c-fill-fg` vivid solid surface and its text (TermiColor "fills are the brand":
  *   in light mode the text tier is darkened for contrast, the fill tier stays vivid)
  *
  * Spread `colorVariants` into a cva `variants.color` map, then write variants against the vars

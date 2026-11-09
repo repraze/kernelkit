@@ -298,7 +298,7 @@ function Notes() {
         <section className="flex flex-col gap-3">
             <h2 className="font-heading text-xl font-semibold">Layout</h2>
             <p className="text-sm text-muted-foreground">
-                This docs site is built with these parts. Termicolor, kernelkit and repraze.com share them; a site sets
+                This docs site is built with these parts. TermiColor, KernelKit and repraze.com share them; a site sets
                 only its accent, radius and brand mark. Navigation follows one rule everywhere: muted at rest, a hover
                 wash, and the current item in the foreground with a 2px accent indicator on the edge that faces its
                 structure (the header border, the sidebar row's left edge, the tree line).

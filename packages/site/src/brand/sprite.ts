@@ -1,9 +1,9 @@
 /**
- * Kernelkit brand mark: a 32x32 pixel-art CRT console, in the same Doom-HUD style as Termicolor's head
+ * KernelKit brand mark: a 32x32 pixel-art CRT console, in the same Doom-HUD style as TermiColor's head
  * (light from the top left, dithered falloff, an accent rim light on the right). Its screen shows a tiny
  * kernelkit UI: a title bar, a sidebar with the current row marked, a heading, text, a solid button and a cursor.
  *
- * Every color is resolved from Termicolor's dark mode and the pink accent; nothing is hardcoded.
+ * Every color is resolved from TermiColor's dark mode and the pink accent; nothing is hardcoded.
  */
 import {mix, palette} from "@repraze/termicolor";
 

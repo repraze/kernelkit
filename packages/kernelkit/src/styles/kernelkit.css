@@ -1,10 +1,10 @@
 /*
- * Kernelkit styles. Import after Tailwind in your app stylesheet:
+ * KernelKit styles. Import after Tailwind in your app stylesheet:
  *
  *     @import "tailwindcss";
  *     @import "@repraze/kernelkit/styles.css";
  *
- * Layers: Termicolor palette (--tc-*) → shadcn tokens (--primary, …) → kernelkit knobs (--kk-*).
+ * Layers: TermiColor palette (--tc-*) → shadcn tokens (--primary, …) → kernelkit knobs (--kk-*).
  * Theme with classes on <html> (or any subtree): .light/.dark, .hc, .accent-<name>, .radius-<size>.
  */
 @import "tw-animate-css";
@@ -12,7 +12,7 @@
 @import "@repraze/termicolor/shadcn.css";
 @import "./shadcn.css";
 
-/* Kernelkit's own class names live in its sources: let Tailwind see them from node_modules. */
+/* KernelKit's own class names live in its sources: let Tailwind see them from node_modules. */
 @source "../components";
 @source "../provider";
 @source "../lib";
@@ -41,7 +41,7 @@
     --tc-tab-indicator: var(--tc-accent-pink-tab-indicator);
 }
 
-/* Light mode: Termicolor's bgRaised is ~2% off the sunken page background, so secondary surfaces
+/* Light mode: TermiColor's bgRaised is ~2% off the sunken page background, so secondary surfaces
    (neutral buttons, badges, user bubbles) vanished. Nudge them toward the foreground. */
 :root:not(.dark),
 .light {
@@ -50,7 +50,7 @@
 
 /* Field backgrounds as tokens, not `dark:bg-input/30` classes: a variant-prefixed background outranks
    `hover:` and `data-*:` states, which killed hover on dark outline surfaces. One plain `bg-field` class
-   and the mode decides. Fields sit on Termicolor's bgRaised ("things that take input", DESIGN.md §4);
+   and the mode decides. Fields sit on TermiColor's bgRaised ("things that take input", DESIGN.md §4);
    hover steps toward the foreground so it reads on any surface. */
 :root,
 .light,
@@ -87,7 +87,7 @@
     --shadow-color: var(--tc-shadow);
 }
 
-/* ─── Code: Shiki css-variables theme (lib/highlighter.tsx) → Termicolor syntax roles ───────────── */
+/* ─── Code: Shiki css-variables theme (lib/highlighter.tsx) → TermiColor syntax roles ───────────── */
 :root,
 .light,
 .dark {
@@ -131,7 +131,7 @@
     --radius: var(--kk-radius);
     --kk-font-sans: ui-sans-serif, system-ui, sans-serif;
     --kk-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
-    /* Titles: card, dialog, sheet, empty, alert. Mono by default (the Termicolor look). */
+    /* Titles: card, dialog, sheet, empty, alert. Mono by default (the TermiColor look). */
     --kk-font-heading: var(--kk-font-mono);
     /* Site shell (site-header, site-layout): content width, and the sticky header's height that
        sidebars and anchors offset by. A site with a banner above the header row adds it here. */
@@ -203,7 +203,7 @@
     --color-muted-foreground: var(--muted-foreground);
     --color-accent: var(--accent);
     --color-accent-foreground: var(--accent-foreground);
-    /* hover wash: visible in high contrast, unlike a surface shade (Termicolor DESIGN.md §6) */
+    /* hover wash: visible in high contrast, unlike a surface shade (TermiColor DESIGN.md §6) */
     --color-hover: var(--hover);
     --color-destructive: var(--destructive);
     --color-destructive-foreground: var(--destructive-foreground);
@@ -243,7 +243,7 @@
     --color-sidebar-border: var(--sidebar-border);
     --color-sidebar-ring: var(--sidebar-ring);
 
-    /* Termicolor accents as utilities: text-tc-pink, bg-tc-blue-tint, bg-tc-green-fill, … */
+    /* TermiColor accents as utilities: text-tc-pink, bg-tc-blue-tint, bg-tc-green-fill, … */
     --color-tc-red: var(--tc-red);
     --color-tc-red-on: var(--tc-red-on);
     --color-tc-red-fill: var(--tc-red-fill);

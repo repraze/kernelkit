@@ -2,7 +2,7 @@
     "name": "@kernelkit/root",
     "private": true,
     "version": "0.1.0",
-    "description": "Kernelkit - a modern, techy React component library on Base UI, Tailwind v4 and Termicolor",
+    "description": "KernelKit - a modern, techy React component library on Base UI, Tailwind v4 and TermiColor",
     "type": "module",
     "workspaces": [
         "packages/*"

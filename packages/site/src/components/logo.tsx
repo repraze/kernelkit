@@ -17,13 +17,13 @@ export function LogoMark({className}: {className?: string}) {
     );
 }
 
-/** Mark + wordmark: "kernel" in the foreground, "kit" in the accent (the suite's brand pattern). */
+/** Mark + wordmark: "Kernel" in the foreground, "Kit" in the accent (the suite's brand pattern). */
 export function Logo({className}: {className?: string}) {
     return (
         <span className={cn("inline-flex items-center gap-2", className)}>
             <LogoMark />
             <span className="font-mono text-sm font-semibold tracking-tight">
-                kernel<span className="text-primary-text">kit</span>
+                Kernel<span className="text-primary-text">Kit</span>
             </span>
         </span>
     );

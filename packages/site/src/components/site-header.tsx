@@ -18,7 +18,7 @@ import {Logo} from "@/components/logo";
 import {SiteSearch} from "@/components/site-search";
 import {ModeToggle, ThemeCustomizer} from "@/components/theme-customizer";
 import {DOCS_BY_SLUG} from "@/lib/docs-index";
-import {GITHUB_URL} from "@/lib/site";
+import {GITHUB_URL, SITE_NAME} from "@/lib/site";
 
 type Section = "docs" | "components" | "theming";
 
@@ -67,7 +67,7 @@ export function SiteHeader() {
                     </nav>
                     <DocsNav />
                 </SiteHeaderMenu>
-                <SiteHeaderBrand aria-label="Kernelkit home" render={<Link to="/" />}>
+                <SiteHeaderBrand aria-label={`${SITE_NAME} home`} render={<Link to="/" />}>
                     <Logo />
                 </SiteHeaderBrand>
                 <SiteNav>{navLinks}</SiteNav>

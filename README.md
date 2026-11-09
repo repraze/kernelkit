@@ -1,7 +1,7 @@
-# Kernelkit
+# KernelKit
 
 A modern, techy React component library: every shadcn component on Base UI, Tailwind v4 and `cva`,
-themed by the [Termicolor](https://github.com/repraze/termicolor) palette. One accent (pink by default),
+themed by the [TermiColor](https://github.com/repraze/termicolor) palette. One accent (pink by default),
 one radius knob, light / dark / high contrast, all CSS variables.
 
 Use it as a package, or install components as source with the shadcn CLI.
@@ -51,7 +51,7 @@ Design rules and the review checklist: [GUIDELINES.md](GUIDELINES.md). Inventory
 
 ### Iterating on the palette
 
-Kernelkit depends on [`@repraze/termicolor`](https://www.npmjs.com/package/@repraze/termicolor) from npm.
+KernelKit depends on [`@repraze/termicolor`](https://www.npmjs.com/package/@repraze/termicolor) from npm.
 To work against a local termicolor checkout, link it (don't commit the lockfile while linked):
 
 ```bash

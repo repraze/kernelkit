@@ -13,9 +13,11 @@ import {ExternalLinkIcon} from "lucide-react";
 
 import {Demo, PropsTable, slugify} from "@/lib/doc-kit";
 import {DOCS, DOCS_BY_SLUG} from "@/lib/docs-index";
+import {usePageTitle} from "@/lib/site";
 
 export function DocPage() {
     const doc = useLoaderData({from: "/docs/$slug"});
+    usePageTitle(doc.title);
     const meta = DOCS_BY_SLUG.get(doc.slug);
     const index = meta ? DOCS.indexOf(meta) : -1;
     const prev = DOCS[index - 1];

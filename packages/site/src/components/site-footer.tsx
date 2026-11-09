@@ -10,7 +10,7 @@ export function SiteFooter() {
             <span>
                 MIT · themed by{" "}
                 <SiteFooterLink href="https://repraze.github.io/termicolor/" className="underline underline-offset-4">
-                    termicolor
+                    TermiColor
                 </SiteFooterLink>{" "}
                 · a{" "}
                 <SiteFooterLink href="https://repraze.com" className="underline underline-offset-4">

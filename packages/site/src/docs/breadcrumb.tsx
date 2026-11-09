@@ -166,7 +166,7 @@ export function CustomSeparator() {
                     <SlashIcon />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
-                    <BreadcrumbLink href="#">kernelkit</BreadcrumbLink>
+                    <BreadcrumbLink href="#">KernelKit</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
                     <SlashIcon />

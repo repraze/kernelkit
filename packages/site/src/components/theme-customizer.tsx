@@ -94,7 +94,7 @@ export function ModeToggle() {
     );
 }
 
-/** The eight Termicolor accents as swatches; sets the site's accent. */
+/** The eight TermiColor accents as swatches; sets the site's accent. */
 export function AccentPicker({className}: {className?: string}) {
     const theme = useTheme();
     return (
