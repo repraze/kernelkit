@@ -51,16 +51,15 @@ interface SearchTriggerProps extends React.ComponentProps<typeof Button> {
     children?: React.ReactNode;
 }
 
-/** Header search button: icon, placeholder, OS-aware shortcut. Open your dialog in `onClick`. */
+/** Header search button: icon, placeholder, OS-aware shortcut. Same 32px height as the header's icon buttons. Open your dialog in `onClick`. */
 function SearchTrigger({children = "Search…", className, ...props}: SearchTriggerProps) {
     const mod = useModKey();
     return (
         <Button
             variant="outline"
-            size="sm"
             aria-label="Search"
             data-slot="search-trigger"
-            className={cn("w-9 justify-start px-0 text-muted-foreground sm:w-48 sm:px-2.5 md:w-56", className)}
+            className={cn("w-8 justify-start px-0 text-muted-foreground sm:w-48 sm:px-2.5 md:w-56", className)}
             {...props}
         >
             <SearchIcon data-icon="inline-start" className="mx-auto sm:mx-0" />
