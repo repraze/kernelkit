@@ -68,7 +68,7 @@ export function HomePage() {
             <Hero layout="split">
                 <HeroBody>
                     <HeroEyebrow>
-                        <Badge variant="outline" className="font-mono">
+                        <Badge variant="outline">
                             <span className="size-1.5 rounded-full bg-success" /> v0.1 alpha · {componentCount}{" "}
                             components
                         </Badge>

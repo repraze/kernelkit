@@ -59,9 +59,7 @@ function Slide({release}: {release: (typeof RELEASES)[number]}) {
     return (
         <Card size="sm">
             <CardHeader>
-                <Badge variant="outline" className="font-mono">
-                    {release.tag}
-                </Badge>
+                <Badge variant="outline">{release.tag}</Badge>
                 <CardTitle className="mt-2">{release.title}</CardTitle>
                 <CardDescription>{release.body}</CardDescription>
             </CardHeader>

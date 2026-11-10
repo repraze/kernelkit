@@ -7,7 +7,7 @@ import {defineDoc} from "@/lib/doc-kit";
 export const doc = defineDoc({
     title: "Badge",
     category: "Data display",
-    description: "A compact pill for status, counts and tags. Same color × variant axes as Button.",
+    description: "A compact pill in the alt font for status, counts and tags. Same color × variant axes as Button.",
     demos: [
         {title: "Variants", component: Variants},
         {
@@ -103,7 +103,7 @@ export function Status() {
             <Badge variant="outline">
                 <GitBranchIcon data-icon="inline-start" /> main
             </Badge>
-            <Badge className="min-w-5 px-1 font-mono tabular-nums">12</Badge>
+            <Badge className="min-w-5 px-1 tabular-nums">12</Badge>
         </div>
     );
 }

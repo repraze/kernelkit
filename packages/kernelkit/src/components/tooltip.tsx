@@ -41,7 +41,7 @@ function TooltipContent({
                     className={cn(
                         // Popover-coloured chip: the popup surface and border, small mono text.
                         popupMotion,
-                        "z-50 inline-flex min-h-6 w-fit max-w-xs items-center gap-1.5 rounded-md border border-border bg-popover px-2 py-1 font-mono text-xs text-popover-foreground shadow-md shadow-(color:--shadow-color) has-data-[slot=kbd]:pr-1 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:h-4 **:data-[slot=kbd]:min-w-4 **:data-[slot=kbd]:rounded-xs",
+                        "z-50 inline-flex min-h-6 w-fit max-w-xs items-center gap-1.5 rounded-md border border-border bg-popover px-2 py-1 font-alt text-xs text-popover-foreground shadow-md shadow-(color:--shadow-color) has-data-[slot=kbd]:pr-1 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:h-4 **:data-[slot=kbd]:min-w-4 **:data-[slot=kbd]:rounded-xs",
                         className,
                     )}
                     {...props}

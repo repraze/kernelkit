@@ -133,6 +133,9 @@
     --kk-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
     /* Titles: card, dialog, sheet, empty, alert. Mono by default (the TermiColor look). */
     --kk-font-heading: var(--kk-font-mono);
+    /* Labels and readouts: badges, tooltips, breadcrumbs, kbd, shortcuts, eyebrows, nav, values. Mono by
+       default (the TermiColor look); point it at any face. Code always stays on --kk-font-mono. */
+    --kk-font-alt: var(--kk-font-mono);
     /* Site shell (site-header, site-layout): content width, and the sticky header's height that
        sidebars and anchors offset by. A site with a banner above the header row adds it here. */
     --kk-site-width: 80rem;
@@ -159,6 +162,7 @@
     --font-sans: var(--kk-font-sans);
     --font-mono: var(--kk-font-mono);
     --font-heading: var(--kk-font-heading);
+    --font-alt: var(--kk-font-alt);
 
     --radius-xs: calc(var(--kk-radius) * 0.25);
     --radius-sm: calc(var(--kk-radius) * 0.5);

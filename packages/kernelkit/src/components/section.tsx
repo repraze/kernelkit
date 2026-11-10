@@ -50,7 +50,7 @@ function SectionEyebrow({className, render, ...props}: useRender.ComponentProps<
     return useRender({
         defaultTagName: "div",
         props: mergeProps<"div">(
-            {className: cn("font-mono text-xs font-medium text-primary-text uppercase sm:col-start-1", className)},
+            {className: cn("font-alt text-xs font-medium text-primary-text uppercase sm:col-start-1", className)},
             props,
         ),
         render,

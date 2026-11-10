@@ -21,7 +21,7 @@ const rechartsDefaults = [
 
 const chartContainerClass = [
     "flex aspect-video justify-center text-xs",
-    "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-axis-tick_text]:font-mono",
+    "[&_.recharts-cartesian-axis-tick_text]:fill-muted-foreground [&_.recharts-cartesian-axis-tick_text]:font-alt",
     "[&_.recharts-curve.recharts-tooltip-cursor]:stroke-border [&_.recharts-rectangle.recharts-tooltip-cursor]:fill-hover",
     "[&_.recharts-radial-bar-background-sector]:fill-muted",
     "[&_.recharts-layer]:outline-hidden [&_.recharts-sector]:outline-hidden [&_.recharts-surface]:outline-hidden",
@@ -230,7 +230,7 @@ function ChartTooltipContent({
                                                 </span>
                                             </div>
                                             {item.value != null && (
-                                                <span className="font-mono font-medium text-foreground tabular-nums">
+                                                <span className="font-alt font-medium text-foreground tabular-nums">
                                                     {typeof item.value === "number"
                                                         ? item.value.toLocaleString()
                                                         : String(item.value)}

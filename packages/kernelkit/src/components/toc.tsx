@@ -35,7 +35,7 @@ function TocTitle({className, render, ...props}: useRender.ComponentProps<"p">) 
     return useRender({
         defaultTagName: "p",
         props: mergeProps<"p">(
-            {className: cn("font-mono text-xs font-medium text-muted-foreground uppercase", className)},
+            {className: cn("font-alt text-xs font-medium text-muted-foreground uppercase", className)},
             props,
         ),
         render,

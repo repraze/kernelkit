@@ -19,7 +19,7 @@ export function DataTableInfoRow<T>({className, view, ...props}: DataTableInfoRo
     const infoColumn: DataTableViewColumn<undefined> = convertColumn({
         id: "info",
         cell: () => (
-            <span className="font-mono tabular-nums">
+            <span className="font-alt tabular-nums">
                 {rowCount.toLocaleString()} rows · {columnCount} columns
             </span>
         ),

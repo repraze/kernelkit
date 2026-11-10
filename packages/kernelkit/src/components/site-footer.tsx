@@ -22,7 +22,7 @@ import type * as React from "react";
 function SiteFooter({className, children, ...props}: React.ComponentProps<"footer">) {
     return (
         <footer data-slot="site-footer" className={cn("border-t border-border", className)} {...props}>
-            <div className="mx-auto flex w-full max-w-(--kk-site-width) flex-col gap-3 px-4 py-6 font-mono text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:px-6">
+            <div className="mx-auto flex w-full max-w-(--kk-site-width) flex-col gap-3 px-4 py-6 font-alt text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between md:px-6">
                 {children}
             </div>
         </footer>

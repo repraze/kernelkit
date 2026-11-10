@@ -67,7 +67,7 @@ function TraceDescription({className, ...props}: React.ComponentProps<"span">) {
     return (
         <span
             data-slot="trace-description"
-            className={cn("shrink-0 font-mono text-xs text-muted-foreground tabular-nums", className)}
+            className={cn("shrink-0 font-alt text-xs text-muted-foreground tabular-nums", className)}
             {...props}
         />
     );

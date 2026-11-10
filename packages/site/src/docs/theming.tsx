@@ -132,14 +132,18 @@ function Notes() {
             <section className="flex flex-col gap-3">
                 <h2 className="font-mono text-xl font-semibold">Variables</h2>
                 <p className="text-sm text-muted-foreground">
-                    Override any token in CSS. Radius is a single knob: every rounded-* step is a multiple of it.
+                    Override any token in CSS. Radius is a single knob: every rounded-* step is a multiple of it. Fonts
+                    come in four roles: sans for body text, mono for code, heading for titles, and alt for labels and
+                    readouts (badges, tooltips, breadcrumbs, kbd, eyebrows, values). Heading and alt default to mono.
                 </p>
                 <Code
                     language="css"
                     code={`:root {
     --kk-radius: 0.375rem;          /* rounded-lg; sm = ×0.5, xl = ×1.5 … */
     --kk-font-sans: "Geist Variable", sans-serif;
-    --kk-font-mono: "JetBrains Mono Variable", monospace;
+    --kk-font-mono: "JetBrains Mono Variable", monospace;  /* code: always monospace */
+    --kk-font-heading: var(--kk-font-mono);                 /* titles (font-heading) */
+    --kk-font-alt: var(--kk-font-mono);                     /* labels, values (font-alt) */
 }
 
 /* TermiColor roles drive shadcn tokens: --primary → --tc-accent, --border → --tc-border … */

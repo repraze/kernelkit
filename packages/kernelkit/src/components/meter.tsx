@@ -59,7 +59,7 @@ function MeterValue({className, ...props}: MeterPrimitive.Value.Props) {
     return (
         <MeterPrimitive.Value
             data-slot="meter-value"
-            className={cn("ms-auto font-mono text-xs text-muted-foreground tabular-nums", className)}
+            className={cn("ms-auto font-alt text-xs text-muted-foreground tabular-nums", className)}
             {...props}
         />
     );

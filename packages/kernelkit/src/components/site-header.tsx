@@ -66,7 +66,7 @@ function SiteHeaderBrand({className, render, ...props}: useRender.ComponentProps
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "flex shrink-0 items-center gap-2 rounded-md font-mono text-sm font-semibold tracking-tight",
+                    "flex shrink-0 items-center gap-2 rounded-md font-alt text-sm font-semibold tracking-tight",
                     focusRing,
                     "[&_svg]:shrink-0",
                     className,
@@ -105,7 +105,7 @@ function SiteNavLink({className, render, ...props}: useRender.ComponentProps<"a"
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "relative flex h-8 items-center rounded-md px-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground motion-reduce:transition-none",
+                    "relative flex h-8 items-center rounded-md px-2.5 font-alt text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground motion-reduce:transition-none",
                     focusRing,
                     // indicator: left edge by default, bottom edge inside SiteNav
                     "after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0",

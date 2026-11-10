@@ -65,7 +65,7 @@ function CodeBlockTitle({className, ...props}: React.ComponentProps<"div">) {
         <div
             data-slot="code-block-title"
             className={cn(
-                "min-w-0 truncate font-mono text-xs font-medium text-foreground group-data-[variant=danger]/code-block:text-danger [&_svg]:pointer-events-none [&_svg]:inline-block [&_svg]:align-middle [&_svg:not([class*='size-'])]:size-3.5 *:[svg]:me-1.5",
+                "min-w-0 truncate font-alt text-xs font-medium text-foreground group-data-[variant=danger]/code-block:text-danger [&_svg]:pointer-events-none [&_svg]:inline-block [&_svg]:align-middle [&_svg:not([class*='size-'])]:size-3.5 *:[svg]:me-1.5",
                 className,
             )}
             {...props}

@@ -237,9 +237,7 @@ export function Flags() {
     return (
         <div className="grid w-full min-w-0 grid-cols-1 gap-4 p-6 lg:grid-cols-2">
             <div className="flex flex-col gap-2">
-                <Badge variant="outline" className="font-mono">
-                    bordered striped
-                </Badge>
+                <Badge variant="outline">bordered striped</Badge>
                 <DataTable bordered striped expand style={{height: 220}}>
                     <DataTableHead view={view}>
                         <DataTableTitleRow view={view} titles={TITLES} />
@@ -248,9 +246,7 @@ export function Flags() {
                 </DataTable>
             </div>
             <div className="flex flex-col gap-2">
-                <Badge variant="outline" className="font-mono">
-                    bordered dividers
-                </Badge>
+                <Badge variant="outline">bordered dividers</Badge>
                 <DataTable bordered dividers expand style={{height: 220}}>
                     <DataTableHead view={view}>
                         <DataTableTitleRow view={view} titles={TITLES} />

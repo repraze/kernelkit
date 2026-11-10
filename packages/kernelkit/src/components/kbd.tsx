@@ -7,7 +7,7 @@ import type * as React from "react";
 /** A keycap: mono, `rounded-sm`, a thicker bottom border for the key look (readable in hc). */
 const kbdVariants = cva(
     [
-        "pointer-events-none inline-flex w-fit items-center justify-center gap-1 rounded-sm border border-b-2 border-border bg-muted font-mono font-medium text-muted-foreground select-none [&_svg]:shrink-0",
+        "pointer-events-none inline-flex w-fit items-center justify-center gap-1 rounded-sm border border-b-2 border-border bg-muted font-alt font-medium text-muted-foreground select-none [&_svg]:shrink-0",
     ],
     {
         variants: {
@@ -28,7 +28,7 @@ function KbdGroup({className, ...props}: React.ComponentProps<"kbd">) {
     return (
         <kbd
             data-slot="kbd-group"
-            className={cn("inline-flex items-center gap-1 font-mono text-xs text-muted-foreground", className)}
+            className={cn("inline-flex items-center gap-1 font-alt text-xs text-muted-foreground", className)}
             {...props}
         />
     );

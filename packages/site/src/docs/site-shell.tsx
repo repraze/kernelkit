@@ -222,9 +222,7 @@ export function Header2() {
     return (
         <PageHeader>
             <PageHeaderEyebrow>
-                <Badge variant="outline" className="font-mono">
-                    eu-west-1
-                </Badge>
+                <Badge variant="outline">eu-west-1</Badge>
                 <Badge variant="soft" color="success">
                     healthy
                 </Badge>
@@ -276,9 +274,7 @@ export function HeroDemo() {
                 <TerminalIcon className="size-12 text-primary-text" />
             </HeroMedia>
             <HeroEyebrow>
-                <Badge variant="outline" className="font-mono">
-                    v2.4 · 12 regions
-                </Badge>
+                <Badge variant="outline">v2.4 · 12 regions</Badge>
             </HeroEyebrow>
             <HeroTitle className="text-3xl sm:text-4xl md:text-5xl">
                 Ship to the <span className="text-primary-text">edge</span>.
@@ -301,9 +297,7 @@ export function SplitHeroDemo() {
         <Hero layout="split" contentClassName="py-12 md:py-14">
             <HeroBody>
                 <HeroEyebrow>
-                    <Badge variant="outline" className="font-mono">
-                        v2.4 · 12 regions
-                    </Badge>
+                    <Badge variant="outline">v2.4 · 12 regions</Badge>
                 </HeroEyebrow>
                 <HeroTitle className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl">
                     Ship to the <span className="text-primary-text">edge</span>.

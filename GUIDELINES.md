@@ -126,7 +126,10 @@ xl ×1.5 · 2xl ×2 · 4xl ×4`. `rounded-pill` = `×999` → fully round, but *
 - Title sizes: dialog/sheet/drawer/alert-dialog `text-base`, card `text-base` (sm card `text-sm`),
   popover/empty/alert `text-sm`.
 - `font-sans` body; `font-heading` (= `--kk-font-heading`, defaults to mono) for card/dialog/sheet/
-  popover/empty/alert titles and page headings; `font-mono` for code, kbd, numbers in tables/stats.
+  popover/empty/alert titles and page headings; `font-alt` (= `--kk-font-alt`, defaults to mono) for
+  labels and readouts: badge, tooltip, breadcrumb, kbd, menu shortcuts, eyebrows, nav links, stat and
+  meter values; `font-mono` only for code (code blocks, inline code, OTP digits), which must stay
+  monospace whatever the alt face is. Components never hardcode `font-mono` for a label.
 - Sizes: body `text-sm`; descriptions `text-sm text-muted-foreground`; meta/labels `text-xs`.
 - Micro label (section captions, table heads in dense views, group labels): `text-xs font-medium
 text-muted-foreground` - mono uppercase only for site chrome, not in components.
@@ -361,3 +364,7 @@ Tools (dev server must be running on :5175, it hot-reloads):
   `rounded-md` chips are concentric with the `rounded-lg` track at every radius knob.
 - 2026-11-10 Breadcrumb reads as a path: mono `text-xs`, a muted `/` separator instead of shadcn's chevron
   (children still replace it), links muted → foreground on hover, the current page foreground + medium.
+- 2026-11-10 `--kk-font-alt` / `font-alt`: a fourth font role for labels and readouts, mono by default, so
+  a site can give badges, tooltips, breadcrumbs, kbd, eyebrows, nav and values another face without
+  touching code. Components that used `font-mono` for labels switched to `font-alt`; code blocks, inline
+  code and OTP digits stay `font-mono`. Badge takes `font-alt` and keeps its pill (the symmetric shape).

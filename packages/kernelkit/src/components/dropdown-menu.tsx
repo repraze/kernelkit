@@ -35,7 +35,7 @@ function resolveItemVariant(variant: MenuItemVariant | undefined) {
 
 /** Keyboard shortcut hint at the end of a menu row. */
 const menuShortcutClass =
-    "ml-auto pl-4 font-mono text-xs text-muted-foreground group-data-highlighted/menu-item:text-accent-foreground";
+    "ml-auto pl-4 font-alt text-xs text-muted-foreground group-data-highlighted/menu-item:text-accent-foreground";
 
 /** Right-side indicator of checkbox and radio rows. */
 const menuIndicatorClass = "pointer-events-none absolute right-2 flex size-4 items-center justify-center";

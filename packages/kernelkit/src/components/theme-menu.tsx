@@ -116,7 +116,7 @@ function ThemeRadiusPicker({className}: {className?: string}) {
             className={cn("w-full", className)}
         >
             {RADII.map((radius) => (
-                <ToggleGroupItem key={radius} value={radius} className="flex-1 font-mono">
+                <ToggleGroupItem key={radius} value={radius} className="flex-1 font-alt">
                     {radius}
                 </ToggleGroupItem>
             ))}

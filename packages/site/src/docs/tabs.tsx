@@ -99,7 +99,7 @@ export function Line() {
                 <TabsTrigger value="deployments">Deployments</TabsTrigger>
                 <TabsTrigger value="builds">
                     Builds
-                    <Badge variant="soft" color="neutral" className="font-mono">
+                    <Badge variant="soft" color="neutral">
                         12
                     </Badge>
                 </TabsTrigger>

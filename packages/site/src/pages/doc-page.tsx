@@ -35,9 +35,7 @@ export function DocPage() {
             <SiteMain>
                 <PageHeader>
                     <PageHeaderEyebrow>
-                        <Badge variant="outline" className="font-mono">
-                            {doc.category}
-                        </Badge>
+                        <Badge variant="outline">{doc.category}</Badge>
                         {doc.baseUi ? (
                             <Badge
                                 variant="secondary"

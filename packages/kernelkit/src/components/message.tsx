@@ -65,7 +65,7 @@ function MessageHeader({className, ...props}: React.ComponentProps<"div">) {
         <div
             data-slot="message-header"
             className={cn(
-                "flex max-w-full min-w-0 items-center gap-1.5 px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5 [&_time]:font-mono [&_time]:font-normal [&_time]:tabular-nums",
+                "flex max-w-full min-w-0 items-center gap-1.5 px-3 text-xs font-medium text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5 [&_time]:font-alt [&_time]:font-normal [&_time]:tabular-nums",
                 className,
             )}
             {...props}
@@ -78,7 +78,7 @@ function MessageFooter({className, ...props}: React.ComponentProps<"div">) {
         <div
             data-slot="message-footer"
             className={cn(
-                "flex max-w-full min-w-0 items-center gap-1 px-3 text-xs text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5 [&_time]:font-mono [&_time]:tabular-nums",
+                "flex max-w-full min-w-0 items-center gap-1 px-3 text-xs text-muted-foreground group-has-data-[variant=ghost]/message:px-0 group-data-[align=end]/message:justify-end [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5 [&_time]:font-alt [&_time]:tabular-nums",
                 className,
             )}
             {...props}

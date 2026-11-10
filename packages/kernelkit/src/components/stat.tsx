@@ -51,7 +51,7 @@ function StatValue({className, ...props}: React.ComponentProps<"div">) {
         <div
             data-slot="stat-value"
             className={cn(
-                "col-start-1 flex items-baseline gap-1 font-mono text-2xl leading-tight font-medium tracking-tight text-foreground tabular-nums",
+                "col-start-1 flex items-baseline gap-1 font-alt text-2xl leading-tight font-medium tracking-tight text-foreground tabular-nums",
                 "group-data-[size=sm]/stat:text-xl group-data-[size=lg]/stat:text-3xl",
                 className,
             )}
@@ -74,7 +74,7 @@ function StatUnit({className, ...props}: React.ComponentProps<"span">) {
 type StatTrend = "up" | "down" | "flat";
 
 const statDeltaVariants = cva(
-    "col-start-1 inline-flex w-fit items-center gap-1 font-mono text-xs font-medium tabular-nums [&_svg]:size-3.5 [&_svg]:shrink-0",
+    "col-start-1 inline-flex w-fit items-center gap-1 font-alt text-xs font-medium tabular-nums [&_svg]:size-3.5 [&_svg]:shrink-0",
     {
         variants: {
             intent: {
