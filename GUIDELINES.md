@@ -189,7 +189,14 @@ decorations above the header row.
 
 - Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
   `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono) · `SiteHeaderActions`
-  (`SearchTrigger`, a vertical `Separator`, theme controls, repository icon button).
+  (`SearchTrigger`, a vertical `Separator`, `ThemeMenu`, repository icon button).
+- Theme control: one `ThemeMenu`, a ghost `size="icon"` button (32px box, 16px icon, the same as the
+  repository button) whose icon is the chosen mode (sun, moon, monitor for system, not the resolved
+  mode). Its popover holds mode (segmented), accent swatches, high contrast, radius and a Reset to the
+  `ThemeProvider` defaults, disabled while nothing differs. No separate mode toggle beside it. Every site
+  runs the kit's `ThemeProvider` (its own `storageKey` and `defaultTheme`), so the menu is the same code
+  everywhere; a site's look (TermiColor's square corners) is its `defaultTheme`, never a `:root`
+  override that would beat the `.radius-*` classes.
 - Brand mark: a vector mark on a 32-unit grid (`brand/mark.ts`), one silhouette with a 2-unit outline in
   the site's accent around a neutral body, at most three details inside (TermiColor: a skull with red
   eyes and a 2-4-2 grin; KernelKit: a grey monitor showing the current-row highlight). Every edge,
@@ -339,3 +346,9 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-09 Split hero: `Hero layout="split"` with `HeroBody` + `HeroShowcase` (a Carousel, now with
   `autoplay`), centered on phones. The hero mark is dropped (it sat right under the header's), and both
   sites use the same footer block, so their heroes are the same height (510px at desktop widths).
+- 2026-11-10 One theme control for the suite: `ThemeMenu` (theme-menu.tsx) replaces KernelKit's palette
+  popover + mode toggle pair and TermiColor's dropdown (a 28px `sm` button with a second contrast icon).
+  The trigger is the 32px ghost icon button, like the repository link; the popover adds Reset
+  (`useTheme().resetTheme`, which forgets the stored choice, and `defaults`). TermiColor moved onto the
+  kit's `ThemeProvider` (one JSON key; the old three keys migrate in its pre-paint script) and gained the
+  radius knob, with `radius: "none"` as its default instead of `--kk-radius: 0px` on `:root`.

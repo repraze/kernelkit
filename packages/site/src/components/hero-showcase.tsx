@@ -18,11 +18,10 @@ import {StatusDot} from "@repraze/kernelkit/components/status-dot";
 import {Switch} from "@repraze/kernelkit/components/switch";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@repraze/kernelkit/components/table";
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
+import {ThemeAccentPicker, ThemeRadiusPicker} from "@repraze/kernelkit/components/theme-menu";
 import {useTheme} from "@repraze/kernelkit/provider";
 import {FileTextIcon, SearchIcon, SlidersHorizontalIcon, TerminalIcon} from "lucide-react";
 import type * as React from "react";
-
-import {AccentPicker, RadiusPicker} from "@/components/theme-customizer";
 
 /** Every slide is the same height, so the hero keeps one size while it plays (and matches TermiColor's). */
 const SLIDE = "h-88";
@@ -156,10 +155,10 @@ function CustomizeSlide() {
             </CardHeader>
             <CardContent className="flex flex-1 flex-col gap-4">
                 <Knob label="Accent">
-                    <AccentPicker />
+                    <ThemeAccentPicker />
                 </Knob>
                 <Knob label="Radius">
-                    <RadiusPicker />
+                    <ThemeRadiusPicker />
                 </Knob>
                 <div className="flex items-center justify-between gap-4">
                     <Label htmlFor="hs-contrast" className="font-mono text-xs text-muted-foreground uppercase">

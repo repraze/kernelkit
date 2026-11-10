@@ -31,6 +31,7 @@ import {
     SectionHeader,
     SectionTitle,
 } from "@repraze/kernelkit/components/section";
+import {Separator} from "@repraze/kernelkit/components/separator";
 import {
     SidebarGroup,
     SidebarGroupLabel,
@@ -47,8 +48,9 @@ import {
     SiteNav,
     SiteNavLink,
 } from "@repraze/kernelkit/components/site-header";
+import {ThemeMenu} from "@repraze/kernelkit/components/theme-menu";
 import {Toc, TocItem, TocList, TocTitle} from "@repraze/kernelkit/components/toc";
-import {ArrowRightIcon, FileTextIcon, MoonIcon, ServerIcon, TerminalIcon} from "lucide-react";
+import {ArrowRightIcon, FileTextIcon, GitBranchIcon, ServerIcon, TerminalIcon} from "lucide-react";
 
 import {Code, defineDoc} from "@/lib/doc-kit";
 
@@ -59,6 +61,12 @@ export const doc = defineDoc({
         "The suite's shared chrome: header, search, docs layout, page header, table of contents, pager, landing hero and sections, and footer. Every site looks the same; accent, radius and brand mark are its own.",
     demos: [
         {title: "Header", component: Header, layout: "full"},
+        {
+            title: "Theme menu",
+            component: ThemeMenuDemo,
+            description:
+                "One ghost icon button in `SiteHeaderActions`, the same size as the repository link. Its icon is the chosen mode (sun, moon, monitor for system); the popover holds mode, accent, high contrast, radius and a Reset to the provider's defaults (disabled while nothing differs). It drives the page's `ThemeProvider`: try it.",
+        },
         {title: "Sidebar navigation", component: SidebarNav, layout: "start"},
         {title: "Page header", component: Header2, layout: "start"},
         {title: "On this page and pager", component: TocAndPager, layout: "start"},
@@ -108,6 +116,35 @@ export const doc = defineDoc({
             ],
         },
         {
+            component: "ThemeMenu",
+            rows: [
+                {name: "title", type: "ReactNode", default: '"Theme"', description: "Popover title."},
+                {
+                    name: "children",
+                    type: "ReactNode",
+                    description: "Extra controls, after the built-in ones and before Reset.",
+                },
+                {name: "align", type: '"start" | "center" | "end"', default: '"end"'},
+                {name: "contentClassName", type: "string"},
+                {
+                    name: "...props",
+                    type: "Button props",
+                    description:
+                        'Go to the trigger (aria-label defaults to "Theme: <mode>"). The parts ThemeModePicker, ThemeAccentPicker, ThemeContrastSwitch, ThemeRadiusPicker and ThemeModeIcon are exported for other layouts.',
+                },
+            ],
+        },
+        {
+            component: "ThemeProvider (used by ThemeMenu)",
+            rows: [
+                {
+                    name: "defaults / resetTheme()",
+                    type: "ThemeState / () => void",
+                    description: "From useTheme(): the defaultTheme values, and forgetting the stored choice.",
+                },
+            ],
+        },
+        {
             component: "SearchTrigger / useSearchHotkeys",
             rows: [
                 {name: "onClick", type: "() => void", description: "Open your search dialog."},
@@ -138,8 +175,13 @@ export function Header() {
                     </SiteNav>
                     <SiteHeaderActions>
                         <SearchTrigger />
-                        <Button variant="ghost" size="icon" aria-label="Theme">
-                            <MoonIcon />
+                        <Separator
+                            orientation="vertical"
+                            className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
+                        />
+                        <ThemeMenu />
+                        <Button variant="ghost" size="icon" aria-label="Repository">
+                            <GitBranchIcon />
                         </Button>
                     </SiteHeaderActions>
                 </SiteHeaderContent>
@@ -147,6 +189,10 @@ export function Header() {
             <div className="h-16 bg-background" />
         </div>
     );
+}
+
+export function ThemeMenuDemo() {
+    return <ThemeMenu />;
 }
 
 export function SidebarNav() {
@@ -364,6 +410,9 @@ function Notes() {
         </SiteNav>
         <SiteHeaderActions>
             <SearchTrigger onClick={openSearch} />  {/* opens a SearchDialog */}
+            <Separator orientation="vertical" />
+            <ThemeMenu />                           {/* mode icon; accent, contrast, radius, reset */}
+            <Button variant="ghost" size="icon" render={<a href={repo} />}><GithubIcon /></Button>
         </SiteHeaderActions>
     </SiteHeaderContent>
 </SiteHeader>

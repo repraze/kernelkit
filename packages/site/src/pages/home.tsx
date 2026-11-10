@@ -42,13 +42,13 @@ import {Slider} from "@repraze/kernelkit/components/slider";
 import {Switch} from "@repraze/kernelkit/components/switch";
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@repraze/kernelkit/components/table";
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
+import {ThemeAccentPicker, ThemeRadiusPicker} from "@repraze/kernelkit/components/theme-menu";
 import {useTheme} from "@repraze/kernelkit/provider";
 import {Link} from "@tanstack/react-router";
 import {ArrowRightIcon, BoxIcon, CpuIcon, PackageIcon, PaletteIcon, TerminalIcon} from "lucide-react";
 
 import {GithubIcon} from "@/components/github-icon";
 import {KitShowcase} from "@/components/hero-showcase";
-import {AccentPicker, RadiusPicker} from "@/components/theme-customizer";
 import {Code} from "@/lib/doc-kit";
 import {DOCS} from "@/lib/docs-index";
 import {GITHUB_URL, usePageTitle} from "@/lib/site";
@@ -268,11 +268,11 @@ function ThemePlayground() {
                 <CardContent className="flex flex-col gap-5">
                     <div className="flex flex-col gap-2">
                         <span className="font-mono text-xs text-muted-foreground uppercase">Accent</span>
-                        <AccentPicker />
+                        <ThemeAccentPicker />
                     </div>
                     <div className="flex flex-col gap-2">
                         <span className="font-mono text-xs text-muted-foreground uppercase">Radius</span>
-                        <RadiusPicker />
+                        <ThemeRadiusPicker />
                     </div>
                     <div className="flex items-center justify-between gap-4">
                         <Label htmlFor="pg-contrast" className="font-mono text-xs text-muted-foreground uppercase">

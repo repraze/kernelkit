@@ -9,6 +9,7 @@ import {
     SiteNav,
     SiteNavLink,
 } from "@repraze/kernelkit/components/site-header";
+import {ThemeMenu} from "@repraze/kernelkit/components/theme-menu";
 import {Link, useRouterState} from "@tanstack/react-router";
 import {useEffect, useState} from "react";
 
@@ -16,7 +17,6 @@ import {DocsNav} from "@/components/docs-nav";
 import {GithubIcon} from "@/components/github-icon";
 import {Logo} from "@/components/logo";
 import {SiteSearch} from "@/components/site-search";
-import {ModeToggle, ThemeCustomizer} from "@/components/theme-customizer";
 import {DOCS_BY_SLUG} from "@/lib/docs-index";
 import {GITHUB_URL, SITE_NAME} from "@/lib/site";
 
@@ -77,8 +77,7 @@ export function SiteHeader() {
                         orientation="vertical"
                         className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
                     />
-                    <ThemeCustomizer />
-                    <ModeToggle />
+                    <ThemeMenu />
                     <Button variant="ghost" size="icon" render={<a href={GITHUB_URL} aria-label="GitHub" />}>
                         <GithubIcon className="size-4" />
                     </Button>

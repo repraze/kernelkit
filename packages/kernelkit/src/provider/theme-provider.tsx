@@ -32,6 +32,10 @@ export interface ThemeContextValue extends ThemeState {
     setContrast: (contrast: ThemeState["contrast"]) => void;
     setAccent: (accent: ThemeState["accent"]) => void;
     setRadius: (radius: ThemeState["radius"]) => void;
+    /** The values `resetTheme` restores: the provider's `defaultTheme` over the kit defaults. */
+    defaults: ThemeState;
+    /** Forget the stored choice and go back to `defaults`. */
+    resetTheme: () => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -139,6 +143,17 @@ export function ThemeProvider({
         [storageKey, fallback],
     );
 
+    const resetTheme = useCallback(() => {
+        if (storageKey) {
+            try {
+                window.localStorage.removeItem(storageKey);
+            } catch {
+                // storage blocked: the in-memory reset still applies
+            }
+        }
+        setStored(fallback);
+    }, [storageKey, fallback]);
+
     const value = useMemo<ThemeContextValue>(
         () => ({
             ...theme,
@@ -148,8 +163,10 @@ export function ThemeProvider({
             setContrast: (contrast) => setTheme({contrast}),
             setAccent: (accent) => setTheme({accent}),
             setRadius: (radius) => setTheme({radius}),
+            defaults: fallback,
+            resetTheme,
         }),
-        [theme, resolvedMode, setTheme],
+        [theme, resolvedMode, setTheme, fallback, resetTheme],
     );
 
     return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
