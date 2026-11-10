@@ -355,3 +355,7 @@ Tools (dev server must be running on :5175, it hot-reloads):
 - 2026-11-10 Tooltip: a popover-coloured chip (`bg-popover`, `border-border`, mono `text-xs`) instead of
   shadcn's inverted foreground chip; the arrow is a rotated square in the same colours with its border on
   the two outer edges, centred on the popup's border line. Kbd drops its inverted-tooltip override.
+- 2026-11-10 Tabs `default`: the active chip takes the accent tint and a 2px `primary-text` pill along its
+  bottom edge (start edge when vertical), like a current nav link, instead of nova's raised white chip
+  (and its banned `dark:…bg-input/30`). Track border + padding = `--radius-xs` (lg − md), so the
+  `rounded-md` chips are concentric with the `rounded-lg` track at every radius knob.

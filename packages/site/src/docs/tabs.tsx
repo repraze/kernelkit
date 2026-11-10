@@ -12,7 +12,13 @@ export const doc = defineDoc({
     baseUi: "tabs",
     description: "Switches between views of the same object without leaving the page.",
     demos: [
-        {title: "Default", component: Default, layout: "start"},
+        {
+            title: "Default",
+            component: Default,
+            layout: "start",
+            description:
+                "The active tab takes the accent tint and a 2px pill along its bottom edge, like a current nav link. Chips stay concentric with the track at every radius.",
+        },
         {
             title: "Line",
             component: Line,

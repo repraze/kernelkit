@@ -18,8 +18,10 @@ function Tabs({className, orientation = "horizontal", ...props}: TabsPrimitive.R
 }
 
 /**
- * `default`: a tray with the active tab raised on a bordered surface (the border keeps it readable in
- * high contrast). `line`: a baseline with a 2px primary indicator under the active tab.
+ * `default`: a track with the active tab tinted with the accent and marked by a 2px pill along its bottom
+ * edge, like a current nav link. Track border + padding = `--radius-xs` (lg − md), so the `rounded-md` chips
+ * stay concentric with the `rounded-lg` track at every radius. `line`: a baseline with the same 2px pill
+ * on it under the active tab.
  * Sizes follow the control table (GUIDELINES §4) so a tabs list lines up with buttons and inputs.
  */
 const tabsListVariants = cva(
@@ -27,7 +29,8 @@ const tabsListVariants = cva(
     {
         variants: {
             variant: {
-                default: "rounded-lg border border-transparent bg-muted p-[3px] data-vertical:gap-0.5 hc:border-border",
+                default:
+                    "rounded-lg border border-transparent bg-muted p-[max(0px,calc(var(--radius-xs)-1px))] data-vertical:gap-0.5 hc:border-border",
                 line: "gap-1 rounded-none border-border bg-transparent data-horizontal:border-b data-horizontal:py-[3px] data-vertical:border-r data-vertical:px-[3px]",
             },
             size: {
@@ -73,13 +76,18 @@ const tabsTriggerClass = cn(
     "group-data-[size=lg]/tabs-list:gap-2 group-data-[size=lg]/tabs-list:px-2.5",
     // vertical: full-width rows
     "data-vertical:w-full data-vertical:flex-none data-vertical:justify-start data-vertical:py-1",
-    // default: raised, bordered surface + foreground text (readable without the shade in hc)
+    // active: foreground text and a 2px primary-text pill; default adds the accent tint (nav link look)
     "data-active:text-foreground",
-    "group-data-[variant=default]/tabs-list:data-active:border-input group-data-[variant=default]/tabs-list:data-active:bg-background group-data-[variant=default]/tabs-list:data-active:shadow-sm group-data-[variant=default]/tabs-list:data-active:shadow-(color:--shadow-color) dark:group-data-[variant=default]/tabs-list:data-active:bg-input/30",
-    // line: 2px primary indicator over the list's baseline
-    "after:pointer-events-none after:absolute after:rounded-pill after:bg-primary-text after:opacity-0 after:transition-opacity group-data-[variant=line]/tabs-list:data-active:after:opacity-100",
-    "data-horizontal:after:inset-x-1 data-horizontal:after:-bottom-1 data-horizontal:after:h-0.5",
-    "data-vertical:after:inset-y-1 data-vertical:after:-right-1 data-vertical:after:w-0.5",
+    "group-data-[variant=default]/tabs-list:data-active:bg-accent group-data-[variant=default]/tabs-list:data-active:text-accent-foreground",
+    "after:pointer-events-none after:absolute after:rounded-pill after:bg-primary-text after:opacity-0 after:transition-opacity data-active:after:opacity-100",
+    // default: the pill sits inside the chip on its bottom edge (vertical: its start edge, like sidebar rows)
+    "group-data-[variant=default]/tabs-list:data-horizontal:after:inset-x-2 group-data-[variant=default]/tabs-list:data-horizontal:after:-bottom-px group-data-[variant=default]/tabs-list:data-horizontal:after:h-0.5",
+    // the pill spans the label: inset = the trigger's padding per size
+    "group-data-[size=sm]/tabs-list:group-data-[variant=default]/tabs-list:data-horizontal:after:inset-x-1.5 group-data-[size=lg]/tabs-list:group-data-[variant=default]/tabs-list:data-horizontal:after:inset-x-2.5",
+    "group-data-[variant=default]/tabs-list:data-vertical:after:inset-y-1.5 group-data-[variant=default]/tabs-list:data-vertical:after:-left-px group-data-[variant=default]/tabs-list:data-vertical:after:w-0.5",
+    // line: the pill sits on the list's baseline
+    "group-data-[variant=line]/tabs-list:data-horizontal:after:inset-x-1 group-data-[variant=line]/tabs-list:data-horizontal:after:-bottom-1 group-data-[variant=line]/tabs-list:data-horizontal:after:h-0.5",
+    "group-data-[variant=line]/tabs-list:data-vertical:after:inset-y-1 group-data-[variant=line]/tabs-list:data-vertical:after:-right-1 group-data-[variant=line]/tabs-list:data-vertical:after:w-0.5",
 );
 
 function TabsTrigger({className, ...props}: TabsPrimitive.Tab.Props) {
