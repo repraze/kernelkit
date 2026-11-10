@@ -17,6 +17,11 @@ type CarouselProps = {
     plugins?: CarouselPlugin;
     orientation?: "horizontal" | "vertical";
     setApi?: (api: CarouselApi) => void;
+    /**
+     * Advance every `autoplay` ms, wrapping to the first slide. Pauses while the pointer is over the
+     * carousel or focus is inside it, while the tab is hidden, and never runs under reduced motion.
+     */
+    autoplay?: number;
 };
 
 type CarouselContextProps = {
@@ -45,6 +50,7 @@ function Carousel({
     opts,
     setApi,
     plugins,
+    autoplay,
     className,
     children,
     ...props
@@ -109,6 +115,34 @@ function Carousel({
         };
     }, [api, onSelect]);
 
+    const rootRef = React.useRef<HTMLDivElement>(null);
+    React.useEffect(() => {
+        const root = rootRef.current;
+        if (!api || !autoplay || !root || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            return;
+        }
+        let hovered = false;
+        const onEnter = () => (hovered = true);
+        const onLeave = () => (hovered = false);
+        root.addEventListener("pointerenter", onEnter);
+        root.addEventListener("pointerleave", onLeave);
+        const timer = window.setInterval(() => {
+            if (hovered || root.contains(document.activeElement) || document.hidden) {
+                return;
+            }
+            if (api.canScrollNext()) {
+                api.scrollNext();
+            } else {
+                api.scrollTo(0);
+            }
+        }, autoplay);
+        return () => {
+            window.clearInterval(timer);
+            root.removeEventListener("pointerenter", onEnter);
+            root.removeEventListener("pointerleave", onLeave);
+        };
+    }, [api, autoplay]);
+
     return (
         <CarouselContext.Provider
             value={{
@@ -123,6 +157,7 @@ function Carousel({
             }}
         >
             <div
+                ref={rootRef}
                 onKeyDownCapture={handleKeyDown}
                 className={cn("relative", className)}
                 role="region"

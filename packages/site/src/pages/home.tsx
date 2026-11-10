@@ -18,10 +18,11 @@ import {Field, FieldDescription, FieldGroup, FieldLabel} from "@repraze/kernelki
 import {
     Hero,
     HeroActions,
+    HeroBody,
     HeroDescription,
     HeroEyebrow,
     HeroFooter,
-    HeroMedia,
+    HeroShowcase,
     HeroTitle,
 } from "@repraze/kernelkit/components/hero";
 import {Input} from "@repraze/kernelkit/components/input";
@@ -46,7 +47,7 @@ import {Link} from "@tanstack/react-router";
 import {ArrowRightIcon, BoxIcon, CpuIcon, PackageIcon, PaletteIcon, TerminalIcon} from "lucide-react";
 
 import {GithubIcon} from "@/components/github-icon";
-import {LogoMark} from "@/components/logo";
+import {KitShowcase} from "@/components/hero-showcase";
 import {AccentPicker, RadiusPicker} from "@/components/theme-customizer";
 import {Code} from "@/lib/doc-kit";
 import {DOCS} from "@/lib/docs-index";
@@ -64,42 +65,49 @@ export function HomePage() {
     const componentCount = DOCS.filter((d) => d.category !== "Foundations").length;
     return (
         <main className="flex flex-1 flex-col">
-            <Hero>
-                <HeroMedia>
-                    <LogoMark className="size-16 md:size-24" />
-                </HeroMedia>
-                <HeroEyebrow>
-                    <Badge variant="outline" className="font-mono">
-                        <span className="size-1.5 rounded-full bg-success" /> v0.1 alpha · {componentCount} components
-                    </Badge>
-                </HeroEyebrow>
-                <HeroTitle>
-                    Components with a <span className="text-primary-text">kernel</span> of contrast.
-                </HeroTitle>
-                <HeroDescription>
-                    Every shadcn component on Base UI and Tailwind v4, themed by TermiColor. One accent, one radius,
-                    light, dark and high contrast. Install the package or copy the source.
-                </HeroDescription>
-                <HeroActions>
-                    <Button
-                        size="lg"
-                        nativeButton={false}
-                        render={<Link to="/docs/$slug" params={{slug: "introduction"}} />}
-                    >
-                        Get started <ArrowRightIcon data-icon="inline-end" />
-                    </Button>
-                    <Button
-                        size="lg"
-                        variant="outline"
-                        nativeButton={false}
-                        render={<Link to="/docs/$slug" params={{slug: "button"}} />}
-                    >
-                        Browse components
-                    </Button>
-                </HeroActions>
-                <HeroFooter>
-                    <Code language="bash" code="npm install @repraze/kernelkit" className="w-full max-w-sm text-left" />
-                </HeroFooter>
+            <Hero layout="split">
+                <HeroBody>
+                    <HeroEyebrow>
+                        <Badge variant="outline" className="font-mono">
+                            <span className="size-1.5 rounded-full bg-success" /> v0.1 alpha · {componentCount}{" "}
+                            components
+                        </Badge>
+                    </HeroEyebrow>
+                    <HeroTitle>
+                        Components with a <span className="text-primary-text">kernel</span> of contrast.
+                    </HeroTitle>
+                    <HeroDescription>
+                        Every shadcn component on Base UI and Tailwind v4, themed by TermiColor. One accent, one radius,
+                        light, dark and high contrast. Install the package or copy the source.
+                    </HeroDescription>
+                    <HeroActions>
+                        <Button
+                            size="lg"
+                            nativeButton={false}
+                            render={<Link to="/docs/$slug" params={{slug: "introduction"}} />}
+                        >
+                            Get started <ArrowRightIcon data-icon="inline-end" />
+                        </Button>
+                        <Button
+                            size="lg"
+                            variant="outline"
+                            nativeButton={false}
+                            render={<Link to="/docs/$slug" params={{slug: "button"}} />}
+                        >
+                            Browse components
+                        </Button>
+                    </HeroActions>
+                    <HeroFooter>
+                        <Code
+                            language="bash"
+                            code="npm install @repraze/kernelkit"
+                            className="w-full max-w-sm text-left"
+                        />
+                    </HeroFooter>
+                </HeroBody>
+                <HeroShowcase>
+                    <KitShowcase />
+                </HeroShowcase>
             </Hero>
 
             <SiteContainer className="flex flex-col divide-y divide-border">

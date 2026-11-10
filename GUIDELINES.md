@@ -210,12 +210,17 @@ decorations above the header row.
   `SearchItem`s (kind icon, title over a one-line description, optional badge, ↵ on the selected row) in
   `CommandGroup`s, suggestions before the first keystroke, and a `SearchFooter` with the key hints.
 - Footer: `SiteFooter` (credits left, `SiteFooterLinks` right), on every page.
-- Landing page: `Hero` (full-bleed muted band with a fading dot grid; `background` takes an animation
-  later) › `HeroMedia` (the brand mark) · `HeroEyebrow` · `HeroTitle` (key word in the accent) ·
-  `HeroDescription` · `HeroActions` (one solid `lg` primary, at most one outline) · `HeroFooter`. Then
-  `Section`s in a `SiteContainer` divided by borders; each `SectionHeader` has a mono accent eyebrow, an
-  h2, one sentence and a `SectionAction` (outline Button with a trailing arrow): every section ends
-  somewhere to go next. Grids of destinations inside a section are `LinkCard`s.
+- Landing page: `Hero layout="split"` (full-bleed muted band with a fading dot grid; `background` takes an
+  animation later). From `lg`: `HeroBody` on the left › `HeroEyebrow` · `HeroTitle` (key word in the
+  accent) · `HeroDescription` · `HeroActions` (one solid `lg` primary, at most one outline) · `HeroFooter`
+  (the install command, in the kit's `CodeBlock` with a title and copy button); `HeroShowcase` on the
+  right, a `Carousel` with `autoplay` and fixed `h-88` slides that show the product (TermiColor: each mode
+  and the accent tiers; KernelKit: components and the live theme knobs). Below `lg` the hero is one
+  centered column and the showcase hides. No brand mark in the hero: the header already shows it. Keep
+  the same parts in every site's hero so the heroes are the same height. Then `Section`s in a
+  `SiteContainer` divided by borders; each `SectionHeader` has a mono accent eyebrow, an h2, one sentence
+  and a `SectionAction` (outline Button with a trailing arrow): every section ends somewhere to go next.
+  Grids of destinations inside a section are `LinkCard`s.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
 
 ## 7c. Navigation states (header, sidebar, phone menu, tree, table of contents)
@@ -331,3 +336,6 @@ Tools (dev server must be running on :5175, it hot-reloads):
   (they blurred at every size but 1:1). Header marks go from 28px to 32px: 28 is not a multiple of the
   grid and blurred any mark. Lucide's rules informed the spec (2-unit weight, radius, gaps, padding);
   its 24 grid did not, since 16/24 is not whole.
+- 2026-11-09 Split hero: `Hero layout="split"` with `HeroBody` + `HeroShowcase` (a Carousel, now with
+  `autoplay`), centered on phones. The hero mark is dropped (it sat right under the header's), and both
+  sites use the same footer block, so their heroes are the same height (510px at desktop widths).

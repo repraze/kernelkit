@@ -1,12 +1,16 @@
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {Button} from "@repraze/kernelkit/components/button";
+import {Card, CardDescription, CardHeader, CardTitle} from "@repraze/kernelkit/components/card";
+import {Carousel, CarouselContent, CarouselDots, CarouselItem} from "@repraze/kernelkit/components/carousel";
 import {Command, CommandGroup, CommandInput, CommandList} from "@repraze/kernelkit/components/command";
 import {
     Hero,
     HeroActions,
+    HeroBody,
     HeroDescription,
     HeroEyebrow,
     HeroMedia,
+    HeroShowcase,
     HeroTitle,
 } from "@repraze/kernelkit/components/hero";
 import {
@@ -59,6 +63,13 @@ export const doc = defineDoc({
         {title: "Page header", component: Header2, layout: "start"},
         {title: "On this page and pager", component: TocAndPager, layout: "start"},
         {title: "Hero", component: HeroDemo, layout: "full"},
+        {
+            title: "Split hero",
+            component: SplitHeroDemo,
+            layout: "full",
+            description:
+                '`layout="split"`: from `lg`, the text in a `HeroBody` on the left and a `HeroShowcase` on the right (a `Carousel` with `autoplay`, fixed-height slides). Below `lg` it is the centered hero and the showcase hides.',
+        },
         {title: "Section", component: SectionDemo, layout: "start"},
         {title: "Search", component: SearchDemo, layout: "start"},
         {title: "Footer", component: FooterDemo, layout: "full"},
@@ -235,6 +246,46 @@ export function HeroDemo() {
                     Pricing
                 </Button>
             </HeroActions>
+        </Hero>
+    );
+}
+
+export function SplitHeroDemo() {
+    return (
+        <Hero layout="split" contentClassName="py-12 md:py-14">
+            <HeroBody>
+                <HeroEyebrow>
+                    <Badge variant="outline" className="font-mono">
+                        v2.4 · 12 regions
+                    </Badge>
+                </HeroEyebrow>
+                <HeroTitle className="text-3xl sm:text-4xl md:text-5xl xl:text-5xl">
+                    Ship to the <span className="text-primary-text">edge</span>.
+                </HeroTitle>
+                <HeroDescription>Deploy a service to every region with one command.</HeroDescription>
+                <HeroActions>
+                    <Button size="lg">
+                        Get started <ArrowRightIcon data-icon="inline-end" />
+                    </Button>
+                </HeroActions>
+            </HeroBody>
+            <HeroShowcase>
+                <Carousel autoplay={5000} opts={{loop: true}} aria-label="Regions">
+                    <CarouselContent>
+                        {["eu-west", "us-east", "ap-south"].map((region) => (
+                            <CarouselItem key={region}>
+                                <Card className="h-48">
+                                    <CardHeader>
+                                        <CardTitle className="font-mono">{region}</CardTitle>
+                                        <CardDescription>4 nodes · p95 38ms</CardDescription>
+                                    </CardHeader>
+                                </Card>
+                            </CarouselItem>
+                        ))}
+                    </CarouselContent>
+                    <CarouselDots />
+                </Carousel>
+            </HeroShowcase>
         </Hero>
     );
 }
