@@ -359,3 +359,5 @@ Tools (dev server must be running on :5175, it hot-reloads):
   bottom edge (start edge when vertical), like a current nav link, instead of nova's raised white chip
   (and its banned `dark:…bg-input/30`). Track border + padding = `--radius-xs` (lg − md), so the
   `rounded-md` chips are concentric with the `rounded-lg` track at every radius knob.
+- 2026-11-10 Breadcrumb reads as a path: mono `text-xs`, a muted `/` separator instead of shadcn's chevron
+  (children still replace it), links muted → foreground on hover, the current page foreground + medium.

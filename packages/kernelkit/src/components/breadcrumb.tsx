@@ -4,7 +4,7 @@ import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
 import {focusRing} from "@repraze/kernelkit/lib/recipes";
 import {cn} from "cn";
-import {ChevronRightIcon, MoreHorizontalIcon} from "lucide-react";
+import {MoreHorizontalIcon} from "lucide-react";
 import * as React from "react";
 
 function Breadcrumb({className, ...props}: React.ComponentProps<"nav">) {
@@ -16,7 +16,7 @@ function BreadcrumbList({className, ...props}: React.ComponentProps<"ol">) {
         <ol
             data-slot="breadcrumb-list"
             className={cn(
-                "flex flex-wrap items-center gap-1.5 text-sm wrap-break-word text-muted-foreground",
+                "flex flex-wrap items-center gap-1.5 font-mono text-xs wrap-break-word text-muted-foreground",
                 className,
             )}
             {...props}
@@ -34,7 +34,7 @@ function BreadcrumbLink({className, render, ...props}: useRender.ComponentProps<
         props: mergeProps<"a">(
             {
                 className: cn(
-                    "inline-flex items-center gap-1 rounded-sm transition-colors hover:text-foreground [&_svg:not([class*='size-'])]:size-3.5",
+                    "inline-flex items-center gap-1 rounded-sm transition-colors hover:text-foreground [&_svg:not([class*='size-'])]:size-3",
                     focusRing,
                     className,
                 ),
@@ -56,7 +56,7 @@ function BreadcrumbPage({className, ...props}: React.ComponentProps<"span">) {
             aria-disabled="true"
             aria-current="page"
             className={cn(
-                "inline-flex items-center gap-1 font-medium text-foreground [&_svg:not([class*='size-'])]:size-3.5",
+                "inline-flex items-center gap-1 font-medium text-foreground [&_svg:not([class*='size-'])]:size-3",
                 className,
             )}
             {...props}
@@ -64,16 +64,17 @@ function BreadcrumbPage({className, ...props}: React.ComponentProps<"span">) {
     );
 }
 
+/** A muted `/` between levels (a path, in mono). Pass children to use another mark. */
 function BreadcrumbSeparator({children, className, ...props}: React.ComponentProps<"li">) {
     return (
         <li
             data-slot="breadcrumb-separator"
             role="presentation"
             aria-hidden="true"
-            className={cn("text-muted-foreground [&>svg]:size-3.5", className)}
+            className={cn("text-muted-foreground select-none [&>svg]:size-3", className)}
             {...props}
         >
-            {children ?? <ChevronRightIcon />}
+            {children ?? "/"}
         </li>
     );
 }
@@ -84,7 +85,7 @@ function BreadcrumbEllipsis({className, ...props}: React.ComponentProps<"span">)
             data-slot="breadcrumb-ellipsis"
             role="presentation"
             aria-hidden="true"
-            className={cn("flex size-5 items-center justify-center rounded-sm [&>svg]:size-4", className)}
+            className={cn("flex size-5 items-center justify-center rounded-sm [&>svg]:size-3.5", className)}
             {...props}
         >
             <MoreHorizontalIcon />

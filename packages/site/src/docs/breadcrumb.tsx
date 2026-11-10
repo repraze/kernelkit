@@ -13,7 +13,7 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "@repraze/kernelkit/components/dropdown-menu";
-import {FolderIcon, HomeIcon, SlashIcon} from "lucide-react";
+import {ChevronRightIcon, FolderIcon, HomeIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";
 
@@ -29,7 +29,11 @@ export const doc = defineDoc({
             component: Collapsed,
             description: "Fold the middle levels into a `BreadcrumbEllipsis` that opens a menu.",
         },
-        {title: "Custom separator", component: CustomSeparator},
+        {
+            title: "Custom separator",
+            component: CustomSeparator,
+            description: "Children replace the default `/`; here a chevron.",
+        },
         {
             title: "Router links",
             component: RouterLinks,
@@ -63,8 +67,8 @@ export const doc = defineDoc({
                 {
                     name: "children",
                     type: "ReactNode",
-                    default: "<ChevronRightIcon />",
-                    description: "Replace the chevron.",
+                    default: '"/"',
+                    description: "Replace the muted slash (an icon is sized to the text).",
                 },
             ],
         },
@@ -112,7 +116,7 @@ export function WithIcons() {
                 </BreadcrumbItem>
                 <BreadcrumbSeparator />
                 <BreadcrumbItem>
-                    <BreadcrumbPage className="font-mono">deploy.yaml</BreadcrumbPage>
+                    <BreadcrumbPage>deploy.yaml</BreadcrumbPage>
                 </BreadcrumbItem>
             </BreadcrumbList>
         </Breadcrumb>
@@ -158,18 +162,18 @@ export function Collapsed() {
 export function CustomSeparator() {
     return (
         <Breadcrumb>
-            <BreadcrumbList className="font-mono">
+            <BreadcrumbList>
                 <BreadcrumbItem>
                     <BreadcrumbLink href="#">repraze</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
-                    <SlashIcon />
+                    <ChevronRightIcon />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
                     <BreadcrumbLink href="#">KernelKit</BreadcrumbLink>
                 </BreadcrumbItem>
                 <BreadcrumbSeparator>
-                    <SlashIcon />
+                    <ChevronRightIcon />
                 </BreadcrumbSeparator>
                 <BreadcrumbItem>
                     <BreadcrumbPage>main</BreadcrumbPage>
