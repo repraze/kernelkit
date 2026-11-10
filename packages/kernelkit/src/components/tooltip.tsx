@@ -39,15 +39,27 @@ function TooltipContent({
                 <TooltipPrimitive.Popup
                     data-slot="tooltip-content"
                     className={cn(
-                        // Inverted chip: max contrast against any surface, so it reads in high contrast too.
+                        // Popover-coloured chip: the popup surface and border, small mono text.
                         popupMotion,
-                        "z-50 inline-flex min-h-6 w-fit max-w-xs items-center gap-1.5 rounded-md bg-foreground px-2 py-1 text-xs text-background shadow-md shadow-(color:--shadow-color) has-data-[slot=kbd]:pr-1 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:h-4 **:data-[slot=kbd]:min-w-4 **:data-[slot=kbd]:rounded-xs",
+                        "z-50 inline-flex min-h-6 w-fit max-w-xs items-center gap-1.5 rounded-md border border-border bg-popover px-2 py-1 font-mono text-xs text-popover-foreground shadow-md shadow-(color:--shadow-color) has-data-[slot=kbd]:pr-1 **:data-[slot=kbd]:relative **:data-[slot=kbd]:isolate **:data-[slot=kbd]:z-50 **:data-[slot=kbd]:h-4 **:data-[slot=kbd]:min-w-4 **:data-[slot=kbd]:rounded-xs",
                         className,
                     )}
                     {...props}
                 >
                     {children}
-                    <TooltipPrimitive.Arrow className="z-50 size-2.5 translate-y-[calc(-50%-2px)] rotate-45 rounded-xs bg-foreground fill-foreground data-[side=bottom]:top-1 data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1 data-[side=inline-end]:-translate-y-1/2 data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1 data-[side=inline-start]:-translate-y-1/2 data-[side=left]:top-1/2! data-[side=left]:-right-1 data-[side=left]:-translate-y-1/2 data-[side=right]:top-1/2! data-[side=right]:-left-1 data-[side=right]:-translate-y-1/2 data-[side=top]:-bottom-2.5" />
+                    <TooltipPrimitive.Arrow
+                        className={cn(
+                            // A rotated square in the popup colours; the border sits on the two edges that face out,
+                            // centred on the popup's border line so the outline runs on without a seam.
+                            "z-50 size-2.5 rotate-45 rounded-xs border-border bg-popover",
+                            "data-[side=top]:-bottom-1.25 data-[side=top]:border-r data-[side=top]:border-b",
+                            "data-[side=bottom]:-top-1.25 data-[side=bottom]:border-t data-[side=bottom]:border-l",
+                            "data-[side=left]:top-1/2! data-[side=left]:-right-1.25 data-[side=left]:-translate-y-1/2 data-[side=left]:border-t data-[side=left]:border-r",
+                            "data-[side=inline-start]:top-1/2! data-[side=inline-start]:-right-1.25 data-[side=inline-start]:-translate-y-1/2 data-[side=inline-start]:border-t data-[side=inline-start]:border-r",
+                            "data-[side=right]:top-1/2! data-[side=right]:-left-1.25 data-[side=right]:-translate-y-1/2 data-[side=right]:border-b data-[side=right]:border-l",
+                            "data-[side=inline-end]:top-1/2! data-[side=inline-end]:-left-1.25 data-[side=inline-end]:-translate-y-1/2 data-[side=inline-end]:border-b data-[side=inline-end]:border-l",
+                        )}
+                    />
                 </TooltipPrimitive.Popup>
             </TooltipPrimitive.Positioner>
         </TooltipPrimitive.Portal>

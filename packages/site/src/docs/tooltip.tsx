@@ -13,7 +13,11 @@ export const doc = defineDoc({
     order: 7,
     demos: [
         {title: "Icon buttons", component: IconButtons},
-        {title: "With shortcut", component: WithShortcut, description: "A trailing `Kbd` adopts the inverted look."},
+        {
+            title: "With shortcut",
+            component: WithShortcut,
+            description: "A trailing `Kbd` keycap shrinks to fit the chip.",
+        },
         {title: "Sides", component: Sides},
     ],
     props: [

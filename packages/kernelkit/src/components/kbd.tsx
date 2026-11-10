@@ -8,8 +8,6 @@ import type * as React from "react";
 const kbdVariants = cva(
     [
         "pointer-events-none inline-flex w-fit items-center justify-center gap-1 rounded-sm border border-b-2 border-border bg-muted font-mono font-medium text-muted-foreground select-none [&_svg]:shrink-0",
-        // inside a tooltip (inverted surface) the key becomes a translucent chip
-        "in-data-[slot=tooltip-content]:border-transparent in-data-[slot=tooltip-content]:bg-background/20 in-data-[slot=tooltip-content]:text-background dark:in-data-[slot=tooltip-content]:bg-background/10",
     ],
     {
         variants: {

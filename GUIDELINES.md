@@ -352,3 +352,6 @@ Tools (dev server must be running on :5175, it hot-reloads):
   (`useTheme().resetTheme`, which forgets the stored choice, and `defaults`). TermiColor moved onto the
   kit's `ThemeProvider` (one JSON key; the old three keys migrate in its pre-paint script) and gained the
   radius knob, with `radius: "none"` as its default instead of `--kk-radius: 0px` on `:root`.
+- 2026-11-10 Tooltip: a popover-coloured chip (`bg-popover`, `border-border`, mono `text-xs`) instead of
+  shadcn's inverted foreground chip; the arrow is a rotated square in the same colours with its border on
+  the two outer edges, centred on the popup's border line. Kbd drops its inverted-tooltip override.
