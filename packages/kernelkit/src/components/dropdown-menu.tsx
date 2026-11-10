@@ -23,7 +23,7 @@ const menuItemVariants = cva([listItem, "group/menu-item data-inset:pl-8"], {
     variants: {
         variant: {
             default: "",
-            danger: "text-danger data-highlighted:bg-danger/15 data-highlighted:text-danger [&_svg:not([class*='text-'])]:text-danger data-highlighted:[&_svg:not([class*='text-'])]:text-danger",
+            danger: "text-danger after:bg-danger data-highlighted:bg-danger/15 data-highlighted:text-danger [&_svg:not([class*='text-'])]:text-danger data-highlighted:[&_svg:not([class*='text-'])]:text-danger",
         },
     },
     defaultVariants: {variant: "default"},

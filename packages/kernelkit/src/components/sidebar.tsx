@@ -10,7 +10,7 @@ import {Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle} from "@r
 import {Skeleton} from "@repraze/kernelkit/components/skeleton";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@repraze/kernelkit/components/tooltip";
 import {useIsMobile} from "@repraze/kernelkit/hooks/use-mobile";
-import {focusRing} from "@repraze/kernelkit/lib/recipes";
+import {focusRing, rowIndicator} from "@repraze/kernelkit/lib/recipes";
 import {cva, type VariantProps} from "class-variance-authority";
 import {cn} from "cn";
 import {PanelLeftIcon} from "lucide-react";
@@ -482,7 +482,8 @@ const sidebarMenuButtonVariants = cva(
         "hover:bg-hover data-popup-open:bg-hover",
         "disabled:pointer-events-none disabled:opacity-50 aria-disabled:pointer-events-none aria-disabled:opacity-50",
         // current row (GUIDELINES §7c): accent tint, foreground text, 2px accent indicator on the left edge
-        "relative after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0 data-active:after:opacity-100",
+        "relative data-active:after:opacity-100",
+        rowIndicator,
         "data-active:bg-primary-tint data-active:font-medium data-active:text-foreground data-active:[&_svg:not([class*='text-'])]:text-primary-text",
         "[&_svg]:size-4 [&_svg]:shrink-0 [&_svg:not([class*='text-'])]:text-muted-foreground [&>span:last-child]:truncate",
     ],

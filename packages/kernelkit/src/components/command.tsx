@@ -7,7 +7,7 @@ import {
     DialogHeader,
     DialogTitle,
 } from "@repraze/kernelkit/components/dialog";
-import {fieldSurface, listSeparator} from "@repraze/kernelkit/lib/recipes";
+import {fieldSurface, listSeparator, rowIndicator} from "@repraze/kernelkit/lib/recipes";
 import {Command as CommandPrimitive} from "cmdk";
 import {cn} from "cn";
 import {CheckIcon, SearchIcon} from "lucide-react";
@@ -17,8 +17,7 @@ import * as React from "react";
  * cmdk renders `data-selected` / `data-disabled` as "true" | "false", so the `listItem` recipe (which keys on
  * attribute presence) can't be used as is: this is the same row, keyed on `=true`.
  */
-const commandItemClass =
-    "group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[selected=true]:[&_svg:not([class*='text-'])]:text-accent-foreground";
+const commandItemClass = `${rowIndicator} data-[selected=true]:after:opacity-100 group/command-item relative flex min-h-8 cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none data-[selected=true]:bg-accent data-[selected=true]:text-accent-foreground data-[disabled=true]:pointer-events-none data-[disabled=true]:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-[selected=true]:[&_svg:not([class*='text-'])]:text-accent-foreground`;
 
 function Command({className, ...props}: React.ComponentProps<typeof CommandPrimitive>) {
     return (

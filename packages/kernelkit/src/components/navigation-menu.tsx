@@ -152,6 +152,10 @@ function NavigationMenuLink({className, ...props}: NavigationMenuPrimitive.Link.
                 "transition-[color,background-color,border-color,box-shadow] duration-100 motion-reduce:transition-none",
                 "hover:bg-hover focus-visible:ring-3 focus-visible:ring-ring/50",
                 "data-active:bg-accent data-active:font-medium data-active:text-accent-foreground",
+                // current page (§7c): the sidebar's pill, on the bottom edge in the bar and on the left edge in a panel
+                "relative after:pointer-events-none after:absolute after:rounded-pill after:bg-primary-text after:opacity-0 data-active:after:opacity-100",
+                "in-data-[slot=navigation-menu-list]:after:inset-x-2.5 in-data-[slot=navigation-menu-list]:after:bottom-0 in-data-[slot=navigation-menu-list]:after:h-0.5",
+                "in-data-[slot=navigation-menu-content]:after:top-1.5 in-data-[slot=navigation-menu-content]:after:bottom-1.5 in-data-[slot=navigation-menu-content]:after:left-0 in-data-[slot=navigation-menu-content]:after:w-0.5",
                 "in-data-[slot=navigation-menu-list]:h-8 in-data-[slot=navigation-menu-list]:font-medium",
                 "in-data-[slot=navigation-menu-content]:rounded-md in-data-[slot=navigation-menu-content]:px-2 in-data-[slot=navigation-menu-content]:focus-visible:bg-accent in-data-[slot=navigation-menu-content]:focus-visible:text-accent-foreground in-data-[slot=navigation-menu-content]:focus-visible:ring-0",
                 "[&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground",

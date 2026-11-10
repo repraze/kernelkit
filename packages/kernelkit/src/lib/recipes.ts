@@ -23,9 +23,16 @@ export const popupSurface =
 export const popupMotion =
     "origin-(--transform-origin) duration-100 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95 data-[side=bottom]:slide-in-from-top-2 data-[side=left]:slide-in-from-right-2 data-[side=right]:slide-in-from-left-2 data-[side=top]:slide-in-from-bottom-2 motion-reduce:animate-none";
 
+/**
+ * The sidebar's current-row indicator (§7c): a 2px accent pill inset on the row's left edge, hidden until
+ * the row's state shows it (`data-highlighted:after:opacity-100`, `data-active:after:opacity-100`...).
+ * The row keeps its own rounding on every corner.
+ */
+export const rowIndicator =
+    "after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0";
+
 /** Row inside a popup or list: menu item, select item, command item (§4, §6). */
-export const listItem =
-    "relative flex min-h-8 cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-highlighted:[&_svg:not([class*='text-'])]:text-accent-foreground";
+export const listItem = `${rowIndicator} data-highlighted:after:opacity-100 relative flex min-h-8 cursor-default items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-hidden select-none data-highlighted:bg-accent data-highlighted:text-accent-foreground data-disabled:pointer-events-none data-disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground data-highlighted:[&_svg:not([class*='text-'])]:text-accent-foreground`;
 
 /** Group label inside a popup or list. */
 export const listLabel = "px-2 py-1.5 text-xs font-medium text-muted-foreground";
