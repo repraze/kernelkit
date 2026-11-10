@@ -95,9 +95,9 @@ function SiteNav({className, render, ...props}: useRender.ComponentProps<"nav">)
 /**
  * A nav link, styled like the suite's other navigation (GUIDELINES §7c): muted at rest, a hover wash,
  * and when current (`aria-current="page"`, `data-status="active"` from TanStack Router, or `data-active`)
- * foreground text plus a 2px accent indicator. In SiteNav the indicator sits on the header's bottom
- * border (like line Tabs); elsewhere (the phone menu) the link is a sidebar row with a tint and the
- * indicator on its left edge.
+ * the sidebar's current-row look: accent tint, foreground text and a 2px accent pill. In SiteNav the pill
+ * runs along the link's bottom edge (like NavigationMenu); elsewhere (the phone menu) it sits on the
+ * left edge, like a sidebar row.
  */
 function SiteNavLink({className, render, ...props}: useRender.ComponentProps<"a">) {
     return useRender({
@@ -107,12 +107,11 @@ function SiteNavLink({className, render, ...props}: useRender.ComponentProps<"a"
                 className: cn(
                     "relative flex h-8 items-center rounded-md px-2.5 font-mono text-sm text-muted-foreground transition-colors hover:bg-hover hover:text-foreground motion-reduce:transition-none",
                     focusRing,
-                    // indicator: vertical by default, on the header border inside SiteNav
+                    // indicator: left edge by default, bottom edge inside SiteNav
                     "after:pointer-events-none after:absolute after:top-1.5 after:bottom-1.5 after:left-0 after:w-0.5 after:rounded-pill after:bg-primary-text after:opacity-0",
-                    "in-data-[slot=site-nav]:after:top-auto in-data-[slot=site-nav]:after:right-2.5 in-data-[slot=site-nav]:after:-bottom-[calc(0.75rem+1px)] in-data-[slot=site-nav]:after:left-2.5 in-data-[slot=site-nav]:after:h-0.5 in-data-[slot=site-nav]:after:w-auto",
+                    "in-data-[slot=site-nav]:after:top-auto in-data-[slot=site-nav]:after:right-2.5 in-data-[slot=site-nav]:after:bottom-0 in-data-[slot=site-nav]:after:left-2.5 in-data-[slot=site-nav]:after:h-0.5 in-data-[slot=site-nav]:after:w-auto",
                     "aria-[current=page]:text-foreground aria-[current=page]:after:opacity-100 data-[status=active]:text-foreground data-[status=active]:after:opacity-100 data-active:text-foreground data-active:after:opacity-100",
-                    // outside the header row: the sidebar's current-row tint
-                    "not-in-data-[slot=site-nav]:aria-[current=page]:bg-primary-tint not-in-data-[slot=site-nav]:data-[status=active]:bg-primary-tint not-in-data-[slot=site-nav]:data-active:bg-primary-tint",
+                    "aria-[current=page]:bg-primary-tint data-[status=active]:bg-primary-tint data-active:bg-primary-tint",
                     className,
                 ),
             },
