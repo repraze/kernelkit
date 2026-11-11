@@ -2,12 +2,12 @@ import {Checkbox} from "@repraze/kernelkit/components/checkbox";
 import {Label} from "@repraze/kernelkit/components/label";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Checkbox",
     category: "Inputs",
-    baseUi: "checkbox",
+    source: baseUi("checkbox"),
     description: "Toggles a single option on or off; checked fills with the accent, indeterminate shows a dash.",
     demos: [
         {title: "States", component: States},

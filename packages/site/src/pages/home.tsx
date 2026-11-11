@@ -44,14 +44,14 @@ import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@re
 import {Tabs, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {ThemeAccentPicker, ThemeRadiusPicker} from "@repraze/kernelkit/components/theme-menu";
 import {useTheme} from "@repraze/kernelkit/provider";
+import {GithubIcon, usePageTitle} from "@repraze/kernelkit/site";
 import {Link} from "@tanstack/react-router";
 import {ArrowRightIcon, BoxIcon, CpuIcon, PackageIcon, PaletteIcon, TerminalIcon} from "lucide-react";
 
-import {GithubIcon} from "@/components/github-icon";
 import {KitShowcase} from "@/components/hero-showcase";
 import {Code} from "@/lib/doc-kit";
-import {DOCS} from "@/lib/docs-index";
-import {GITHUB_URL, usePageTitle} from "@/lib/site";
+import {DOCS_INDEX} from "@/lib/docs-index";
+import {GITHUB_URL, SITE_NAME} from "@/lib/site";
 
 const PROCESSES = [
     {pid: 1, name: "init", cpu: 0.1, status: "running"},
@@ -61,8 +61,8 @@ const PROCESSES = [
 ] as const;
 
 export function HomePage() {
-    usePageTitle();
-    const componentCount = DOCS.filter((d) => d.category !== "Foundations").length;
+    usePageTitle(undefined, SITE_NAME);
+    const componentCount = DOCS_INDEX.docs.filter((d) => d.category !== "Foundations").length;
     return (
         <main className="flex flex-1 flex-col">
             <Hero layout="split">

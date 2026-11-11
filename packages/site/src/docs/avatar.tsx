@@ -8,7 +8,7 @@ import {
 } from "@repraze/kernelkit/components/avatar";
 import {BotIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 // Inline SVG portraits so the demo works offline (no external image hosts).
 function portrait(hue: string) {
@@ -22,7 +22,7 @@ const LIN = portrait("hsl(190 70% 40%)");
 export const doc = defineDoc({
     title: "Avatar",
     category: "Data display",
-    baseUi: "avatar",
+    source: baseUi("avatar"),
     description: "A user or service picture with a text fallback while it loads or when it fails.",
     demos: [
         {title: "Image and fallback", component: Basic},

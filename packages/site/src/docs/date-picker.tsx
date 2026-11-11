@@ -3,14 +3,14 @@ import {Label} from "@repraze/kernelkit/components/label";
 import * as React from "react";
 import type {DateRange} from "react-day-picker";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 const today = new Date(2026, 10, 6);
 
 export const doc = defineDoc({
     title: "Date Picker",
     category: "Inputs",
-    baseUi: "popover",
+    source: baseUi("popover"),
     description:
         "A form field that opens a Calendar in a Popover: outline trigger, formatted value, placeholder when empty.",
     demos: [

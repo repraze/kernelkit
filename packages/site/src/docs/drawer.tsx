@@ -13,12 +13,12 @@ import {
 import {MinusIcon, PlusIcon} from "lucide-react";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Drawer",
     category: "Overlays",
-    baseUi: "drawer",
+    source: baseUi("drawer"),
     description:
         "A swipeable panel from a screen edge. On touch, drag it to dismiss; prefer Sheet for desktop side panels.",
     order: 4,

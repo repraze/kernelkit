@@ -17,12 +17,12 @@ import {
 } from "@repraze/kernelkit/components/combobox";
 import {Field, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Combobox",
     category: "Inputs",
-    baseUi: "combobox",
+    source: baseUi("combobox"),
     description: "A text input that filters a list as you type. Single value, or multiple as chips.",
     order: 6,
     demos: [

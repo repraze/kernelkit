@@ -9,12 +9,12 @@ import {
 import {ActivityIcon, BoxIcon, DatabaseIcon, GitBranchIcon, NetworkIcon, ShieldIcon} from "lucide-react";
 import type * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Navigation menu",
     category: "Navigation",
-    baseUi: "navigation-menu",
+    source: baseUi("navigation-menu"),
     description: "Site-level links with rich dropdown panels that share one animated viewport.",
     demos: [
         {title: "Default", component: Default, layout: "tall"},

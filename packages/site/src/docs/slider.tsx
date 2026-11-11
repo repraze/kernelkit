@@ -2,12 +2,12 @@ import {Label} from "@repraze/kernelkit/components/label";
 import {Slider} from "@repraze/kernelkit/components/slider";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Slider",
     category: "Inputs",
-    baseUi: "slider",
+    source: baseUi("slider"),
     description: "Picks a value or a range along a track by dragging or with the arrow keys.",
     demos: [
         {title: "Basic", component: Basic},

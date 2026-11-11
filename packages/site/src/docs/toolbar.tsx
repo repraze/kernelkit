@@ -21,12 +21,12 @@ import {
     ZoomOutIcon,
 } from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Toolbar",
     category: "Navigation",
-    baseUi: "toolbar",
+    source: baseUi("toolbar"),
     description: "Groups related controls into one bordered bar with a single tab stop and arrow-key navigation.",
     demos: [
         {

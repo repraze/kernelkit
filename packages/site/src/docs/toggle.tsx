@@ -1,12 +1,12 @@
 import {Toggle} from "@repraze/kernelkit/components/toggle";
 import {BoldIcon, BookmarkIcon, EyeIcon, ItalicIcon, PinIcon, WrapTextIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Toggle",
     category: "Actions",
-    baseUi: "toggle",
+    source: baseUi("toggle"),
     description: "A two-state button. On is an accent fill (outline adds a primary border), readable in high contrast.",
     order: 3,
     demos: [

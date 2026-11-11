@@ -11,12 +11,12 @@ import {
 } from "@repraze/kernelkit/components/popover";
 import {SlidersHorizontalIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Popover",
     category: "Overlays",
-    baseUi: "popover",
+    source: baseUi("popover"),
     description: "A floating panel anchored to a trigger, for small forms and details that don't need a modal.",
     order: 5,
     demos: [

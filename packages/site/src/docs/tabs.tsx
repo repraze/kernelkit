@@ -4,12 +4,12 @@ import {Input} from "@repraze/kernelkit/components/input";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {ActivityIcon, CpuIcon, FileTextIcon, ServerIcon, SettingsIcon, TerminalIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Tabs",
     category: "Navigation",
-    baseUi: "tabs",
+    source: baseUi("tabs"),
     description: "Switches between views of the same object without leaving the page.",
     demos: [
         {

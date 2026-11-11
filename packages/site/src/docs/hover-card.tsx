@@ -4,12 +4,12 @@ import {Button} from "@repraze/kernelkit/components/button";
 import {HoverCard, HoverCardContent, HoverCardTrigger} from "@repraze/kernelkit/components/hover-card";
 import {GitCommitHorizontalIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Hover Card",
     category: "Overlays",
-    baseUi: "preview-card",
+    source: baseUi("preview-card"),
     description: "A preview of a linked resource, shown on hover or focus. Never put the only path to an action in it.",
     order: 6,
     demos: [

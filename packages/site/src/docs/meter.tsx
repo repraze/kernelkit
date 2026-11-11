@@ -1,12 +1,12 @@
 import {Meter, MeterLabel, MeterValue} from "@repraze/kernelkit/components/meter";
 import type {Color} from "@repraze/kernelkit/lib/color";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Meter",
     category: "Feedback",
-    baseUi: "meter",
+    source: baseUi("meter"),
     description: "A measurement within a known range: disk usage, memory, quota. Shares Progress's look and sizes.",
     demos: [
         {title: "Default", component: Default},

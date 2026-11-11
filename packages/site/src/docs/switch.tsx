@@ -3,12 +3,12 @@ import {Input} from "@repraze/kernelkit/components/input";
 import {Label} from "@repraze/kernelkit/components/label";
 import {Switch} from "@repraze/kernelkit/components/switch";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Switch",
     category: "Inputs",
-    baseUi: "switch",
+    source: baseUi("switch"),
     description:
         "Turns a setting on or off immediately, like a hardware toggle; use a checkbox when the change waits for a submit.",
     demos: [

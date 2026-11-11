@@ -13,12 +13,12 @@ import {
 import {Button} from "@repraze/kernelkit/components/button";
 import {PowerIcon, RotateCcwIcon, Trash2Icon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Alert Dialog",
     category: "Overlays",
-    baseUi: "alert-dialog",
+    source: baseUi("alert-dialog"),
     description: "A modal confirmation that interrupts the user. It does not close on outside click.",
     order: 2,
     demos: [

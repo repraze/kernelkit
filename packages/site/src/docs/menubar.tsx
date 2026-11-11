@@ -18,12 +18,12 @@ import {
 import {PlayIcon, RotateCcwIcon, SquareIcon, Trash2Icon} from "lucide-react";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Menubar",
     category: "Navigation",
-    baseUi: "menubar",
+    source: baseUi("menubar"),
     description: "A desktop-style row of menus for app-level commands, with arrow-key navigation between them.",
     demos: [
         {title: "Default", component: Default, layout: "tall"},

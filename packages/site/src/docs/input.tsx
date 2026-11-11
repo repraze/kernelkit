@@ -1,12 +1,12 @@
 import {Field, FieldDescription, FieldError, FieldLabel} from "@repraze/kernelkit/components/field";
 import {Input} from "@repraze/kernelkit/components/input";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Input",
     category: "Inputs",
-    baseUi: "input",
+    source: baseUi("input"),
     description: "A single-line text field. h-8, the same height as Button and Select.",
     order: 1,
     demos: [

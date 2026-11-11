@@ -3,12 +3,12 @@ import {Kbd} from "@repraze/kernelkit/components/kbd";
 import {Tooltip, TooltipContent, TooltipTrigger} from "@repraze/kernelkit/components/tooltip";
 import {CopyIcon, RefreshCwIcon, SquareTerminalIcon, Trash2Icon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Tooltip",
     category: "Overlays",
-    baseUi: "tooltip",
+    source: baseUi("tooltip"),
     description: "A short label for an icon-only control, shown on hover and keyboard focus.",
     order: 7,
     demos: [

@@ -1,13 +1,12 @@
-import {createRootRoute, createRoute, notFound, Outlet, redirect} from "@tanstack/react-router";
+import {DocPage, DocsLayout, ReviewMatrix, reviewScopes} from "@repraze/kernelkit/docs";
+import {SuiteFooter, usePageTitle} from "@repraze/kernelkit/site";
+import {createRootRoute, createRoute, notFound, Outlet, redirect, useLoaderData} from "@tanstack/react-router";
 
-import {SiteFooter} from "@/components/site-footer";
-import {SiteHeader} from "@/components/site-header";
-import {loadDoc} from "@/lib/docs-index";
-import {DocPage} from "@/pages/doc-page";
-import {DocsLayout} from "@/pages/docs-layout";
+import {docLink, SiteDocsNav, SiteHeader} from "@/components/site-header";
+import {DOCS_INDEX} from "@/lib/docs-index";
+import {GITHUB_URL, SITE_NAME} from "@/lib/site";
 import {HomePage} from "@/pages/home";
 import {NotFound} from "@/pages/not-found";
-import {ReviewPage} from "@/pages/review-page";
 
 const rootRoute = createRootRoute({
     component: () => (
@@ -16,7 +15,14 @@ const rootRoute = createRootRoute({
             <div className="flex flex-1 flex-col">
                 <Outlet />
             </div>
-            <SiteFooter />
+            <SuiteFooter
+                links={[
+                    {label: "Docs", render: docLink("introduction")},
+                    {label: "Registry", href: `${import.meta.env.BASE_URL}r/registry.json`},
+                    {label: "npm", href: "https://www.npmjs.com/package/@repraze/kernelkit"},
+                    {label: "GitHub", href: GITHUB_URL},
+                ]}
+            />
         </div>
     ),
     notFoundComponent: NotFound,
@@ -24,7 +30,15 @@ const rootRoute = createRootRoute({
 
 const homeRoute = createRoute({getParentRoute: () => rootRoute, path: "/", component: HomePage});
 
-const docsRoute = createRoute({getParentRoute: () => rootRoute, path: "/docs", component: DocsLayout});
+const docsRoute = createRoute({
+    getParentRoute: () => rootRoute,
+    path: "/docs",
+    component: () => (
+        <DocsLayout nav={<SiteDocsNav />}>
+            <Outlet />
+        </DocsLayout>
+    ),
+});
 
 const docsIndexRoute = createRoute({
     getParentRoute: () => docsRoute,
@@ -36,21 +50,30 @@ const docsIndexRoute = createRoute({
 
 /** Loads the page's own chunk (demos + source) on navigation; intent preload warms it on hover. */
 async function docLoader({params}: {params: {slug: string}}) {
-    const doc = await loadDoc(params.slug);
+    const doc = await DOCS_INDEX.loadDoc(params.slug);
     if (!doc) {
         throw notFound();
     }
     return doc;
 }
 
-const docRoute = createRoute({getParentRoute: () => docsRoute, path: "$slug", loader: docLoader, component: DocPage});
+function DocRoute() {
+    const doc = useLoaderData({from: "/docs/$slug"});
+    usePageTitle(doc.title, SITE_NAME);
+    return <DocPage doc={doc} index={DOCS_INDEX} linkFor={docLink} />;
+}
 
-/** Visual review matrix (GUIDELINES.md §8), outside the site chrome. */
+const docRoute = createRoute({getParentRoute: () => docsRoute, path: "$slug", loader: docLoader, component: DocRoute});
+
+/** Visual review matrix (GUIDELINES.md §8). */
 const reviewRoute = createRoute({
     getParentRoute: () => rootRoute,
     path: "/review/$slug",
     loader: docLoader,
-    component: ReviewPage,
+    component: function ReviewRoute() {
+        const doc = useLoaderData({from: "/review/$slug"});
+        return <ReviewMatrix doc={doc} scopes={reviewScopes({accent: "pink", radius: "md"})} />;
+    },
 });
 
 export const routeTree = rootRoute.addChildren([

@@ -15,12 +15,12 @@ import {
 } from "@repraze/kernelkit/components/sheet";
 import {PanelRightIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Sheet",
     category: "Overlays",
-    baseUi: "dialog",
+    source: baseUi("dialog"),
     description: "A dialog that slides in from a screen edge, for side panels, details and filters.",
     order: 3,
     demos: [

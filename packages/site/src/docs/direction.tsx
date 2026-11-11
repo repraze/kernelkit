@@ -3,12 +3,12 @@ import {DirectionProvider} from "@repraze/kernelkit/components/direction";
 import {Progress, ProgressLabel, ProgressValue} from "@repraze/kernelkit/components/progress";
 import {ArrowRightIcon} from "lucide-react";
 
-import {Code, defineDoc} from "@/lib/doc-kit";
+import {baseUi, Code, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Direction",
     category: "Foundations",
-    baseUi: "direction-provider",
+    source: baseUi("direction-provider"),
     description:
         "Tells Base UI parts the text direction (keyboard navigation, popup sides, slider and progress fill) for right-to-left apps.",
     order: 5,

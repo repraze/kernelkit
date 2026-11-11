@@ -2,12 +2,12 @@ import {Button} from "@repraze/kernelkit/components/button";
 import {Progress, ProgressLabel, ProgressValue} from "@repraze/kernelkit/components/progress";
 import {useEffect, useState} from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Progress",
     category: "Feedback",
-    baseUi: "progress",
+    source: baseUi("progress"),
     description:
         "How far along a task is: an upload, a build, a rollout. For a static measurement in a range use Meter.",
     demos: [

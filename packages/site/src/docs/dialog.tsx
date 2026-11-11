@@ -14,12 +14,12 @@ import {Field, FieldGroup, FieldLabel} from "@repraze/kernelkit/components/field
 import {Input} from "@repraze/kernelkit/components/input";
 import {PencilIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Dialog",
     category: "Overlays",
-    baseUi: "dialog",
+    source: baseUi("dialog"),
     description: "A modal window over the page for a focused task: a short form, a detail view, a choice.",
     order: 1,
     demos: [

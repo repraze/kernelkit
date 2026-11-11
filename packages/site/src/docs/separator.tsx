@@ -1,11 +1,11 @@
 import {Separator} from "@repraze/kernelkit/components/separator";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Separator",
     category: "Layout",
-    baseUi: "separator",
+    source: baseUi("separator"),
     description: "A 1px line in the border color that divides content horizontally or vertically.",
     demos: [
         {title: "Horizontal", component: Horizontal},

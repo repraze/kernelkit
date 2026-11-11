@@ -28,12 +28,12 @@ import {Textarea} from "@repraze/kernelkit/components/textarea";
 import {ToggleGroup, ToggleGroupItem} from "@repraze/kernelkit/components/toggle-group";
 import {SearchIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Field",
     category: "Inputs",
-    baseUi: "field",
+    source: baseUi("field"),
     description:
         "Label, control, description and error stacked with consistent spacing. Compose forms from FieldSet and FieldGroup.",
     order: 10,

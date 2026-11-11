@@ -2,12 +2,12 @@ import {Button} from "@repraze/kernelkit/components/button";
 import {COLORS, FILL_VARIANTS} from "@repraze/kernelkit/lib/color";
 import {ArrowRightIcon, LoaderCircleIcon, PlusIcon, TerminalIcon, Trash2Icon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Button",
     category: "Actions",
-    baseUi: "button",
+    source: baseUi("button"),
     description: "Triggers an action. One primary per view; everything else steps down to outline, secondary or ghost.",
     order: 1,
     demos: [

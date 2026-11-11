@@ -11,14 +11,14 @@ import {
 } from "@repraze/kernelkit/components/trace";
 import {CheckIcon, CircleDashedIcon, FileTextIcon, GlobeIcon, SearchIcon, TerminalIcon, XIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Trace",
     category: "Chat",
     description:
         "The assistant's working steps (tool calls, searches, reads), as quiet one-line entries that can fold away under a summary.",
-    baseUi: "collapsible",
+    source: baseUi("collapsible"),
     order: 3,
     demos: [
         {title: "Steps", component: Steps, layout: "start"},

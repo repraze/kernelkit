@@ -8,12 +8,12 @@ import {
 import {FolderIcon} from "lucide-react";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Collapsible",
     category: "Data display",
-    baseUi: "collapsible",
+    source: baseUi("collapsible"),
     description: "Shows and hides one region behind a trigger.",
     demos: [
         {

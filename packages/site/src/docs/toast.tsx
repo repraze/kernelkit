@@ -1,12 +1,12 @@
 import {Button} from "@repraze/kernelkit/components/button";
 import {Toaster, useToastManager} from "@repraze/kernelkit/components/toast";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Toast",
     category: "Overlays",
-    baseUi: "toast",
+    source: baseUi("toast"),
     description:
         "A brief, non-blocking notification in the corner of the screen. Stacks, expands on hover, swipes away.",
     order: 11,

@@ -3,12 +3,12 @@ import {ScrollArea} from "@repraze/kernelkit/components/scroll-area";
 import {Separator} from "@repraze/kernelkit/components/separator";
 import {useEffect, useRef, useState} from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Scroll area",
     category: "Layout",
-    baseUi: "scroll-area",
+    source: baseUi("scroll-area"),
     description: "A scroll container with thin, themed overlay scrollbars that stay visible in high contrast.",
     demos: [
         {title: "Vertical", component: Vertical},

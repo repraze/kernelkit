@@ -11,12 +11,12 @@ import {
     UnderlineIcon,
 } from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Toggle Group",
     category: "Actions",
-    baseUi: "toggle-group",
+    source: baseUi("toggle-group"),
     description:
         "A set of toggles with single or multiple selection. `spacing={0}` joins them into a segmented control.",
     order: 4,

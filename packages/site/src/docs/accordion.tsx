@@ -1,11 +1,11 @@
 import {Accordion, AccordionContent, AccordionItem, AccordionTrigger} from "@repraze/kernelkit/components/accordion";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Accordion",
     category: "Data display",
-    baseUi: "accordion",
+    source: baseUi("accordion"),
     description: "A stack of headings that each expand to reveal a section of content.",
     demos: [
         {title: "Default", component: Default},

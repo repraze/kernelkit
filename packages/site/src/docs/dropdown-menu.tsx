@@ -27,12 +27,12 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Dropdown Menu",
     category: "Overlays",
-    baseUi: "menu",
+    source: baseUi("menu"),
     description: "A list of actions or options that opens from a button.",
     order: 8,
     demos: [

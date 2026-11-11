@@ -14,12 +14,12 @@ import {
 import {CopyIcon, FileTextIcon, RefreshCwIcon, Trash2Icon} from "lucide-react";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Context Menu",
     category: "Overlays",
-    baseUi: "context-menu",
+    source: baseUi("context-menu"),
     description: "A menu on right-click or long-press over an area. Same items as Dropdown Menu.",
     order: 9,
     demos: [{title: "Node row", component: NodeRow, description: "Right-click the area."}],

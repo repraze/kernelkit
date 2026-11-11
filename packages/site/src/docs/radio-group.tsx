@@ -1,12 +1,12 @@
 import {Label} from "@repraze/kernelkit/components/label";
 import {RadioGroup, RadioGroupItem} from "@repraze/kernelkit/components/radio-group";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Radio Group",
     category: "Inputs",
-    baseUi: "radio-group",
+    source: baseUi("radio-group"),
     description: "Picks exactly one option from a short, visible list; arrow keys move the selection.",
     demos: [
         {title: "Basic", component: Basic, layout: "start"},

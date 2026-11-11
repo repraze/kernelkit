@@ -3,12 +3,12 @@ import {CheckboxGroup} from "@repraze/kernelkit/components/checkbox-group";
 import {Label} from "@repraze/kernelkit/components/label";
 import * as React from "react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Checkbox Group",
     category: "Inputs",
-    baseUi: "checkbox-group",
+    source: baseUi("checkbox-group"),
     description: "Shares one array value across a set of checkboxes, with an optional select-all parent.",
     demos: [
         {title: "Basic", component: Basic, layout: "start"},

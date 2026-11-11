@@ -11,12 +11,12 @@ import {
 } from "@repraze/kernelkit/components/select";
 import {CpuIcon, ServerIcon} from "lucide-react";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Select",
     category: "Inputs",
-    baseUi: "select",
+    source: baseUi("select"),
     description: "Pick one value from a list in a popup. The trigger shares the field look and sizes.",
     order: 4,
     demos: [

@@ -9,12 +9,12 @@ import {
     NumberFieldScrubArea,
 } from "@repraze/kernelkit/components/number-field";
 
-import {defineDoc} from "@/lib/doc-kit";
+import {baseUi, defineDoc} from "@/lib/doc-kit";
 
 export const doc = defineDoc({
     title: "Number Field",
     category: "Inputs",
-    baseUi: "number-field",
+    source: baseUi("number-field"),
     description: "A numeric input with steppers, keyboard and wheel stepping, locale formatting and a scrub area.",
     order: 8,
     demos: [
