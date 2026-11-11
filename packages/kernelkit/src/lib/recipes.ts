@@ -52,3 +52,17 @@ export const placeholderFill = "bg-foreground/10 hc:bg-border";
 
 /** Selected row (table, data table, code line, list): accent tint + 2px inset primary indicator (§6). */
 export const selectedRow = "bg-accent text-accent-foreground shadow-[inset_2px_0_0_var(--primary-text)]";
+
+/**
+ * Status surface shared by Alert and Callout (§2): one `soft` / `outline` axis, same values in both.
+ * Expects a color variant (`--c`, `--c-tint`) on the same element. Neutral swaps the hue border for the
+ * plain border on a card surface (`statusSurfaceNeutral`).
+ */
+export const statusSurface = {
+    // status tint behind foreground text; the hue lives in the border, icon and accents (TermiColor rule)
+    soft: "border-(--c)/30 bg-(--c-tint) hc:border-(--c)",
+    // no wash: card surface with a hue border, for dense layouts
+    outline: "border-(--c)/50 bg-card hc:border-(--c)",
+} as const;
+
+export const statusSurfaceNeutral = "border-border bg-card hc:border-border";

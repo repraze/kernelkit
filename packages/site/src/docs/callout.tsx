@@ -14,6 +14,12 @@ export const doc = defineDoc({
         {title: "Default", component: Default},
         {title: "Status colors", component: Statuses, layout: "start"},
         {
+            title: "Outline",
+            component: Outline,
+            layout: "start",
+            description: '`variant="outline"` drops the tint for a card surface and a stronger border, like Alert\'s.',
+        },
+        {
             title: "Collapsible",
             component: CollapsibleDemo,
             description: "`collapsible` turns the header into a toggle; `defaultCollapsed` starts it closed.",
@@ -29,6 +35,12 @@ export const doc = defineDoc({
                     name: "color",
                     type: '"neutral" | "primary" | "danger" | "warning" | "success" | "info" | Hue',
                     default: '"neutral"',
+                },
+                {
+                    name: "variant",
+                    type: '"soft" | "outline"',
+                    default: '"soft"',
+                    description: "Tinted or card surface; the same axis and values as Alert.",
                 },
                 {name: "title", type: "ReactNode", description: "Header label, in the heading font."},
                 {name: "icon", type: "ReactNode", description: "Leading icon element, e.g. <InfoIcon />."},
@@ -67,6 +79,25 @@ export function Statuses() {
                 <p>
                     Take a snapshot first, see <a href="#statuses">backups</a>.
                 </p>
+            </Callout>
+        </div>
+    );
+}
+
+export function Outline() {
+    return (
+        <div className="flex w-full max-w-xl flex-col gap-3">
+            <Callout variant="outline" title="Note" icon={<NotebookPenIcon />}>
+                Quotas apply per namespace, not per cluster.
+            </Callout>
+            <Callout variant="outline" color="info" title="Info" icon={<InfoIcon />}>
+                Snapshots are incremental: only blocks changed since the previous snapshot are uploaded.
+            </Callout>
+            <Callout variant="outline" color="warning" title="Warning" icon={<TriangleAlertIcon />}>
+                Changing <InlineCode>replicas</InlineCode> on a stateful set reschedules pods one at a time.
+            </Callout>
+            <Callout variant="outline" color="danger" title="Danger" icon={<CircleAlertIcon />}>
+                <InlineCode>kk volume purge</InlineCode> deletes data on every node. There is no undo.
             </Callout>
         </div>
     );

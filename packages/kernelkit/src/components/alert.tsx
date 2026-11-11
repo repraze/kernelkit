@@ -3,7 +3,7 @@
 import {mergeProps} from "@base-ui/react/merge-props";
 import {useRender} from "@base-ui/react/use-render";
 import {type Color, colorVariants} from "@repraze/kernelkit/lib/color";
-import {heading} from "@repraze/kernelkit/lib/recipes";
+import {heading, statusSurface, statusSurfaceNeutral} from "@repraze/kernelkit/lib/recipes";
 import {cva} from "class-variance-authority";
 import {cn} from "cn";
 
@@ -17,16 +17,14 @@ const alertCva = cva(
         variants: {
             color: colorVariants,
             variant: {
-                // status tint behind foreground text; the hue lives in the border and the icon (§2 TermiColor rule)
-                soft: "border-(--c)/30 bg-(--c-tint) text-foreground *:[svg]:text-(--c) hc:border-(--c)",
-                // no wash: card surface with a hue border, for dense layouts
-                outline: "border-(--c)/50 bg-card text-card-foreground *:[svg]:text-(--c) hc:border-(--c)",
+                soft: [statusSurface.soft, "text-foreground *:[svg]:text-(--c)"],
+                outline: [statusSurface.outline, "text-card-foreground *:[svg]:text-(--c)"],
             },
         },
         compoundVariants: [
             {
                 color: "neutral",
-                class: "border-border bg-card text-card-foreground *:[svg]:text-foreground hc:border-border",
+                class: [statusSurfaceNeutral, "text-card-foreground *:[svg]:text-foreground"],
             },
         ],
         defaultVariants: {variant: "soft", color: "neutral"},
