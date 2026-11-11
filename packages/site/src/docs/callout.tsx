@@ -9,7 +9,7 @@ export const doc = defineDoc({
     title: "Callout",
     category: "Feedback",
     description:
-        "An aside in long-form content (docs, changelogs, blog posts): a note, tip or warning set off by a left accent bar. For app status use Alert.",
+        "An aside in long-form content (docs, changelogs, blog posts): a note, tip or warning marked by an accent pill on its left edge, like a current sidebar row. For app status use Alert.",
     demos: [
         {title: "Default", component: Default},
         {title: "Status colors", component: Statuses, layout: "start"},

@@ -9,13 +9,15 @@ import {ChevronDownIcon} from "lucide-react";
 import type * as React from "react";
 
 /**
- * Long-form aside for docs and articles (note, tip, warning). A left accent bar carries the color;
- * the surface is a faint wash so body text stays foreground. For app status use Alert.
+ * Long-form aside for docs and articles (note, tip, warning). The color rides on the suite's row
+ * indicator (the sidebar and menu pill: 2px, rounded, inset from the top and bottom) plus a faint
+ * wash, so body text stays foreground. For app status use Alert.
  */
 const calloutVariants = cva(
     [
         "group/callout relative overflow-hidden rounded-lg border border-(--c)/25 bg-(--c)/5 pl-1 text-sm text-foreground hc:border-(--c)",
-        "before:absolute before:inset-y-0 before:left-0 before:w-1 before:bg-(--c)",
+        // the row indicator (recipes rowIndicator), always on, in the callout's color
+        "before:pointer-events-none before:absolute before:top-1.5 before:bottom-1.5 before:left-1 before:w-0.5 before:rounded-pill before:bg-(--c)",
     ],
     {
         variants: {

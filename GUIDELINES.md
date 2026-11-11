@@ -368,3 +368,6 @@ Tools (dev server must be running on :5175, it hot-reloads):
   a site can give badges, tooltips, breadcrumbs, kbd, eyebrows, nav and values another face without
   touching code. Components that used `font-mono` for labels switched to `font-alt`; code blocks, inline
   code and OTP digits stay `font-mono`. Badge takes `font-alt` and keeps its pill (the symmetric shape).
+- 2026-11-10 Callout: the full-height 4px start bar becomes the suite's row indicator (2px rounded pill,
+  inset 6px top and bottom, 4px in from the border) in the callout's color, matching the sidebar and
+  menu rows. Alert stays edge-free: callout = docs aside with a pill, alert = app status with an icon.
