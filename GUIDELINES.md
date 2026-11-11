@@ -232,6 +232,9 @@ decorations above the header row.
   and a `SectionAction` (outline Button with a trailing arrow): every section ends somewhere to go next.
   Grids of destinations inside a section are `LinkCard`s.
 - Section anchors get `scroll-mt-24` so jumps clear the sticky header.
+- Shared, not copied: the header, footer, logo, docs pages, search and Vite plugins come from the kit
+  (`@repraze/kernelkit/site`, `/docs`, `/vite`, `/site.css`; see the package README). A site keeps only its
+  brand mark, accent and radius (`defaultTheme`), nav entries and content.
 
 ## 7c. Navigation states (header, sidebar, phone menu, tree, table of contents)
 

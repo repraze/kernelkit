@@ -84,4 +84,17 @@ function SearchFooter({className, ...props}: React.ComponentProps<"div">) {
     );
 }
 
-export {SearchDialog, SearchFooter, SearchItem};
+/**
+ * The suite's search filter for `<Command filter={substringFilter}>`: a plain substring match (prefix
+ * matches rank first). cmdk's default fuzzy match finds "t…a…b" in nearly every title.
+ */
+function substringFilter(value: string, search: string, keywords?: string[]) {
+    const haystack = [value, ...(keywords ?? [])].join(" ").toLowerCase();
+    const needle = search.trim().toLowerCase();
+    if (haystack.startsWith(needle)) {
+        return 1;
+    }
+    return haystack.includes(needle) ? 0.5 : 0;
+}
+
+export {SearchDialog, SearchFooter, SearchItem, substringFilter};

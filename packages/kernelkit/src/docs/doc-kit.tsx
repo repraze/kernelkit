@@ -1,3 +1,5 @@
+"use client";
+
 import {
     CodeBlock,
     CodeBlockActions,
@@ -9,22 +11,8 @@ import {
 import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from "@repraze/kernelkit/components/table";
 import {Tabs, TabsContent, TabsList, TabsTrigger} from "@repraze/kernelkit/components/tabs";
 import {useHighlightedCode} from "@repraze/kernelkit/hooks/use-highlighted-code";
-import {cn} from "@repraze/kernelkit/lib/utils";
+import {cn} from "cn";
 import type * as React from "react";
-
-export const CATEGORIES = [
-    "Foundations",
-    "Actions",
-    "Inputs",
-    "Overlays",
-    "Navigation",
-    "Data display",
-    "Feedback",
-    "Layout",
-    "Chat",
-] as const;
-
-export type Category = (typeof CATEGORIES)[number];
 
 export interface PropRow {
     name: string;
@@ -41,41 +29,49 @@ export interface DemoDef {
     layout?: "center" | "start" | "full" | "tall";
 }
 
-export interface DocDef {
+/** A docs page: one `defineDoc({...})` per file in the site's docs folder (read statically by docsMetaPlugin). */
+export interface DocDef<Category extends string = string> {
     title: string;
     category: Category;
     description: string;
-    /** Base UI docs slug of the primitive this wraps. */
-    baseUi?: string;
+    /** A link badge after the category in the page header: the primitive it wraps, the source file it documents. */
+    source?: {label: string; href: string};
     demos: DemoDef[];
     props?: {component: string; rows: PropRow[]}[];
     /** Freeform content after the demos. */
     notes?: React.ComponentType;
+    /** The notes' own h2 sections (`id` on each), listed in the table of contents after the demos. */
+    sections?: {id: string; title: string}[];
     /** Sort order inside the category (lower first, default 50). */
     order?: number;
 }
 
-export interface DocEntry extends DocDef {
+export interface DocEntry<Category extends string = string> extends DocDef<Category> {
     slug: string;
-    source: string;
     /** Source of each demo's own function, by demo index. */
     demoSources: string[];
 }
 
-export const defineDoc = (doc: DocDef) => doc;
-
-/** The demo's own exported function, not the whole doc file. */
-export function extractFunction(source: string, name: string): string {
-    const start = source.search(new RegExp(`^export (function|const) ${name}\\b`, "m"));
-    if (start < 0) {
-        return "";
-    }
-    const rest = source.slice(start);
-    const next = rest.slice(1).search(/^export /m);
-    const body = next < 0 ? rest : rest.slice(0, next + 1);
-    return body.replace(/^export /, "").trimEnd();
+/**
+ * Declare a docs page. The site narrows the categories once:
+ *
+ * ```ts
+ * export const CATEGORIES = ["Foundations", "Components"] as const;
+ * export const defineDoc = (doc: DocDef<(typeof CATEGORIES)[number]>) => doc;
+ * ```
+ */
+export function defineDoc<Category extends string>(doc: DocDef<Category>): DocDef<Category> {
+    return doc;
 }
 
+export function slugify(text: string) {
+    return text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
+}
+
+/** A highlighted, copyable code sample (the kit's CodeBlock), titled with its language by default. */
 export function Code({
     code,
     language = "tsx",
@@ -114,6 +110,7 @@ const layoutClass: Record<NonNullable<DemoDef["layout"]>, string> = {
     tall: "flex min-h-[28rem] items-center justify-center p-8",
 };
 
+/** One demo: its title and description, then Preview and Code tabs. The section's id is the slugified title. */
 export function Demo({demo, code}: {demo: DemoDef; code: string}) {
     const Component = demo.component;
     return (
@@ -143,6 +140,7 @@ export function Demo({demo, code}: {demo: DemoDef; code: string}) {
     );
 }
 
+/** A component's props: name, type, default and description. */
 export function PropsTable({component, rows}: {component: string; rows: PropRow[]}) {
     return (
         <section className="flex flex-col gap-3">
@@ -175,11 +173,4 @@ export function PropsTable({component, rows}: {component: string; rows: PropRow[
             </div>
         </section>
     );
-}
-
-export function slugify(text: string) {
-    return text
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/^-|-$/g, "");
 }

@@ -1,0 +1,15 @@
+/*
+ * The suite's site stylesheet: the kit's styles and the suite fonts (Geist to read, JetBrains Mono for
+ * code, labels and the wordmark). A site's index.css:
+ *
+ *     @import "tailwindcss";
+ *     @import "@repraze/kernelkit/site.css";
+ */
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/jetbrains-mono";
+@import "./kernelkit.css";
+
+:root {
+    --kk-font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+    --kk-font-mono: "JetBrains Mono Variable", ui-monospace, monospace;
+}

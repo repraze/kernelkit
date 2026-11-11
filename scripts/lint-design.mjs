@@ -2,12 +2,15 @@
 import {readdirSync, readFileSync} from "node:fs";
 import {join} from "node:path";
 
-const dir = new URL("../packages/kernelkit/src/components/", import.meta.url).pathname;
+const src = new URL("../packages/kernelkit/src/", import.meta.url).pathname;
+// the components, and the docs and site-shell modules built from them
 const files = process.argv.slice(2).length
     ? process.argv.slice(2)
-    : readdirSync(dir, {recursive: true})
-          .filter((f) => String(f).endsWith(".tsx"))
-          .map((f) => join(dir, String(f)));
+    : ["components", "docs", "site"].flatMap((sub) =>
+          readdirSync(join(src, sub), {recursive: true})
+              .filter((f) => String(f).endsWith(".tsx"))
+              .map((f) => join(src, sub, String(f))),
+      );
 
 const RULES = [
     [/\brounded-full\b/, "§3 use rounded-pill (squares at radius-none)"],
@@ -30,7 +33,7 @@ const RULES = [
 let problems = 0;
 for (const file of files) {
     const src = readFileSync(file, "utf8");
-    const rel = file.replace(dir, "");
+    const rel = file.replace(src, "");
     if (file.includes("/src/components/") && !/^"use client";/.test(src)) {
         console.log(`${rel}:1  §7 missing "use client"`);
         problems++;

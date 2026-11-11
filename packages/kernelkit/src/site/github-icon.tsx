@@ -1,3 +1,5 @@
+import type * as React from "react";
+
 /** GitHub mark (lucide no longer ships brand icons). */
 export function GithubIcon(props: React.SVGProps<SVGSVGElement>) {
     return (

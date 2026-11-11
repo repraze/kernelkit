@@ -1,3 +1,5 @@
+"use client";
+
 import {
     SidebarGroup,
     SidebarGroupLabel,
@@ -5,24 +7,33 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@repraze/kernelkit/components/sidebar";
-import {Link, useRouterState} from "@tanstack/react-router";
 
-import {DOCS_BY_CATEGORY} from "@/lib/docs-index";
+import type {DocLinkFor} from "./doc-page";
+import type {DocsIndex} from "./docs-index";
 
-/** Docs navigation, shared by the desktop SiteSidebar and the phone SiteHeaderMenu. */
-export function DocsNav({onNavigate}: {onNavigate?: () => void}) {
-    const pathname = useRouterState({select: (s) => s.location.pathname});
+export interface DocsNavProps {
+    index: DocsIndex;
+    /** The open page's slug (`index.slugOf(pathname)`), marked current. */
+    current?: string;
+    linkFor: DocLinkFor;
+    /** Called when a link is clicked (the phone menu closes). */
+    onNavigate?: () => void;
+}
+
+/** Docs navigation, one Sidebar group per category: the desktop SiteSidebar and the phone menu share it. */
+export function DocsNav({index, current, linkFor, onNavigate}: DocsNavProps) {
     return (
         <nav aria-label="Docs" className="flex flex-col">
-            {DOCS_BY_CATEGORY.map(({category, docs}) => (
+            {index.byCategory.map(({category, docs}) => (
                 <SidebarGroup key={category}>
                     <SidebarGroupLabel className="font-mono uppercase">{category}</SidebarGroupLabel>
                     <SidebarMenu>
                         {docs.map((doc) => (
                             <SidebarMenuItem key={doc.slug}>
                                 <SidebarMenuButton
-                                    isActive={pathname.endsWith(`/docs/${doc.slug}`)}
-                                    render={<Link to="/docs/$slug" params={{slug: doc.slug}} onClick={onNavigate} />}
+                                    isActive={doc.slug === current}
+                                    render={linkFor(doc.slug)}
+                                    onClick={onNavigate}
                                 >
                                     <span>{doc.title}</span>
                                 </SidebarMenuButton>

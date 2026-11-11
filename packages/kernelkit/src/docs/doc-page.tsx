@@ -1,3 +1,5 @@
+"use client";
+
 import {Badge} from "@repraze/kernelkit/components/badge";
 import {
     PageHeader,
@@ -6,28 +8,41 @@ import {
     PageHeaderTitle,
 } from "@repraze/kernelkit/components/page-header";
 import {Pager, PagerLink} from "@repraze/kernelkit/components/pager";
-import {SiteAside, SiteMain} from "@repraze/kernelkit/components/site-layout";
+import {SiteAside, SiteLayout, SiteMain, SiteSidebar} from "@repraze/kernelkit/components/site-layout";
 import {Toc, TocItem, TocList, TocTitle, useTocActive} from "@repraze/kernelkit/components/toc";
-import {Link, useLoaderData} from "@tanstack/react-router";
 import {ExternalLinkIcon} from "lucide-react";
+import type * as React from "react";
 
-import {Demo, PropsTable, slugify} from "@/lib/doc-kit";
-import {DOCS, DOCS_BY_SLUG} from "@/lib/docs-index";
-import {usePageTitle} from "@/lib/site";
+import {Demo, type DocEntry, PropsTable, slugify} from "./doc-kit";
+import type {DocsIndex} from "./docs-index";
 
-export function DocPage() {
-    const doc = useLoaderData({from: "/docs/$slug"});
-    usePageTitle(doc.title);
-    const meta = DOCS_BY_SLUG.get(doc.slug);
-    const index = meta ? DOCS.indexOf(meta) : -1;
-    const prev = DOCS[index - 1];
-    const next = DOCS[index + 1];
-    const Notes = doc.notes;
+/** A router link to a docs page, used as a `render` element: `(slug) => <Link to="/docs/$slug" params={{slug}} />`. */
+export type DocLinkFor = (slug: string) => React.ReactElement;
 
-    const sections = [
+/** The table of contents of a page: its demos, the notes' sections, then the API. */
+export function docToc(doc: DocEntry): {id: string; title: string}[] {
+    return [
         ...doc.demos.map((demo) => ({id: slugify(demo.title), title: demo.title})),
+        ...(doc.sections ?? []),
         ...(doc.props?.length ? [{id: "api", title: "API"}] : []),
     ];
+}
+
+export interface DocPageProps<Category extends string = string> {
+    /** The loaded page (`index.loadDoc(slug)`, usually from the route's loader). */
+    doc: DocEntry<Category>;
+    index: DocsIndex<Category>;
+    linkFor: DocLinkFor;
+}
+
+/**
+ * A docs page in the suite's layout (GUIDELINES §7b): PageHeader (category, source badge, title,
+ * description), the demos, the notes, the API tables and the Pager in SiteMain; the Toc in SiteAside.
+ */
+export function DocPage<Category extends string>({doc, index, linkFor}: DocPageProps<Category>) {
+    const {prev, next} = index.neighbours(doc.slug);
+    const Notes = doc.notes;
+    const sections = docToc(doc);
     const active = useTocActive(sections.map((s) => s.id));
 
     return (
@@ -36,19 +51,13 @@ export function DocPage() {
                 <PageHeader>
                     <PageHeaderEyebrow>
                         <Badge variant="outline">{doc.category}</Badge>
-                        {doc.baseUi ? (
+                        {doc.source ? (
                             <Badge
                                 variant="secondary"
                                 className="font-mono"
-                                render={
-                                    <a
-                                        href={`https://base-ui.com/react/components/${doc.baseUi}`}
-                                        target="_blank"
-                                        rel="noreferrer"
-                                    />
-                                }
+                                render={<a href={doc.source.href} target="_blank" rel="noreferrer" />}
                             >
-                                Base UI <ExternalLinkIcon />
+                                {doc.source.label} <ExternalLinkIcon />
                             </Badge>
                         ) : null}
                     </PageHeaderEyebrow>
@@ -77,12 +86,12 @@ export function DocPage() {
 
                 <Pager>
                     {prev ? (
-                        <PagerLink direction="previous" render={<Link to="/docs/$slug" params={{slug: prev.slug}} />}>
+                        <PagerLink direction="previous" render={linkFor(prev.slug)}>
                             {prev.title}
                         </PagerLink>
                     ) : null}
                     {next ? (
-                        <PagerLink direction="next" render={<Link to="/docs/$slug" params={{slug: next.slug}} />}>
+                        <PagerLink direction="next" render={linkFor(next.slug)}>
                             {next.title}
                         </PagerLink>
                     ) : null}
@@ -103,5 +112,15 @@ export function DocPage() {
                 </SiteAside>
             ) : null}
         </>
+    );
+}
+
+/** The suite's docs layout: SiteLayout with the docs nav in a sticky SiteSidebar, then the page (which adds its Toc). */
+export function DocsLayout({nav, children}: {nav: React.ReactNode; children: React.ReactNode}) {
+    return (
+        <SiteLayout>
+            <SiteSidebar>{nav}</SiteSidebar>
+            {children}
+        </SiteLayout>
     );
 }

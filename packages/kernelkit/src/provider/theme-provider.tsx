@@ -40,6 +40,9 @@ export interface ThemeContextValue extends ThemeState {
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
+/** The nearest ThemeScope's resolved theme, so code that paints (canvas, charts) can follow a scope. */
+const ScopeContext = createContext<ResolvedTheme | null>(null);
+
 /** Element overlays portal into, so popups inside a ThemeScope keep its theme. */
 const PortalContainerContext = createContext<HTMLElement | null>(null);
 
@@ -181,6 +184,23 @@ export function useTheme(): ThemeContextValue {
     return ctx;
 }
 
+/** A theme with its mode resolved (never "system"). */
+export type ResolvedTheme = Omit<ThemeState, "mode"> & {mode: ResolvedMode};
+
+/**
+ * The theme that applies here: the nearest ThemeScope's, else the provider's with "system" resolved.
+ * Use it for things CSS can't reach (canvas, WebGL/WebGPU, charts) so they follow review scopes too.
+ */
+export function useResolvedTheme(): ResolvedTheme {
+    const scope = useContext(ScopeContext);
+    const ctx = useContext(ThemeContext);
+    const mode = scope?.mode ?? ctx?.resolvedMode ?? "light";
+    const contrast = scope?.contrast ?? ctx?.contrast ?? DEFAULT_THEME.contrast;
+    const accent = scope?.accent ?? ctx?.accent ?? DEFAULT_THEME.accent;
+    const radius = scope?.radius ?? ctx?.radius ?? DEFAULT_THEME.radius;
+    return useMemo(() => ({mode, contrast, accent, radius}), [mode, contrast, accent, radius]);
+}
+
 /** Renders the pre-paint script. Place in <head> (Next.js: in the root layout). */
 export function ThemeScript({nonce, ...options}: ThemeScriptOptions & {nonce?: string}) {
     return <script nonce={nonce} suppressHydrationWarning dangerouslySetInnerHTML={{__html: themeScript(options)}} />;
@@ -188,7 +208,7 @@ export function ThemeScript({nonce, ...options}: ThemeScriptOptions & {nonce?: s
 
 export interface ThemeScopeProps extends Omit<React.ComponentProps<"div">, "children"> {
     children?: ReactNode;
-    /** Values not given inherit from the surrounding <ThemeProvider> (or the defaults). */
+    /** Values not given inherit from the surrounding ThemeScope or <ThemeProvider> (or the defaults). */
     mode?: ResolvedMode;
     contrast?: ThemeState["contrast"];
     accent?: ThemeState["accent"];
@@ -200,14 +220,17 @@ export interface ThemeScopeProps extends Omit<React.ComponentProps<"div">, "chil
  * the scope, so they keep its colors and radius.
  */
 export function ThemeScope({mode, contrast, accent, radius, className, children, ...props}: ThemeScopeProps) {
-    const parent = useContext(ThemeContext);
+    const parent = useResolvedTheme();
     const [container, setContainer] = useState<HTMLDivElement | null>(null);
-    const theme = {
-        mode: mode ?? parent?.resolvedMode ?? "light",
-        contrast: contrast ?? parent?.contrast ?? DEFAULT_THEME.contrast,
-        accent: accent ?? parent?.accent ?? DEFAULT_THEME.accent,
-        radius: radius ?? parent?.radius ?? DEFAULT_THEME.radius,
-    };
+    const theme = useMemo(
+        () => ({
+            mode: mode ?? parent.mode,
+            contrast: contrast ?? parent.contrast,
+            accent: accent ?? parent.accent,
+            radius: radius ?? parent.radius,
+        }),
+        [mode, contrast, accent, radius, parent],
+    );
     const classes = themeClassName(theme);
     return (
         <div
@@ -215,7 +238,9 @@ export function ThemeScope({mode, contrast, accent, radius, className, children,
             className={[classes, "bg-background text-foreground", className].filter(Boolean).join(" ")}
             {...props}
         >
-            <PortalContainerContext.Provider value={container}>{children}</PortalContainerContext.Provider>
+            <ScopeContext.Provider value={theme}>
+                <PortalContainerContext.Provider value={container}>{children}</PortalContainerContext.Provider>
+            </ScopeContext.Provider>
             <div ref={setContainer} data-slot="theme-scope-portal" className={classes} />
         </div>
     );

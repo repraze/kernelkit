@@ -1,60 +1,44 @@
+"use client";
+
 import {Command, CommandEmpty, CommandGroup, CommandInput, CommandList} from "@repraze/kernelkit/components/command";
-import {SearchDialog, SearchFooter, SearchItem} from "@repraze/kernelkit/components/search-dialog";
+import {SearchDialog, SearchFooter, SearchItem, substringFilter} from "@repraze/kernelkit/components/search-dialog";
 import {SearchTrigger, useSearchHotkeys} from "@repraze/kernelkit/components/search-trigger";
-import {useNavigate} from "@tanstack/react-router";
-import {
-    BookOpenIcon,
-    ComponentIcon,
-    LayersIcon,
-    LayoutIcon,
-    type LucideIcon,
-    MessageSquareIcon,
-    MousePointerClickIcon,
-    NavigationIcon,
-    SquareChartGanttIcon,
-    TextCursorInputIcon,
-    TriangleAlertIcon,
-} from "lucide-react";
+import {FileTextIcon, type LucideIcon} from "lucide-react";
 import {useCallback, useState} from "react";
 
-import {DOCS, DOCS_BY_CATEGORY} from "@/lib/docs-index";
+import type {DocsIndex} from "./docs-index";
 
-/** One icon per docs category, so a result's kind reads at a glance. */
-const CATEGORY_ICONS: Record<string, LucideIcon> = {
-    Foundations: BookOpenIcon,
-    Actions: MousePointerClickIcon,
-    Inputs: TextCursorInputIcon,
-    Layout: LayoutIcon,
-    Navigation: NavigationIcon,
-    "Data display": SquareChartGanttIcon,
-    Feedback: TriangleAlertIcon,
-    Overlays: LayersIcon,
-    Chat: MessageSquareIcon,
-};
-
-/** Shown before you type. */
-const SUGGESTED = ["introduction", "theming", "button", "sidebar", "site-shell"];
-
-/** Plain substring match: cmdk's default fuzzy match finds "t…a…b" in nearly every title. */
-function substringFilter(value: string, search: string, keywords?: string[]) {
-    const haystack = [value, ...(keywords ?? [])].join(" ").toLowerCase();
-    const needle = search.trim().toLowerCase();
-    if (haystack.startsWith(needle)) {
-        return 1;
-    }
-    return haystack.includes(needle) ? 0.5 : 0;
+export interface DocsSearchProps {
+    index: DocsIndex;
+    /** One icon per category, so a result's kind reads at a glance; `fallbackIcon` for the others. */
+    icons?: Record<string, LucideIcon>;
+    fallbackIcon?: LucideIcon;
+    /** Slugs shown before the first keystroke, in a "Suggested" group. */
+    suggested?: string[];
+    placeholder?: string;
+    /** Go to a page (the router's navigate). */
+    onSelect: (slug: string) => void;
 }
 
-/** Docs search: the suite's SearchTrigger + hotkeys and SearchDialog. */
-export function SiteSearch() {
+/**
+ * The suite's docs search: SearchTrigger + hotkeys (Ctrl/⌘ K, `/`) opening a SearchDialog over the docs
+ * index, grouped by category, with a plain substring filter.
+ */
+export function DocsSearch({
+    index,
+    icons = {},
+    fallbackIcon = FileTextIcon,
+    suggested = [],
+    placeholder = "Search the docs…",
+    onSelect,
+}: DocsSearchProps) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
-    const navigate = useNavigate();
     useSearchHotkeys(useCallback((toggle: boolean) => setOpen((o) => (toggle ? !o : true)), []));
 
     const groups = query.trim()
-        ? DOCS_BY_CATEGORY
-        : [{category: "Suggested", docs: SUGGESTED.flatMap((slug) => DOCS.filter((d) => d.slug === slug))}];
+        ? index.byCategory
+        : [{category: "Suggested", docs: suggested.flatMap((slug) => index.docs.filter((d) => d.slug === slug))}];
 
     return (
         <>
@@ -70,13 +54,13 @@ export function SiteSearch() {
                 description="Search the docs"
             >
                 <Command filter={substringFilter} loop>
-                    <CommandInput value={query} onValueChange={setQuery} placeholder="Search components and guides…" />
+                    <CommandInput value={query} onValueChange={setQuery} placeholder={placeholder} />
                     <CommandList>
                         <CommandEmpty>No results for “{query}”.</CommandEmpty>
                         {groups.map(({category, docs}) => (
                             <CommandGroup key={category} heading={category}>
                                 {docs.map((doc) => {
-                                    const Icon = CATEGORY_ICONS[doc.category] ?? ComponentIcon;
+                                    const Icon = icons[doc.category] ?? fallbackIcon;
                                     return (
                                         <SearchItem
                                             key={doc.slug}
@@ -88,7 +72,7 @@ export function SiteSearch() {
                                             onSelect={() => {
                                                 setOpen(false);
                                                 setQuery("");
-                                                void navigate({to: "/docs/$slug", params: {slug: doc.slug}});
+                                                onSelect(doc.slug);
                                             }}
                                         />
                                     );
