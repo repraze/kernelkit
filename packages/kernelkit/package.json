@@ -1,6 +1,6 @@
 {
     "name": "@repraze/kernelkit",
-    "version": "0.1.0-alpha.5",
+    "version": "0.1.0-alpha.6",
     "description": "Modern, techy React components: every shadcn component on Base UI, Tailwind v4 and cva, themed by TermiColor.",
     "keywords": [
         "react",
