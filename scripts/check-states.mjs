@@ -84,11 +84,12 @@ for (const mode of modes) {
             try {
                 const info = await h.evaluate((e) => ({
                     // scroll containers / panels are focusable for keyboard scrolling but are not "controls";
-                    // the current tab/page needs no hover; input-otp's native input is invisible by design
+                    // the current tab/page needs no hover; input-otp's native input is invisible by design;
+                    // composite widgets (tree, listbox, grid) hover their items, the container only takes focus
                     container:
                         /^(pre|svg)$/i.test(e.tagName) ||
                         /(-viewport|-content|^tabs-content)$/.test(e.dataset.slot ?? "") ||
-                        e.matches("[role=tabpanel]"),
+                        e.matches("[role=tabpanel],[role=tree],[role=listbox],[role=grid]"),
                     current: e.matches(
                         "[aria-selected=true],[aria-expanded=true],[data-popup-open],[aria-current]:not([aria-current=false]),[data-active]:not([data-active=false])",
                     ),
