@@ -2,6 +2,7 @@
 
 import {Button} from "@repraze/kernelkit/components/button";
 import {Calendar} from "@repraze/kernelkit/components/calendar";
+import {useLocale} from "@repraze/kernelkit/components/locale";
 import {Popover, PopoverContent, PopoverTrigger} from "@repraze/kernelkit/components/popover";
 import {cn} from "cn";
 import {format as formatDate} from "date-fns";
@@ -14,8 +15,13 @@ type CalendarProps = React.ComponentProps<typeof Calendar>;
 interface DatePickerBaseProps {
     /** Trigger text when nothing is picked. */
     placeholder?: React.ReactNode;
-    /** date-fns format string for the trigger label. */
-    format?: string;
+    /**
+     * Trigger label: `Intl.DateTimeFormat` options (default `{dateStyle: "long"}`, `"medium"` for ranges), a
+     * function, or a date-fns pattern string.
+     */
+    format?: DateFormat;
+    /** BCP 47 tag for the label and the calendar; defaults to LocaleProvider › browser. */
+    locale?: string;
     size?: "sm" | "default" | "lg";
     disabled?: boolean;
     "aria-invalid"?: boolean;
@@ -25,6 +31,27 @@ interface DatePickerBaseProps {
     calendarProps?: Omit<CalendarProps, "mode" | "selected" | "onSelect">;
     /** Popover alignment against the trigger. */
     align?: "start" | "center" | "end";
+}
+
+type DateFormat = Intl.DateTimeFormatOptions | string | ((date: Date) => string);
+
+/** One date in the trigger. */
+function formatOne(date: Date, format: DateFormat, locale: string) {
+    if (typeof format === "function") {
+        return format(date);
+    }
+    if (typeof format === "string") {
+        return formatDate(date, format);
+    }
+    return new Intl.DateTimeFormat(locale, format).format(date);
+}
+
+/** A range in the trigger: Intl's formatRange shares what both ends have in common ("Nov 14 – 20, 2026"). */
+function formatRange(from: Date, to: Date, format: DateFormat, locale: string) {
+    if (typeof format === "object") {
+        return new Intl.DateTimeFormat(locale, format).formatRange(from, to);
+    }
+    return `${formatOne(from, format, locale)} – ${formatOne(to, format, locale)}`;
 }
 
 function useControllable<T>(value: T | undefined, defaultValue: T | undefined, onChange?: (value: T) => void) {
@@ -59,7 +86,8 @@ function DatePickerTrigger({
                     variant="outline"
                     size={size}
                     className={cn(
-                        "w-60 justify-start text-left font-normal data-empty:text-muted-foreground data-popup-open:bg-hover [&>svg]:text-muted-foreground",
+                        // a field like Select's trigger, not an outline button: it sits beside inputs and TimeInput
+                        "w-60 justify-start bg-field text-start font-normal hover:bg-field-hover aria-expanded:bg-field-hover data-empty:text-muted-foreground data-popup-open:bg-field-hover [&>svg]:text-muted-foreground",
                         className,
                     )}
                     {...props}
@@ -84,7 +112,8 @@ function DatePicker({
     defaultValue = null,
     onValueChange,
     placeholder = "Pick a date",
-    format = "PPP",
+    format = {dateStyle: "long"},
+    locale: localeProp,
     calendarProps,
     align = "start",
     className,
@@ -92,17 +121,19 @@ function DatePicker({
 }: DatePickerProps) {
     const [open, setOpen] = React.useState(false);
     const [date, setDate] = useControllable<Date | null>(value, defaultValue, onValueChange);
+    const locale = useLocale(localeProp);
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
             <DatePickerTrigger
-                label={date ? formatDate(date, format) : undefined}
+                label={date ? formatOne(date, format, locale) : undefined}
                 placeholder={placeholder}
                 className={className}
                 {...trigger}
             />
             <PopoverContent data-slot="date-picker-content" className="w-auto p-0" align={align}>
                 <Calendar
+                    locale={locale}
                     {...calendarProps}
                     mode="single"
                     selected={date ?? undefined}
@@ -131,7 +162,8 @@ function DateRangePicker({
     defaultValue = null,
     onValueChange,
     placeholder = "Pick a date range",
-    format = "LLL d, y",
+    format = {dateStyle: "medium"},
+    locale: localeProp,
     numberOfMonths = 2,
     calendarProps,
     align = "start",
@@ -139,10 +171,11 @@ function DateRangePicker({
     ...trigger
 }: DateRangePickerProps) {
     const [range, setRange] = useControllable<DateRange | null>(value, defaultValue, onValueChange);
+    const locale = useLocale(localeProp);
     const label = range?.from
         ? range.to
-            ? `${formatDate(range.from, format)} – ${formatDate(range.to, format)}`
-            : formatDate(range.from, format)
+            ? formatRange(range.from, range.to, format, locale)
+            : formatOne(range.from, format, locale)
         : undefined;
 
     return (
@@ -150,6 +183,7 @@ function DateRangePicker({
             <DatePickerTrigger label={label} placeholder={placeholder} className={cn("w-72", className)} {...trigger} />
             <PopoverContent data-slot="date-picker-content" className="w-auto p-0" align={align}>
                 <Calendar
+                    locale={locale}
                     {...calendarProps}
                     mode="range"
                     numberOfMonths={numberOfMonths}
@@ -163,4 +197,4 @@ function DateRangePicker({
 }
 
 export {DatePicker, DatePickerTrigger, DateRangePicker};
-export type {DatePickerProps, DateRangePickerProps};
+export type {DateFormat, DatePickerProps, DateRangePickerProps};

@@ -375,3 +375,23 @@ Tools (dev server must be running on :5175, it hot-reloads):
   inset 6px top and bottom, flush left like the menu rows) in the callout's color. Callout and Alert share
   one `soft` / `outline` surface (`statusSurface` in recipes): same names, same values. Callout = docs
   aside with a pill and header; Alert = app status with an icon, no pill.
+- 2026-11-12 Tree: one focusable `role="tree"` with `aria-activedescendant` (rows are not tab stops), so it
+  can virtualize: rows are a flat array, off-screen ones unmounted. Rows follow the sidebar (§7c): hover
+  wash, selected = accent tint + medium + primary icon, its 2px indicator on the parent's guide line
+  (left edge at the top level); the keyboard-focused row gets an inset ring while the tree has visible
+  focus. Branches are `foreground`, leaves `muted-foreground`. `data-selected` must be `"true"` (the
+  custom variant follows cmdk). `check-states` treats tree / listbox / grid containers like scroll
+  viewports: they take focus, their items take hover.
+- 2026-11-13 One Spinner for every icon-sized loading indicator: `variant` ring (default) | dots | braille |
+  scan | blink | bars, same sizes as the icon column. `SpinnerProvider` sets the default for its subtree,
+  so the kit's own spinners (tree, stepper, file upload, toasts) follow the app's choice; never hand-roll
+  `animate-spin` on an icon. The segmented bar is `Progress variant="segmented"` (it is a bar, not an
+  icon); `Shimmer` has its own file. The separate Loader component is gone.
+- 2026-11-13 Dates and times are formatted with `Intl`, no locale data shipped: `useLocale()` resolves a
+  component's `locale` prop › `LocaleProvider` › the browser's language. The server render and the hydration
+  pass use `en-US` (no mismatch), then the client switches; SSR apps pass the request's locale to
+  `LocaleProvider` to be right from the first paint. Calendar takes month / weekday names (narrow when the
+  short ones won't fit), native digits and the first day of the week from `Intl` (a date-fns `Locale`
+  object still works); DatePicker labels use `dateStyle` and `formatRange`; time components default to
+  `hourCycle="auto"` with localized day periods, their position and digits. Values never change format
+  (`Date`, `"HH:mm"`). Built-in aria labels stay English.

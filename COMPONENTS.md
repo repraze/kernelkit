@@ -17,6 +17,7 @@ wrapper), `new` (kernelkit original).
 | Tokens & color axis (`lib/color.ts`)      | new     | ✅  | ✅     | ✅   |
 | Typography (Title, Text, TextLink, Code…) | repraze | ✅  | ✅     | ✅   |
 | Direction                                 | nova    | ✅  | ➖     | ✅   |
+| Locale (`LocaleProvider`, `useLocale`)    | new     | ✅  | ➖     | ✅   |
 
 ## Actions
 
@@ -38,6 +39,9 @@ wrapper), `new` (kernelkit original).
 | Textarea           | nova              | ✅  | ✅     | ✅   |
 | Password input     | repraze           | ✅  | ✅     | ✅   |
 | Number field       | baseui            | ✅  | ✅     | ✅   |
+| Tag input          | new               | ✅  | ✅     | ✅   |
+| Time input         | new               | ✅  | ✅     | ✅   |
+| Time select        | new               | ✅  | ✅     | ✅   |
 | Input OTP          | nova              | ✅  | ✅     | ✅   |
 | Select             | nova              | ✅  | ✅     | ✅   |
 | Native select      | nova              | ✅  | ✅     | ✅   |
@@ -80,26 +84,30 @@ wrapper), `new` (kernelkit original).
 | Menubar         | nova    | ✅  | ✅     | ✅   |
 | Sidebar         | nova    | ✅  | ✅     | ✅   |
 | Navbar          | repraze | ✅  | ✅     | ✅   |
+| Tree / FileTree | new     | ✅  | ✅     | ✅   |
+| Stepper         | new     | ✅  | ✅     | ✅   |
 
 ## Data display
 
-| Component   | Origin  | src | design | docs |
-| ----------- | ------- | --- | ------ | ---- |
-| Badge       | nova    | ✅  | ✅     | ✅   |
-| Avatar      | nova    | ✅  | ✅     | ✅   |
-| Card        | nova    | ✅  | ✅     | ✅   |
-| Table       | nova    | ✅  | ✅     | ✅   |
-| Data table  | repraze | ✅  | ✅     | ✅   |
-| Item        | nova    | ✅  | ✅     | ✅   |
-| Kbd         | nova    | ✅  | ✅     | ✅   |
-| Code block  | nova    | ✅  | ✅     | ✅   |
-| Chart       | nova    | ✅  | ✅     | ✅   |
-| Carousel    | nova    | ✅  | ✅     | ✅   |
-| Accordion   | nova    | ✅  | ✅     | ✅   |
-| Collapsible | nova    | ✅  | ✅     | ✅   |
-| Marker      | nova    | ✅  | ✅     | ✅   |
-| Stat        | new     | ✅  | ✅     | ✅   |
-| Status dot  | new     | ✅  | ✅     | ✅   |
+| Component        | Origin  | src | design | docs |
+| ---------------- | ------- | --- | ------ | ---- |
+| Badge            | nova    | ✅  | ✅     | ✅   |
+| Avatar           | nova    | ✅  | ✅     | ✅   |
+| Card             | nova    | ✅  | ✅     | ✅   |
+| Table            | nova    | ✅  | ✅     | ✅   |
+| Data table       | repraze | ✅  | ✅     | ✅   |
+| Item             | nova    | ✅  | ✅     | ✅   |
+| Kbd              | nova    | ✅  | ✅     | ✅   |
+| Code block       | nova    | ✅  | ✅     | ✅   |
+| Chart            | nova    | ✅  | ✅     | ✅   |
+| Carousel         | nova    | ✅  | ✅     | ✅   |
+| Accordion        | nova    | ✅  | ✅     | ✅   |
+| Collapsible      | nova    | ✅  | ✅     | ✅   |
+| Marker           | nova    | ✅  | ✅     | ✅   |
+| Stat             | new     | ✅  | ✅     | ✅   |
+| Status dot       | new     | ✅  | ✅     | ✅   |
+| Timeline         | new     | ✅  | ✅     | ✅   |
+| Description list | new     | ✅  | ✅     | ✅   |
 
 ## Feedback
 
@@ -110,6 +118,7 @@ wrapper), `new` (kernelkit original).
 | Progress          | nova    | ✅  | ✅     | ✅   |
 | Meter             | baseui  | ✅  | ✅     | ✅   |
 | Spinner           | nova    | ✅  | ✅     | ✅   |
+| Shimmer           | new     | ✅  | ✅     | ✅   |
 | Skeleton          | nova    | ✅  | ✅     | ✅   |
 | Empty             | nova    | ✅  | ✅     | ✅   |
 | Password strength | repraze | ✅  | ✅     | ✅   |
@@ -145,8 +154,10 @@ wrapper), `new` (kernelkit original).
 | Questionnaire    | nova   | ✅  | ✅     | ✅   |
 | Trace            | nova   | ✅  | ✅     | ✅   |
 
-## Later (not v0.1)
+## Later
 
-Tree view, timeline, stepper, tag input, date range picker, time input, terminal/console output,
-diff view, JSON viewer, description list, sortable list. repraze website admin pieces (bulk action
+Tier 1 (2026-11-12) landed: tree, spinner variants + `SpinnerProvider`, segmented progress, shimmer, stepper, tag input, timeline, description list, time input + column picker, time select
+(date range picker was already in `date-picker.tsx`). Next, tier 2: terminal/console output, diff view,
+JSON viewer (on Tree), log viewer, activity heatmap, text effects, annunciator board. Then sortable list,
+`Shortcut` (KbdGroup from `"mod+shift+k"`), AI tool-call / plan / test-results pieces. repraze website admin pieces (bulk action
 bar, list toolbar, entity combobox, delete dialog) stay app-level unless they generalise.

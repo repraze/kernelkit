@@ -1,6 +1,7 @@
 "use client";
 
 import {Button, buttonVariants} from "@repraze/kernelkit/components/button";
+import {useLocale, weekStart} from "@repraze/kernelkit/components/locale";
 import {cn} from "cn";
 import {ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon} from "lucide-react";
 import * as React from "react";
@@ -13,6 +14,37 @@ import {type DayButton, DayPicker, getDefaultClassNames, type Locale} from "reac
  * - today: primary dot under the number + medium weight
  * - outside days: muted text; disabled: muted text + line-through
  */
+/** DayPicker props minus `locale`, keeping the `mode` union intact (a plain Omit would collapse it). */
+type CalendarBaseProps =
+    React.ComponentProps<typeof DayPicker> extends infer P ? (P extends unknown ? Omit<P, "locale"> : never) : never;
+
+/** DayPicker formatters from Intl: the caption, weekday names, day numbers (native digits) and dropdowns. */
+function intlFormatters(locale: string) {
+    try {
+        const caption = new Intl.DateTimeFormat(locale, {month: "long", year: "numeric"});
+        // "short" is the full name in some languages (Arabic): fall back to "narrow" when it won't fit a cell
+        const short = new Intl.DateTimeFormat(locale, {weekday: "short"});
+        const long = Array.from({length: 7}, (_, i) => short.format(new Date(2000, 0, 2 + i))).some(
+            (d) => d.length > 4,
+        );
+        const weekday = long ? new Intl.DateTimeFormat(locale, {weekday: "narrow"}) : short;
+        const day = new Intl.DateTimeFormat(locale, {day: "numeric"});
+        const month = new Intl.DateTimeFormat(locale, {month: "short"});
+        const year = new Intl.DateTimeFormat(locale, {year: "numeric"});
+        return {
+            formatCaption: (date: Date) => caption.format(date),
+            formatWeekdayName: (date: Date) => weekday.format(date),
+            // the day part only: ja formats "14日", the grid wants "14" (native digits kept: "١٤" in ar-EG)
+            formatDay: (date: Date) =>
+                day.formatToParts(date).find((p) => p.type === "day")?.value ?? String(date.getDate()),
+            formatMonthDropdown: (date: Date) => month.format(date),
+            formatYearDropdown: (date: Date) => year.format(date),
+        };
+    } catch {
+        return {};
+    }
+}
+
 function Calendar({
     className,
     classNames,
@@ -22,11 +54,20 @@ function Calendar({
     locale,
     formatters,
     components,
+    weekStartsOn,
     ...props
-}: React.ComponentProps<typeof DayPicker> & {
+}: CalendarBaseProps & {
     buttonVariant?: React.ComponentProps<typeof Button>["variant"];
+    /**
+     * A BCP 47 tag (`"fr-FR"`) or nothing: month and weekday names, digits and the first day of the week
+     * come from `Intl` (prop › LocaleProvider › browser). A date-fns `Locale` object uses date-fns instead.
+     */
+    locale?: Partial<Locale> | string;
 }) {
     const defaultClassNames = getDefaultClassNames();
+    const dateFnsLocale = typeof locale === "object" ? locale : undefined;
+    const tag = useLocale(typeof locale === "string" ? locale : undefined);
+    const intl = React.useMemo(() => (dateFnsLocale ? null : intlFormatters(tag)), [dateFnsLocale, tag]);
 
     return (
         <DayPicker
@@ -38,9 +79,12 @@ function Calendar({
                 className,
             )}
             captionLayout={captionLayout}
-            locale={locale}
+            locale={dateFnsLocale}
+            lang={dateFnsLocale ? undefined : tag}
+            weekStartsOn={weekStartsOn ?? (dateFnsLocale ? undefined : weekStart(tag))}
             formatters={{
-                formatMonthDropdown: (date) => date.toLocaleString(locale?.code, {month: "short"}),
+                formatMonthDropdown: (date) => date.toLocaleString(dateFnsLocale?.code ?? tag, {month: "short"}),
+                ...intl,
                 ...formatters,
             }}
             classNames={{
@@ -128,7 +172,7 @@ function Calendar({
 
                     return <ChevronDownIcon className={cn("size-4", className)} {...props} />;
                 },
-                DayButton: ({...props}) => <CalendarDayButton locale={locale} {...props} />,
+                DayButton: ({...props}) => <CalendarDayButton locale={dateFnsLocale} {...props} />,
                 WeekNumber: ({children, ...props}) => {
                     return (
                         <td {...props}>
