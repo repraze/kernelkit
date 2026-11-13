@@ -40,9 +40,13 @@ export const listLabel = "px-2 py-1.5 text-xs font-medium text-muted-foreground"
 /** Separator inside a popup or list. */
 export const listSeparator = "-mx-1 my-1 h-px bg-border";
 
-/** Modal backdrop for dialog, alert dialog, sheet, drawer. */
+/**
+ * Modal backdrop for dialog, alert dialog, sheet, drawer. A transition on Base UI's starting/ending styles,
+ * not a keyframe: the backdrop stays mounted until the slower panel finishes, and a finished keyframe
+ * (no fill) snapped it back to full dim and blur for that wait, a flash on close.
+ */
 export const backdrop =
-    "fixed inset-0 isolate z-50 bg-black/40 duration-100 supports-backdrop-filter:backdrop-blur-xs data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0"; // lint-design-ignore: scrim is not a role
+    "fixed inset-0 isolate z-50 bg-black/40 transition-opacity duration-150 ease-out motion-reduce:transition-none supports-backdrop-filter:backdrop-blur-xs data-starting-style:opacity-0 data-ending-style:opacity-0"; // lint-design-ignore: scrim is not a role
 
 /** Title in cards, dialogs, sheets, popovers, empty states, alerts (§5). */
 export const heading = "font-heading font-medium tracking-tight";
