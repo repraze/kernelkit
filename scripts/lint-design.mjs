@@ -1,4 +1,4 @@
-// Mechanical checks for GUIDELINES.md (§1 tokens, §3 shape, §7 API). Usage: node scripts/lint-design.mjs [file…]
+// Mechanical checks for GUIDELINES.md (§1 tokens, §2 soft text, §3 shape, §7 API). Usage: node scripts/lint-design.mjs [file…]
 import {readdirSync, readFileSync} from "node:fs";
 import {join} from "node:path";
 
@@ -30,6 +30,17 @@ const RULES = [
     ],
 ];
 
+// Rules about two classes on one line. Static and per line, so it catches a class string that puts plain
+// `--c` text on a resting wash of the same color; a surface set in another string (Callout's header on
+// `statusSurface`) is out of its reach: those read `--c-text`, which the surface sets.
+const LINE_RULES = [
+    [
+        (line) => /(?<![\w:\]-])bg-\(--c(?:-tint)?\)/.test(line) && /(?<![\w-])text-\(--c\)(?![\w-])/.test(line),
+        "§2 text on its own color's wash fails 4.5:1: use text-(--c-soft-text)",
+        "text-(--c)",
+    ],
+];
+
 let problems = 0;
 for (const file of files) {
     const src = readFileSync(file, "utf8");
@@ -42,6 +53,12 @@ for (const file of files) {
         for (const [re, msg] of RULES) {
             if (re.test(line) && !line.includes("lint-design-ignore")) {
                 console.log(`${rel}:${i + 1}  ${msg}  →  ${line.match(re)[0]}`);
+                problems++;
+            }
+        }
+        for (const [test, msg, hit] of LINE_RULES) {
+            if (test(line) && !line.includes("lint-design-ignore")) {
+                console.log(`${rel}:${i + 1}  ${msg}  →  ${hit}`);
                 problems++;
             }
         }

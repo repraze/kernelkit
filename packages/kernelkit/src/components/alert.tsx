@@ -17,8 +17,8 @@ const alertCva = cva(
         variants: {
             color: colorVariants,
             variant: {
-                soft: [statusSurface.soft, "text-foreground *:[svg]:text-(--c)"],
-                outline: [statusSurface.outline, "text-card-foreground *:[svg]:text-(--c)"],
+                soft: [statusSurface.soft, "text-foreground *:[svg]:text-(--c-text)"],
+                outline: [statusSurface.outline, "text-card-foreground *:[svg]:text-(--c-text)"],
             },
         },
         compoundVariants: [
@@ -73,7 +73,7 @@ function AlertTitle({className, ...props}: React.ComponentProps<"div">) {
             data-slot="alert-title"
             className={cn(
                 heading,
-                "group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-(--c)",
+                "group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-(--c-text)",
                 className,
             )}
             {...props}

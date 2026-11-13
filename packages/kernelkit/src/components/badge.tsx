@@ -25,7 +25,7 @@ const badgeCva = cva(
             color: colorVariants,
             variant: {
                 solid: "bg-(--c-fill) text-(--c-fill-fg) [a]:hover:bg-(--c-fill)/85",
-                soft: "bg-(--c)/12 text-(--c) dark:bg-(--c)/20 [a]:hover:bg-(--c)/20 dark:[a]:hover:bg-(--c)/30",
+                soft: "bg-(--c)/12 text-(--c-soft-text) dark:bg-(--c)/20 [a]:hover:bg-(--c)/20 dark:[a]:hover:bg-(--c)/30",
                 outline: "border-border text-foreground [a]:hover:bg-hover",
                 ghost: "text-foreground [a]:hover:bg-hover",
                 link: "text-(--c) underline-offset-4 hover:underline",

@@ -41,16 +41,22 @@ hover border input ring danger warning success info` (+ `-foreground`, `-tint`),
 Components that come in colors take a `color` prop, orthogonal to `variant`. A color sets local vars;
 variants only read them:
 
-| Var           | Meaning                                       | Example (`primary`)           |
-| ------------- | --------------------------------------------- | ----------------------------- |
-| `--c`         | the color, text tier: readable on any surface | `var(--primary)`              |
-| `--c-fg`      | text on a solid `--c` fill                    | `var(--primary-foreground)`   |
-| `--c-tint`    | opaque wash behind **foreground** text        | `var(--accent)` (accent tint) |
-| `--c-fill`    | vivid solid surface (TermiColor fill tier)    | `var(--primary)`              |
-| `--c-fill-fg` | text on `--c-fill`                            | `var(--primary-foreground)`   |
+| Var             | Meaning                                       | Example (`primary`)           |
+| --------------- | --------------------------------------------- | ----------------------------- |
+| `--c`           | the color, text tier: readable on any surface | `var(--primary)`              |
+| `--c-fg`        | text on a solid `--c` fill                    | `var(--primary-foreground)`   |
+| `--c-tint`      | opaque wash behind **foreground** text        | `var(--accent)` (accent tint) |
+| `--c-fill`      | vivid solid surface (TermiColor fill tier)    | `var(--primary)`              |
+| `--c-fill-fg`   | text on `--c-fill`                            | `var(--primary-foreground)`   |
+| `--c-soft-text` | text on a wash of `--c` (soft variants)       | `--c` 25% to fg, chroma kept  |
+
+Text on a wash of its own color (soft variants, the soft status surface) uses `--c-soft-text`, never `--c`:
+plain `--c` on its own wash measured 3.6:1. Status surfaces set `--c-text` (soft text on the tint, `--c` on
+the card) for their header, icons and links. The design lint flags `text-(--c)` next to a resting
+`bg-(--c)/NN` or `bg-(--c-tint)` on one line.
 
 Solid variants use `--c-fill`/`--c-fill-fg` (vivid in light mode too: light text tiers are darkened for
-contrast, fills are not). Text, borders, icons, soft/outline/ghost use `--c`.
+contrast, fills are not). Text, borders and icons of outline/ghost/link use `--c`; soft text uses `--c-soft-text`.
 
 Colors: `neutral primary danger warning success info red orange yellow green cyan blue purple pink`.
 `neutral` maps to foreground / background / secondary.
@@ -60,7 +66,7 @@ Variants (same names everywhere):
 | Variant   | Rest                                                  | Hover                             |
 | --------- | ----------------------------------------------------- | --------------------------------- |
 | `solid`   | `bg-(--c-fill) text-(--c-fill-fg)`                    | `bg-(--c-fill)/85`                |
-| `soft`    | `bg-(--c)/12 text-(--c)` (dark: `/20`)                | `bg-(--c)/20` (dark `/30`)        |
+| `soft`    | `bg-(--c)/12 text-(--c-soft-text)` (dark: `/20`)      | `bg-(--c)/20` (dark `/30`)        |
 | `outline` | `border-(--c)/40 text-(--c)`; neutral: `border-input` | `bg-(--c)/10`; neutral `bg-hover` |
 | `ghost`   | `text-(--c)`; neutral: `text-foreground`              | same as outline                   |
 | `link`    | `text-(--c)` underline on hover                       | -                                 |
@@ -395,3 +401,10 @@ Tools (dev server must be running on :5175, it hot-reloads):
   object still works); DatePicker labels use `dateStyle` and `formatRange`; time components default to
   `hourCycle="auto"` with localized day periods, their position and digits. Values never change format
   (`Date`, `"HH:mm"`). Built-in aria labels stay English.
+- 2026-11-13 Soft text contrast: `text-(--c)` on `bg-(--c)/12` (dark `/20`) fell to 3.6:1 (light danger/red,
+  primary, purple). `--c-soft-text` = `color-mix(in oklab, var(--c) 75%, var(--foreground))`, set with every
+  color in `lib/color.ts`, keeps the hue and measures ≥ 5.7:1 for all 13 colors × light / dark / both hc ×
+  background / card / popover. Where relative color syntax is supported, the chroma the neutral mix
+  removed is multiplied back (`oklch(from … l calc(c*1.333) h)`): same lightness, full saturation, ≥ 5.08:1.
+  Badge and Button soft, Callout and Alert (via `statusSurface`'s `--c-text`)
+  and AlertDialog's tinted media use it; rendered docs measure ≥ 4.75:1.

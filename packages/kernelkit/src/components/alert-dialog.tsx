@@ -93,7 +93,10 @@ function AlertDialogMedia({
             data-color={color}
             className={cn(
                 "mb-2 inline-flex size-10 items-center justify-center rounded-lg border border-border bg-muted sm:group-data-[size=default]/alert-dialog-content:row-span-2 *:[svg:not([class*='size-'])]:size-5",
-                color && [colorVariants[color], "border-(--c)/40 bg-(--c-tint) text-foreground *:[svg]:text-(--c)"],
+                color && [
+                    colorVariants[color],
+                    "border-(--c)/40 bg-(--c-tint) text-foreground *:[svg]:text-(--c-soft-text)",
+                ],
                 className,
             )}
             {...props}

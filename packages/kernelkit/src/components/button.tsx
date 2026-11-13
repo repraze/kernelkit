@@ -27,7 +27,7 @@ const buttonCva = cva(
             color: colorVariants,
             variant: {
                 solid: "bg-(--c-fill) text-(--c-fill-fg) hover:bg-(--c-fill)/85 aria-expanded:bg-(--c-fill)/85",
-                soft: "bg-(--c)/12 text-(--c) hover:bg-(--c)/20 aria-expanded:bg-(--c)/20 dark:bg-(--c)/20 dark:hover:bg-(--c)/30",
+                soft: "bg-(--c)/12 text-(--c-soft-text) hover:bg-(--c)/20 aria-expanded:bg-(--c)/20 dark:bg-(--c)/20 dark:hover:bg-(--c)/30",
                 outline: "border-input bg-transparent hover:bg-hover aria-expanded:bg-hover",
                 ghost: "text-foreground hover:bg-hover aria-expanded:bg-hover",
                 link: "text-(--c) underline-offset-4 hover:underline",

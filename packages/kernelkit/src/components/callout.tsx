@@ -41,10 +41,10 @@ const calloutVariants = cva(
 );
 
 const calloutHeader =
-    "flex min-h-8 w-full items-center gap-1.5 py-1.5 pr-3 pl-4 text-left text-xs text-(--c) group-data-[color=neutral]/callout:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5";
+    "flex min-h-8 w-full items-center gap-1.5 py-1.5 pr-3 pl-4 text-left text-xs text-(--c-text) group-data-[color=neutral]/callout:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5";
 
 const calloutBody =
-    "py-2 pr-3 pl-4 text-sm leading-relaxed [&_a]:text-(--c) [&_a]:underline [&_a]:underline-offset-3 group-data-[color=neutral]/callout:[&_a]:text-foreground [&_p:not(:last-child)]:mb-2 border-(--callout-line)";
+    "py-2 pr-3 pl-4 text-sm leading-relaxed [&_a]:text-(--c-text) [&_a]:underline [&_a]:underline-offset-3 group-data-[color=neutral]/callout:[&_a]:text-foreground [&_p:not(:last-child)]:mb-2 border-(--callout-line)";
 
 interface CalloutProps extends Omit<React.ComponentProps<"div">, "color" | "title"> {
     /** Status or hue of the indicator, header and border. */

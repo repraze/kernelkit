@@ -55,14 +55,16 @@ export const selectedRow = "bg-accent text-accent-foreground shadow-[inset_2px_0
 
 /**
  * Status surface shared by Alert and Callout (§2): one `soft` / `outline` axis, same values in both.
- * Expects a color variant (`--c`, `--c-tint`) on the same element. Neutral swaps the hue border for the
+ * Expects a color variant (`--c`, `--c-tint`) on the same element. Text, icons and links on it use
+ * `--c-text`, which each variant sets to the color that passes 4.5:1 on that surface. Neutral swaps the hue border for the
  * plain border on a card surface (`statusSurfaceNeutral`).
  */
 export const statusSurface = {
-    // status tint behind foreground text; the hue lives in the border, icon and accents (TermiColor rule)
-    soft: "border-(--c)/30 bg-(--c-tint) hc:border-(--c)",
+    // status tint behind foreground text; the hue lives in the border, icon and accents (TermiColor rule).
+    // `--c-text` is the hue for text, icons and links on it: on the tint it is the soft text (4.5:1)
+    soft: "border-(--c)/30 bg-(--c-tint) hc:border-(--c) [--c-text:var(--c-soft-text)]",
     // no wash: card surface with a hue border, for dense layouts
-    outline: "border-(--c)/50 bg-card hc:border-(--c)",
+    outline: "border-(--c)/50 bg-card hc:border-(--c) [--c-text:var(--c)]",
 } as const;
 
-export const statusSurfaceNeutral = "border-border bg-card hc:border-border";
+export const statusSurfaceNeutral = "border-border bg-card hc:border-border [--c-text:var(--c)]";

@@ -6,9 +6,13 @@
  * - `--c-tint` opaque wash behind foreground text
  * - `--c-fill` / `--c-fill-fg` vivid solid surface and its text (TermiColor "fills are the brand":
  *   in light mode the text tier is darkened for contrast, the fill tier stays vivid)
+ * - `--c-soft-text` text on a wash of its own color (soft variants, soft status surfaces): `--c` mixed 25%
+ *   toward the foreground with its chroma restored, which keeps hue and saturation and passes WCAG AA
+ *   4.5:1 for every color, in light, dark and both hc modes, on background, card and popover (plain `--c`
+ *   on its own wash fell to ~3.6)
  *
  * Spread `colorVariants` into a cva `variants.color` map, then write variants against the vars
- * (`bg-(--c) text-(--c-fg)`, `bg-(--c)/12 text-(--c)`, …).
+ * (`bg-(--c) text-(--c-fg)`, `bg-(--c)/12 text-(--c-soft-text)`, …).
  */
 
 export const STATUS_COLORS = ["danger", "warning", "success", "info"] as const;
@@ -17,8 +21,17 @@ export const COLORS = ["neutral", "primary", ...STATUS_COLORS, ...HUES] as const
 
 export type Color = (typeof COLORS)[number];
 
+/**
+ * Derived from `--c` on the same element, so it is set alongside every color (a :root rule would see no `--c`).
+ * The mix toward the (neutral) foreground sets the lightness for contrast but also scales chroma by 0.75, so
+ * where relative color syntax is supported the chroma is multiplied back by 1/0.75: same lightness and hue,
+ * the original saturation (≥ 5.08:1 everywhere, vs ≥ 5.68 for the plain mix kept as the fallback).
+ */
+const SOFT_TEXT =
+    "[--c-soft-text:color-mix(in_oklab,var(--c)_75%,var(--foreground))] supports-[color:oklch(from_red_l_c_h)]:[--c-soft-text:oklch(from_color-mix(in_oklab,var(--c)_75%,var(--foreground))_l_calc(c*1.333)_h)]";
+
 // Literal strings on purpose: Tailwind only generates classes it can read in the source.
-export const colorVariants: Record<Color, string> = {
+const baseColorVariants: Record<Color, string> = {
     neutral:
         "[--c:var(--foreground)] [--c-fg:var(--background)] [--c-tint:var(--secondary)] [--c-fill:var(--foreground)] [--c-fill-fg:var(--background)]",
     primary:
@@ -38,6 +51,10 @@ export const colorVariants: Record<Color, string> = {
     purple: "[--c:var(--tc-purple)] [--c-fg:var(--tc-purple-on)] [--c-tint:var(--tc-purple-tint)] [--c-fill:var(--tc-purple-fill)] [--c-fill-fg:var(--tc-purple-on-fill)]",
     pink: "[--c:var(--tc-pink)] [--c-fg:var(--tc-pink-on)] [--c-tint:var(--tc-pink-tint)] [--c-fill:var(--tc-pink-fill)] [--c-fill-fg:var(--tc-pink-on-fill)]",
 };
+
+export const colorVariants = Object.fromEntries(
+    Object.entries(baseColorVariants).map(([color, vars]) => [color, `${vars} ${SOFT_TEXT}`]),
+) as Record<Color, string>;
 
 /** Every color except neutral: the ones whose outline/ghost variants are tinted. */
 export const TINTED_COLORS = COLORS.filter((c) => c !== "neutral");
