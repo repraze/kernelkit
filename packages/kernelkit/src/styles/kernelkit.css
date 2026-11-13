@@ -187,6 +187,62 @@
             translate: 250% 0;
         }
     }
+    /* Spinner variants (spinner.tsx) and segmented Progress: cells light up and fade, a glyph strip steps (braille), a cursor
+       blinks, equalizer bars bounce, a scan line sweeps. Delays are set per cell. */
+    --animate-loader-cell: kk-loader-cell 1.2s ease-in-out infinite;
+    @keyframes kk-loader-cell {
+        0%,
+        100% {
+            opacity: 0.2;
+        }
+        30% {
+            opacity: 1;
+        }
+        60% {
+            opacity: 0.2;
+        }
+    }
+    --animate-loader-braille: kk-loader-braille 0.8s steps(10) infinite;
+    @keyframes kk-loader-braille {
+        to {
+            translate: 0 -100%;
+        }
+    }
+    --animate-loader-blink: kk-loader-blink 1s step-end infinite;
+    @keyframes kk-loader-blink {
+        50% {
+            opacity: 0;
+        }
+    }
+    --animate-loader-bars: kk-loader-bars 0.9s ease-in-out infinite;
+    @keyframes kk-loader-bars {
+        0%,
+        100% {
+            scale: 1 0.3;
+        }
+        50% {
+            scale: 1 1;
+        }
+    }
+    --animate-loader-scan: kk-loader-scan 1.4s linear infinite;
+    @keyframes kk-loader-scan {
+        from {
+            translate: -100% 0;
+        }
+        to {
+            translate: 100% 0;
+        }
+    }
+    /* Shimmer: a highlight band sweeping across clipped text. */
+    --animate-shimmer: kk-shimmer 2s linear infinite;
+    @keyframes kk-shimmer {
+        from {
+            background-position: 100% 0;
+        }
+        to {
+            background-position: 0% 0;
+        }
+    }
     /* Boxes under 20px (checkbox, kbd keys, tiny chips): capped so they never turn into circles at xl. */
     --radius-box: min(calc(var(--kk-radius) * 0.5), 0.25rem);
 

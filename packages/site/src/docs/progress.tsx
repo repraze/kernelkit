@@ -19,6 +19,12 @@ export const doc = defineDoc({
             component: Indeterminate,
             description: "`value={null}` when the total is unknown. Reduced motion pulses instead of sweeping.",
         },
+        {
+            title: "Segmented",
+            component: Segmented,
+            description:
+                '`variant="segmented"`: a row of cells lit in order, a wave running through them while indeterminate. `segments` sets the count.',
+        },
         {title: "Live", component: Live},
     ],
     props: [
@@ -34,6 +40,8 @@ export const doc = defineDoc({
                     description: "Indicator fill.",
                 },
                 {name: "size", type: '"sm" | "default" | "lg"', default: '"default"'},
+                {name: "variant", type: '"bar" | "segmented"', default: '"bar"'},
+                {name: "segments", type: "number", default: "12", description: "`segmented` only."},
                 {
                     name: "children",
                     type: "ReactNode",
@@ -104,6 +112,28 @@ export function Indeterminate() {
         <Progress value={null} className="max-w-sm">
             <ProgressLabel>Resolving dependencies</ProgressLabel>
         </Progress>
+    );
+}
+
+export function Segmented() {
+    return (
+        <div className="flex w-full max-w-sm flex-col gap-5">
+            <Progress variant="segmented" value={null}>
+                <ProgressLabel>Resolving dependencies</ProgressLabel>
+            </Progress>
+            <Progress variant="segmented" value={60}>
+                <ProgressLabel>Uploading artifacts</ProgressLabel>
+                <ProgressValue />
+            </Progress>
+            <Progress variant="segmented" value={100} color="success" size="lg">
+                <ProgressLabel>Build #4182</ProgressLabel>
+                <ProgressValue />
+            </Progress>
+            <Progress variant="segmented" value={40} segments={32} size="sm" color="neutral">
+                <ProgressLabel>Disk</ProgressLabel>
+                <ProgressValue />
+            </Progress>
+        </div>
     );
 }
 

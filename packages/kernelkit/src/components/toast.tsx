@@ -2,10 +2,11 @@
 
 import {Toast as ToastPrimitive} from "@base-ui/react/toast";
 import {Button} from "@repraze/kernelkit/components/button";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {focusRing, heading} from "@repraze/kernelkit/lib/recipes";
 import {usePortalContainer} from "@repraze/kernelkit/provider";
 import {cn} from "cn";
-import {CircleCheckIcon, InfoIcon, Loader2Icon, OctagonXIcon, TriangleAlertIcon, XIcon} from "lucide-react";
+import {CircleCheckIcon, InfoIcon, OctagonXIcon, TriangleAlertIcon, XIcon} from "lucide-react";
 import * as React from "react";
 
 const toast = ToastPrimitive.createToastManager();
@@ -136,9 +137,8 @@ const TOAST_ICONS: Record<string, React.ReactNode> = {
     warning: <TriangleAlertIcon className="text-warning" aria-hidden="true" />,
     error: <OctagonXIcon className="text-danger" aria-hidden="true" />,
     danger: <OctagonXIcon className="text-danger" aria-hidden="true" />,
-    loading: (
-        <Loader2Icon className="animate-spin text-muted-foreground motion-reduce:animate-none" aria-hidden="true" />
-    ),
+    // follows the app's SpinnerProvider like every other kit spinner
+    loading: <Spinner className="text-muted-foreground" role="presentation" aria-label={undefined} />,
 };
 
 function ToastIcon({type, className}: {type: string | undefined; className?: string}) {

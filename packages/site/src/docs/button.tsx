@@ -1,6 +1,7 @@
 import {Button} from "@repraze/kernelkit/components/button";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {COLORS, FILL_VARIANTS} from "@repraze/kernelkit/lib/color";
-import {ArrowRightIcon, LoaderCircleIcon, PlusIcon, TerminalIcon, Trash2Icon} from "lucide-react";
+import {ArrowRightIcon, PlusIcon, TerminalIcon, Trash2Icon} from "lucide-react";
 
 import {baseUi, defineDoc} from "@/lib/doc-kit";
 
@@ -115,7 +116,7 @@ export function WithIcons() {
                 <Trash2Icon data-icon="inline-start" /> Purge cache
             </Button>
             <Button disabled>
-                <LoaderCircleIcon data-icon="inline-start" className="animate-spin" /> Compiling
+                <Spinner data-icon="inline-start" /> Compiling
             </Button>
         </div>
     );

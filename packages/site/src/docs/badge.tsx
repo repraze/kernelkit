@@ -1,6 +1,7 @@
 import {Badge} from "@repraze/kernelkit/components/badge";
+import {Spinner} from "@repraze/kernelkit/components/spinner";
 import {COLORS, FILL_VARIANTS} from "@repraze/kernelkit/lib/color";
-import {CircleAlertIcon, CircleCheckIcon, GitBranchIcon, LoaderCircleIcon} from "lucide-react";
+import {CircleAlertIcon, CircleCheckIcon, GitBranchIcon} from "lucide-react";
 
 import {defineDoc} from "@/lib/doc-kit";
 
@@ -98,7 +99,7 @@ export function Status() {
                 <CircleAlertIcon data-icon="inline-start" /> 3 failing
             </Badge>
             <Badge variant="outline" color="info">
-                <LoaderCircleIcon data-icon="inline-start" className="animate-spin" /> syncing
+                <Spinner data-icon="inline-start" /> syncing
             </Badge>
             <Badge variant="outline">
                 <GitBranchIcon data-icon="inline-start" /> main
