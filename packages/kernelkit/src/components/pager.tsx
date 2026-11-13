@@ -7,14 +7,14 @@ import {cn} from "cn";
 import {ArrowLeftIcon, ArrowRightIcon} from "lucide-react";
 import type * as React from "react";
 
-/** Previous / next page links at the end of a page. */
+/** Previous / next page links at the end of a page: stacked on phones, side by side from `sm`. */
 function Pager({className, render, ...props}: useRender.ComponentProps<"nav">) {
     return useRender({
         defaultTagName: "nav",
         props: mergeProps<"nav">(
             {
                 "aria-label": "Pages",
-                className: cn("grid grid-cols-2 gap-4 border-t border-border pt-6", className),
+                className: cn("grid gap-3 border-t border-border pt-6 sm:grid-cols-2 sm:gap-4", className),
             },
             props,
         ),
@@ -39,21 +39,21 @@ function PagerLink({className, render, direction, label, children, ...props}: Pa
             {
                 rel: next ? "next" : "prev",
                 className: cn(
-                    "group/pager flex flex-col gap-1 rounded-lg border border-border px-4 py-3 transition-colors hover:border-primary-text hover:bg-hover",
+                    "group/pager flex min-w-0 flex-col gap-1 rounded-lg border border-border px-4 py-3 transition-colors hover:border-primary-text hover:bg-hover",
                     focusRing,
-                    next ? "col-start-2 items-end text-end" : "col-start-1 items-start",
+                    next ? "items-end text-end sm:col-start-2" : "items-start sm:col-start-1",
                     className,
                 ),
                 children: (
                     <>
                         <span className="text-xs text-muted-foreground">{label ?? (next ? "Next" : "Previous")}</span>
-                        <span className="flex items-center gap-1.5 font-medium">
+                        <span className="flex max-w-full items-center gap-1.5 font-medium">
                             {!next && (
-                                <Arrow className="size-4 transition-transform group-hover/pager:-translate-x-0.5" />
+                                <Arrow className="size-4 shrink-0 transition-transform group-hover/pager:-translate-x-0.5" />
                             )}
-                            {children}
+                            <span className="min-w-0 wrap-break-word">{children}</span>
                             {next && (
-                                <Arrow className="size-4 transition-transform group-hover/pager:translate-x-0.5" />
+                                <Arrow className="size-4 shrink-0 transition-transform group-hover/pager:translate-x-0.5" />
                             )}
                         </span>
                     </>
