@@ -1,6 +1,7 @@
 "use client";
 
 import {Button} from "@repraze/kernelkit/components/button";
+import {type SearchHandler, SearchRelay, SearchTrigger} from "@repraze/kernelkit/components/search-trigger";
 import {Separator} from "@repraze/kernelkit/components/separator";
 import {
     SiteHeader,
@@ -13,7 +14,7 @@ import {
 } from "@repraze/kernelkit/components/site-header";
 import {ThemeMenu} from "@repraze/kernelkit/components/theme-menu";
 import type * as React from "react";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 import {GithubIcon} from "./github-icon";
 
@@ -36,7 +37,10 @@ export interface SuiteHeaderProps {
     nav: SuiteNavItem[];
     /** Accessible name of the nav (default "Main"). */
     navLabel?: string;
-    /** The search (DocsSearch, or the site's own), before the separator. */
+    /**
+     * The search (DocsSearch, or the site's own built on SearchTrigger), before the separator. Below `md`
+     * it moves to the top of the phone menu: a full-width trigger there opens the same dialog.
+     */
     search?: React.ReactNode;
     /** Replaces the default `<ThemeMenu />`. */
     themeMenu?: React.ReactNode;
@@ -66,6 +70,7 @@ export function SuiteHeader({
 }: SuiteHeaderProps) {
     const [menuOpen, setMenuOpen] = useState(false);
     useEffect(() => setMenuOpen(false), [locationKey]);
+    const openSearch = useRef<SearchHandler | null>(null);
 
     const navLinks = nav.map((item) => (
         <SiteNavLink
@@ -82,6 +87,18 @@ export function SuiteHeader({
         <SiteHeader>
             <SiteHeaderContent>
                 <SiteHeaderMenu title={brand} open={menuOpen} onOpenChange={setMenuOpen}>
+                    {search ? (
+                        <div className="px-2 pt-2">
+                            <SearchTrigger
+                                expanded
+                                aria-label="Search"
+                                onClick={(event) => {
+                                    setMenuOpen(false);
+                                    openSearch.current?.(event);
+                                }}
+                            />
+                        </div>
+                    ) : null}
                     <nav aria-label={navLabel} className="flex flex-col gap-1 px-2 pt-2">
                         {navLinks}
                     </nav>
@@ -92,10 +109,14 @@ export function SuiteHeader({
                 </SiteHeaderBrand>
                 <SiteNav aria-label={navLabel}>{navLinks}</SiteNav>
                 <SiteHeaderActions>
-                    {search}
+                    {search ? (
+                        <SearchRelay handler={openSearch}>
+                            <div className="hidden md:contents">{search}</div>
+                        </SearchRelay>
+                    ) : null}
                     <Separator
                         orientation="vertical"
-                        className="mx-1 hidden data-vertical:h-5 data-vertical:self-center sm:block"
+                        className="mx-1 hidden data-vertical:h-5 data-vertical:self-center md:block"
                     />
                     {themeMenu ?? <ThemeMenu />}
                     {repository ? (

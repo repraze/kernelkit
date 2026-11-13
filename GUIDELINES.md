@@ -198,7 +198,9 @@ decorations above the header row.
 
 - Header: `SiteHeader` › `SiteHeaderContent` (h-14, `--kk-site-width` container, `px-4 md:px-6`) ›
   `SiteHeaderMenu` (phones) · `SiteHeaderBrand` · `SiteNav`/`SiteNavLink` (mono) · `SiteHeaderActions`
-  (`SearchTrigger`, a vertical `Separator`, `ThemeMenu`, repository icon button).
+  (`SearchTrigger`, a vertical `Separator`, `ThemeMenu`, repository icon button). Below `md` the search
+  leaves the header for the top of the phone menu (a full-width `SearchTrigger expanded`, opening the same
+  dialog through `SearchRelay`): a lone outlined icon among ghost icons reads as a stray box.
 - Theme control: one `ThemeMenu`, a ghost `size="icon"` button (32px box, 16px icon, the same as the
   repository button) whose icon is the chosen mode (sun, moon, monitor for system, not the resolved
   mode). Its popover holds mode (segmented), accent swatches, high contrast, radius and a Reset to the

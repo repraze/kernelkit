@@ -149,6 +149,19 @@ export const doc = defineDoc({
             rows: [
                 {name: "onClick", type: "() => void", description: "Open your search dialog."},
                 {
+                    name: "expanded",
+                    type: "boolean",
+                    default: "false",
+                    description:
+                        "Full width with the placeholder at every size, for a menu. Otherwise an icon below sm.",
+                },
+                {
+                    name: "SearchRelay",
+                    type: "{handler: RefObject}",
+                    description:
+                        "A SearchTrigger inside hands its onClick to handler, so another trigger (SuiteHeader's phone menu) opens the same dialog.",
+                },
+                {
                     name: "useSearchHotkeys(cb)",
                     type: "(toggle: boolean) => void",
                     description: "Ctrl/⌘ K (toggle) anywhere, / (open) outside text fields.",
